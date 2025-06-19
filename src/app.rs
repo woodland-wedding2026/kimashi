@@ -13,8 +13,8 @@ impl Default for TemplateApp {
     fn default() -> Self {
         Self {
             // Example stuff:
-            label: "Hello World!".to_owned(),
-            value: 2.7,
+            label: "very much!".to_owned(),
+            value: 1.7,
         }
     }
 }
@@ -67,10 +67,10 @@ impl eframe::App for TemplateApp {
 
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("eframe template");
+            ui.heading("Woodland Wedding 2026");
 
             ui.horizontal(|ui| {
-                ui.label("Write something: ");
+                ui.label("This is how much I love you: ");
                 ui.text_edit_singleline(&mut self.label);
             });
 
