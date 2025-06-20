@@ -23,8 +23,7 @@ eframe = { version = "0.31", default-features = false, features = [
 log = "0.4.27"
 
 
-egui_extras = { version = "*", features = ["all_loaders"] }
-image = { version = "0.25", features = ["jpeg", "png"] }
+egui_extras = "0.31.1"
 
 
 
