@@ -70,7 +70,7 @@ impl eframe::App for TemplateApp {
             ui.heading("Woodland Wedding 2026");
 
             egui_extras::install_image_loaders(ctx);
-            ui.image("file://assets/myimage.png");
+            ui.image("../assets/myimage.png");
             
             ui.horizontal(|ui| {
                 ui.label("This is how much I love YOU19: ");
