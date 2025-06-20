@@ -85,7 +85,7 @@ impl eframe::App for TemplateApp {
 
             
             egui_extras::install_image_loaders(ctx);
-            Context::include_bytes!();
+            
             ui.image("file://assets/myimage.png");
         
             
