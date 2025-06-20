@@ -68,7 +68,7 @@ impl eframe::App for TemplateApp {
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
             ui.heading("Woodland Wedding 2026");
-
+            ui.image((my_image, egui::Vec2::new(640.0, 480.0)));
             ui.horizontal(|ui| {
                 ui.label("This is how much I love YOU17: ");
                 ui.text_edit_singleline(&mut self.label);
