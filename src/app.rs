@@ -70,7 +70,7 @@ impl eframe::App for TemplateApp {
             ui.heading("Woodland Wedding 2026");
 
             ui.horizontal(|ui| {
-                ui.label("This is how much I love you: ");
+                ui.label("This is how much I love YOU: ");
                 ui.text_edit_singleline(&mut self.label);
             });
 
