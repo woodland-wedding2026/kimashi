@@ -23,7 +23,6 @@ eframe = { version = "0.31", default-features = false, features = [
 log = "0.4.27"
 
 
-egui_extras = "0.31.1"
 
 
 
