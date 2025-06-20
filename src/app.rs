@@ -41,12 +41,31 @@ impl eframe::App for TemplateApp {
         eframe::set_value(storage, eframe::APP_KEY, self);
     }
 
+
+
+    
     /// Called each time the UI needs repainting, which may be many times per second.
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         // Put your widgets into a `SidePanel`, `TopBottomPanel`, `CentralPanel`, `Window` or `Area`.
         // For inspiration and more examples, go to https://emilk.github.io/egui
 
         egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
+
+
+            use egui::ColorImage;
+            use egui_extras::image::load_image_from_path;
+            use egui::{Context, Image, Vec2};
+            let image_path = "../assets/myimage.png";
+            let image = load_image_from_path(image_path).unwrap();
+            let image_size = Vec2::new(100.0, 100.0);
+            ui.add(Image::new(image, image_size).fit_to_fraction(Vec2::new(0.5, 0.5)),);
+
+
+
+
+
+
+            
             // The top panel is often a good place for a menu bar:
 
             egui::menu::bar(ui, |ui| {
