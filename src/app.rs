@@ -52,13 +52,7 @@ impl eframe::App for TemplateApp {
         egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
 
 
-            use egui::ColorImage;
-            use egui_extras::image::load_image_from_path;
-            use egui::{Context, Image, Vec2};
-            let image_path = "../assets/myimage.png";
-            let image = load_image_from_path(image_path).unwrap();
-            let image_size = Vec2::new(100.0, 100.0);
-            ui.add(Image::new(image, image_size).fit_to_fraction(Vec2::new(0.5, 0.5)),);
+            
 
 
 
@@ -88,6 +82,10 @@ impl eframe::App for TemplateApp {
             // The central panel the region left after adding TopPanel's and SidePanel's
             ui.heading("Woodland Wedding 2026");
 
+            egui_extras::install_image_loaders(ctx);
+            ui.image("file://assets/myimage.png");
+        
+            
             egui_extras::install_image_loaders(ctx);
             ui.image("../assets/myimage.png");
             
