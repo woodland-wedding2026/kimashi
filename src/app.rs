@@ -42,7 +42,7 @@ impl eframe::App for TemplateApp {
     }
 
 
-
+    
     
     /// Called each time the UI needs repainting, which may be many times per second.
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
@@ -86,11 +86,11 @@ impl eframe::App for TemplateApp {
             ui.image("file://assets/myimage.png");
         
             
-            egui_extras::install_image_loaders(ctx);
+            
             ui.image("../assets/myimage.png");
             
             ui.horizontal(|ui| {
-                ui.label("This is how much I love YOU19: ");
+                ui.label("This is how much I love YOU20: ");
                 ui.text_edit_singleline(&mut self.label);
             });
 
