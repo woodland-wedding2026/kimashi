@@ -82,12 +82,15 @@ impl eframe::App for TemplateApp {
             // The central panel the region left after adding TopPanel's and SidePanel's
             ui.heading("Woodland Wedding 2026");
 
+
+            
             egui_extras::install_image_loaders(ctx);
+            Context::include_bytes!();
             ui.image("file://assets/myimage.png");
         
             
             
-            ui.image("../assets/myimage.png");
+            
             
             ui.horizontal(|ui| {
                 ui.label("This is how much I love YOU20: ");
