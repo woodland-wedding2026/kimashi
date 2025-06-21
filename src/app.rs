@@ -93,7 +93,7 @@ impl eframe::App for TemplateApp {
             
             
             ui.horizontal(|ui| {
-                ui.label("This is how much I love YOU20: ");
+                ui.label("This is how much I love YOU21: ");
                 ui.text_edit_singleline(&mut self.label);
             });
 
