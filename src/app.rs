@@ -80,7 +80,7 @@ impl eframe::App for TemplateApp {
 
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi :)) ");
+            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi ");
 
             
             
