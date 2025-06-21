@@ -80,20 +80,20 @@ impl eframe::App for TemplateApp {
 
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026-kimsashi");
+            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi :)) ");
 
             
             
             egui_extras::install_image_loaders(ctx);
             //ui.image("file://assets/myimage.png");
-            ui.image(egui::include_image!("../assets/kleinecollage.jpg"));
+            ui.image(egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg"));
         
             
             
             
             
             ui.horizontal(|ui| {
-                ui.label("This is how much I love YOU21: ");
+                ui.label("This is how much I love you: ");
                 ui.text_edit_singleline(&mut self.label);
             });
 
