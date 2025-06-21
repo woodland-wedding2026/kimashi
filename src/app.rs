@@ -82,11 +82,18 @@ impl eframe::App for TemplateApp {
             // The central panel the region left after adding TopPanel's and SidePanel's
             ui.heading("Woodland Wedding 2026");
 
+            use egui::widgets::ImageSize;
+            use egui::Vec2;
 
+           let image_size = ImageSize {
+               max_width: Some(34.0),
+               max_height: Some(34.0),
+               ..Default::default()
+           };
             
             egui_extras::install_image_loaders(ctx);
             //ui.image("file://assets/myimage.png");
-            ui.image(egui::include_image!("../assets/myimage.png"));
+            ui.image(egui::include_image!("../assets/myimage.png")).size_setter(image_size);
         
             
             
