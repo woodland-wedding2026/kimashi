@@ -85,6 +85,16 @@ impl eframe::App for TemplateApp {
             let desired_size = egui::vec2(128.0, 128.0); 
             ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
 
+            egui::Window::new(self.name())
+            .default_width(320.0)
+            .default_height(480.0)
+            .open(open)
+            .resizable([true, false])
+            .scroll(false)
+            .show(ctx, |ui| {
+                use crate::View as _;
+                self.ui(ui);
+            });
 
             
             
