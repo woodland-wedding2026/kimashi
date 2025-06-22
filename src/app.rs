@@ -4,7 +4,7 @@
 pub struct TemplateApp {
     // Example stuff:
     label: String,
-
+    flag: bool,
     #[serde(skip)] // This how you opt-out of serialization of a field
     value: f32,
 }
@@ -41,7 +41,7 @@ impl eframe::App for TemplateApp {
         eframe::set_value(storage, eframe::APP_KEY, self);
     }
 
-let mut flag = true;
+
 
     
     
