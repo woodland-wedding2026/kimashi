@@ -85,7 +85,7 @@ impl eframe::App for TemplateApp {
             let desired_size = egui::vec2(128.0, 128.0); 
             ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
 
-            egui::Window::new("about the location").open(Some(true)).title_bar(true).show(ctx, |ui| {
+            egui::Window::new("about the location").open(true).title_bar(true).show(ctx, |ui| {
                 ui.label("tents and bungalows:");
                 
             });
