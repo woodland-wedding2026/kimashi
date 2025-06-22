@@ -52,12 +52,6 @@ impl eframe::App for TemplateApp {
         egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
 
 
-            
-
-
-
-
-
 
             
             // The top panel is often a good place for a menu bar:
@@ -85,9 +79,8 @@ impl eframe::App for TemplateApp {
             
             
             egui_extras::install_image_loaders(ctx);
-            //ui.image("file://assets/myimage.png");
-            ui.image(egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg"));
-        
+            #ui.image(egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg"));
+            ui.add(egui::Image::new(egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg")).corner_radius(5));
             
             
             
