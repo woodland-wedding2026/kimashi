@@ -89,7 +89,7 @@ impl eframe::App for TemplateApp {
 
             
             
-            egui::Window::new("about the location").open(&mut flag).show(ctx, |ui| {
+            egui::Window::new("about the location").open(&mut self.flag).show(ctx, |ui| {
                 ui.label("tents and bungalows:");
                 
             });
