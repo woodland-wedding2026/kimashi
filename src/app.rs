@@ -41,6 +41,7 @@ impl eframe::App for TemplateApp {
         eframe::set_value(storage, eframe::APP_KEY, self);
     }
 
+let mut flag = true;
 
     
     
@@ -86,7 +87,7 @@ impl eframe::App for TemplateApp {
             ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
 
 
-            let mut flag = true;
+            
             
             egui::Window::new("about the location").open(&mut flag).show(ctx, |ui| {
                 ui.label("tents and bungalows:");
