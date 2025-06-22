@@ -82,7 +82,8 @@ impl eframe::App for TemplateApp {
             
             //ui.image(egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg"));
             let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
-            egui::Image::new(collage).fit_to_exact_size(egui::vec2(128.0, 128.0)).show(ui);
+            let desired_size = egui::vec2(128.0, 128.0); 
+            ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
 
 
             
