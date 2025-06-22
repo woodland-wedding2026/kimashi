@@ -85,7 +85,10 @@ impl eframe::App for TemplateApp {
             let desired_size = egui::vec2(128.0, 128.0); 
             ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
 
-            egui::Window::new("about the location").open(&mut true).show(ctx, |ui| {
+
+            let mut flag = true;
+            
+            egui::Window::new("about the location").open(&mut flag).show(ctx, |ui| {
                 ui.label("tents and bungalows:");
                 
             });
