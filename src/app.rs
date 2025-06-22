@@ -74,13 +74,12 @@ impl eframe::App for TemplateApp {
 
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi ");
+            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi17 ");
 
             
             
             egui_extras::install_image_loaders(ctx);
-            #ui.image(egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg"));
-            ui.add(egui::Image::new(egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg")).corner_radius(5));
+            ui.image(egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg")).corner_radius(5));
             
             
             
