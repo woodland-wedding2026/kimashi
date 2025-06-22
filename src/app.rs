@@ -15,6 +15,7 @@ impl Default for TemplateApp {
             // Example stuff:
             label: "very much!".to_owned(),
             value: 1.7,
+            flag: true,
         }
     }
 }
@@ -75,7 +76,7 @@ impl eframe::App for TemplateApp {
 
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi20 ");
+            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi21 ");
 
             
             
