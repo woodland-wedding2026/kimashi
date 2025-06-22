@@ -77,14 +77,14 @@ impl eframe::App for TemplateApp {
 
         egui::SidePanel::left("bullet points").show(ctx, |ui| {
             if ui.button("about location").clicked() {
-                self.flag == true;
+                self.flag = true;
             }});
 
 
         
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi21 ");
+            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi22 ");
 
             
             
