@@ -12,6 +12,7 @@ pub struct TemplateApp {
     flag: bool,
     #[serde(skip)] // This how you opt-out of serialization of a field
     value: f32,
+    save_status: String,
 }
 
 impl Default for TemplateApp {
@@ -21,6 +22,7 @@ impl Default for TemplateApp {
             label: "very much!".to_owned(),
             value: 1.7,
             flag: true,
+            save_status: String::new(),
         }
     }
 }
