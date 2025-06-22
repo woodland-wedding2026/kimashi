@@ -1,9 +1,4 @@
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
-
-use std::fs::File;
-use std::io::Write;
-
-
 #[derive(serde::Deserialize, serde::Serialize)]
 #[serde(default)] // if we add new fields, give them default values when deserializing old state
 pub struct TemplateApp {
@@ -12,7 +7,7 @@ pub struct TemplateApp {
     flag: bool,
     #[serde(skip)] // This how you opt-out of serialization of a field
     value: f32,
-    save_status: String,
+    
 }
 
 impl Default for TemplateApp {
@@ -22,7 +17,7 @@ impl Default for TemplateApp {
             label: "very much!".to_owned(),
             value: 1.7,
             flag: true,
-            save_status: String::new(),
+            
         }
     }
 }
@@ -91,7 +86,7 @@ impl eframe::App for TemplateApp {
         
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi8 ");
+            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi9 ");
 
             
             
@@ -117,12 +112,7 @@ impl eframe::App for TemplateApp {
             ui.horizontal(|ui| {
                 ui.label("This is how much I love you: ");
                 ui.text_edit_singleline(&mut self.label);
-                if ui.button("Save to file").clicked() {
-                match File::create("../assets/output.txt").and_then(|mut file| file.write_all(self.label.as_bytes())) {
-                    Ok(_) => self.save_status = "Saved to output.txt".to_owned(),
-                    Err(e) => self.save_status = format!("Error: {}", e),
-                }
-            }
+                
             });
 
             ui.add(egui::Slider::new(&mut self.value, 0.0..=10.0).text("value"));
