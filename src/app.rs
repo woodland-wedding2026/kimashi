@@ -79,7 +79,7 @@ impl eframe::App for TemplateApp {
             
             
             egui_extras::install_image_loaders(ctx);
-            ui.image(egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg")).corner_radius(5);
+            ui.image(egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg"));
             
             
             
