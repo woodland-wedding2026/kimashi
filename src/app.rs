@@ -118,7 +118,7 @@ impl eframe::App for TemplateApp {
                 ui.label("This is how much I love you: ");
                 ui.text_edit_singleline(&mut self.label);
                 if ui.button("Save to file").clicked() {
-                match File::create("output.txt").and_then(|mut file| file.write_all(self.input_text.as_bytes())) {
+                match File::create("output.txt").and_then(|mut file| file.write_all(self.label.as_bytes())) {
                     Ok(_) => self.save_status = "Saved to output.txt".to_owned(),
                     Err(e) => self.save_status = format!("Error: {}", e),
                 }
