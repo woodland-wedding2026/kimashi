@@ -1,4 +1,9 @@
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
+
+use std::fs::File;
+use std::io::Write;
+
+
 #[derive(serde::Deserialize, serde::Serialize)]
 #[serde(default)] // if we add new fields, give them default values when deserializing old state
 pub struct TemplateApp {
@@ -84,7 +89,7 @@ impl eframe::App for TemplateApp {
         
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi ");
+            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi7 ");
 
             
             
@@ -110,6 +115,12 @@ impl eframe::App for TemplateApp {
             ui.horizontal(|ui| {
                 ui.label("This is how much I love you: ");
                 ui.text_edit_singleline(&mut self.label);
+                if ui.button("Save to file").clicked() {
+                match File::create("output.txt").and_then(|mut file| file.write_all(self.input_text.as_bytes())) {
+                    Ok(_) => self.save_status = "Saved to output.txt".to_owned(),
+                    Err(e) => self.save_status = format!("Error: {}", e),
+                }
+            }
             });
 
             ui.add(egui::Slider::new(&mut self.value, 0.0..=10.0).text("value"));
