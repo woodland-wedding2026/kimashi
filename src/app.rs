@@ -1,13 +1,14 @@
 use std::collections::BTreeMap;
 fn send_post_request() {
-    let mut headers = BTreeMap::new();
-    headers.insert("Content-Type".into(), "application/json".into());
+    let mut headers = ehttp::Headers::new();
+    headers.insert("Content-Type".to_string(), "application/json".to_string());
 
     let request = ehttp::Request {
         method: "POST".into(),
         url: "https://eofvjpqbx061wr0.m.pipedream.net/post".into(),
         body: br#"{"key123":"value234"}"#.to_vec(),
         headers,
+        ..Default::default()
     };
 
     ehttp::fetch(request, |response| {
