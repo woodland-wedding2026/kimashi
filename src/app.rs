@@ -1,30 +1,3 @@
-use std::collections::BTreeMap;
-fn send_post_request() {
-    let mut headers = ehttp::Headers::new();
-    headers.insert("Content-Type".to_string(), "application/json".to_string());
-
-    let request = ehttp::Request {
-        method: "POST".into(),
-        url: "https://eofvjpqbx061wr0.m.pipedream.net/post".into(),
-        body: br#"{"key123":"value234"}"#.to_vec(),
-        headers,
-        ..Default::default()
-    };
-
-    ehttp::fetch(request, |response| {
-        if let Some(response) = response {
-            if response.ok {
-                println!("Response: {}", String::from_utf8_lossy(&response.bytes));
-            } else {
-                eprintln!("Error: {}", response.status);
-            }
-        } else {
-            eprintln!("Network error");
-        }
-    });
-}
-
-
 
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
@@ -117,16 +90,14 @@ impl eframe::App for TemplateApp {
             if ui.button("about location").clicked() {
                 self.flag = true;
             }
-            if ui.button("Send POST").clicked() {
-                send_post_request();
-            }
+            
         });
 
 
         
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi20 ");
+            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi21 ");
 
             
             
