@@ -1,3 +1,11 @@
+pub async fn post_data(url: &str, payload: &serde_json::Value) -> Result<String, reqwest::Error> {
+    let client = reqwest::Client::new();
+    let response = client.post(url).json(payload).send().await?;
+    response.text().await
+}
+
+
+
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(serde::Deserialize, serde::Serialize)]
 #[serde(default)] // if we add new fields, give them default values when deserializing old state
