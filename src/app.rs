@@ -5,7 +5,6 @@ pub struct TemplateApp {
     // Example stuff:
     label: String,
     flag: bool,
-    #[serde(skip)] // This how you opt-out of serialization of a field
     value: f32,
     
     
