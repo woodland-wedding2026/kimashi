@@ -23,6 +23,7 @@ impl Default for TemplateApp {
     }
 }
 
+
 impl TemplateApp {
     /// Called once before the first frame.
     pub fn new(cc: &eframe::CreationContext<'_>) -> Self {
@@ -45,7 +46,27 @@ impl eframe::App for TemplateApp {
         eframe::set_value(storage, eframe::APP_KEY, self);
     }
 
-
+    fn send_post_request() {
+    let request = ehttp::Request {
+        method: "POST".into(),
+        url: "https://eofvjpqbx061wr0.m.pipedream.net/post".into(),
+        body: br#"{"key089":"value098"}"#.to_vec(), // Body as bytes
+        headers: vec![("Content-Type".into(), "application/json".into())],
+    };
+    
+    // ehttp is async via callback (non-blocking, cross-platform, good for egui)
+    ehttp::fetch(request, |response| {
+        if let Some(response) = response {
+            if response.ok {
+                println!("Response: {}", String::from_utf8_lossy(&response.bytes));
+            } else {
+                eprintln!("Error: {}", response.status);
+            }
+        } else {
+            eprintln!("Network error");
+        }
+    });
+}
 
     
     
@@ -82,7 +103,11 @@ impl eframe::App for TemplateApp {
         egui::SidePanel::left("bullet points").show(ctx, |ui| {
             if ui.button("about location").clicked() {
                 self.flag = true;
-            }});
+            }
+            if ui.button("Send POST").clicked() {
+                send_post_request();
+            }
+        });
 
 
         
