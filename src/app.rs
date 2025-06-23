@@ -1,3 +1,31 @@
+use std::collections::BTreeMap;
+fn send_post_request() {
+    let mut headers = BTreeMap::new();
+    headers.insert("Content-Type".into(), "application/json".into());
+
+    let request = ehttp::Request {
+        method: "POST".into(),
+        url: "https://eofvjpqbx061wr0.m.pipedream.net/post".into(),
+        body: br#"{"key123":"value234"}"#.to_vec(),
+        headers,
+    };
+
+    ehttp::fetch(request, |response| {
+        if let Some(response) = response {
+            if response.ok {
+                println!("Response: {}", String::from_utf8_lossy(&response.bytes));
+            } else {
+                eprintln!("Error: {}", response.status);
+            }
+        } else {
+            eprintln!("Network error");
+        }
+    });
+}
+
+
+
+
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(serde::Deserialize, serde::Serialize)]
 #[serde(default)] // if we add new fields, give them default values when deserializing old state
@@ -46,31 +74,7 @@ impl eframe::App for TemplateApp {
         eframe::set_value(storage, eframe::APP_KEY, self);
     }
 
-    use std::collections::BTreeMap;
 
-fn send_post_request() {
-    let mut headers = BTreeMap::new();
-    headers.insert("Content-Type".into(), "application/json".into());
-
-    let request = ehttp::Request {
-        method: "POST".into(),
-        url: "https://eofvjpqbx061wr0.m.pipedream.net/post".into(),
-        body: br#"{"key123":"value234"}"#.to_vec(),
-        headers,
-    };
-
-    ehttp::fetch(request, |response| {
-        if let Some(response) = response {
-            if response.ok {
-                println!("Response: {}", String::from_utf8_lossy(&response.bytes));
-            } else {
-                eprintln!("Error: {}", response.status);
-            }
-        } else {
-            eprintln!("Network error");
-        }
-    });
-}
 
 
 
