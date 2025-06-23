@@ -15,6 +15,10 @@ pub struct TemplateApp {
     flag: bool,
     #[serde(skip)] // This how you opt-out of serialization of a field
     value: f32,
+    post_url: String,
+    post_payload: String,
+    post_response: Option<String>,
+    is_posting: bool,
     
 }
 
@@ -25,6 +29,10 @@ impl Default for TemplateApp {
             label: "very much!".to_owned(),
             value: 1.7,
             flag: true,
+            post_url: "https://eofvjpqbx061wr0.m.pipedream.net/post".into(),
+            post_payload: r#"{"key123": "value456"}"#.into(),
+            post_response: None,
+            is_posting: false,
             
         }
     }
