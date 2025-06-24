@@ -9,6 +9,7 @@ pub struct TemplateApp {
     
     
     
+    
 }
 
 impl Default for TemplateApp {
@@ -18,6 +19,7 @@ impl Default for TemplateApp {
             label: "very much!".to_owned(),
             value: 1.7,
             flag: true,
+            
             
             
             
@@ -90,6 +92,14 @@ impl eframe::App for TemplateApp {
             if ui.button("about location").clicked() {
                 self.flag = true;
             }
+            if ui.button("post").clicked() {
+                let request = ehttp::Request::post("https://eofvjpqbx061wr0.m.pipedream.net", "r#"{"foo": "bar"}"#.as_bytes().to_vec()");
+
+                ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {
+                    println!("Status code: {:?}", result.unwrap().status);
+                });
+            }
+            
         });
 
 
