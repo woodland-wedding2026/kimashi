@@ -20,7 +20,7 @@ impl Default for TemplateApp {
             label: "very much!".to_owned(),
             value: 1.7,
             flag: true,
-            user_input: "quatsch".to_owned(),
+            user_input: "type message here and send with post button".to_owned(),
             
             
             
@@ -93,7 +93,7 @@ impl eframe::App for TemplateApp {
         egui::SidePanel::left("bullet points").show(ctx, |ui| {
 
             ui.text_edit_singleline(&mut self.user_input);
-            ui.label(format!("You typed: {}", self.user_input));
+            //ui.label(format!("You typed: {}", self.user_input));
             
             if ui.button("about location").clicked() {
                 self.flag = true;
@@ -111,7 +111,7 @@ impl eframe::App for TemplateApp {
         
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi22 ");
+            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi ");
 
             
             
