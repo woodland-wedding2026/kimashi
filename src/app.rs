@@ -92,8 +92,7 @@ impl eframe::App for TemplateApp {
             if ui.button("about location").clicked() {
                 self.flag = true;
             }
-            if ui.button("Send POST request").clicked() {
-            send_post_request();
+            
         }
         });
 
