@@ -6,6 +6,7 @@ pub struct TemplateApp {
     label: String,
     flag: bool,
     value: f32,
+    user_input: String,
     
     
     
@@ -19,6 +20,7 @@ impl Default for TemplateApp {
             label: "very much!".to_owned(),
             value: 1.7,
             flag: true,
+            user_input: "quatsch".to_owned(),,
             
             
             
@@ -89,15 +91,16 @@ impl eframe::App for TemplateApp {
 
 
         egui::SidePanel::left("bullet points").show(ctx, |ui| {
+
+            ui.text_edit_singleline(&mut self.user_input);
+            ui.label(format!("You typed: {}", self.user_input));
+            
             if ui.button("about location").clicked() {
                 self.flag = true;
             }
             if ui.button("post").clicked() {
                 let request = ehttp::Request::post("https://eofvjpqbx061wr0.m.pipedream.net", r#"{"foo": "bar"}"#.as_bytes().to_vec());
-
-                ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {
-                    println!("Status code: {:?}", result.unwrap().status);
-                });
+                ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
             }
             
         });
