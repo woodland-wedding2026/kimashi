@@ -1,28 +1,4 @@
-use ehttp::{Request, Method};
-use egui::{CentralPanel, Context, Ui};
 
-fn send_post_request() {
-    let url = "https://eofvjpqbx061wr0.m.pipedream.net";
-    let json_body = r#"{"key12": "value89"}"#.to_string();
-
-    let mut req = Request::new(url);
-    req.method = Method::Post;
-    req.body = json_body.into_bytes();
-    req.headers.push(("Content-Type".into(), "application/json".into()));
-
-    ehttp::fetch(req, |response| {
-        if let Some(response) = response {
-            if response.ok {
-                // Handle the response text
-                web_sys::console::log_1(&format!("Response: {:?}", response.text()).into());
-            } else {
-                web_sys::console::log_1(&format!("Request failed: {:?}", response.status).into());
-            }
-        } else {
-            web_sys::console::log_1(&"No response!".into());
-        }
-    });
-}
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(serde::Deserialize, serde::Serialize)]
@@ -34,6 +10,7 @@ pub struct TemplateApp {
     value: f32,
     
     
+    
 }
 
 impl Default for TemplateApp {
@@ -43,6 +20,7 @@ impl Default for TemplateApp {
             label: "very much!".to_owned(),
             value: 1.7,
             flag: true,
+            
             
             
         }
@@ -123,7 +101,7 @@ impl eframe::App for TemplateApp {
         
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi21 ");
+            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi22 ");
 
             
             
