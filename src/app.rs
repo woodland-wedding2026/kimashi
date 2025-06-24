@@ -1,4 +1,28 @@
+use ehttp::{Request, Method};
+use egui::{CentralPanel, Context, Ui};
 
+fn send_post_request() {
+    let url = "https://eofvjpqbx061wr0.m.pipedream.net";
+    let json_body = r#"{"key12": "value89"}"#.to_string();
+
+    let mut req = Request::new(url);
+    req.method = Method::Post;
+    req.body = json_body.into_bytes();
+    req.headers.push(("Content-Type".into(), "application/json".into()));
+
+    ehttp::fetch(req, |response| {
+        if let Some(response) = response {
+            if response.ok {
+                // Handle the response text
+                web_sys::console::log_1(&format!("Response: {:?}", response.text()).into());
+            } else {
+                web_sys::console::log_1(&format!("Request failed: {:?}", response.status).into());
+            }
+        } else {
+            web_sys::console::log_1(&"No response!".into());
+        }
+    });
+}
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(serde::Deserialize, serde::Serialize)]
@@ -90,7 +114,9 @@ impl eframe::App for TemplateApp {
             if ui.button("about location").clicked() {
                 self.flag = true;
             }
-            
+            if ui.button("Send POST request").clicked() {
+            send_post_request();
+        }
         });
 
 
