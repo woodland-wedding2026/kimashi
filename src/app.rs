@@ -99,7 +99,9 @@ impl eframe::App for TemplateApp {
                 self.flag = true;
             }
             if ui.button("post").clicked() {
-                let request = ehttp::Request::post("https://eofvjpqbx061wr0.m.pipedream.net", r#"{"foo": "bar"}"#.as_bytes().to_vec());
+                let json = format!(r#"{{"foo": "{}"}}"#, self.user_input);
+                let body = json.as_bytes().to_vec();
+                let request = ehttp::Request::post("https://eofvjpqbx061wr0.m.pipedream.net", body);
                 ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
             }
             
