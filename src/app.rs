@@ -90,8 +90,6 @@ impl eframe::App for TemplateApp {
             if ui.button("about location").clicked() {
                 self.flag = true;
             }
-            
-        }
         });
 
 
