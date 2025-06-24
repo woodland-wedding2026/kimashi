@@ -20,7 +20,7 @@ impl Default for TemplateApp {
             label: "very much!".to_owned(),
             value: 1.7,
             flag: true,
-            user_input: "quatsch".to_owned(),,
+            user_input: "quatsch".to_owned(),
             
             
             
