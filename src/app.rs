@@ -7,6 +7,8 @@ pub struct TemplateApp {
     flag: bool,
     value: f32,
     user_input: String,
+    painter: painting::Painting,
+    painter_open: bool,
     
     
     
@@ -21,6 +23,8 @@ impl Default for TemplateApp {
             value: 1.7,
             flag: true,
             user_input: "type message..".to_owned(),
+            painter: Default::default(),
+            painter_open: true,
             
             
             
@@ -65,9 +69,12 @@ impl eframe::App for TemplateApp {
         // Put your widgets into a `SidePanel`, `TopBottomPanel`, `CentralPanel`, `Window` or `Area`.
         // For inspiration and more examples, go to https://emilk.github.io/egui
 
+        self.painter.show(ctx, &mut self.painter_open);
+
+        
         egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
 
-
+        
 
             
             // The top panel is often a good place for a menu bar:
@@ -116,7 +123,7 @@ impl eframe::App for TemplateApp {
         
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi");
+            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi12");
 
             
             
