@@ -20,7 +20,7 @@ impl Default for TemplateApp {
             label: "very much!".to_owned(),
             value: 1.7,
             flag: true,
-            user_input: "type message here and send with post button".to_owned(),
+            user_input: "type message..".to_owned(),
             
             
             
@@ -101,12 +101,13 @@ impl eframe::App for TemplateApp {
             if ui.button("post").clicked() {
                 let json1 = format!(r#"{{"foo": "{}"}}"#, self.user_input);
                 let body1 = json1.as_bytes().to_vec();
-                let json2 = r#"{{"foo": "x"}}"#;
-                let body2 = json2.as_bytes().to_vec();
                 let request1 = ehttp::Request::post("https://eofvjpqbx061wr0.m.pipedream.net", body1);
-                let request2 = ehttp::Request::post("https://trigger.macrodroid.com/567c10bc-bbc5-4ab4-b2d4-739d18d12d03/abc", body2);
                 ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-                ehttp::fetch(request2, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                
+                //let json2 = r#"{{"foo": "x"}}"#;
+                //let body2 = json2.as_bytes().to_vec();
+                //let request2 = ehttp::Request::post("https://trigger.macrodroid.com/567c10bc-bbc5-4ab4-b2d4-739d18d12d03/abc", body2);
+                //ehttp::fetch(request2, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
             }
             
         });
