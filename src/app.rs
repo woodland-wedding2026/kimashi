@@ -1,4 +1,4 @@
-use crate::painting;
+mod painting;
 
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
