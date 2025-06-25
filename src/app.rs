@@ -99,12 +99,14 @@ impl eframe::App for TemplateApp {
                 self.flag = true;
             }
             if ui.button("post").clicked() {
-                let json = format!(r#"{{"foo": "{}"}}"#, self.user_input);
-                let body = json.as_bytes().to_vec();
-                //let request = ehttp::Request::post("https://eofvjpqbx061wr0.m.pipedream.net", body);
-                
-                let request = ehttp::Request::post("https://trigger.macrodroid.com/567c10bc-bbc5-4ab4-b2d4-739d18d12d03/abc", body);
-                ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                let json1 = format!(r#"{{"foo": "{}"}}"#, self.user_input);
+                let body1 = json1.as_bytes().to_vec();
+                let json2 = r#"{{"foo": "x"}}"#;
+                let body2 = json2.as_bytes().to_vec();
+                let request1 = ehttp::Request::post("https://eofvjpqbx061wr0.m.pipedream.net", body1);
+                let request2 = ehttp::Request::post("https://trigger.macrodroid.com/567c10bc-bbc5-4ab4-b2d4-739d18d12d03/abc", body2);
+                ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                ehttp::fetch(request2, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
             }
             
         });
@@ -113,7 +115,7 @@ impl eframe::App for TemplateApp {
         
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi123abc ");
+            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi");
 
             
             
