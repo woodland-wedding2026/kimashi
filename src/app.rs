@@ -101,7 +101,9 @@ impl eframe::App for TemplateApp {
             if ui.button("post").clicked() {
                 let json = format!(r#"{{"foo": "{}"}}"#, self.user_input);
                 let body = json.as_bytes().to_vec();
-                let request = ehttp::Request::post("https://eofvjpqbx061wr0.m.pipedream.net", body);
+                //let request = ehttp::Request::post("https://eofvjpqbx061wr0.m.pipedream.net", body);
+                
+                let request = ehttp::Request::post("https://trigger.macrodroid.com/567c10bc-bbc5-4ab4-b2d4-739d18d12d03/", body);
                 ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
             }
             
@@ -111,7 +113,7 @@ impl eframe::App for TemplateApp {
         
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi ");
+            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi123 ");
 
             
             
