@@ -1,6 +1,3 @@
-mod painting;
-
-
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(serde::Deserialize, serde::Serialize)]
 #[serde(default)] // if we add new fields, give them default values when deserializing old state
@@ -10,8 +7,7 @@ pub struct TemplateApp {
     flag: bool,
     value: f32,
     user_input: String,
-    painter: painting::Painting,
-    painter_open: bool,
+    
     
     
     
@@ -26,8 +22,7 @@ impl Default for TemplateApp {
             value: 1.7,
             flag: true,
             user_input: "type message..".to_owned(),
-            painter: Default::default(),
-            painter_open: true,
+            
             
             
             
@@ -72,7 +67,7 @@ impl eframe::App for TemplateApp {
         // Put your widgets into a `SidePanel`, `TopBottomPanel`, `CentralPanel`, `Window` or `Area`.
         // For inspiration and more examples, go to https://emilk.github.io/egui
 
-        self.painter.show(ctx, &mut self.painter_open);
+        
 
         
         egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
