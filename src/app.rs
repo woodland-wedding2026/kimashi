@@ -106,7 +106,7 @@ impl eframe::App for TemplateApp {
         
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - Kim, Matthias und Yoshi == kimashi34");
+            ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias und Yoshi");
 
             
             
@@ -129,8 +129,8 @@ impl eframe::App for TemplateApp {
                 let json1 = format!(r#"{{"foo": "{}"}}"#, self.user_input);
                 let body1 = json1.as_bytes().to_vec();
                 let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
-                ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-            }
+                ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);}); }
+                ui.hyperlink_to("see messages", "https://ntfy.sh/woodland");
             });
 
             
