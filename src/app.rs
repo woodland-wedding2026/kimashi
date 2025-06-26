@@ -106,7 +106,7 @@ impl eframe::App for TemplateApp {
             if ui.button("post").clicked() {
                 let json1 = format!(r#"{{"foo": "{}"}}"#, self.user_input);
                 let body1 = json1.as_bytes().to_vec();
-                let request1 = ehttp::Request::post("https://eofvjpqbx061wr0.m.pipedream.net", body1);
+                let request1 = ehttp::Request::post("https://myfunpoint.free.beeceptor.com/woodland", body1);
                 ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                 
                 //let json2 = r#"{{"foo": "x"}}"#;
