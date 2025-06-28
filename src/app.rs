@@ -6,7 +6,7 @@ pub struct TemplateApp {
     label: String,
     flag1: bool,
     flag2: bool,
-    value: f32,
+    value: i32,
     user_input: String,
     
     
@@ -20,7 +20,7 @@ impl Default for TemplateApp {
         Self {
             // Example stuff:
             label: "very much!".to_owned(),
-            value: 1.7,
+            value: 0,
             flag1: true,
             flag2: true,
             user_input: "type message..".to_owned(),
@@ -129,7 +129,11 @@ impl eframe::App for TemplateApp {
                 let json1 = format!(r#"{}"#, self.user_input);
                 let body1 = json1.as_bytes().to_vec();
                 let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
-                ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);}); }
+                ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                self.value +=1;}
+                ui.label("you sent ");
+                ui.label(value.to_string());
+                ui.label("messages");
                 ui.hyperlink_to("see messages", "https://ntfy.sh/woodland");
             });
 
