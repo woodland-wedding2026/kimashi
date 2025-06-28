@@ -101,13 +101,16 @@ impl eframe::App for TemplateApp {
                 else {self.flag1 = true;}
             }
             if ui.button("weekend overview").clicked() {
-                self.flag2 = true;
+                if self.flag2 == true {self.flag2 = false;}
+                else {self.flag2 = true;}
             }
             if ui.button("help wanted").clicked() {
-                self.flag3 = true;
+                if self.flag3 == true {self.flag3 = false;}
+                else {self.flag3 = true;}
             }
             if ui.button("contact us").clicked() {
-                self.flag4 = true;
+                if self.flag4 == true {self.flag4 = false;}
+                else {self.flag4 = true;}
             }
             
             
