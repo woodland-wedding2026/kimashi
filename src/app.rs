@@ -74,19 +74,8 @@ impl eframe::App for TemplateApp {
     /// Called each time the UI needs repainting, which may be many times per second.
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
 
-        if self.passwordFLAG == true {
-            egui::Window::new("passowrd required").open(&mut self.passwordFLAG).show(ctx, |ui| {
-                ui.text_edit_singleline(&mut self.passwordSTRING); 
-                if ui.button("try").clicked() {
-                    if self.passwordSTRING == "kimmatthiyoshi".to_string() {
-                        self.passwordFLAG = false
-                }
-                
-            }});
-                       
         
-        }
-        else {
+        
         
         egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
             // The top panel is often a good place for a menu bar:
@@ -184,7 +173,7 @@ impl eframe::App for TemplateApp {
             //});
         });
 
-        }
+        
 
 
         
