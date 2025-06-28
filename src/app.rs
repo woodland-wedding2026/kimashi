@@ -116,7 +116,7 @@ impl eframe::App for TemplateApp {
         
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias und Yoshi");
+            ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias and Yoshi");
 
             
             
@@ -139,7 +139,7 @@ impl eframe::App for TemplateApp {
             });
 
             egui::Window::new("help wanted").open(&mut self.flag3).show(ctx, |ui| {
-                ui.label("shifts, decoration team, ..");                
+                ui.label("shifts, decoration team, music, ..");                
             });
 
 
