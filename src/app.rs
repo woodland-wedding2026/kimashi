@@ -74,9 +74,20 @@ impl eframe::App for TemplateApp {
     /// Called each time the UI needs repainting, which may be many times per second.
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
 
+        if self.passwordFLAG == true {
+            egui::Window::new("passowrd required").open(true).show(ctx, |ui| {
+                ui.text_edit_singleline(&mut self.passwordSTRING); 
+                if ui.button("try").clicked() {
+                    if self.passwordSTRING == "kimmatthiyoshi".to_string() {
+                        self.passwordFLAG = false
+                }
+                
+            }});
+                       
         
+        }
         
-        
+        else {
         egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
             // The top panel is often a good place for a menu bar:
             egui::menu::bar(ui, |ui| {
@@ -134,16 +145,16 @@ impl eframe::App for TemplateApp {
                 if ui.button("send").clicked() {
                 let json1 = format!(r#"{}"#, self.user_input);
                 let body1 = json1.as_bytes().to_vec();
-                //let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
-                use ehttp::Request;
-                let request1 = Request {
-                    headers: ehttp::Headers::new(&[
-                        ("Accept", "*/*"),
-                        ("Content-Type", "text/plain; charset=utf-8"),
-                        ("X-Email", "matthias.hofer@pm.me"),
-                    ]),
-                    ..Request::post("https://ntfy.sh/woodland", body1)
-                };
+                let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+                //use ehttp::Request;
+                //let request1 = Request {
+                //    headers: ehttp::Headers::new(&[
+                //        ("Accept", "*/*"),
+                //        ("Content-Type", "text/plain; charset=utf-8"),
+                //        ("X-Email", "matthias.hofer@pm.me"),
+                //    ]),
+                //    ..Request::post("https://ntfy.sh/woodland", body1)
+                //};
                 ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                 self.value +=1;}
                 ui.label(format!("you sent {} messages", self.value));
@@ -174,7 +185,7 @@ impl eframe::App for TemplateApp {
         });
 
         
-
+        }
 
         
     }
