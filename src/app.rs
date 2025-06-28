@@ -128,7 +128,7 @@ impl eframe::App for TemplateApp {
             
             
             let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
-            let desired_size = egui::vec2(510.0, 510.0); 
+            let desired_size = egui::vec2(340.0, 340.0); 
             ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
 
 
@@ -154,7 +154,15 @@ impl eframe::App for TemplateApp {
                 if ui.button("send").clicked() {
                 let json1 = format!(r#"{}"#, self.user_input);
                 let body1 = json1.as_bytes().to_vec();
-                let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+                //let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+                let request1 = Request {
+                    headers: ehttp::Headers::new(&[
+                        ("Accept", "*/*"),
+                        ("Content-Type", "text/plain; charset=utf-8"),
+                        ("X-Email", "matthias.hofer@pm.me"),
+                    ]),
+                    ..Request::post("https://ntfy.sh/woodland", body1)
+                };
                 ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                 self.value +=1;}
                 ui.label(format!("you sent {} messages", self.value));
