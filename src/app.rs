@@ -155,6 +155,7 @@ impl eframe::App for TemplateApp {
                 let json1 = format!(r#"{}"#, self.user_input);
                 let body1 = json1.as_bytes().to_vec();
                 //let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+                use ehttp::Request;
                 let request1 = Request {
                     headers: ehttp::Headers::new(&[
                         ("Accept", "*/*"),
