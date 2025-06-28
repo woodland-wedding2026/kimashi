@@ -82,7 +82,7 @@ impl eframe::App for TemplateApp {
                         self.passwordFLAG = false
                 }
                 
-            });
+            }});
                        
         
         }
