@@ -131,9 +131,7 @@ impl eframe::App for TemplateApp {
                 let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                 ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                 self.value +=1;}
-                ui.label("you sent ");
-                ui.label(&mut self.value);
-                ui.label("messages");
+                ui.label(format!("you sent '{value}' messages"));
                 ui.hyperlink_to("see messages", "https://ntfy.sh/woodland");
             });
 
