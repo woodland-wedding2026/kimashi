@@ -11,7 +11,6 @@ pub struct TemplateApp {
     value: i32,
     user_input: String,
     passwordFLAG1: bool,
-    passwordFLAG2: bool,
     passwordSTRING: String,
     
     
@@ -32,7 +31,6 @@ impl Default for TemplateApp {
             flag4: false,
             user_input: "type message..".to_owned(),
             passwordFLAG1: true,
-            passwordFLAG2: true,
             passwordSTRING: "type password".to_owned(),
             
             
@@ -77,7 +75,7 @@ impl eframe::App for TemplateApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
 
         if self.passwordFLAG1 == true {
-            egui::Window::new("password required").open(&mut self.passwordFLAG2).show(ctx, |ui| {
+            egui::Window::new("password required").show(ctx, |ui| {
                 ui.text_edit_singleline(&mut self.passwordSTRING); 
                 if ui.button("try").clicked() {
                     if self.passwordSTRING == "kimmatthiyoshi".to_string() {
