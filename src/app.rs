@@ -132,7 +132,7 @@ impl eframe::App for TemplateApp {
                 ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                 self.value +=1;}
                 ui.label("you sent ");
-                ui.label(value.to_string());
+                ui.label(self.value.to_string());
                 ui.label("messages");
                 ui.hyperlink_to("see messages", "https://ntfy.sh/woodland");
             });
