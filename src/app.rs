@@ -6,6 +6,8 @@ pub struct TemplateApp {
     label: String,
     flag1: bool,
     flag2: bool,
+    flag3: bool,
+    flag4: bool,
     value: i32,
     user_input: String,
     
@@ -23,6 +25,8 @@ impl Default for TemplateApp {
             value: 0,
             flag1: true,
             flag2: true,
+            flag3: true,
+            flag4: true,
             user_input: "type message..".to_owned(),
             
             
@@ -95,8 +99,14 @@ impl eframe::App for TemplateApp {
             if ui.button("about location").clicked() {
                 self.flag1 = true;
             }
-            if ui.button("contact us").clicked() {
+            if ui.button("weekend overview").clicked() {
                 self.flag2 = true;
+            }
+            if ui.button("help wanted").clicked() {
+                self.flag3 = true;
+            }
+            if ui.button("contact us").clicked() {
+                self.flag4 = true;
             }
             
             
@@ -121,9 +131,21 @@ impl eframe::App for TemplateApp {
             
             
             egui::Window::new("about the location").open(&mut self.flag1).show(ctx, |ui| {
-                ui.label("tents and bungalows:");                
+                ui.label("tents and bungalos, amenities, getting there, ..");                
             });
-            egui::Window::new("contact us").open(&mut self.flag2).show(ctx, |ui| {
+
+            egui::Window::new("weekend overview").open(&mut self.flag2).show(ctx, |ui| {
+                ui.label("food, children, party and more :)");                
+            });
+
+            egui::Window::new("help wanted").open(&mut self.flag3).show(ctx, |ui| {
+                ui.label("shifts, decoration team, ..");                
+            });
+
+
+
+            
+            egui::Window::new("contact us").open(&mut self.flag4).show(ctx, |ui| {
                 ui.text_edit_singleline(&mut self.user_input); 
                 if ui.button("send").clicked() {
                 let json1 = format!(r#"{}"#, self.user_input);
