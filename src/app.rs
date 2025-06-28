@@ -23,10 +23,10 @@ impl Default for TemplateApp {
             // Example stuff:
             label: "very much!".to_owned(),
             value: 0,
-            flag1: true,
-            flag2: true,
-            flag3: true,
-            flag4: true,
+            flag1: false,
+            flag2: false,
+            flag3: false,
+            flag4: false,
             user_input: "type message..".to_owned(),
             
             
@@ -97,7 +97,8 @@ impl eframe::App for TemplateApp {
             //ui.label(format!("You typed: {}", self.user_input));
             
             if ui.button("about location").clicked() {
-                self.flag1 = true;
+                if self.flag1 == true {self.flag1 = false;}
+                if self.flag1 == false {self.flag1 = true;}
             }
             if ui.button("weekend overview").clicked() {
                 self.flag2 = true;
