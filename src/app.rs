@@ -76,7 +76,7 @@ impl eframe::App for TemplateApp {
 
         if passwordFLAG == true {
             egui::Window::new("passowrd required").open(&mut self.passwordFLAG).show(ctx, |ui| {
-                ui.text_edit_singleline(&mut self.passowrdSTRING); 
+                ui.text_edit_singleline(&mut self.passwordSTRING); 
                 if ui.button("try").clicked() {
                     if self.passwordSTRING == "kimmatthiyoshi".to_string() {
                         self.passwordFLAG = false
