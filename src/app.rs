@@ -98,7 +98,7 @@ impl eframe::App for TemplateApp {
             
             if ui.button("about location").clicked() {
                 if self.flag1 == true {self.flag1 = false;}
-                if self.flag1 == false {self.flag1 = true;}
+                else {self.flag1 = true;}
             }
             if ui.button("weekend overview").clicked() {
                 self.flag2 = true;
