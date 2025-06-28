@@ -10,6 +10,8 @@ pub struct TemplateApp {
     flag4: bool,
     value: i32,
     user_input: String,
+    passwordFLAG: bool,
+    passwordSTRING: String,
     
     
     
@@ -28,7 +30,8 @@ impl Default for TemplateApp {
             flag3: false,
             flag4: false,
             user_input: "type message..".to_owned(),
-            
+            passwordFLAG: true,
+            passwordSTRING: "type password".to_owned(),
             
             
             
@@ -70,11 +73,20 @@ impl eframe::App for TemplateApp {
     
     /// Called each time the UI needs repainting, which may be many times per second.
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
-        // Put your widgets into a `SidePanel`, `TopBottomPanel`, `CentralPanel`, `Window` or `Area`.
-        // For inspiration and more examples, go to https://emilk.github.io/egui
 
+        if passwordFLAG == true {
+            egui::Window::new("passowrd required").open(&mut self.passwordFLAG).show(ctx, |ui| {
+                ui.text_edit_singleline(&mut self.passowrdSTRING); 
+                if ui.button("try").clicked() {
+                    if self.passwordSTRING == "kimmatthiyoshi".to_string() {
+                        self.passwordFLAG = false
+                }
+                
+            });
+                       
         
-
+        }
+        else {
         
         egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
             // The top panel is often a good place for a menu bar:
@@ -90,12 +102,8 @@ impl eframe::App for TemplateApp {
                 egui::widgets::global_theme_preference_buttons(ui);
             });});
 
-
         egui::SidePanel::left("bullet points").show(ctx, |ui| {
-
-            
             //ui.label(format!("You typed: {}", self.user_input));
-            
             if ui.button("about location").clicked() {
                 if self.flag1 == true {self.flag1 = false;}
                 else {self.flag1 = true;}
@@ -111,29 +119,16 @@ impl eframe::App for TemplateApp {
             if ui.button("contact us").clicked() {
                 if self.flag4 == true {self.flag4 = false;}
                 else {self.flag4 = true;}
-            }
-            
-            
+            }  
         });
-
-
         
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
             ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias and Yoshi");
-
-            
-            
             egui_extras::install_image_loaders(ctx);
-            
-            
             let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
             let desired_size = egui::vec2(340.0, 340.0); 
             ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
-
-
-            
-            
             egui::Window::new("about the location").open(&mut self.flag1).show(ctx, |ui| {
                 ui.label("tents and bungalos, amenities, getting there, ..");                
             });
@@ -145,10 +140,6 @@ impl eframe::App for TemplateApp {
             egui::Window::new("help wanted").open(&mut self.flag3).show(ctx, |ui| {
                 ui.label("shifts, decoration team, music, ..");                
             });
-
-
-
-            
             egui::Window::new("contact us").open(&mut self.flag4).show(ctx, |ui| {
                 ui.text_edit_singleline(&mut self.user_input); 
                 if ui.button("send").clicked() {
@@ -169,11 +160,6 @@ impl eframe::App for TemplateApp {
                 ui.label(format!("you sent {} messages", self.value));
                 ui.hyperlink_to("see messages", "https://ntfy.sh/woodland");
             });
-
-            
-            
-            
-            
             //ui.horizontal(|ui| {
             //    ui.label("This is how much I love you: ");
             //    ui.text_edit_singleline(&mut self.label);
@@ -197,6 +183,11 @@ impl eframe::App for TemplateApp {
             //    egui::warn_if_debug_build(ui);
             //});
         });
+
+        }
+
+
+        
     }
 }
 
