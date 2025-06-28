@@ -114,7 +114,7 @@ impl eframe::App for TemplateApp {
             
             
             let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
-            let desired_size = egui::vec2(340.0, 340.0); 
+            let desired_size = egui::vec2(510.0, 510.0); 
             ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
 
 
@@ -126,7 +126,7 @@ impl eframe::App for TemplateApp {
             egui::Window::new("contact us").open(&mut self.flag2).show(ctx, |ui| {
                 ui.text_edit_singleline(&mut self.user_input); 
                 if ui.button("send").clicked() {
-                let json1 = format!(r#"{{"foo": "{}"}}"#, self.user_input);
+                let json1 = format!(r#"{}"#, self.user_input);
                 let body1 = json1.as_bytes().to_vec();
                 let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                 ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);}); }
