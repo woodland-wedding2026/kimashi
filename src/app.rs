@@ -74,7 +74,7 @@ impl eframe::App for TemplateApp {
     /// Called each time the UI needs repainting, which may be many times per second.
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
 
-        if passwordFLAG == true {
+        if self.passwordFLAG == true {
             egui::Window::new("passowrd required").open(&mut self.passwordFLAG).show(ctx, |ui| {
                 ui.text_edit_singleline(&mut self.passwordSTRING); 
                 if ui.button("try").clicked() {
