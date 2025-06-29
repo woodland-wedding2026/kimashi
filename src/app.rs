@@ -14,6 +14,9 @@ pub struct TemplateApp {
     passwordSTRING: String,
     languageFLAG: bool,    
     button1: String,
+    button2: String,
+    button3: String,
+    button4: String,
     
 }
 
@@ -32,6 +35,9 @@ impl Default for TemplateApp {
             passwordSTRING: "type password".to_owned(),
             languageFLAG: true,  
             button1: "button1".to_owned(),
+            button2: "button2".to_owned(),
+            button3: "button3".to_owned(),
+            button4: "button4".to_owned(),
             
             
             
@@ -75,7 +81,13 @@ impl eframe::App for TemplateApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
 
         if self.languageFLAG == true {self.button1 = "about location".to_owned()}
-        else {self.button1 = "der Veranstaltungsort".to_owned()}
+        else {self.button1 = "der Ort".to_owned()}
+        if self.languageFLAG == true {self.button2 = "weekend overview".to_owned()}
+        else {self.button2 = "der Plan".to_owned()}
+        if self.languageFLAG == true {self.button3 = "help wanted".to_owned()}
+        else {self.button3 = "helfende Hände".to_owned()}
+        if self.languageFLAG == true {self.button4 = "contact us".to_owned()}
+        else {self.button4 = "Kontakt".to_owned()}
         
 
         if self.passwordFLAG == true {
@@ -122,15 +134,15 @@ impl eframe::App for TemplateApp {
                 if self.flag1 == true {self.flag1 = false;}
                 else {self.flag1 = true;}
             }
-            if ui.button("weekend overview").clicked() {
+            if ui.button(self.button2.clone()).clicked() {
                 if self.flag2 == true {self.flag2 = false;}
                 else {self.flag2 = true;}
             }
-            if ui.button("help wanted").clicked() {
+            if ui.button(self.button3.clone()).clicked() {
                 if self.flag3 == true {self.flag3 = false;}
                 else {self.flag3 = true;}
             }
-            if ui.button("contact us").clicked() {
+            if ui.button(self.button4.clone()).clicked() {
                 if self.flag4 == true {self.flag4 = false;}
                 else {self.flag4 = true;}
             }  
