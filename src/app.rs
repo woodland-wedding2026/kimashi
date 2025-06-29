@@ -118,7 +118,7 @@ impl eframe::App for TemplateApp {
 
         egui::SidePanel::left("bullet points").show(ctx, |ui| {
             //ui.label(format!("You typed: {}", self.user_input));
-            if ui.button(&mut self.button1).clicked() {
+            if ui.button(self.button1).clicked() {
                 if self.flag1 == true {self.flag1 = false;}
                 else {self.flag1 = true;}
             }
