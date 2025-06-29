@@ -13,6 +13,7 @@ pub struct TemplateApp {
     passwordFLAG: bool,
     passwordSTRING: String,
     languageFLAG: bool,    
+    button1: String,
     
 }
 
@@ -30,6 +31,7 @@ impl Default for TemplateApp {
             passwordFLAG: true,
             passwordSTRING: "type password".to_owned(),
             languageFLAG: true,  
+            button1: "button1".to_owned(),
             
             
             
@@ -61,7 +63,7 @@ impl eframe::App for TemplateApp {
         eframe::set_value(storage, eframe::APP_KEY, self);
     }
 
-
+    
 
 
 
@@ -71,6 +73,10 @@ impl eframe::App for TemplateApp {
     
     /// Called each time the UI needs repainting, which may be many times per second.
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
+
+        if self.languageFLAG == true {self.button1 = "about location".to_owned()}
+        else {self.button1 = "der Veranstaltungsort".to_owned()}
+        
 
         if self.passwordFLAG == true {
             egui::Window::new("password required").show(ctx, |ui| {
@@ -112,7 +118,7 @@ impl eframe::App for TemplateApp {
 
         egui::SidePanel::left("bullet points").show(ctx, |ui| {
             //ui.label(format!("You typed: {}", self.user_input));
-            if ui.button("about location").clicked() {
+            if ui.button(&mut self.button1).clicked() {
                 if self.flag1 == true {self.flag1 = false;}
                 else {self.flag1 = true;}
             }
