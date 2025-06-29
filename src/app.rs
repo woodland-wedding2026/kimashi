@@ -12,10 +12,7 @@ pub struct TemplateApp {
     user_input: String,
     passwordFLAG: bool,
     passwordSTRING: String,
-    
-    
-    
-    
+    languageFLAG: bool,    
     
 }
 
@@ -32,6 +29,7 @@ impl Default for TemplateApp {
             user_input: "type message..".to_owned(),
             passwordFLAG: true,
             passwordSTRING: "type password".to_owned(),
+            languageFLAG: true,  
             
             
             
@@ -78,7 +76,7 @@ impl eframe::App for TemplateApp {
             egui::Window::new("password required").show(ctx, |ui| {
                 ui.text_edit_singleline(&mut self.passwordSTRING); 
                 if ui.button("try").clicked() {
-                    if self.passwordSTRING == "kimmatthiyoshi".to_string() {
+                    if self.passwordSTRING == "kimashi".to_string() {
                         self.passwordFLAG = false
                 }
                 
@@ -100,6 +98,15 @@ impl eframe::App for TemplateApp {
                     ui.add_space(16.0);
                 }
                 egui::widgets::global_theme_preference_buttons(ui);
+                if ui.button("de/en").clicked() {
+                if self.languageFLAG == true {self.languageFLAG = false;}
+                else {self.languageFLAG = true;}
+            }
+                if ui.button("logout").clicked() {
+                if self.passwordSTRING == "kimashi".to_string() {self.flag1 = "xyz".to_string();}
+                
+            }
+                
             });});
 
         egui::SidePanel::left("bullet points").show(ctx, |ui| {
