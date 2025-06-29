@@ -103,7 +103,7 @@ impl eframe::App for TemplateApp {
                 else {self.languageFLAG = true;}
             }
                 if ui.button("logout").clicked() {
-                if self.passwordSTRING == "kimashi".to_string() {self.flag1 = "xyz".to_string();}
+                if self.passwordSTRING == "kimashi".to_string() {self.passwordSTRING = "xyz".to_string();}
                 
             }
                 
