@@ -199,7 +199,7 @@ impl eframe::App for TemplateApp {
             ui.label("Fractal Clock Example");
             ui.separator();
 
-            let desired_size = egui::vec2(200.0, 200.0);
+            let desired_size = egui::vec2(400.0, 400.0);
             self.fractal_clock.ui(ui);
             
             let available_size = ui.available_size();
