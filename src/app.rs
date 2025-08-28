@@ -22,6 +22,7 @@ pub struct TemplateApp {
     button2: String,
     button3: String,
     button4: String,
+    #[serde(skip)]
     fractal_clock: FractalClock,
     
 }
@@ -59,6 +60,7 @@ impl TemplateApp {
         
         Self {
             fractal_clock: FractalClock::default(),
+            ..Default::default()
         };
         
         
