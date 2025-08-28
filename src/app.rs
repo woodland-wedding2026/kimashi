@@ -199,10 +199,12 @@ impl eframe::App for TemplateApp {
             ui.label("Fractal Clock Example");
             ui.separator();
 
+            let desired_size = egui::vec2(200.0, 200.0);
             self.fractal_clock.ui(ui);
             
             let available_size = ui.available_size();
-            let (rect, _response) = ui.allocate_exact_size(available_size, egui::Sense::hover());
+            //let (rect, _response) = ui.allocate_exact_size(available_size, egui::Sense::hover());
+            let (rect, _response) = ui.allocate_exact_size(desired_size, egui::Sense::hover());
             let painter = ui.painter_at(rect);
     
             let time = ctx.input(|i| i.time); // egui's built-in time
