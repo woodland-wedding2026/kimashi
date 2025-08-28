@@ -15,9 +15,9 @@ pub struct TemplateApp {
     flag4: bool,
     value: i32,
     user_input: String,
-    passwordFLAG: bool,
-    passwordSTRING: String,
-    languageFLAG: bool,    
+    password_flag: bool,
+    password_string: String,
+    language_flag: bool,    
     button1: String,
     button2: String,
     button3: String,
@@ -38,9 +38,9 @@ impl Default for TemplateApp {
             flag3: false,
             flag4: false,
             user_input: "type message..".to_owned(),
-            passwordFLAG: true,
-            passwordSTRING: "type password".to_owned(),
-            languageFLAG: true,  
+            password_flag: true,
+            password_string: "type password".to_owned(),
+            language_flag: true,  
             button1: "button1".to_owned(),
             button2: "button2".to_owned(),
             button3: "button3".to_owned(),
@@ -102,22 +102,22 @@ impl eframe::App for TemplateApp {
 
         
 
-        if self.languageFLAG == true {self.button1 = "about location".to_owned()}
+        if self.language_flag == true {self.button1 = "about location".to_owned()}
         else {self.button1 = "der Ort".to_owned()}
-        if self.languageFLAG == true {self.button2 = "weekend overview".to_owned()}
+        if self.language_flag == true {self.button2 = "weekend overview".to_owned()}
         else {self.button2 = "der Plan".to_owned()}
-        if self.languageFLAG == true {self.button3 = "help wanted".to_owned()}
+        if self.language_flag == true {self.button3 = "help wanted".to_owned()}
         else {self.button3 = "helfende Hände".to_owned()}
-        if self.languageFLAG == true {self.button4 = "contact us".to_owned()}
+        if self.language_flag == true {self.button4 = "contact us".to_owned()}
         else {self.button4 = "Kontakt".to_owned()}
         
 
-        if self.passwordFLAG == true {
+        if self.password_flag == true {
             egui::Window::new("password required").show(ctx, |ui| {
-                ui.text_edit_singleline(&mut self.passwordSTRING); 
+                ui.text_edit_singleline(&mut self.password_string); 
                 if ui.button("try").clicked() {
-                    if self.passwordSTRING == "kimashi".to_string() {
-                        self.passwordFLAG = false
+                    if self.password_string == "kimashi".to_string() {
+                        self.password_flag = false
                 }
                 
             }});
@@ -139,12 +139,12 @@ impl eframe::App for TemplateApp {
                 }
                 egui::widgets::global_theme_preference_buttons(ui);
                 if ui.button("de/en").clicked() {
-                if self.languageFLAG == true {self.languageFLAG = false;}
-                else {self.languageFLAG = true;}
+                if self.language_flag == true {self.language_flag = false;}
+                else {self.language_flag = true;}
             }
                 if ui.button("logout").clicked() {
-                self.passwordSTRING = "type password".to_string(); 
-                self.passwordFLAG = true;
+                self.password_string = "type password".to_string(); 
+                self.password_flag = true;
                 
             }
                 
@@ -255,16 +255,16 @@ impl eframe::App for TemplateApp {
     }
 }
 
-fn powered_by_egui_and_eframe(ui: &mut egui::Ui) {
-    ui.horizontal(|ui| {
-        ui.spacing_mut().item_spacing.x = 0.0;
-        ui.label("Powered by ");
-        ui.hyperlink_to("egui", "https://github.com/emilk/egui");
-        ui.label(" and ");
-        ui.hyperlink_to(
-            "eframe",
-            "https://github.com/emilk/egui/tree/master/crates/eframe",
-        );
-        ui.label(".");
-    });
-}
+//fn powered_by_egui_and_eframe(ui: &mut egui::Ui) {
+//    ui.horizontal(|ui| {
+//        ui.spacing_mut().item_spacing.x = 0.0;
+//        ui.label("Powered by ");
+//        ui.hyperlink_to("egui", "https://github.com/emilk/egui");
+//        ui.label(" and ");
+//        ui.hyperlink_to(
+//            "eframe",
+//            "https://github.com/emilk/egui/tree/master/crates/eframe",
+//        );
+//        ui.label(".");
+//    });
+//}
