@@ -1,28 +1,20 @@
 use egui::{Painter, Pos2, Rect, Stroke, Color32, StrokeKind};
 use std::f32::consts::TAU;
-use std::time::Instant;
 
-
-pub struct FractalClock {
-    pub start_time: Instant,
-}
+pub struct FractalClock;
 
 impl Default for FractalClock {
     fn default() -> Self {
-        Self {
-            start_time: Instant::now(),
-        }
+        Self
     }
 }
 
 impl FractalClock {
-    pub fn paint(&self, painter: &Painter, rect: Rect) {
-        let now = Instant::now();
-        let seconds = (now - self.start_time).as_secs_f64();
-
-        draw_fractal_clock(painter, rect, seconds);
+    pub fn paint(&self, painter: &Painter, rect: Rect, time_seconds: f64) {
+        draw_fractal_clock(painter, rect, time_seconds);
     }
 }
+
 
 fn draw_fractal_clock(painter: &Painter, rect: Rect, seconds: f64) {
     let center = rect.center();
