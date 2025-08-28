@@ -1,3 +1,9 @@
+mod fractal_clock;
+
+use fractal_clock::FractalClock;
+
+
+
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(serde::Deserialize, serde::Serialize)]
 #[serde(default)] // if we add new fields, give them default values when deserializing old state
@@ -17,6 +23,7 @@ pub struct TemplateApp {
     button2: String,
     button3: String,
     button4: String,
+    fractal_clock: FractalClock,
     
 }
 
@@ -50,6 +57,15 @@ impl Default for TemplateApp {
 impl TemplateApp {
     /// Called once before the first frame.
     pub fn new(cc: &eframe::CreationContext<'_>) -> Self {
+        
+        Self {
+            fractal_clock: FractalClock::default(),
+        }
+        
+        
+        
+        
+        
         // This is also where you can customize the look and feel of egui using
         // `cc.egui_ctx.set_visuals` and `cc.egui_ctx.set_fonts`.
 
@@ -79,6 +95,10 @@ impl eframe::App for TemplateApp {
     
     /// Called each time the UI needs repainting, which may be many times per second.
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
+
+
+
+        
 
         if self.languageFLAG == true {self.button1 = "about location".to_owned()}
         else {self.button1 = "der Ort".to_owned()}
@@ -149,6 +169,22 @@ impl eframe::App for TemplateApp {
         });
         
         egui::CentralPanel::default().show(ctx, |ui| {
+
+            ui.label("Fractal Clock Example");
+            ui.separator();
+    
+            let available_size = ui.available_size();
+            let (rect, _response) = ui.allocate_exact_size(available_size, egui::Sense::hover());
+            let painter = ui.painter_at(rect);
+    
+            self.fractal_clock.paint(&painter, rect);
+
+
+
+
+
+
+            
             // The central panel the region left after adding TopPanel's and SidePanel's
             ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias and Yoshi");
             egui_extras::install_image_loaders(ctx);
@@ -209,7 +245,7 @@ impl eframe::App for TemplateApp {
             //    egui::warn_if_debug_build(ui);
             //});
         });
-
+        ctx.request_repaint();
         
         }
 
