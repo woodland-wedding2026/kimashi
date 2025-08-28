@@ -1,8 +1,7 @@
-use egui::{Painter, Pos2, Rect, Stroke, Color32};
+use egui::{Painter, Pos2, Rect, Stroke, Color32, StrokeKind};
 use std::f32::consts::TAU;
 use std::time::Instant;
 
-use egui::StrokeKind;
 
 pub struct FractalClock {
     pub start_time: Instant,
