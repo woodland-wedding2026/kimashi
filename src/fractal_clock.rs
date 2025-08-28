@@ -43,6 +43,18 @@ impl FractalClock {
     }
 }
 
+fn total_branch_length(depth: usize, base_length: f32, length_factor: f32) -> f32 {
+    let mut total = 0.0;
+    let mut length = base_length;
+    for _ in 0..=depth {
+        total += length;
+        length *= length_factor;
+    }
+    total
+}
+
+
+
 
 fn draw_fractal_clock(
     painter: &Painter,
@@ -53,8 +65,11 @@ fn draw_fractal_clock(
     length_factor: f32,
 ) {
     let center = rect.center();
-    let radius = 0.4 * rect.size().min_elem();
-    let time = seconds;
+    let max_allowed_radius = 0.5 * rect.size().min_elem();
+    let estimated_base = 100.0;
+    let total_len = total_branch_length(depth, estimated_base, length_factor);
+    let scaling_factor = max_allowed_radius / total_len;
+    let radius = estimated_base * scaling_factor;
 
     painter.rect_stroke(rect, 0.0, Stroke::new(1.0, Color32::DARK_GRAY), StrokeKind::Inside);
 
@@ -62,13 +77,14 @@ fn draw_fractal_clock(
         painter,
         center,
         radius,
-        TAU * time as f32 / 60.0,
+        TAU * seconds as f32 / 60.0,
         0,
         depth,
         thickness,
         length_factor,
     );
 }
+
 
 fn draw_branch(
     painter: &Painter,
