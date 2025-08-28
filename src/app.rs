@@ -45,6 +45,7 @@ impl Default for TemplateApp {
             button2: "button2".to_owned(),
             button3: "button3".to_owned(),
             button4: "button4".to_owned(),
+            fractal_clock: FractalClock::default(),
             
             
             
