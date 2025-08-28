@@ -1,6 +1,5 @@
-mod fractal_clock;
+use crate::fractal_clock::FractalClock;
 
-use fractal_clock::FractalClock;
 
 
 
@@ -60,7 +59,7 @@ impl TemplateApp {
         
         Self {
             fractal_clock: FractalClock::default(),
-        }
+        };
         
         
         
