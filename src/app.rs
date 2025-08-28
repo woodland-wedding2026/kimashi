@@ -203,7 +203,9 @@ impl eframe::App for TemplateApp {
             let (rect, _response) = ui.allocate_exact_size(available_size, egui::Sense::hover());
             let painter = ui.painter_at(rect);
     
-            self.fractal_clock.paint(&painter, rect);
+            let time = ctx.input(|i| i.time); // egui's built-in time
+            self.fractal_clock.paint(&painter, rect, time);
+
 
 
 
