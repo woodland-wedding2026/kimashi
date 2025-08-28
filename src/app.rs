@@ -1,4 +1,4 @@
-use crate::fractal_clock::FractalClock;
+//use crate::fractal_clock::FractalClock;
 
 
 
@@ -22,8 +22,8 @@ pub struct TemplateApp {
     button2: String,
     button3: String,
     button4: String,
-    #[serde(skip)]
-    fractal_clock: FractalClock,
+    //#[serde(skip)]
+    //fractal_clock: FractalClock,
     
 }
 
@@ -45,7 +45,7 @@ impl Default for TemplateApp {
             button2: "button2".to_owned(),
             button3: "button3".to_owned(),
             button4: "button4".to_owned(),
-            fractal_clock: FractalClock::default(),
+            //fractal_clock: FractalClock::default(),
             
             
             
