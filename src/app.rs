@@ -59,10 +59,10 @@ impl TemplateApp {
     /// Called once before the first frame.
     pub fn new(cc: &eframe::CreationContext<'_>) -> Self {
         
-        Self {
-            fractal_clock: FractalClock::default(),
-            ..Default::default()
-        };
+        //Self {
+        //    fractal_clock: FractalClock::default(),
+        //    ..Default::default()
+        //};
         
         
         
@@ -172,14 +172,14 @@ impl eframe::App for TemplateApp {
         
         egui::CentralPanel::default().show(ctx, |ui| {
 
-            ui.label("Fractal Clock Example");
-            ui.separator();
+            //ui.label("Fractal Clock Example");
+            //ui.separator();
     
-            let available_size = ui.available_size();
-            let (rect, _response) = ui.allocate_exact_size(available_size, egui::Sense::hover());
-            let painter = ui.painter_at(rect);
+            //let available_size = ui.available_size();
+            //let (rect, _response) = ui.allocate_exact_size(available_size, egui::Sense::hover());
+            //let painter = ui.painter_at(rect);
     
-            self.fractal_clock.paint(&painter, rect);
+            //self.fractal_clock.paint(&painter, rect);
 
 
 
@@ -247,7 +247,7 @@ impl eframe::App for TemplateApp {
             //    egui::warn_if_debug_build(ui);
             //});
         });
-        ctx.request_repaint();
+        //ctx.request_repaint();
         
         }
 
