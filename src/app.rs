@@ -1,4 +1,4 @@
-use crate::fractal_clock::FractalClock;
+//use crate::fractal_clock::FractalClock;
 
 
 
@@ -22,8 +22,8 @@ pub struct TemplateApp {
     button2: String,
     button3: String,
     button4: String,
-    #[serde(skip)]
-    fractal_clock: FractalClock,
+    //#[serde(skip)]
+    //fractal_clock: FractalClock,
     
 }
 
@@ -45,7 +45,7 @@ impl Default for TemplateApp {
             button2: "button2".to_owned(),
             button3: "button3".to_owned(),
             button4: "button4".to_owned(),
-            fractal_clock: FractalClock::default(),
+            //fractal_clock: FractalClock::default(),
             
             
             
@@ -172,11 +172,11 @@ impl eframe::App for TemplateApp {
         
         egui::CentralPanel::default().show(ctx, |ui| {
 
-            ui.label("Fractal Clock Example");
-            ui.separator();
+            //ui.label("Fractal Clock Example");
+            //ui.separator();
     
-            let available_size = ui.available_size();
-            let (rect, _response) = ui.allocate_exact_size(available_size, egui::Sense::hover());
+            //let available_size = ui.available_size();
+            //let (rect, _response) = ui.allocate_exact_size(available_size, egui::Sense::hover());
             //let painter = ui.painter_at(rect);
     
             //self.fractal_clock.paint(&painter, rect);
