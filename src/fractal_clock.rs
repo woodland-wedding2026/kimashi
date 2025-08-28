@@ -30,7 +30,7 @@ fn draw_fractal_clock(painter: &Painter, rect: Rect, seconds: f64) {
     let radius = 0.4 * rect.size().min_elem();
     let time = seconds;
 
-    painter.rect_stroke(rect, 0.0, Stroke::new(1.0, Color32::DARK_GRAY), StrokeKind::from(false) );
+    painter.rect_stroke(rect, 0.0, Stroke::new(1.0, Color32::DARK_GRAY), StrokeKind::Solid );
 
     // Start the recursion
     draw_branch(
