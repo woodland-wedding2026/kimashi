@@ -48,7 +48,7 @@ fn draw_branch(
     angle: f32,
     depth: usize,
 ) {
-    if depth > 10 || length < 2.0 {
+    if depth > 3 || length < 2.0 {
         return;
     }
 
