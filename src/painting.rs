@@ -50,7 +50,7 @@ impl PaintingApp {
         let shapes = self
             .lines
             .iter()
-            .filter(|line| line.len() >= 2)
+            .filter(|(line, _)| line.len() >= 2)
             .map(|(line, stroke)| {
                 let points: Vec<Pos2> = line.iter().map(|p| to_screen * *p).collect();
                 egui::Shape::line(points, *stroke)
