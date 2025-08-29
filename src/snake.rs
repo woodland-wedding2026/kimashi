@@ -1,5 +1,8 @@
 use egui::{Color32, Painter, Pos2, Rect, Stroke, Ui};
 use rand::prelude::*;
+use rand::{thread_rng, rngs::ThreadRng};
+
+
 
 #[derive(Clone, Copy, PartialEq)]
 enum Direction {
@@ -146,7 +149,7 @@ impl SnakeGame {
                 center,
                 egui::Align2::CENTER_CENTER,
                 "Game Over! Press R to restart.",
-                egui::TextStyle::Heading.resolve(painter.ctx.style()),
+                egui::TextStyle::Heading.resolve(painter.ctx().style()),
                 Color32::WHITE,
             );
         }
@@ -158,7 +161,7 @@ impl SnakeGame {
         let y = rect.top() + pos.1 as f32 * cell;
         let r = Rect::from_min_size(Pos2::new(x, y), egui::vec2(cell, cell));
         painter.rect_filled(r.shrink(1.0), 2.0, color);
-        painter.rect_stroke(r.shrink(1.0), 2.0, Stroke::new(0.5, Color32::DARK_GRAY));
+        painter.rect_stroke(r.shrink(1.0), 2.0, Stroke::new(0.5, Color32::DARK_GRAY), StrokeKind::Inside);
     }
 
     fn random_food(
