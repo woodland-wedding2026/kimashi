@@ -7,20 +7,6 @@ pub struct PaintingApp {
 }
 
 
-impl Default for PaintingApp {
-    fn default() -> Self {
-        // Initialize with default stroke: width=1, color=yellow, transparency=50%
-        PaintingApp {
-            lines: Vec::new(),
-            stroke: Stroke {
-                width: 1.0,
-                color: Color32::from_rgb(255, 255, 0), // Yellow
-                ..Default::default() // Keep other default values
-            },
-        }
-    }
-}
-
 
 impl PaintingApp {
     pub fn ui_control(&mut self, ui: &mut egui::Ui) -> egui::Response {
@@ -46,6 +32,17 @@ impl PaintingApp {
         );
         let from_screen = to_screen.inverse();
 
+        if self.stroke.width == 0.0 { // Check if it's in the default state
+            self.stroke = Stroke {
+                width: 1.0, // Set default stroke width to 1.0
+                color: Color32::from_rgb(255, 255, 0), // Set default color to yellow
+                ..Default::default() // Use default alpha (50% transparency)
+            };
+        }
+
+
+
+        
         if self.lines.is_empty() {
             self.lines.push((vec![], self.stroke));
         }
