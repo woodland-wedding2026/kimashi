@@ -22,7 +22,7 @@ eframe = { version = "0.31", default-features = false, features = [
 ] }
 log = "0.4.27"
 ehttp = "0.5"
-rand = { version = "0.8", features = ["std", "alloc", "js"] }
+rand = { version = "0.8", features = ["std", "alloc"] }
 getrandom = { version = "0.2", features = ["js"] }
 
 
