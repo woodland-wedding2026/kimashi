@@ -1,22 +1,14 @@
 use egui::{Color32, Pos2, Rect, Sense, Stroke, Ui, emath};
 
+#[derive(Default, serde::Deserialize, serde::Serialize)]
 pub struct PaintingApp {
-    lines: Vec<Vec<Pos2>>,
-    stroke: Stroke,
-}
-
-impl Default for PaintingApp {
-    fn default() -> Self {
-        Self {
-            lines: vec![vec![]],
-            stroke: Stroke::new(2.0, Color32::WHITE),
-        }
-    }
+    pub lines: Vec<Vec<Pos2>>,
+    pub stroke: Stroke,
 }
 
 impl PaintingApp {
     pub fn ui_content(&mut self, ui: &mut Ui) -> egui::Response {
-        let (response, painter) =
+        let (mut response, painter) =
             ui.allocate_painter(ui.available_size_before_wrap(), Sense::drag());
 
         if self.lines.is_empty() {
@@ -31,8 +23,8 @@ impl PaintingApp {
 
         let current_line = self.lines.last_mut().unwrap();
 
-        if let Some(pos) = response.interact_pointer_pos() {
-            let canvas_pos = from_screen * pos;
+        if let Some(pointer_pos) = response.interact_pointer_pos() {
+            let canvas_pos = from_screen * pointer_pos;
             if current_line.last() != Some(&canvas_pos) {
                 current_line.push(canvas_pos);
                 response.mark_changed();
@@ -44,7 +36,7 @@ impl PaintingApp {
 
         for line in &self.lines {
             if line.len() >= 2 {
-                let points: Vec<_> = line.iter().map(|p| to_screen * *p).collect();
+                let points: Vec<Pos2> = line.iter().map(|p| to_screen * *p).collect();
                 painter.line(points, self.stroke);
             }
         }
