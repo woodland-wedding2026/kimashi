@@ -69,7 +69,7 @@ impl PaintingApp {
         ui.add_space(1.0);
 
         // Fill remaining space for the painting canvas
-        Frame::canvas(ui.style()).show(ui, |ui| {
+        egui::Frame::canvas(ui.style()).show(ui, |ui| {
             self.ui_content(ui);
         });
     });
