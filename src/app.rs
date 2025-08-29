@@ -308,7 +308,7 @@ impl eframe::App for TemplateApp {
 
             
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias and Yoshi19");
+            ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias and Yoshi21");
             egui_extras::install_image_loaders(ctx);
             let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
             let desired_size = egui::vec2(340.0, 340.0); 
