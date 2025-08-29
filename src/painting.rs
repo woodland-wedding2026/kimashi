@@ -62,7 +62,14 @@ impl PaintingApp {
     }
 
     pub fn ui(&mut self, ui: &mut Ui) {
-        self.ui_control(ui);
+        ui.vertical(|ui| {
+        self.ui_control(ui); // top bar with stroke + clear
+
+        // Add some spacing
+        ui.add_space(1.0);
+
+        // Fill remaining space for the painting canvas
         self.ui_content(ui);
+    });
     }
 }
