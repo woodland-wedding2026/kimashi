@@ -21,8 +21,8 @@ impl PaintingApp {
     }
 
     pub fn ui_content(&mut self, ui: &mut Ui) -> egui::Response {
-        let (mut response, painter) =
-            ui.allocate_painter(ui.available_size_before_wrap(), Sense::drag());
+        let desired_size = ui.available_size_before_wrap().at_least(egui::vec2(300.0, 300.0));
+        let (mut response, painter) = ui.allocate_painter(desired_size, Sense::drag());
 
         let to_screen = emath::RectTransform::from_to(
             Rect::from_min_size(Pos2::ZERO, response.rect.square_proportions()),
