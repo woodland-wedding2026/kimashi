@@ -1,4 +1,5 @@
 use crate::fractal_clock::FractalClock;
+use crate::snake::SnakeGame;
 
 
 
@@ -24,6 +25,8 @@ pub struct TemplateApp {
     button4: String,
     #[serde(skip)]
     fractal_clock: FractalClock,
+    snake: SnakeGame,
+    last_time: f64,
     
 }
 
@@ -46,6 +49,8 @@ impl Default for TemplateApp {
             button3: "button3".to_owned(),
             button4: "button4".to_owned(),
             fractal_clock: FractalClock::default(),
+            snake: SnakeGame::default(),
+            last_time: 0.0,
             
             
             
@@ -123,7 +128,9 @@ impl eframe::App for TemplateApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
 
 
-
+        let time = ctx.input(|i| i.time);
+        let dt = (time - self.last_time) as f32;
+        self.last_time = time;
         
 
         if self.language_flag == true {self.button1 = "about location".to_owned()}
@@ -195,6 +202,17 @@ impl eframe::App for TemplateApp {
         });
         
         egui::CentralPanel::default().show(ctx, |ui| {
+
+            if ui.input(|i| i.key_pressed(egui::Key::R)) {
+                self.snake.reset();
+            }
+
+            self.snake.ui(ui, dt);
+
+
+
+
+            
 
             ui.label("Fractal Clock Example");
             ui.separator();
