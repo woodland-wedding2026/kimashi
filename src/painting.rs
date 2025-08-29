@@ -1,4 +1,4 @@
-use egui::{Color32, Pos2, Rect, Sense, Stroke, Ui, emath};
+use egui::{Color32, Pos2, Rect, Sense, Stroke, Ui, emath, NumExt};
 
 #[derive(Default, serde::Deserialize, serde::Serialize)]
 pub struct PaintingApp {
