@@ -2,4 +2,5 @@
 
 mod app;
 mod fractal_clock;
+mod snake;
 pub use app::TemplateApp;
