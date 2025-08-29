@@ -28,7 +28,7 @@ pub struct TemplateApp {
     snake: SnakeGame,
     last_time: f64,
 
-    painting_app: painting::PaintingApp,
+    painting_app: PaintingApp,
     
 }
 
@@ -54,7 +54,7 @@ impl Default for TemplateApp {
             snake: SnakeGame::default(),
             last_time: 0.0,
 
-            painting_app: painting::PaintingApp::default(),
+            painting_app: PaintingApp::default(),
             
             
             
@@ -208,7 +208,7 @@ impl eframe::App for TemplateApp {
         egui::CentralPanel::default().show(ctx, |ui| {
 
             
-            self.painting_app.ui(ctx);
+            self.painting_app.ui(ui);
             
 
 
