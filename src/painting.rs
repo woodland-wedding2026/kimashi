@@ -1,7 +1,6 @@
 use egui::{Color32, Context, Frame, Pos2, Rect, Sense, Stroke, Ui, Window, emath, vec2};
 
-//#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
-#[cfg_attr(feature = "serde", serde(default))]
+#[derive(Default)]
 pub struct PaintingApp {
     /// in 0-1 normalized coordinates
     lines: Vec<Vec<Pos2>>,
@@ -25,6 +24,7 @@ impl PaintingApp {
             ui.separator();
             if ui.button("Clear Painting").clicked() {
                 self.lines.clear();
+                self.lines.push(vec![]); // Start a new empty line so drawing works again
             }
         })
         .response
@@ -70,7 +70,12 @@ impl PaintingApp {
 
         response
     }
-}
 
+    /// This is what you should call in your main `App::update()` function
+    pub fn ui(&mut self, ui: &mut egui::Ui) {
+        self.ui_control(ui);
+        self.ui_content(ui);
+    }
+}
 
 
