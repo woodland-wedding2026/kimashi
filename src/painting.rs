@@ -14,15 +14,15 @@ impl PaintingApp {
             ui.separator();
             if ui.button("Clear Painting").clicked() {
                 self.lines.clear();
-                self.lines.push(vec![]);
+                //self.lines.push(vec![]);
             }
         })
         .response
     }
 
     pub fn ui_content(&mut self, ui: &mut Ui) -> egui::Response {
-        let desired_size = ui.available_size_before_wrap().at_least(egui::vec2(300.0, 300.0));
-        let (mut response, painter) = ui.allocate_painter(desired_size, Sense::drag());
+        //let desired_size = ui.available_size_before_wrap().at_least(egui::vec2(300.0, 300.0));
+        let (mut response, painter) = ui.allocate_painter(ui.available_size_before_wrap(), Sense::drag());
 
         let to_screen = emath::RectTransform::from_to(
             Rect::from_min_size(Pos2::ZERO, response.rect.square_proportions()),
@@ -69,7 +69,7 @@ impl PaintingApp {
         ui.add_space(1.0);
 
         // Fill remaining space for the painting canvas
-        egui::Frame::canvas(ui.style()).show(ui, |ui| {
+        Frame::canvas(ui.style()).show(ui, |ui| {
             self.ui_content(ui);
         });
     });
