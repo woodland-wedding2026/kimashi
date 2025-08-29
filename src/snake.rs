@@ -4,7 +4,7 @@ use rand::{thread_rng, rngs::ThreadRng};
 use serde::{Deserialize, Serialize};
 
 
-#[derive(Clone, Copy, PartialEq)]
+#[derive(Clone, Copy, PartialEq, Serialize, Deserialize)]
 enum Direction {
     Up,
     Down,
@@ -23,6 +23,7 @@ pub struct SnakeGame {
     game_over: bool,
     timer: f32,
     speed: f32,
+    #[serde(skip)]
     rng: ThreadRng,
 }
 
