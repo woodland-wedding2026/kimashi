@@ -27,6 +27,8 @@ pub struct TemplateApp {
     fractal_clock: FractalClock,
     snake: SnakeGame,
     last_time: f64,
+
+    painting_app: painting::PaintingApp,
     
 }
 
@@ -51,6 +53,8 @@ impl Default for TemplateApp {
             fractal_clock: FractalClock::default(),
             snake: SnakeGame::default(),
             last_time: 0.0,
+
+            painting_app: painting::PaintingApp::default(),
             
             
             
@@ -204,7 +208,7 @@ impl eframe::App for TemplateApp {
         egui::CentralPanel::default().show(ctx, |ui| {
 
             
-            
+            self.painting_app.ui(ctx);
             
 
 
