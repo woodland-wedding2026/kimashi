@@ -1,7 +1,7 @@
 use egui::{Color32, Painter, Pos2, Rect, Stroke, Ui, StrokeKind};
 use rand::prelude::*;
 use rand::{thread_rng, rngs::ThreadRng};
-
+use serde::{Deserialize, Serialize};
 
 
 #[derive(Clone, Copy, PartialEq)]
@@ -12,7 +12,7 @@ enum Direction {
     Right,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct SnakeGame {
     grid_size: (usize, usize),
     cell_size: f32,
@@ -23,8 +23,6 @@ pub struct SnakeGame {
     game_over: bool,
     timer: f32,
     speed: f32,
-
-    #[cfg_attr(feature = "serde", serde(skip))]
     rng: ThreadRng,
 }
 
@@ -151,7 +149,7 @@ impl SnakeGame {
                 center,
                 egui::Align2::CENTER_CENTER,
                 "Game Over! Press R to restart.",
-                egui::TextStyle::Heading.resolve(painter.ctx().style()),
+                egui::TextStyle::Heading.resolve(&painter.ctx().style()),
                 Color32::WHITE,
             );
         }
