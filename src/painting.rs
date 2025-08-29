@@ -36,11 +36,13 @@ impl PaintingApp {
 
         let current_line = self.lines.last_mut().unwrap();
 
-        if let Some(pointer_pos) = response.interact_pointer_pos() {
-            let canvas_pos = from_screen * pointer_pos;
-            if current_line.last() != Some(&canvas_pos) {
-                current_line.push(canvas_pos);
-                response.mark_changed();
+        if response.dragged() {
+            if let Some(pointer_pos) = response.interact_pointer_pos() {
+                let canvas_pos = from_screen * pointer_pos;
+                if current_line.last() != Some(&canvas_pos) {
+                    current_line.push(canvas_pos);
+                    response.mark_changed();
+                }
             }
         } else if !current_line.is_empty() {
             self.lines.push(vec![]);
