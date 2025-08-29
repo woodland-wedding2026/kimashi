@@ -1,6 +1,6 @@
 use egui::{Color32, Context, Frame, Pos2, Rect, Sense, Stroke, Ui, Window, emath, vec2};
 
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
+//#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "serde", serde(default))]
 pub struct Painting {
     /// in 0-1 normalized coordinates
@@ -72,30 +72,5 @@ impl Painting {
     }
 }
 
-impl crate::Demo for Painting {
-    fn name(&self) -> &'static str {
-        "🖊 Painting"
-    }
 
-    fn show(&mut self, ctx: &Context, open: &mut bool) {
-        use crate::View as _;
-        Window::new(self.name())
-            .open(open)
-            .default_size(vec2(512.0, 512.0))
-            .vscroll(false)
-            .show(ctx, |ui| self.ui(ui));
-    }
-}
 
-impl crate::View for Painting {
-    fn ui(&mut self, ui: &mut Ui) {
-        ui.vertical_centered(|ui| {
-            ui.add(crate::egui_github_link_file!());
-        });
-        self.ui_control(ui);
-        ui.label("Paint with your mouse/touch!");
-        Frame::canvas(ui.style()).show(ui, |ui| {
-            self.ui_content(ui);
-        });
-    }
-}
