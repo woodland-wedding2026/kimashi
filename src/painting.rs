@@ -2,13 +2,13 @@ use egui::{Color32, Context, Frame, Pos2, Rect, Sense, Stroke, Ui, Window, emath
 
 //#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "serde", serde(default))]
-pub struct Painting {
+pub struct PaintingApp {
     /// in 0-1 normalized coordinates
     lines: Vec<Vec<Pos2>>,
     stroke: Stroke,
 }
 
-impl Default for Painting {
+impl Default for PaintingApp {
     fn default() -> Self {
         Self {
             lines: Default::default(),
@@ -17,7 +17,7 @@ impl Default for Painting {
     }
 }
 
-impl Painting {
+impl PaintingApp {
     pub fn ui_control(&mut self, ui: &mut egui::Ui) -> egui::Response {
         ui.horizontal(|ui| {
             ui.label("Stroke:");
