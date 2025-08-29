@@ -203,6 +203,8 @@ impl eframe::App for TemplateApp {
         
         egui::CentralPanel::default().show(ctx, |ui| {
 
+            
+            
             ui.horizontal(|ui| {
             if ui.button("⬅️").clicked() {
                 self.snake.next_dir = Direction::Left;
@@ -215,6 +217,9 @@ impl eframe::App for TemplateApp {
             }
             if ui.button("➡️").clicked() {
                 self.snake.next_dir = Direction::Right;
+            }
+            if ui.button("🔁 Restart").clicked() {
+                self.restart_game(); // your existing restart logic
             }
         });
 
