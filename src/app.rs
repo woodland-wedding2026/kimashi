@@ -204,11 +204,21 @@ impl eframe::App for TemplateApp {
                 else {self.flag4 = true;}
             }  
         });
-        
+
+
+        egui::Window::new("Painting").show(ctx, |ui| {
+            self.painting_app.ui(ui);
+        });
+
+
+
+
+
+            
         egui::CentralPanel::default().show(ctx, |ui| {
 
             
-            self.painting_app.ui(ui);
+            //self.painting_app.ui(ui);
             
 
 
