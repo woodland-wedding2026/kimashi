@@ -6,6 +6,22 @@ pub struct PaintingApp {
     pub stroke: Stroke,
 }
 
+
+impl Default for PaintingApp {
+    fn default() -> Self {
+        // Initialize with default stroke: width=1, color=yellow, transparency=50%
+        PaintingApp {
+            lines: Vec::new(),
+            stroke: Stroke {
+                width: 1.0,
+                color: Color32::from_rgb(255, 255, 0), // Yellow
+                ..Default::default() // Keep other default values
+            },
+        }
+    }
+}
+
+
 impl PaintingApp {
     pub fn ui_control(&mut self, ui: &mut egui::Ui) -> egui::Response {
         ui.horizontal(|ui| {
