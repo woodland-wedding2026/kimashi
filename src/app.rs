@@ -219,7 +219,7 @@ impl eframe::App for TemplateApp {
                 self.snake.next_dir = Direction::Right;
             }
             if ui.button("🔁 Restart").clicked() {
-                self.restart_game(); // your existing restart logic
+                self.snake.reset(); // your existing restart logic
             }
         });
 
