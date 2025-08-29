@@ -23,6 +23,8 @@ pub struct SnakeGame {
     game_over: bool,
     timer: f32,
     speed: f32,
+
+    #[cfg_attr(feature = "serde", serde(skip))]
     rng: ThreadRng,
 }
 
