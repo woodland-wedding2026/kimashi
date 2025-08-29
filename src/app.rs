@@ -1,6 +1,6 @@
 use crate::fractal_clock::FractalClock;
 use crate::snake::SnakeGame;
-
+use crate::snake::Direction;
 
 
 
@@ -205,16 +205,16 @@ impl eframe::App for TemplateApp {
 
             ui.horizontal(|ui| {
             if ui.button("⬅️").clicked() {
-                self.next_dir = Direction::Left;
+                self.snakenext_dir = Direction::Left;
             }
             if ui.button("⬆️").clicked() {
-                self.next_dir = Direction::Up;
+                self.snake.next_dir = Direction::Up;
             }
             if ui.button("⬇️").clicked() {
-                self.next_dir = Direction::Down;
+                self.snake.next_dir = Direction::Down;
             }
             if ui.button("➡️").clicked() {
-                self.next_dir = Direction::Right;
+                self.snake.next_dir = Direction::Right;
             }
         });
 
