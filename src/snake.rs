@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 
 
 #[derive(Clone, Copy, PartialEq, Serialize, Deserialize)]
-enum Direction {
+pub enum Direction {
     Up,
     Down,
     Left,
@@ -18,7 +18,7 @@ pub struct SnakeGame {
     cell_size: f32,
     snake: Vec<(usize, usize)>,
     dir: Direction,
-    next_dir: Direction,
+    pub next_dir: Direction,
     food: (usize, usize),
     game_over: bool,
     timer: f32,
