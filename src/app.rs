@@ -205,7 +205,7 @@ impl eframe::App for TemplateApp {
 
             ui.horizontal(|ui| {
             if ui.button("⬅️").clicked() {
-                self.snakenext_dir = Direction::Left;
+                self.snake.next_dir = Direction::Left;
             }
             if ui.button("⬆️").clicked() {
                 self.snake.next_dir = Direction::Up;
