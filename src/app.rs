@@ -205,6 +205,16 @@ impl eframe::App for TemplateApp {
 
             
             
+            
+
+
+            
+            if ui.input(|i| i.key_pressed(egui::Key::R)) {
+                self.snake.reset();
+            }
+
+            self.snake.ui(ui, dt);
+
             ui.horizontal(|ui| {
             if ui.button("⬅️").clicked() {
                 self.snake.next_dir = Direction::Left;
@@ -222,16 +232,6 @@ impl eframe::App for TemplateApp {
                 self.snake.reset(); // your existing restart logic
             }
         });
-
-
-            
-            if ui.input(|i| i.key_pressed(egui::Key::R)) {
-                self.snake.reset();
-            }
-
-            self.snake.ui(ui, dt);
-
-
 
 
             
