@@ -1,4 +1,4 @@
-use egui::{Color32, Painter, Pos2, Rect, Stroke, Ui};
+use egui::{Color32, Painter, Pos2, Rect, Stroke, Ui, StrokeKind};
 use rand::prelude::*;
 use rand::{thread_rng, rngs::ThreadRng};
 
