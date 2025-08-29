@@ -2,7 +2,7 @@ use egui::{Color32, Pos2, Rect, Sense, Stroke, Ui, emath, NumExt};
 
 #[derive(Default, serde::Deserialize, serde::Serialize)]
 pub struct PaintingApp {
-    pub lines: Vec<Vec<Pos2>>,
+    pub lines: Vec<(Vec<Pos2>, Stroke)>,
     pub stroke: Stroke,
 }
 
@@ -31,10 +31,10 @@ impl PaintingApp {
         let from_screen = to_screen.inverse();
 
         if self.lines.is_empty() {
-            self.lines.push(vec![]);
+            self.lines.push((vec![], self.stroke));
         }
 
-        let current_line = self.lines.last_mut().unwrap();
+        let (current_line, current_stroke) = self.lines.last_mut().unwrap();
 
         if let Some(pointer_pos) = response.interact_pointer_pos() {
             let canvas_pos = from_screen * pointer_pos;
@@ -51,9 +51,9 @@ impl PaintingApp {
             .lines
             .iter()
             .filter(|line| line.len() >= 2)
-            .map(|line| {
+            .map(|(line, stroke)| {
                 let points: Vec<Pos2> = line.iter().map(|p| to_screen * *p).collect();
-                egui::Shape::line(points, self.stroke)
+                egui::Shape::line(points, *stroke)
             });
 
         painter.extend(shapes);
