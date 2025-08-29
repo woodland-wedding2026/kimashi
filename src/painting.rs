@@ -43,7 +43,7 @@ impl PaintingApp {
                 response.mark_changed();
             }
         } else if !current_line.is_empty() {
-            self.lines.push(vec![]);
+            self.lines.push((vec![], self.stroke));
             response.mark_changed();
         }
 
