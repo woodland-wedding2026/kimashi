@@ -203,6 +203,23 @@ impl eframe::App for TemplateApp {
         
         egui::CentralPanel::default().show(ctx, |ui| {
 
+            ui.horizontal(|ui| {
+            if ui.button("⬅️").clicked() {
+                self.next_dir = Direction::Left;
+            }
+            if ui.button("⬆️").clicked() {
+                self.next_dir = Direction::Up;
+            }
+            if ui.button("⬇️").clicked() {
+                self.next_dir = Direction::Down;
+            }
+            if ui.button("➡️").clicked() {
+                self.next_dir = Direction::Right;
+            }
+        });
+
+
+            
             if ui.input(|i| i.key_pressed(egui::Key::R)) {
                 self.snake.reset();
             }
