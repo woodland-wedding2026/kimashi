@@ -14,6 +14,9 @@ pub struct TemplateApp {
     flag2: bool,
     flag3: bool,
     flag4: bool,
+    flag5: bool,
+    flag6: bool,
+    flag7: bool,
     value: i32,
     user_input: String,
     password_flag: bool,
@@ -23,6 +26,9 @@ pub struct TemplateApp {
     button2: String,
     button3: String,
     button4: String,
+    button5: String,
+    button6: String,
+    button7: String,
     #[serde(skip)]
     fractal_clock: FractalClock,
     snake: SnakeGame,
@@ -42,6 +48,9 @@ impl Default for TemplateApp {
             flag2: false,
             flag3: false,
             flag4: false,
+            flag5: false,
+            flag6: false,
+            flag7: false,
             user_input: "type message..".to_owned(),
             password_flag: true,
             password_string: "type password".to_owned(),
@@ -50,6 +59,9 @@ impl Default for TemplateApp {
             button2: "button2".to_owned(),
             button3: "button3".to_owned(),
             button4: "button4".to_owned(),
+            button5: "button2".to_owned(),
+            button6: "button3".to_owned(),
+            button7: "button4".to_owned(),
             fractal_clock: FractalClock::default(),
             snake: SnakeGame::default(),
             last_time: 0.0,
@@ -145,6 +157,13 @@ impl eframe::App for TemplateApp {
         else {self.button3 = "helfende Hände".to_owned()}
         if self.language_flag == true {self.button4 = "contact us".to_owned()}
         else {self.button4 = "Kontakt".to_owned()}
+
+        if self.language_flag == true {self.button5 = "painting".to_owned()}
+        else {self.button5 = "malen".to_owned()}
+        if self.language_flag == true {self.button6 = "play snake".to_owned()}
+        else {self.button6 = "spiel Snake".to_owned()}
+        if self.language_flag == true {self.button7 = "fractal clock".to_owned()}
+        else {self.button7 = "Fraktaluhr".to_owned()}
         
 
         if self.password_flag == true {
@@ -203,12 +222,29 @@ impl eframe::App for TemplateApp {
                 if self.flag4 == true {self.flag4 = false;}
                 else {self.flag4 = true;}
             }  
+            if ui.button(self.button5.clone()).clicked() {
+                if self.flag5 == true {self.flag5 = false;}
+                else {self.flag5 = true;}
+            }  
+            if ui.button(self.button6.clone()).clicked() {
+                if self.flag6 == true {self.flag6 = false;}
+                else {self.flag6 = true;}
+            }  
+            if ui.button(self.button7.clone()).clicked() {
+                if self.flag7 == true {self.flag7 = false;}
+                else {self.flag7 = true;}
+            }  
+
+
+
+
+
+
+            
         });
 
 
-        egui::Window::new("Painting").show(ctx, |ui| {
-            self.painting_app.ui(ui);
-        });
+        
 
 
 
@@ -223,7 +259,71 @@ impl eframe::App for TemplateApp {
 
 
             
-            if ui.input(|i| i.key_pressed(egui::Key::R)) {
+            //if ui.input(|i| i.key_pressed(egui::Key::R)) {
+            //    self.snake.reset();
+            //}
+
+            //self.snake.ui(ui, dt);
+
+            //ui.horizontal(|ui| {
+            //if ui.button("⬅️").clicked() {
+            //    self.snake.next_dir = Direction::Left;
+            //}
+            //if ui.button("⬆️").clicked() {
+            //    self.snake.next_dir = Direction::Up;
+           // }
+            //if ui.button("⬇️").clicked() {
+            //    self.snake.next_dir = Direction::Down;
+            //}
+            //if ui.button("➡️").clicked() {
+            //    self.snake.next_dir = Direction::Right;
+            //}
+            //if ui.button("🔁 Restart").clicked() {
+            //    self.snake.reset(); // your existing restart logic
+            //}
+        //});
+
+
+            
+
+            //ui.label("Fractal Clock Example");
+            //ui.separator();
+
+            //let desired_size = egui::vec2(400.0, 400.0);
+            //self.fractal_clock.ui(ui);
+            
+            //let available_size = ui.available_size();
+            ////let (rect, _response) = ui.allocate_exact_size(available_size, egui::Sense::hover());
+            //let (rect, _response) = ui.allocate_exact_size(desired_size, egui::Sense::hover());
+            //let painter = ui.painter_at(rect);
+    
+            //let time = ctx.input(|i| i.time); // egui's built-in time
+            //self.fractal_clock.paint(&painter, rect, time);
+
+
+
+
+
+
+
+            
+            // The central panel the region left after adding TopPanel's and SidePanel's
+            ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias and Yoshi19");
+            egui_extras::install_image_loaders(ctx);
+            let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
+            let desired_size = egui::vec2(340.0, 340.0); 
+            ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
+            egui::Window::new("about the location").open(&mut self.flag1).show(ctx, |ui| {
+                ui.label("tents and bungalos, amenities, getting there, ..");                
+            });
+
+
+            egui::Window::new("Painting").open(&mut self.flag5).show(ctx, |ui| {
+                self.painting_app.ui(ui);
+            });
+
+            egui::Window::new("snake game").open(&mut self.flag6).show(ctx, |ui| {
+                if ui.input(|i| i.key_pressed(egui::Key::R)) {
                 self.snake.reset();
             }
 
@@ -246,11 +346,10 @@ impl eframe::App for TemplateApp {
                 self.snake.reset(); // your existing restart logic
             }
         });
+            });
 
-
-            
-
-            ui.label("Fractal Clock Example");
+            egui::Window::new("fractal clock").open(&mut self.flag7).show(ctx, |ui| {
+                ui.label("Fractal Clock Example");
             ui.separator();
 
             let desired_size = egui::vec2(400.0, 400.0);
@@ -264,6 +363,11 @@ impl eframe::App for TemplateApp {
             let time = ctx.input(|i| i.time); // egui's built-in time
             self.fractal_clock.paint(&painter, rect, time);
 
+            });
+
+
+
+
 
 
 
@@ -271,16 +375,6 @@ impl eframe::App for TemplateApp {
 
 
             
-            // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias and Yoshi19");
-            egui_extras::install_image_loaders(ctx);
-            let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
-            let desired_size = egui::vec2(340.0, 340.0); 
-            ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
-            egui::Window::new("about the location").open(&mut self.flag1).show(ctx, |ui| {
-                ui.label("tents and bungalos, amenities, getting there, ..");                
-            });
-
             egui::Window::new("weekend overview").open(&mut self.flag2).show(ctx, |ui| {
                 ui.label("food, children, party and more :)");                
             });
