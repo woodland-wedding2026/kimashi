@@ -172,4 +172,55 @@ impl PaintingApp {
                         response.rect.min + egui::vec2(x as f32 * pixel_size, y as f32 * pixel_size),
                         egui::vec2(pixel_size, pixel_size),
                     );
-                    painter.rect
+                    painter.rect_filled(rect, 0.0, c);
+                }
+            }
+        }
+
+        // Render strokes
+        let to_screen = emath::RectTransform::from_to(
+            Rect::from_min_size(Pos2::ZERO, response.rect.square_proportions()),
+            response.rect,
+        );
+
+        let shapes = self
+            .lines
+            .iter()
+            .filter(|(line, _)| line.len() >= 2)
+            .map(|(line, stroke)| {
+                let points: Vec<Pos2> = line.iter().map(|p| to_screen * *p).collect();
+                egui::Shape::line(points, *stroke)
+            });
+
+        painter.extend(shapes);
+
+        response
+    }
+
+    pub fn ui(&mut self, ui: &mut Ui) {
+        ui.vertical(|ui| {
+            self.ui_control(ui); // top controls: mode, color, sliders, clear, save/load
+
+            ui.add_space(4.0);
+
+            egui::Frame::canvas(ui.style()).show(ui, |ui| {
+                self.ui_content(ui);
+            });
+        });
+    }
+
+    // Serialize pixels grid to JSON string
+    pub fn save_pixels_to_json(&self) -> String {
+        serde_json::to_string(&self.pixels).unwrap_or_else(|_| String::new())
+    }
+
+    // Load pixels grid from JSON string
+    pub fn load_pixels_from_json(&mut self, json: &str) {
+        if let Ok(loaded) = serde_json::from_str::<Vec<Vec<Option<Color32>>>>(json) {
+            // Validate size before overwriting
+            if loaded.len() == self.canvas_height && loaded[0].len() == self.canvas_width {
+                self.pixels = loaded;
+            }
+        }
+    }
+}
