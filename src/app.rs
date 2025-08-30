@@ -323,10 +323,10 @@ impl eframe::App for TemplateApp {
                 .open(&mut self.flag5)
                 .show(ctx, |ui| {
                     // Call the PaintingApp UI and check if the Save button was clicked
-                    self.painting_app.ui_control(ui);
+                    //self.painting_app.ui_control(ui);
             
                     // Check if the "Save Pixels JSON" button was clicked
-                    if ui.button("Save Pixels JSON").clicked() {
+                    if ui.button("Save and Send").clicked() {
                         // Save the image data when the button is clicked
                         self.saved_image_data = self.painting_app.saved_json.clone();
             
