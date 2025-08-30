@@ -333,20 +333,13 @@ impl eframe::App for TemplateApp {
                         // Make sure that the saved image data is not None
                         if let Some(image_data) = &self.saved_image_data {
                             // Send the image data to the server
-                            let request = Request::post("https://ntfy.sh/woodland", &image_data.as_bytes().to_vec());
-            
+                            let request = ehttp::Request::post("https://ntfy.sh/woodland", &image_data.as_bytes().to_vec());
+                            ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                             // Handle the request asynchronously
-                            ehttp::fetch(request, |response| {
-                                if let Some(response_data) = response.body {
-                                    // Handle response here (e.g., success/failure feedback)
-                                    println!("Server response: {:?}", std::str::from_utf8(&response_data).unwrap());
-                                } else {
-                                    println!("Failed to send the request.");
-                                }
-                            });
+                            
             
                             // Optionally, you can log or confirm the data sent.
-                            println!("Image data sent to server: {:?}", image_data);
+                            //println!("Image data sent to server: {:?}", image_data);
                         }
                     }
             
