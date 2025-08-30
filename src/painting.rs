@@ -44,13 +44,13 @@ impl PaintingApp {
 
             if ui.button("Save").clicked() {
                 self.saved_json = Some(self.save_to_json());
-                if let Some(json) = self.saved_json {
-                    println!("Saved JSON:\n{}", &json); // for debugging
+                if let Some(json) = &self.saved_json {
+                    println!("Saved JSON:\n{}", json); // for debugging
                 }
             }
 
             if ui.button("Load").clicked() {
-                if let Some(json) = self.saved_json {
+                if let Some(json) = self.saved_json.clone() {
                     self.load_from_json(&json);
                 }
             }
