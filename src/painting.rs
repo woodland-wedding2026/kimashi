@@ -64,7 +64,7 @@ impl PaintingApp {
 
             if self.mode == Mode::Stroke {
                 ui.label("Stroke width:");
-                ui.add(egui::Slider::new(&mut self.stroke_width, 1.0..=10.0).clamping(true));
+                ui.add(egui::Slider::new(&mut self.stroke_width, 1.0..=10.0).clamping(egui::SliderClamping::Always));
             } else {
                 ui.label("Brush size:");
                 ui.add(egui::Slider::new(&mut self.brush_size, 1..=10));
