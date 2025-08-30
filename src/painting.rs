@@ -50,7 +50,10 @@ impl PaintingApp {
         }
     }
 
-    pub fn ui_control(&mut self, ui: &mut Ui) -> egui::Response {
+    /// Builds the UI controls and returns true if Save button was clicked
+    pub fn ui_control(&mut self, ui: &mut Ui) -> bool {
+        let mut saved = false;
+
         ui.horizontal(|ui| {
             ui.label("Mode:");
             ui.radio_value(&mut self.mode, Mode::Stroke, "Stroke");
@@ -83,6 +86,7 @@ impl PaintingApp {
 
             if ui.button("Save Pixels JSON").clicked() {
                 self.saved_json = Some(self.save_pixels_to_json());
+                saved = true;
             }
 
             if ui.button("Load Pixels JSON").clicked() {
@@ -90,7 +94,9 @@ impl PaintingApp {
                     self.load_pixels_from_json(&json);
                 }
             }
-        }).response
+        });
+
+        saved
     }
 
     pub fn ui_content(&mut self, ui: &mut Ui) -> egui::Response {
