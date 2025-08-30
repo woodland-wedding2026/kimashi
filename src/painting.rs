@@ -147,7 +147,7 @@ impl PaintingApp {
     }
 
     fn ui_stroke_canvas(&mut self, ui: &mut Ui) -> egui::Response {
-        let (response, painter) =
+        let (mut response, painter) =
             ui.allocate_painter(ui.available_size_before_wrap(), Sense::drag());
 
         let to_screen = egui::emath::RectTransform::from_to(
