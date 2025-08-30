@@ -1,7 +1,7 @@
 use egui::{Color32, Pos2, Rect, Sense, Stroke, Ui};
 use egui::emath;
 
-#[derive(PartialEq, Eq, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum Mode {
     Pixel,
     Stroke,
@@ -64,7 +64,7 @@ impl PaintingApp {
 
             if self.mode == Mode::Stroke {
                 ui.label("Stroke width:");
-                ui.add(egui::Slider::new(&mut self.stroke_width, 1.0..=10.0).clamp_to_range(true));
+                ui.add(egui::Slider::new(&mut self.stroke_width, 1.0..=10.0).clamping(true));
             } else {
                 ui.label("Brush size:");
                 ui.add(egui::Slider::new(&mut self.brush_size, 1..=10));
@@ -86,8 +86,8 @@ impl PaintingApp {
             }
 
             if ui.button("Load Pixels JSON").clicked() {
-                if let Some(json) = &self.saved_json {
-                    self.load_pixels_from_json(json);
+                if let Some(json) = self.saved_json.clone() {
+                    self.load_pixels_from_json(&json);
                 }
             }
         }).response
