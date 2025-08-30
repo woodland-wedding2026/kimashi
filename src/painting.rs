@@ -50,8 +50,8 @@ impl PaintingApp {
             }
 
             if ui.button("Load").clicked() {
-                if let Some(json) = &self.saved_json {
-                    self.load_from_json(json);
+                if let Some(json) = self.saved_json {
+                    self.load_from_json(&json);
                 }
             }
         })
