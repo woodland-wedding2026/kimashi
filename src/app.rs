@@ -35,6 +35,7 @@ pub struct TemplateApp {
     last_time: f64,
 
     painting_app: PaintingApp,
+    saved_image_data: Option<String>,
     
 }
 
@@ -67,7 +68,7 @@ impl Default for TemplateApp {
             last_time: 0.0,
 
             painting_app: PaintingApp::default(),
-            
+            saved_image_data: None,
             
             
             
@@ -318,10 +319,46 @@ impl eframe::App for TemplateApp {
             });
 
 
-            egui::Window::new("Painting").open(&mut self.flag5).show(ctx, |ui| {
-                self.painting_app.ui(ui);
-            });
+            egui::Window::new("Painting")
+                .open(&mut self.flag5)
+                .show(ctx, |ui| {
+                    // Call the PaintingApp UI and check if the Save button was clicked
+                    self.painting_app.ui_control(ui);
+            
+                    // Check if the "Save Pixels JSON" button was clicked
+                    if ui.button("Save Pixels JSON").clicked() {
+                        // Save the image data when the button is clicked
+                        self.saved_image_data = self.painting_app.saved_json.clone();
+            
+                        // Make sure that the saved image data is not None
+                        if let Some(image_data) = &self.saved_image_data {
+                            // Send the image data to the server
+                            let request = Request::post("https://ntfy.sh/woodland", &image_data.as_bytes().to_vec());
+            
+                            // Handle the request asynchronously
+                            ehttp::fetch(request, |response| {
+                                if let Some(response_data) = response.body {
+                                    // Handle response here (e.g., success/failure feedback)
+                                    println!("Server response: {:?}", std::str::from_utf8(&response_data).unwrap());
+                                } else {
+                                    println!("Failed to send the request.");
+                                }
+                            });
+            
+                            // Optionally, you can log or confirm the data sent.
+                            println!("Image data sent to server: {:?}", image_data);
+                        }
+                    }
+            
+                    // Show the painting controls
+                    self.painting_app.ui(ui);
+                });
 
+
+
+
+
+            
             egui::Window::new("snake game").open(&mut self.flag6).show(ctx, |ui| {
                 if ui.input(|i| i.key_pressed(egui::Key::R)) {
                 self.snake.reset();
