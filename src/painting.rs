@@ -8,15 +8,6 @@ pub struct SerializableStroke {
     pub color: [u8; 4], // RGBA
 }
 
-
-#[derive(Serialize, Deserialize)]
-pub struct PaintingExport {
-    pub background: [u8; 4], // RGBA
-    pub lines: Vec<SerializableLine>,
-}
-
-
-
 impl From<Stroke> for SerializableStroke {
     fn from(stroke: Stroke) -> Self {
         Self {
@@ -52,22 +43,16 @@ pub struct PaintingApp {
 impl PaintingApp {
     /// UI controls: stroke width, clear, save
 
-    pub fn export_json(&self, background: Color32) -> Option<String> {
+    pub fn export_json(&self) -> Option<String> {
         let serializable_lines: Vec<SerializableLine> = self.lines.iter().map(|(points, stroke)| {
             SerializableLine {
                 points: points.iter().map(|p| [p.x, p.y]).collect(),
                 stroke: (*stroke).into(),
             }
         }).collect();
-    
-        let export = PaintingExport {
-            background: background.to_array(),
-            lines: serializable_lines,
-        };
-    
-        serde_json::to_string_pretty(&export).ok()
-    }
 
+        serde_json::to_string_pretty(&serializable_lines).ok()
+    }
 
 
     
@@ -82,8 +67,7 @@ impl PaintingApp {
             }
 
             if ui.button("Save Painting").clicked() {
-                let background = ui.style().visuals.extreme_bg_color;
-                self.save_to_json(background);
+                self.save_to_json();
             }
         }).response
     }
@@ -150,20 +134,15 @@ impl PaintingApp {
     }
 
     /// Save current painting as JSON (printed to console)
-    fn save_to_json(&self, background: Color32) {
+    fn save_to_json(&self) {
         let serializable_lines: Vec<SerializableLine> = self.lines.iter().map(|(points, stroke)| {
             SerializableLine {
                 points: points.iter().map(|p| [p.x, p.y]).collect(),
                 stroke: (*stroke).into(),
             }
         }).collect();
-    
-        let export = PaintingExport {
-            background: background.to_array(),
-            lines: serializable_lines,
-        };
-    
-        match serde_json::to_string_pretty(&export) {
+
+        match serde_json::to_string_pretty(&serializable_lines) {
             Ok(json) => {
                 println!("Painting JSON:\n{}", json);
                 // Optional: write to file or clipboard
@@ -173,5 +152,4 @@ impl PaintingApp {
             }
         }
     }
-
 }
