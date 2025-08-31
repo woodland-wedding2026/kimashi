@@ -1,12 +1,41 @@
 use egui::{Color32, Pos2, Rect, Sense, Stroke, Ui, emath, NumExt};
+use serde::{Serialize, Deserialize};
 
-#[derive(Default, serde::Deserialize, serde::Serialize)]
+#[derive(Serialize, Deserialize)]
+pub struct SerializableStroke {
+    pub width: f32,
+    pub color: [u8; 4], // RGBA
+}
+
+impl From<Stroke> for SerializableStroke {
+    fn from(stroke: Stroke) -> Self {
+        Self {
+            width: stroke.width,
+            color: stroke.color.to_array(),
+        }
+    }
+}
+
+impl From<SerializableStroke> for Stroke {
+    fn from(s: SerializableStroke) -> Self {
+        Stroke {
+            width: s.width,
+            color: Color32::from_rgba_unmultiplied(s.color[0], s.color[1], s.color[2], s.color[3]),
+        }
+    }
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct SerializableLine {
+    pub points: Vec<[f32; 2]>,
+    pub stroke: SerializableStroke,
+}
+
+#[derive(Default)]
 pub struct PaintingApp {
     pub lines: Vec<(Vec<Pos2>, Stroke)>,
     pub stroke: Stroke,
 }
-
-
 
 impl PaintingApp {
     pub fn ui_control(&mut self, ui: &mut egui::Ui) -> egui::Response {
@@ -14,16 +43,33 @@ impl PaintingApp {
             ui.label("Stroke:");
             ui.add(&mut self.stroke);
             ui.separator();
+
             if ui.button("Clear Painting").clicked() {
                 self.lines.clear();
-                //self.lines.push(vec![]);
             }
-        })
-        .response
+
+            if ui.button("Save Painting").clicked() {
+                let serializable_lines: Vec<SerializableLine> = self.lines.iter().map(|(points, stroke)| {
+                    SerializableLine {
+                        points: points.iter().map(|p| [p.x, p.y]).collect(),
+                        stroke: (*stroke).into(),
+                    }
+                }).collect();
+
+                match serde_json::to_string_pretty(&serializable_lines) {
+                    Ok(json) => {
+                        println!("Painting JSON:\n{}", json);
+                        // In a real app: write to file or clipboard
+                    }
+                    Err(err) => {
+                        eprintln!("Failed to serialize painting: {}", err);
+                    }
+                }
+            }
+        }).response
     }
 
     pub fn ui_content(&mut self, ui: &mut Ui) -> egui::Response {
-        //let desired_size = ui.available_size_before_wrap().at_least(egui::vec2(300.0, 300.0));
         let (mut response, painter) = ui.allocate_painter(ui.available_size_before_wrap(), Sense::drag());
 
         let to_screen = emath::RectTransform::from_to(
@@ -32,17 +78,14 @@ impl PaintingApp {
         );
         let from_screen = to_screen.inverse();
 
-        if self.stroke.width == 0.0 { // Check if it's in the default state
+        if self.stroke.width == 0.0 {
             self.stroke = Stroke {
-                width: 1.0, // Set default stroke width to 1.0
-                color: Color32::from_rgb(255, 255, 0), // Set default color to yellow
-                ..Default::default() // Use default alpha (50% transparency)
+                width: 1.0,
+                color: Color32::from_rgb(255, 255, 0),
+                ..Default::default()
             };
         }
 
-
-
-        
         if self.lines.is_empty() {
             self.lines.push((vec![], self.stroke));
         }
@@ -76,15 +119,11 @@ impl PaintingApp {
 
     pub fn ui(&mut self, ui: &mut Ui) {
         ui.vertical(|ui| {
-        self.ui_control(ui); // top bar with stroke + clear
-
-        // Add some spacing
-        ui.add_space(1.0);
-
-        // Fill remaining space for the painting canvas
-        egui::Frame::canvas(ui.style()).show(ui, |ui| {
-            self.ui_content(ui);
+            self.ui_control(ui);
+            ui.add_space(1.0);
+            egui::Frame::canvas(ui.style()).show(ui, |ui| {
+                self.ui_content(ui);
+            });
         });
-    });
     }
 }
