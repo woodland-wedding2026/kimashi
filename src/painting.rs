@@ -149,15 +149,20 @@ impl PaintingApp {
     }
 
     /// Save current painting as JSON (printed to console)
-    fn save_to_json(&self) {
+    fn save_to_json(&self, background: Color32) {
         let serializable_lines: Vec<SerializableLine> = self.lines.iter().map(|(points, stroke)| {
             SerializableLine {
                 points: points.iter().map(|p| [p.x, p.y]).collect(),
                 stroke: (*stroke).into(),
             }
         }).collect();
-
-        match serde_json::to_string_pretty(&serializable_lines) {
+    
+        let export = PaintingExport {
+            background: background.to_array(),
+            lines: serializable_lines,
+        };
+    
+        match serde_json::to_string_pretty(&export) {
             Ok(json) => {
                 println!("Painting JSON:\n{}", json);
                 // Optional: write to file or clipboard
@@ -167,4 +172,5 @@ impl PaintingApp {
             }
         }
     }
+
 }
