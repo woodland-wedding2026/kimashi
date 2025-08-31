@@ -327,33 +327,8 @@ impl eframe::App for TemplateApp {
                     self.saved_image_data = self.painting_app.export_json().clone();
 
                     if let Some(image_data) = &self.saved_image_data {
-                            //let request = ehttp::Request::post("https://ntfy.sh/woodland", image_data.as_bytes().to_vec());                        
-                            //ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-
-                            let email = "86mfjh@gmail.com";
-                            let app_password = "nzhx psaj wxuy ualn";  // Generated from Google Account > Security
-                        
-                            // Prepare your large message (100kB text)
-                            let body = std::fs::read_to_string("your_100kb_text.txt")?;
-                        
-                            // Build the email
-                            let email = Message::builder()
-                                .from(email.parse()?)
-                                .to("86mfjh@gmail.com".parse()?)
-                                .subject("100kB message")
-                                .body(body)?;
-                        
-                            // Send via Gmail SMTP
-                            let creds = Credentials::new(email.to_string(), app_password.to_string());
-                        
-                            let mailer = SmtpTransport::relay("smtp.gmail.com")?
-                                .credentials(creds)
-                                .build();
-                        
-                            mailer.send(&email)?;
-                            println!("Email sent successfully!");
-                        
-                            Ok(())
+                            let request = ehttp::Request::post("https://ntfy.sh/woodland", image_data.as_bytes().to_vec());                        
+                            ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                         
                         }
 
