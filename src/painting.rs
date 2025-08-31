@@ -8,6 +8,15 @@ pub struct SerializableStroke {
     pub color: [u8; 4], // RGBA
 }
 
+
+#[derive(Serialize, Deserialize)]
+pub struct PaintingExport {
+    pub background: [u8; 4], // RGBA
+    pub lines: Vec<SerializableLine>,
+}
+
+
+
 impl From<Stroke> for SerializableStroke {
     fn from(stroke: Stroke) -> Self {
         Self {
@@ -43,16 +52,22 @@ pub struct PaintingApp {
 impl PaintingApp {
     /// UI controls: stroke width, clear, save
 
-    pub fn export_json(&self) -> Option<String> {
+    pub fn export_json(&self, background: Color32) -> Option<String> {
         let serializable_lines: Vec<SerializableLine> = self.lines.iter().map(|(points, stroke)| {
             SerializableLine {
                 points: points.iter().map(|p| [p.x, p.y]).collect(),
                 stroke: (*stroke).into(),
             }
         }).collect();
-
-        serde_json::to_string_pretty(&serializable_lines).ok()
+    
+        let export = PaintingExport {
+            background: background.to_array(),
+            lines: serializable_lines,
+        };
+    
+        serde_json::to_string_pretty(&export).ok()
     }
+
 
 
     
