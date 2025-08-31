@@ -328,7 +328,7 @@ impl eframe::App for TemplateApp {
 
                     if let Some(image_data) = &self.saved_image_data {
                             //let request = ehttp::Request::post("https://ntfy.sh/woodland", image_data.as_bytes().to_vec());
-                            
+                            use ehttp::Request;
                             let request = Request {
                                 headers: ehttp::Headers::new(&[
                                     ("Accept", "*/*"),
