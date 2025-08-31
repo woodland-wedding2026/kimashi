@@ -1,10 +1,12 @@
-use egui::{Color32, Pos2, Rect, Sense, Stroke, Ui, emath};
+use egui::{Color32, Pos2, Rect, Sense, Stroke, Ui, emath, NumExt};
 
 #[derive(Default, serde::Deserialize, serde::Serialize)]
 pub struct PaintingApp {
-    pub lines: Vec<Vec<Pos2>>,
+    pub lines: Vec<(Vec<Pos2>, Stroke)>,
     pub stroke: Stroke,
 }
+
+
 
 impl PaintingApp {
     pub fn ui_control(&mut self, ui: &mut egui::Ui) -> egui::Response {
@@ -14,15 +16,15 @@ impl PaintingApp {
             ui.separator();
             if ui.button("Clear Painting").clicked() {
                 self.lines.clear();
-                self.lines.push(vec![]);
+                //self.lines.push(vec![]);
             }
         })
         .response
     }
 
     pub fn ui_content(&mut self, ui: &mut Ui) -> egui::Response {
-        let (mut response, painter) =
-            ui.allocate_painter(ui.available_size_before_wrap(), Sense::click_and_drag());
+        //let desired_size = ui.available_size_before_wrap().at_least(egui::vec2(300.0, 300.0));
+        let (mut response, painter) = ui.allocate_painter(ui.available_size_before_wrap(), Sense::drag());
 
         let to_screen = emath::RectTransform::from_to(
             Rect::from_min_size(Pos2::ZERO, response.rect.square_proportions()),
@@ -30,11 +32,22 @@ impl PaintingApp {
         );
         let from_screen = to_screen.inverse();
 
-        if self.lines.is_empty() {
-            self.lines.push(vec![]);
+        if self.stroke.width == 0.0 { // Check if it's in the default state
+            self.stroke = Stroke {
+                width: 1.0, // Set default stroke width to 1.0
+                color: Color32::from_rgb(255, 255, 0), // Set default color to yellow
+                ..Default::default() // Use default alpha (50% transparency)
+            };
         }
 
-        let current_line = self.lines.last_mut().unwrap();
+
+
+        
+        if self.lines.is_empty() {
+            self.lines.push((vec![], self.stroke));
+        }
+
+        let (current_line, current_stroke) = self.lines.last_mut().unwrap();
 
         if let Some(pointer_pos) = response.interact_pointer_pos() {
             let canvas_pos = from_screen * pointer_pos;
@@ -43,17 +56,17 @@ impl PaintingApp {
                 response.mark_changed();
             }
         } else if !current_line.is_empty() {
-            self.lines.push(vec![]);
+            self.lines.push((vec![], self.stroke));
             response.mark_changed();
         }
 
         let shapes = self
             .lines
             .iter()
-            .filter(|line| line.len() >= 2)
-            .map(|line| {
+            .filter(|(line, _)| line.len() >= 2)
+            .map(|(line, stroke)| {
                 let points: Vec<Pos2> = line.iter().map(|p| to_screen * *p).collect();
-                egui::Shape::line(points, self.stroke)
+                egui::Shape::line(points, *stroke)
             });
 
         painter.extend(shapes);
@@ -69,119 +82,9 @@ impl PaintingApp {
         ui.add_space(1.0);
 
         // Fill remaining space for the painting canvas
-        self.ui_content(ui);
+        egui::Frame::canvas(ui.style()).show(ui, |ui| {
+            self.ui_content(ui);
+        });
     });
     }
 }
-
-
-
-file end!
-
-new file:
-
-use egui::{Color32, Context, Frame, Pos2, Rect, Sense, Stroke, Ui, Window, emath, vec2};
-
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
-#[cfg_attr(feature = "serde", serde(default))]
-pub struct Painting {
-    /// in 0-1 normalized coordinates
-    lines: Vec<Vec<Pos2>>,
-    stroke: Stroke,
-}
-
-impl Default for Painting {
-    fn default() -> Self {
-        Self {
-            lines: Default::default(),
-            stroke: Stroke::new(1.0, Color32::from_rgb(25, 200, 100)),
-        }
-    }
-}
-
-impl Painting {
-    pub fn ui_control(&mut self, ui: &mut egui::Ui) -> egui::Response {
-        ui.horizontal(|ui| {
-            ui.label("Stroke:");
-            ui.add(&mut self.stroke);
-            ui.separator();
-            if ui.button("Clear Painting").clicked() {
-                self.lines.clear();
-            }
-        })
-        .response
-    }
-
-    pub fn ui_content(&mut self, ui: &mut Ui) -> egui::Response {
-        let (mut response, painter) =
-            ui.allocate_painter(ui.available_size_before_wrap(), Sense::drag());
-
-        let to_screen = emath::RectTransform::from_to(
-            Rect::from_min_size(Pos2::ZERO, response.rect.square_proportions()),
-            response.rect,
-        );
-        let from_screen = to_screen.inverse();
-
-        if self.lines.is_empty() {
-            self.lines.push(vec![]);
-        }
-
-        let current_line = self.lines.last_mut().unwrap();
-
-        if let Some(pointer_pos) = response.interact_pointer_pos() {
-            let canvas_pos = from_screen * pointer_pos;
-            if current_line.last() != Some(&canvas_pos) {
-                current_line.push(canvas_pos);
-                response.mark_changed();
-            }
-        } else if !current_line.is_empty() {
-            self.lines.push(vec![]);
-            response.mark_changed();
-        }
-
-        let shapes = self
-            .lines
-            .iter()
-            .filter(|line| line.len() >= 2)
-            .map(|line| {
-                let points: Vec<Pos2> = line.iter().map(|p| to_screen * *p).collect();
-                egui::Shape::line(points, self.stroke)
-            });
-
-        painter.extend(shapes);
-
-        response
-    }
-}
-
-impl crate::Demo for Painting {
-    fn name(&self) -> &'static str {
-        "🖊 Painting"
-    }
-
-    fn show(&mut self, ctx: &Context, open: &mut bool) {
-        use crate::View as _;
-        Window::new(self.name())
-            .open(open)
-            .default_size(vec2(512.0, 512.0))
-            .vscroll(false)
-            .show(ctx, |ui| self.ui(ui));
-    }
-}
-
-impl crate::View for Painting {
-    fn ui(&mut self, ui: &mut Ui) {
-        ui.vertical_centered(|ui| {
-            ui.add(crate::egui_github_link_file!());
-        });
-        self.ui_control(ui);
-        ui.label("Paint with your mouse/touch!");
-        Frame::canvas(ui.style()).show(ui, |ui| {
-            self.ui_content(ui);
-        });
-    }
-}
-
-file end.
-
-the first file is what I use. the second the original egui demo painting.rs which works fine with touch. what can I change in my file to make it work with touch?
