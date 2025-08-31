@@ -82,7 +82,8 @@ impl PaintingApp {
             }
 
             if ui.button("Save Painting").clicked() {
-                self.save_to_json();
+                let background = ui.style().visuals.extreme_bg_color;
+                self.save_to_json(background);
             }
         }).response
     }
