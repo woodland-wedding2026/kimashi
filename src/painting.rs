@@ -103,7 +103,7 @@ impl PaintingApp {
     pub fn ui_content(&mut self, ui: &mut Ui) -> egui::Response {
         // Allocate painter for the entire canvas area
         let (mut response, painter) =
-            ui.allocate_painter(ui.available_size_before_wrap(), Sense::drag());
+            ui.allocate_painter(ui.available_size_before_wrap(), Sense::click_and_drag());
 
         // Handle input
         if let Some(pos) = response.interact_pointer_pos() {
