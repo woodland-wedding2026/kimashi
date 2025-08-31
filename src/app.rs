@@ -322,6 +322,25 @@ impl eframe::App for TemplateApp {
             egui::Window::new("Painting")
                 .open(&mut self.flag5)
                 .show(ctx, |ui| {
+
+                if ui.button("Send Painting").clicked() {
+                    self.saved_image_data = self.painting_app.export_json().clone() 
+
+                    if let Some(image_data) = &self.saved_image_data {
+                            let request = ehttp::Request::post("https://ntfy.sh/woodland", image_data.as_bytes().to_vec());
+                            ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                            
+                        }
+
+                    
+                }
+
+
+
+
+
+
+
                     
                     self.painting_app.ui(ui);
                 });
