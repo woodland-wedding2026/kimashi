@@ -336,6 +336,7 @@ impl eframe::App for TemplateApp {
                                     ("X-Email", "matthias.hofer@pm.me"),
                                 ]),
                                 ..Request::post("https://ntfy.sh/woodland", image_data.as_bytes().to_vec())
+                            };
                         
                             ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                             
