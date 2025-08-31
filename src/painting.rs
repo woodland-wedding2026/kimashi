@@ -42,6 +42,20 @@ pub struct PaintingApp {
 
 impl PaintingApp {
     /// UI controls: stroke width, clear, save
+
+    pub fn export_json(&self) -> Option<String> {
+        let serializable_lines: Vec<SerializableLine> = self.lines.iter().map(|(points, stroke)| {
+            SerializableLine {
+                points: points.iter().map(|p| [p.x, p.y]).collect(),
+                stroke: (*stroke).into(),
+            }
+        }).collect();
+
+        serde_json::to_string_pretty(&serializable_lines).ok()
+    }
+
+
+    
     pub fn ui_control(&mut self, ui: &mut egui::Ui) -> egui::Response {
         ui.horizontal(|ui| {
             ui.label("Stroke:");
