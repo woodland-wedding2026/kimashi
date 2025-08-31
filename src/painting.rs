@@ -1,8 +1,7 @@
 use egui::{Color32, Pos2, Rect, Sense, Stroke, Ui};
 use egui::emath;
-use serde::{Serialize, Deserialize};
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum Mode {
     Pixel,
     Stroke,
@@ -14,7 +13,7 @@ impl Default for Mode {
     }
 }
 
-#[derive(Default, Serialize, Deserialize)]
+#[derive(Default, serde::Deserialize, serde::Serialize)]
 pub struct PaintingApp {
     // Pixel painting storage: 2D grid of optional colors
     pub pixels: Vec<Vec<Option<Color32>>>,
@@ -51,10 +50,7 @@ impl PaintingApp {
         }
     }
 
-    /// Builds the UI controls and returns true if Save button was clicked
-    pub fn ui_control(&mut self, ui: &mut Ui) -> bool {
-        let mut saved = false;
-
+    pub fn ui_control(&mut self, ui: &mut Ui) -> egui::Response {
         ui.horizontal(|ui| {
             ui.label("Mode:");
             ui.radio_value(&mut self.mode, Mode::Stroke, "Stroke");
@@ -85,19 +81,16 @@ impl PaintingApp {
                 }
             }
 
-            if ui.button("Save Painting").clicked() {
-                self.saved_json = Some(self.save_painting_to_json());
-                saved = true;
+            if ui.button("Save Pixels JSON").clicked() {
+                self.saved_json = Some(self.save_pixels_to_json());
             }
 
-            if ui.button("Load Painting").clicked() {
+            if ui.button("Load Pixels JSON").clicked() {
                 if let Some(json) = self.saved_json.clone() {
-                    self.load_painting_from_json(&json);
+                    self.load_pixels_from_json(&json);
                 }
             }
-        });
-
-        saved
+        }).response
     }
 
     pub fn ui_content(&mut self, ui: &mut Ui) -> egui::Response {
@@ -216,36 +209,17 @@ impl PaintingApp {
         });
     }
 
-    // Serialize both pixels and strokes grid to JSON string
-    pub fn save_painting_to_json(&self) -> String {
-        // Create a new struct to hold both pixels and strokes
-        #[derive(Serialize, Deserialize)]
-        struct PaintingData {
-            pixels: Vec<Vec<Option<Color32>>>,
-            lines: Vec<(Vec<Pos2>, Stroke)>,
-        }
-
-        let painting_data = PaintingData {
-            pixels: self.pixels.clone(),
-            lines: self.lines.clone(),
-        };
-
-        serde_json::to_string(&painting_data).unwrap_or_else(|_| String::new())
+    // Serialize pixels grid to JSON string
+    pub fn save_pixels_to_json(&self) -> String {
+        serde_json::to_string(&self.pixels).unwrap_or_else(|_| String::new())
     }
 
-    // Load both pixels and strokes grid from JSON string
-    pub fn load_painting_from_json(&mut self, json: &str) {
-        #[derive(Serialize, Deserialize)]
-        struct PaintingData {
-            pixels: Vec<Vec<Option<Color32>>>,
-            lines: Vec<(Vec<Pos2>, Stroke)>,
-        }
-
-        if let Ok(loaded) = serde_json::from_str::<PaintingData>(json) {
+    // Load pixels grid from JSON string
+    pub fn load_pixels_from_json(&mut self, json: &str) {
+        if let Ok(loaded) = serde_json::from_str::<Vec<Vec<Option<Color32>>>>(json) {
             // Validate size before overwriting
-            if loaded.pixels.len() == self.canvas_height && loaded.pixels[0].len() == self.canvas_width {
-                self.pixels = loaded.pixels;
-                self.lines = loaded.lines;
+            if loaded.len() == self.canvas_height && loaded[0].len() == self.canvas_width {
+                self.pixels = loaded;
             }
         }
     }
