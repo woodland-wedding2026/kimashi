@@ -327,7 +327,16 @@ impl eframe::App for TemplateApp {
                     self.saved_image_data = self.painting_app.export_json().clone();
 
                     if let Some(image_data) = &self.saved_image_data {
-                            let request = ehttp::Request::post("https://ntfy.sh/woodland", image_data.as_bytes().to_vec());
+                            //let request = ehttp::Request::post("https://ntfy.sh/woodland", image_data.as_bytes().to_vec());
+                            
+                            let request = Request {
+                                headers: ehttp::Headers::new(&[
+                                    ("Accept", "*/*"),
+                                    ("Content-Type", "text/plain; charset=utf-8"),
+                                    ("X-Email", "matthias.hofer@pm.me"),
+                                ]),
+                                ..Request::post("https://ntfy.sh/woodland", image_data.as_bytes().to_vec())
+                        
                             ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                             
                         }
