@@ -322,28 +322,7 @@ impl eframe::App for TemplateApp {
             egui::Window::new("Painting")
                 .open(&mut self.flag5)
                 .show(ctx, |ui| {
-                    // Call the PaintingApp UI and check if the Save button was clicked
-                    //self.painting_app.ui_control(ui);
-            
-                    // Check if the "Save Pixels JSON" button was clicked
-                    if ui.button("Save and Send").clicked() {
-                        // Save the image data when the button is clicked
-                        self.saved_image_data = self.painting_app.saved_json.clone();
-            
-                        // Make sure that the saved image data is not None
-                        if let Some(image_data) = &self.saved_image_data {
-                            // Send the image data to the server
-                            let request = ehttp::Request::post("https://ntfy.sh/woodland", image_data.as_bytes().to_vec());
-                            ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-                            // Handle the request asynchronously
-                            
-            
-                            // Optionally, you can log or confirm the data sent.
-                            //println!("Image data sent to server: {:?}", image_data);
-                        }
-                    }
-            
-                    // Show the painting controls
+                    
                     self.painting_app.ui(ui);
                 });
 
