@@ -1,6 +1,7 @@
 use egui::{Color32, Pos2, Rect, Sense, Stroke, Ui, emath, NumExt};
 use serde::{Serialize, Deserialize};
 
+/// Serializable version of Stroke (egui::Stroke is not serializable)
 #[derive(Serialize, Deserialize)]
 pub struct SerializableStroke {
     pub width: f32,
@@ -25,12 +26,14 @@ impl From<SerializableStroke> for Stroke {
     }
 }
 
+/// Serializable version of a painted line
 #[derive(Serialize, Deserialize)]
 pub struct SerializableLine {
     pub points: Vec<[f32; 2]>,
     pub stroke: SerializableStroke,
 }
 
+/// Main Painting App
 #[derive(Default)]
 pub struct PaintingApp {
     pub lines: Vec<(Vec<Pos2>, Stroke)>,
@@ -38,6 +41,7 @@ pub struct PaintingApp {
 }
 
 impl PaintingApp {
+    /// UI controls: stroke width, clear, save
     pub fn ui_control(&mut self, ui: &mut egui::Ui) -> egui::Response {
         ui.horizontal(|ui| {
             ui.label("Stroke:");
@@ -49,26 +53,12 @@ impl PaintingApp {
             }
 
             if ui.button("Save Painting").clicked() {
-                let serializable_lines: Vec<SerializableLine> = self.lines.iter().map(|(points, stroke)| {
-                    SerializableLine {
-                        points: points.iter().map(|p| [p.x, p.y]).collect(),
-                        stroke: (*stroke).into(),
-                    }
-                }).collect();
-
-                match serde_json::to_string_pretty(&serializable_lines) {
-                    Ok(json) => {
-                        println!("Painting JSON:\n{}", json);
-                        // In a real app: write to file or clipboard
-                    }
-                    Err(err) => {
-                        eprintln!("Failed to serialize painting: {}", err);
-                    }
-                }
+                self.save_to_json();
             }
         }).response
     }
 
+    /// Paint canvas interaction and drawing
     pub fn ui_content(&mut self, ui: &mut Ui) -> egui::Response {
         let (mut response, painter) = ui.allocate_painter(ui.available_size_before_wrap(), Sense::drag());
 
@@ -78,6 +68,7 @@ impl PaintingApp {
         );
         let from_screen = to_screen.inverse();
 
+        // Set default stroke on first frame
         if self.stroke.width == 0.0 {
             self.stroke = Stroke {
                 width: 1.0,
@@ -90,7 +81,7 @@ impl PaintingApp {
             self.lines.push((vec![], self.stroke));
         }
 
-        let (current_line, current_stroke) = self.lines.last_mut().unwrap();
+        let (current_line, _) = self.lines.last_mut().unwrap();
 
         if let Some(pointer_pos) = response.interact_pointer_pos() {
             let canvas_pos = from_screen * pointer_pos;
@@ -117,6 +108,7 @@ impl PaintingApp {
         response
     }
 
+    /// Top-level egui UI entry
     pub fn ui(&mut self, ui: &mut Ui) {
         ui.vertical(|ui| {
             self.ui_control(ui);
@@ -125,5 +117,25 @@ impl PaintingApp {
                 self.ui_content(ui);
             });
         });
+    }
+
+    /// Save current painting as JSON (printed to console)
+    fn save_to_json(&self) {
+        let serializable_lines: Vec<SerializableLine> = self.lines.iter().map(|(points, stroke)| {
+            SerializableLine {
+                points: points.iter().map(|p| [p.x, p.y]).collect(),
+                stroke: (*stroke).into(),
+            }
+        }).collect();
+
+        match serde_json::to_string_pretty(&serializable_lines) {
+            Ok(json) => {
+                println!("Painting JSON:\n{}", json);
+                // Optional: write to file or clipboard
+            }
+            Err(err) => {
+                eprintln!("❌ Failed to serialize painting: {}", err);
+            }
+        }
     }
 }
