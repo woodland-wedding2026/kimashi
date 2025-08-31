@@ -33,7 +33,7 @@ pub struct TemplateApp {
     fractal_clock: FractalClock,
     snake: SnakeGame,
     last_time: f64,
-
+    #[serde(skip)]
     painting_app: PaintingApp,
     saved_image_data: Option<String>,
     
