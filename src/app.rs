@@ -262,6 +262,10 @@ impl eframe::App for TemplateApp {
             let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
             let desired_size = egui::vec2(340.0, 340.0); 
             ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
+            ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
+            ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
+            ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
+            ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
             egui::Window::new("about the location").open(&mut self.flag1).show(ctx, |ui| {
                 ui.label("tents and bungalos, amenities, getting there, ..");                
             });
