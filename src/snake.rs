@@ -50,6 +50,23 @@ impl Default for SnakeGame {
 }
 
 impl SnakeGame {
+
+    pub fn try_change_dir(&mut self, new_dir: Direction) {
+        // Prevent 180-degree turns
+        if match (self.dir, new_dir) {
+            (Direction::Up, Direction::Down) => false,
+            (Direction::Down, Direction::Up) => false,
+            (Direction::Left, Direction::Right) => false,
+            (Direction::Right, Direction::Left) => false,
+            _ => true,
+        } {
+            self.next_dir = new_dir;
+        }
+    }
+
+
+
+    
     pub fn ui(&mut self, ui: &mut Ui, dt: f32) {
         use egui::Key;
 
