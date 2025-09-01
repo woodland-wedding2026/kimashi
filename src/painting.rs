@@ -79,7 +79,10 @@ impl PaintingApp {
         ui.horizontal(|ui| {
             ui.label("Stroke:");
             //ui.add(&mut self.stroke);
-            ui.add(egui::Slider::new(&mut self.stroke.width, 0.5..=10.0).text("px"));
+            let response = ui.add(egui::Slider::new(&mut self.stroke.width, 0.5..=10.0).text("px"));
+            if response.changed() {
+                self.lines.push((vec![], self.stroke));
+            }
             ui.color_edit_button_srgba(&mut self.stroke.color);
             ui.separator();
 
