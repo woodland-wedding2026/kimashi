@@ -324,7 +324,7 @@ impl eframe::App for TemplateApp {
                 .show(ctx, |ui| {
 
                 if ui.button("Send Painting").clicked() {
-                    self.saved_image_data = self.painting_app.export_json().clone();
+                    self.saved_image_data = self.painting_app.export_json(ctx).clone();
 
                     if let Some(image_data) = &self.saved_image_data {
                             let request1 = ehttp::Request::post("https://ntfy.sh/woodland", format!(r#"{}"#, "new image received").as_bytes().to_vec());                        
