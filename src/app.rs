@@ -378,24 +378,23 @@ impl eframe::App for TemplateApp {
             egui::Window::new("Fractal Clock")
                 .open(&mut self.flag7)
                 .resizable(true)
-                .default_width(500.0)
-                .default_height(600.0)
+                .default_width(400.0)
+                .default_height(450.0)
                 .show(ctx, |ui| {
                     ui.label("Fractal Clock Example");
                     ui.separator();
             
                     self.fractal_clock.ui(ui);
             
-                    // Use available size (safer for desktop than full screen)
-                    let mut size = ui.available_size();
+                    ui.add_space(10.0);
             
-                    // Clamp to reasonable max size (desktop safety)
-                    let max_side = 500.0;
-                    let side = size.x.min(size.y).min(max_side); // ← constrain it
+                    // Use available space BEFORE wrapping to avoid height issues
+                    let avail = ui.available_size_before_wrap();
+                    let side = avail.x.min(avail.y); // keep it square
             
-                    // Center the canvas horizontally
-                    let horizontal_margin = (size.x - side).max(0.0) / 2.0;
-                    ui.add_space(horizontal_margin);
+                    // Horizontally center the canvas
+                    let horiz_margin = (avail.x - side).max(0.0) / 2.0;
+                    ui.add_space(horiz_margin);
             
                     let square_size = egui::vec2(side, side);
                     let (rect, _response) = ui.allocate_exact_size(square_size, egui::Sense::hover());
@@ -404,6 +403,7 @@ impl eframe::App for TemplateApp {
                     let time = ctx.input(|i| i.time);
                     self.fractal_clock.paint(&painter, rect, time);
                 });
+
 
             
 
