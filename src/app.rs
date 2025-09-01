@@ -329,7 +329,7 @@ impl eframe::App for TemplateApp {
             //if ui.button("⬅️").clicked() {
             //    self.snake.next_dir = Direction::Left;
             //}
-            if ui.add(egui::Button::new("⬅️")..min_size(egui::vec2(40.0, 40.0))).clicked() {
+            if ui.add(egui::Button::new("⬅️").min_size(egui::vec2(40.0, 40.0))).clicked() {
                 self.snake.next_dir = Direction::Left;
             }
             if ui.button("⬆️").clicked() {
