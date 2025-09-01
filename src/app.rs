@@ -379,15 +379,21 @@ impl eframe::App for TemplateApp {
                 ui.label("Fractal Clock Example");
             ui.separator();
 
-            let desired_size = egui::vec2(400.0, 400.0);
             self.fractal_clock.ui(ui);
-            
+
+            // Get the available size and constrain to a square
             let available_size = ui.available_size();
-            //let (rect, _response) = ui.allocate_exact_size(available_size, egui::Sense::hover());
-            let (rect, _response) = ui.allocate_exact_size(desired_size, egui::Sense::hover());
+            let side = available_size.x.min(available_size.y);
+            let square_size = egui::vec2(side, side);
+            
+            // Center the clock horizontally by adding left/right space
+            ui.add_space((available_size.x - side) / 2.0);
+            
+            // Allocate square painter area
+            let (rect, _response) = ui.allocate_exact_size(square_size, egui::Sense::hover());
             let painter = ui.painter_at(rect);
-    
-            let time = ctx.input(|i| i.time); // egui's built-in time
+            
+            let time = ctx.input(|i| i.time);
             self.fractal_clock.paint(&painter, rect, time);
 
             });
