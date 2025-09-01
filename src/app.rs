@@ -326,15 +326,15 @@ impl eframe::App for TemplateApp {
 
             
             ui.horizontal(|ui| {
-            ui.add_space(180.0);
-            if ui.add(egui::Button::new("⬆️").min_size(egui::vec2(40.0, 40.0))).clicked() {
+            ui.add_space(175.0);
+            if ui.add(egui::Button::new("⬆️").min_size(egui::vec2(50.0, 50.0))).clicked() {
                 self.snake.try_change_dir(Direction::Up);
             }
             });
             ui.add_space(8.0);
             ui.horizontal(|ui| {
-            ui.add_space(125.0);
-            if ui.add(egui::Button::new("⬅️").min_size(egui::vec2(40.0, 40.0))).clicked() {
+            ui.add_space(105.0);
+            if ui.add(egui::Button::new("⬅️").min_size(egui::vec2(50.0, 50.0))).clicked() {
                 self.snake.try_change_dir(Direction::Left);
             }
             ui.add_space(10.0);
@@ -342,14 +342,14 @@ impl eframe::App for TemplateApp {
                 self.snake.reset(); // your existing restart logic
             }
             ui.add_space(10.0);
-            if ui.add(egui::Button::new("➡️").min_size(egui::vec2(40.0, 40.0))).clicked() {
+            if ui.add(egui::Button::new("➡️").min_size(egui::vec2(50.0, 50.0))).clicked() {
                 self.snake.try_change_dir(Direction::Right);
             }    
             });
             ui.add_space(8.0);
             ui.horizontal(|ui| {
-            ui.add_space(180.0);
-            if ui.add(egui::Button::new("⬇️").min_size(egui::vec2(40.0, 40.0))).clicked() {
+            ui.add_space(175.0);
+            if ui.add(egui::Button::new("⬇️").min_size(egui::vec2(50.0, 50.0))).clicked() {
                 self.snake.try_change_dir(Direction::Down);
             }
             });
