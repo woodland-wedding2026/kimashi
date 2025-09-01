@@ -332,25 +332,24 @@ impl eframe::App for TemplateApp {
             self.snake.ui(ui, dt);
 
             ui.horizontal(|ui| {
-            //if ui.button("⬅️").clicked() {
-            //    self.snake.next_dir = Direction::Left;
-            //}
+            
             if ui.add(egui::Button::new("⬅️").min_size(egui::vec2(40.0, 40.0))).clicked() {
                 self.snake.next_dir = Direction::Left;
             }
-            if ui.button("⬆️").clicked() {
+            if ui.add(egui::Button::new("⬆️").min_size(egui::vec2(40.0, 40.0))).clicked() {
                 self.snake.next_dir = Direction::Up;
             }
-            if ui.button("⬇️").clicked() {
+            if ui.add(egui::Button::new("⬇️").min_size(egui::vec2(40.0, 40.0))).clicked() {
                 self.snake.next_dir = Direction::Down;
             }
-            if ui.button("➡️").clicked() {
+            if ui.add(egui::Button::new("➡️").min_size(egui::vec2(40.0, 40.0))).clicked() {
                 self.snake.next_dir = Direction::Right;
             }
-            if ui.button("🔁 Restart").clicked() {
+            
+            if ui.button("🔁 R").clicked() {
                 self.snake.reset(); // your existing restart logic
             }
-        });
+            });
             });
 
             egui::Window::new("fractal clock").open(&mut self.flag7).show(ctx, |ui| {
