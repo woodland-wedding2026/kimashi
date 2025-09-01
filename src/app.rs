@@ -333,7 +333,7 @@ impl eframe::App for TemplateApp {
             });
             ui.add_space(8.0);
             ui.horizontal(|ui| {
-            ui.add_space(105.0);
+            ui.add_space(115.0);
             if ui.add(egui::Button::new("⬅️").min_size(egui::vec2(50.0, 50.0))).clicked() {
                 self.snake.try_change_dir(Direction::Left);
             }
