@@ -253,59 +253,7 @@ impl eframe::App for TemplateApp {
 
             
         egui::CentralPanel::default().show(ctx, |ui| {
-
-            
-            //self.painting_app.ui(ui);
-            
-
-
-            
-            //if ui.input(|i| i.key_pressed(egui::Key::R)) {
-            //    self.snake.reset();
-            //}
-
-            //self.snake.ui(ui, dt);
-
-            //ui.horizontal(|ui| {
-            //if ui.button("⬅️").clicked() {
-            //    self.snake.next_dir = Direction::Left;
-            //}
-            //if ui.button("⬆️").clicked() {
-            //    self.snake.next_dir = Direction::Up;
-           // }
-            //if ui.button("⬇️").clicked() {
-            //    self.snake.next_dir = Direction::Down;
-            //}
-            //if ui.button("➡️").clicked() {
-            //    self.snake.next_dir = Direction::Right;
-            //}
-            //if ui.button("🔁 Restart").clicked() {
-            //    self.snake.reset(); // your existing restart logic
-            //}
-        //});
-
-
-            
-
-            //ui.label("Fractal Clock Example");
-            //ui.separator();
-
-            //let desired_size = egui::vec2(400.0, 400.0);
-            //self.fractal_clock.ui(ui);
-            
-            //let available_size = ui.available_size();
-            ////let (rect, _response) = ui.allocate_exact_size(available_size, egui::Sense::hover());
-            //let (rect, _response) = ui.allocate_exact_size(desired_size, egui::Sense::hover());
-            //let painter = ui.painter_at(rect);
-    
-            //let time = ctx.input(|i| i.time); // egui's built-in time
-            //self.fractal_clock.paint(&painter, rect, time);
-
-
-
-
-
-
+            egui::ScrollArea::vertical().show(ui, |ui| {
 
             
             // The central panel the region left after adding TopPanel's and SidePanel's
@@ -446,28 +394,7 @@ impl eframe::App for TemplateApp {
                 ui.label(format!("you sent {} messages", self.value));
                 ui.hyperlink_to("see messages", "https://ntfy.sh/woodland");
             });
-            //ui.horizontal(|ui| {
-            //    ui.label("This is how much I love you: ");
-            //    ui.text_edit_singleline(&mut self.label);
-            //    
-            //});
-
-            //ui.add(egui::Slider::new(&mut self.value, 0.0..=10.0).text("value"));
-            //if ui.button("Increment").clicked() {
-            //    self.value += 1.0;
-            //}
-
-            //ui.separator();
-
-            //ui.add(egui::github_link_file!(
-            //    "https://github.com/emilk/eframe_template/blob/main/",
-            //    "Source code."
-            //));
-
-            //ui.with_layout(egui::Layout::bottom_up(egui::Align::LEFT), |ui| {
-            //    powered_by_egui_and_eframe(ui);
-            //    egui::warn_if_debug_build(ui);
-            //});
+           });
         });
         ctx.request_repaint();
         
@@ -477,16 +404,3 @@ impl eframe::App for TemplateApp {
     }
 }
 
-//fn powered_by_egui_and_eframe(ui: &mut egui::Ui) {
-//    ui.horizontal(|ui| {
-//        ui.spacing_mut().item_spacing.x = 0.0;
-//        ui.label("Powered by ");
-//        ui.hyperlink_to("egui", "https://github.com/emilk/egui");
-//        ui.label(" and ");
-//        ui.hyperlink_to(
-//            "eframe",
-//            "https://github.com/emilk/egui/tree/master/crates/eframe",
-//        );
-//        ui.label(".");
-//    });
-//}
