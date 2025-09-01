@@ -78,7 +78,8 @@ impl PaintingApp {
     pub fn ui_control(&mut self, ui: &mut egui::Ui) -> egui::Response {
         ui.horizontal(|ui| {
             ui.label("Stroke:");
-            ui.add(&mut self.stroke);
+            //ui.add(&mut self.stroke);
+            ui.add(egui::Slider::new(&mut self.stroke.width, 0.5..=10.0).text("px"));
             ui.separator();
 
             if ui.button("Clear Painting").clicked() {
