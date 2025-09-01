@@ -151,6 +151,6 @@ impl PaintingApp {
         });
     }
 
-    /// Save current painting as JSON (printed to console)
+    
     
 }
