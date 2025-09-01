@@ -261,11 +261,17 @@ impl eframe::App for TemplateApp {
             egui_extras::install_image_loaders(ctx);
             let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
             let desired_size = egui::vec2(340.0, 340.0); 
+            let collage2 = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
+            let desired_size2 = egui::vec2(340.0, 340.0); 
+            let collage3 = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
+            let desired_size3 = egui::vec2(340.0, 340.0); 
+            let collage4 = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
+            let desired_size4 = egui::vec2(340.0, 340.0); 
             ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
-            ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
-            ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
-            ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
-            ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
+            ui.add(egui::Image::new(collage2).fit_to_exact_size(desired_size2));
+            ui.add(egui::Image::new(collage3).fit_to_exact_size(desired_size3));
+            ui.add(egui::Image::new(collage4).fit_to_exact_size(desired_size4));
+            
             egui::Window::new("about the location").open(&mut self.flag1).show(ctx, |ui| {
                 ui.label("tents and bungalos, amenities, getting there, ..");                
             });
