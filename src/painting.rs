@@ -102,7 +102,7 @@ impl PaintingApp {
         let from_screen = to_screen.inverse();
 
         // Set default stroke on first frame
-        if self.stroke.width == 0.0 {
+        if self.stroke.width == 0.5 {
             self.stroke = Stroke {
                 width: 1.0,
                 color: Color32::from_rgb(255, 255, 0),
