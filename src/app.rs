@@ -375,28 +375,32 @@ impl eframe::App for TemplateApp {
             
             });
 
-            egui::Window::new("fractal clock").open(&mut self.flag7).show(ctx, |ui| {
-                ui.label("Fractal Clock Example");
-            ui.separator();
-
-            self.fractal_clock.ui(ui);
-
-            // Get the available size and constrain to a square
-            let available_size = ui.available_size();
-            let side = available_size.x.min(available_size.y);
-            let square_size = egui::vec2(side, side);
+            egui::Window::new("fractal clock")
+                .open(&mut self.flag7)
+                .resizable(true)
+                .show(ctx, |ui| {
+                    ui.label("Fractal Clock Example");
+                    ui.separator();
             
-            // Center the clock horizontally by adding left/right space
-            ui.add_space((available_size.x - side) / 2.0);
+                    self.fractal_clock.ui(ui);
             
-            // Allocate square painter area
-            let (rect, _response) = ui.allocate_exact_size(square_size, egui::Sense::hover());
-            let painter = ui.painter_at(rect);
+                    // Use screen size to support mobile fullscreen sizing
+                    let screen_size = ctx.screen_rect().size();
+                    let side = screen_size.x.min(screen_size.y) * 0.9; // optional: leave a margin
+                    let square_size = egui::vec2(side, side);
             
-            let time = ctx.input(|i| i.time);
-            self.fractal_clock.paint(&painter, rect, time);
-
-            });
+                    // Center horizontally
+                    let available_width = ui.available_width();
+                    let horizontal_margin = (available_width - side).max(0.0) / 2.0;
+                    ui.add_space(horizontal_margin);
+            
+                    let (rect, _response) = ui.allocate_exact_size(square_size, egui::Sense::hover());
+                    let painter = ui.painter_at(rect);
+            
+                    let time = ctx.input(|i| i.time);
+                    self.fractal_clock.paint(&painter, rect, time);
+                });
+            
 
 
 
