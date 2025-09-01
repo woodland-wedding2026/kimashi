@@ -326,16 +326,19 @@ impl eframe::App for TemplateApp {
             self.snake.ui(ui, dt);
 
             ui.horizontal(|ui| {
-            if ui.button("⬅️").min_size(egui::vec2(40.0, 40.0))).clicked() {
+            //if ui.button("⬅️").clicked() {
+            //    self.snake.next_dir = Direction::Left;
+            //}
+            if ui.add(egui::Button::new("⬅️")..min_size(egui::vec2(40.0, 40.0))).clicked() {
                 self.snake.next_dir = Direction::Left;
             }
-            if ui.button("⬆️").min_size(egui::vec2(40.0, 40.0))).clicked() {
+            if ui.button("⬆️").clicked() {
                 self.snake.next_dir = Direction::Up;
             }
-            if ui.button("⬇️").min_size(egui::vec2(40.0, 40.0))).clicked() {
+            if ui.button("⬇️").clicked() {
                 self.snake.next_dir = Direction::Down;
             }
-            if ui.button("➡️").min_size(egui::vec2(40.0, 40.0))).clicked() {
+            if ui.button("➡️").clicked() {
                 self.snake.next_dir = Direction::Right;
             }
             if ui.button("🔁 Restart").clicked() {
