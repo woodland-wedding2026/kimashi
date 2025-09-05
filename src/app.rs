@@ -7,6 +7,11 @@ use std::sync::Arc;
 use eframe::egui;
 use egui::{Vec2, Widget};
 use three_d::*;
+use egui_glow;
+use eframe::{Renderer, Frame}; // Renderer, Frame
+use egui_glow::egui_winit::glow; // for glow integration, if applicable
+use egui::Frame as EguiFrame;
+use three_d::Color;
 
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
@@ -44,10 +49,14 @@ pub struct TemplateApp {
 
 
     rotation: f32,
+    #[serde(skip_serializing, skip_deserializing)]
     gl: Option<Arc<glow::Context>>,
     renderer: Option<Renderer>,
+    #[serde(skip_serializing, skip_deserializing)]
     mesh: Option<Mesh>,
+    #[serde(skip_serializing, skip_deserializing)]
     material: Option<ColorMaterial>,
+    #[serde(skip_serializing, skip_deserializing)]
     camera: Option<Camera>,
     
 }
@@ -163,7 +172,7 @@ impl eframe::App for TemplateApp {
     
     
     /// Called each time the UI needs repainting, which may be many times per second.
-    fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
+    fn update(&mut self, ctx: &egui::Context, frame: &mut eframe::Frame) {
 
 
                
@@ -296,7 +305,7 @@ impl eframe::App for TemplateApp {
                         let gl = glow_ctx.clone();
                         let renderer = Renderer::new(&gl).ok();
                         let cpu_mesh = CpuMesh::cube();
-                        let mesh = Mesh::new(&gl, &cpu_mesh).ok();
+                        let mesh = Mesh::new(&gl, &cpu_mesh).unwrap();
                         let material = ColorMaterial {
                             color: Color::new(0.2, 0.8, 0.3, 1.0),
                             ..Default::default()
@@ -344,7 +353,7 @@ impl eframe::App for TemplateApp {
                             let model_matrix =
                                 Mat4::from_angle_y(radians(rotation));
 
-                            frame.clear(ClearState::color_and_depth(0.1, 0.1, 0.1, 1.0));
+                            frame.clear(ClearState::color_and_depth(0.1, 0.1, 0.1, 1.0, 1.0));
                             mesh.render(&material, &camera, &model_matrix);
                             frame.render();
                         })),
