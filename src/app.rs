@@ -4,9 +4,9 @@ use crate::snake::Direction;
 use crate::painting::PaintingApp;
 
 use std::sync::Arc;
-use eframe::{egui, glow};
+use eframe::egui;
+use egui::{Vec2, Widget};
 use three_d::*;
-
 
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
@@ -44,11 +44,11 @@ pub struct TemplateApp {
 
 
     rotation: f32,
-    context: Option<Arc<glow::Context>>,
+    gl: Option<Arc<glow::Context>>,
     renderer: Option<Renderer>,
-    cpu_mesh: Option<CpuMesh>,
+    mesh: Option<Mesh>,
     material: Option<ColorMaterial>,
-    camera: Camera,
+    camera: Option<Camera>,
     
 }
 
@@ -85,22 +85,11 @@ impl Default for TemplateApp {
 
 
             rotation: 0.0,
-            context: None,
+            gl: None,
             renderer: None,
-            cpu_mesh: Some(CpuMesh::cube()), // A simple cube
-            material: Some(ColorMaterial {
-                color: Color::new(0.2, 0.8, 0.3, 1.0),
-                ..Default::default()
-            }),
-            camera: Camera::new_perspective(
-                Viewport::new_at_origo(800, 600),
-                vec3(2.0, 2.0, 2.0),
-                vec3(0.0, 0.0, 0.0),
-                vec3(0.0, 1.0, 0.0),
-                degrees(45.0),
-                0.1,
-                1000.0,
-            ),
+            mesh: None,
+            material: None,
+            camera: None,
             
             
             
@@ -177,76 +166,7 @@ impl eframe::App for TemplateApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
 
 
-        egui::Window::new("3D View").show(ctx, |ui| {
-            // Reserve space
-            let size = egui::vec2(400.0, 300.0);
-            let (rect, _) = ui.allocate_exact_size(size, egui::Sense::hover());
-
-            // Only draw when visible
-            if !ui.is_rect_visible(rect) {
-                return;
-            }
-
-            // Lazily init OpenGL context + renderer
-            if self.context.is_none() {
-                if let Some(glow_ctx) = _frame.gl() {
-                    let gl = glow_ctx.clone();
-                    let renderer = Renderer::new(&gl).ok();
-
-                    self.context = Some(gl);
-                    self.renderer = renderer;
-                }
-            }
-
-            if let (Some(gl), Some(renderer)) = (&self.context, &mut self.renderer) {
-                let mesh = Mesh::new(gl, &self.cpu_mesh.as_ref().unwrap()).unwrap();
-                let mat = self.material.as_ref().unwrap();
-
-                let callback = egui::epaint::Primitive::Callback(egui::paint::Callback {
-                    rect,
-                    callback: Arc::new(egui_glow::CallbackFn::new({
-                        let gl = gl.clone();
-                        let mut camera = self.camera.clone();
-                        let rotation = self.rotation;
-
-                        move |_info, painter| {
-                            let frame_input = FrameInput {
-                                viewport: Viewport::new_at_origo(
-                                    rect.width() as u32,
-                                    rect.height() as u32,
-                                ),
-                                ..Default::default()
-                            };
-
-                            let mut frame = Frame::new(frame_input, &gl);
-
-                            // Update rotation
-                            let model_mat = Mat4::from_angle_y(radians(rotation));
-                            mesh.render(&mat, &camera, &model_mat);
-
-                            frame.clear(ClearState::color_and_depth(0.1, 0.1, 0.1, 1.0));
-                            frame.render();
-                        }
-                    })),
-                });
-
-                ui.painter().add(callback);
-                self.rotation += 0.01;
-            }
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-        
+               
 
 
         let time = ctx.input(|i| i.time);
@@ -358,6 +278,103 @@ impl eframe::App for TemplateApp {
             
         egui::CentralPanel::default().show(ctx, |ui| {
             egui::ScrollArea::vertical().show(ui, |ui| {
+
+
+
+            egui::Window::new("3D View").show(ui.ctx(), |ui| {
+                let desired_size = Vec2::new(400.0, 300.0);
+                let (rect, _response) =
+                    ui.allocate_exact_size(desired_size, egui::Sense::hover());
+
+                if !ui.is_rect_visible(rect) {
+                    return;
+                }
+
+                // Lazily initialize GL + three-d objects
+                if self.gl.is_none() {
+                    if let Some(glow_ctx) = frame.gl() {
+                        let gl = glow_ctx.clone();
+                        let renderer = Renderer::new(&gl).ok();
+                        let cpu_mesh = CpuMesh::cube();
+                        let mesh = Mesh::new(&gl, &cpu_mesh).ok();
+                        let material = ColorMaterial {
+                            color: Color::new(0.2, 0.8, 0.3, 1.0),
+                            ..Default::default()
+                        };
+                        let camera = Camera::new_perspective(
+                            Viewport::new_at_origo(rect.width() as u32, rect.height() as u32),
+                            vec3(2.0, 2.0, 2.0),
+                            vec3(0.0, 0.0, 0.0),
+                            vec3(0.0, 1.0, 0.0),
+                            degrees(45.0),
+                            0.1,
+                            100.0,
+                        );
+
+                        self.gl = Some(gl);
+                        self.renderer = renderer;
+                        self.mesh = mesh;
+                        self.material = Some(material);
+                        self.camera = Some(camera);
+                    }
+                }
+
+                if let (Some(gl), Some(renderer), Some(mesh), Some(material), Some(camera)) =
+                    (&self.gl, &mut self.renderer, &self.mesh, &self.material, &mut self.camera)
+                {
+                    let gl = gl.clone();
+                    let mesh = mesh.clone();
+                    let material = material.clone();
+                    let mut camera = camera.clone();
+                    let rotation = self.rotation;
+                    let callback = egui::PaintCallback {
+                        rect,
+                        callback: std::sync::Arc::new(egui_glow::CallbackFn::new(move |_info, painter| {
+                            let mut frame = Frame::new(
+                                FrameInput {
+                                    viewport: Viewport::new_at_origo(
+                                        rect.width() as u32,
+                                        rect.height() as u32,
+                                    ),
+                                    ..Default::default()
+                                },
+                                &gl,
+                            );
+
+                            let model_matrix =
+                                Mat4::from_angle_y(radians(rotation));
+
+                            frame.clear(ClearState::color_and_depth(0.1, 0.1, 0.1, 1.0));
+                            mesh.render(&material, &camera, &model_matrix);
+                            frame.render();
+                        })),
+                    };
+
+                    // Queue paint callback
+                    ui.painter().add(egui::Shape::Callback(callback));
+
+                    // Rotate the cube
+                    self.rotation += 0.01;
+                }
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
 
             
             // The central panel the region left after adding TopPanel's and SidePanel's
