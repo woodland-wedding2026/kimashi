@@ -36,6 +36,14 @@ pub struct TemplateApp {
     #[serde(skip)]
     painting_app: PaintingApp,
     saved_image_data: Option<String>,
+
+
+    rotation: f32,
+    context: Option<Arc<glow::Context>>,
+    renderer: Option<Renderer>,
+    cpu_mesh: Option<CpuMesh>,
+    material: Option<ColorMaterial>,
+    camera: Camera,
     
 }
 
@@ -69,6 +77,25 @@ impl Default for TemplateApp {
 
             painting_app: PaintingApp::default(),
             saved_image_data: None,
+
+
+            rotation: 0.0,
+            context: None,
+            renderer: None,
+            cpu_mesh: Some(CpuMesh::cube()), // A simple cube
+            material: Some(ColorMaterial {
+                color: Color::new(0.2, 0.8, 0.3, 1.0),
+                ..Default::default()
+            }),
+            camera: Camera::new_perspective(
+                Viewport::new_at_origo(800, 600),
+                vec3(2.0, 2.0, 2.0),
+                vec3(0.0, 0.0, 0.0),
+                vec3(0.0, 1.0, 0.0),
+                degrees(45.0),
+                0.1,
+                1000.0,
+            ),
             
             
             
@@ -143,6 +170,78 @@ impl eframe::App for TemplateApp {
     
     /// Called each time the UI needs repainting, which may be many times per second.
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
+
+
+        egui::Window::new("3D View").show(ctx, |ui| {
+            // Reserve space
+            let size = egui::vec2(400.0, 300.0);
+            let (rect, _) = ui.allocate_exact_size(size, egui::Sense::hover());
+
+            // Only draw when visible
+            if !ui.is_rect_visible(rect) {
+                return;
+            }
+
+            // Lazily init OpenGL context + renderer
+            if self.context.is_none() {
+                if let Some(glow_ctx) = _frame.gl() {
+                    let gl = glow_ctx.clone();
+                    let renderer = Renderer::new(&gl).ok();
+
+                    self.context = Some(gl);
+                    self.renderer = renderer;
+                }
+            }
+
+            if let (Some(gl), Some(renderer)) = (&self.context, &mut self.renderer) {
+                let mesh = Mesh::new(gl, &self.cpu_mesh.as_ref().unwrap()).unwrap();
+                let mat = self.material.as_ref().unwrap();
+
+                let callback = egui::epaint::Primitive::Callback(egui::paint::Callback {
+                    rect,
+                    callback: Arc::new(egui_glow::CallbackFn::new({
+                        let gl = gl.clone();
+                        let mut camera = self.camera.clone();
+                        let rotation = self.rotation;
+
+                        move |_info, painter| {
+                            let frame_input = FrameInput {
+                                viewport: Viewport::new_at_origo(
+                                    rect.width() as u32,
+                                    rect.height() as u32,
+                                ),
+                                ..Default::default()
+                            };
+
+                            let mut frame = Frame::new(frame_input, &gl);
+
+                            // Update rotation
+                            let model_mat = Mat4::from_angle_y(radians(rotation));
+                            mesh.render(&mat, &camera, &model_mat);
+
+                            frame.clear(ClearState::color_and_depth(0.1, 0.1, 0.1, 1.0));
+                            frame.render();
+                        }
+                    })),
+                });
+
+                ui.painter().add(callback);
+                self.rotation += 0.01;
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
 
         let time = ctx.input(|i| i.time);
