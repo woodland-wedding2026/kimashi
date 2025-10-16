@@ -19,6 +19,8 @@ pub struct TemplateApp {
     flag5: bool,
     flag6: bool,
     flag7: bool,
+    flag8: bool,
+    flag9: bool,
     value: i32,
     user_input: String,
     password_flag: bool,
@@ -31,6 +33,8 @@ pub struct TemplateApp {
     button5: String,
     button6: String,
     button7: String,
+    button8: String,
+    button9: String,
     #[serde(skip)]
     fractal_clock: FractalClock,
     snake: SnakeGame,
@@ -39,7 +43,31 @@ pub struct TemplateApp {
     painting_app: PaintingApp,
     saved_image_data: Option<String>,
 
+    entxt1: String,
+    entxt2: String,
+    entxt3: String,
+    entxt4: String,
+    entxt5: String,
+    entxt6: String,
+    entxt7: String,
 
+    detxt1: String,
+    detxt2: String,
+    detxt3: String,
+    detxt4: String,
+    detxt5: String,
+    detxt6: String,
+    detxt7: String,
+
+    w1: String,
+    w2: String,
+    w3: String,
+    w4: String,
+    w5: String,
+    w6: String,
+    w7: String,
+    w8: String,
+    w9: String,
     
 }
 
@@ -56,6 +84,8 @@ impl Default for TemplateApp {
             flag5: false,
             flag6: false,
             flag7: false,
+            flag8: false,
+            flag9: false,
             user_input: "type message..".to_owned(),
             password_flag: true,
             password_string: "type password".to_owned(),
@@ -64,9 +94,11 @@ impl Default for TemplateApp {
             button2: "button2".to_owned(),
             button3: "button3".to_owned(),
             button4: "button4".to_owned(),
-            button5: "button2".to_owned(),
-            button6: "button3".to_owned(),
-            button7: "button4".to_owned(),
+            button5: "button5".to_owned(),
+            button6: "button6".to_owned(),
+            button7: "button7".to_owned(),
+            button8: "button8".to_owned(),
+            button9: "button9".to_owned(),
             fractal_clock: FractalClock::default(),
             snake: SnakeGame::default(),
             last_time: 0.0,
@@ -75,7 +107,32 @@ impl Default for TemplateApp {
             saved_image_data: None,
 
 
-           
+            entxt1: "tbf".to_owned(),
+            entxt2: "tbf".to_owned(),
+            entxt3: "tbf".to_owned(),
+            entxt4: "tbf".to_owned(),
+            entxt5: "tbf".to_owned(),
+            entxt6: "tbf".to_owned(),
+            entxt7: "tbf".to_owned(),
+        
+            detxt1: "tbf".to_owned(),
+            detxt2: "tbf".to_owned(),
+            detxt3: "tbf".to_owned(),
+            detxt4: "tbf".to_owned(),
+            detxt5: "tbf".to_owned(),
+            detxt6: "tbf".to_owned(),
+            detxt7: "tbf".to_owned(),
+
+
+            w1: "tbf".to_owned(),
+            w2: "tbf".to_owned(),
+            w3: "tbf".to_owned(),
+            w4: "tbf".to_owned(),
+            w5: "tbf".to_owned(),
+            w6: "tbf".to_owned(),
+            w7: "tbf".to_owned(),
+            w8: "tbf".to_owned(),
+            w9: "tbf".to_owned(),
             
             
             
@@ -175,6 +232,11 @@ impl eframe::App for TemplateApp {
         else {self.button6 = "spiel Snake".to_owned()}
         if self.language_flag == true {self.button7 = "fractal clock".to_owned()}
         else {self.button7 = "Fraktaluhr".to_owned()}
+
+        if self.language_flag == true {self.button8 = "dress code".to_owned()}
+        else {self.button8 = "Dresscode".to_owned()}
+        if self.language_flag == true {self.button9 = "xzy".to_owned()}
+        else {self.button9 = "XZY".to_owned()}
         
 
         if self.password_flag == true {
@@ -204,7 +266,7 @@ impl eframe::App for TemplateApp {
                     ui.add_space(16.0);
                 }
                 egui::widgets::global_theme_preference_buttons(ui);
-                if ui.button("Deutsch ⇄ English").clicked() {
+                if ui.button("Deutsch &#x21C4 English").clicked() {
                 if self.language_flag == true {self.language_flag = false;}
                 else {self.language_flag = true;}
             }
@@ -241,7 +303,16 @@ impl eframe::App for TemplateApp {
             if ui.button(self.button7.clone()).clicked() {
                 if self.flag7 == true {self.flag7 = false;}
                 else {self.flag7 = true;}
+            } 
+            if ui.button(self.button8.clone()).clicked() {
+                if self.flag8 == true {self.flag8 = false;}
+                else {self.flag8 = true;}
             }  
+            if ui.button(self.button9.clone()).clicked() {
+                if self.flag9 == true {self.flag9 = false;}
+                else {self.flag9 = true;}
+            }  
+
 
 
 
