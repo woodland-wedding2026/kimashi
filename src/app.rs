@@ -266,7 +266,7 @@ impl eframe::App for TemplateApp {
                     ui.add_space(16.0);
                 }
                 egui::widgets::global_theme_preference_buttons(ui);
-                if ui.button("Deutsch &#x21C4 English").clicked() {
+                if ui.button("Deutsch ⇄ English").clicked() {
                 if self.language_flag == true {self.language_flag = false;}
                 else {self.language_flag = true;}
             }
