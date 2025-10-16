@@ -348,8 +348,8 @@ impl eframe::App for TemplateApp {
             
             egui::Window::new(self.button1.clone()).open(&mut self.flag1).show(ctx, |ui| {
 
-                if self.language_flag == true {ui.label(self.entxt1.clone()}
-                else {ui.label(self.detxt1.clone()}
+                if self.language_flag == true {ui.label(self.entxt1.clone())}
+                else {ui.label(self.detxt1.clone())}
                 //ui.label("tents and bungalos, amenities, getting there, ..");
 
 
