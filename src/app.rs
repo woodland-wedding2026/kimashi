@@ -217,26 +217,26 @@ impl eframe::App for TemplateApp {
         self.last_time = time;
         
 
-        if self.language_flag == true {self.button1 = "about location".to_owned()}
-        else {self.button1 = "der Ort".to_owned()}
-        if self.language_flag == true {self.button2 = "weekend overview".to_owned()}
-        else {self.button2 = "der Plan".to_owned()}
-        if self.language_flag == true {self.button3 = "help wanted".to_owned()}
-        else {self.button3 = "helfende Hände".to_owned()}
-        if self.language_flag == true {self.button4 = "contact us".to_owned()}
-        else {self.button4 = "Kontakt".to_owned()}
+        if self.language_flag == true {self.button1 = "getting there".to_owned()}
+        else {self.button1 = "Anfahrt".to_owned()}
+        if self.language_flag == true {self.button2 = "schedule".to_owned()}
+        else {self.button2 = "Ablauf".to_owned()}
+        if self.language_flag == true {self.button3 = "presents".to_owned()}
+        else {self.button3 = "Geschenke".to_owned()}
+        if self.language_flag == true {self.button4 = "help wanted".to_owned()}
+        else {self.button4 = "helfende Hände".to_owned()}
 
         if self.language_flag == true {self.button5 = "painting".to_owned()}
         else {self.button5 = "malen".to_owned()}
         if self.language_flag == true {self.button6 = "play snake".to_owned()}
-        else {self.button6 = "spiel Snake".to_owned()}
+        else {self.button6 = "Snake spielen".to_owned()}
         if self.language_flag == true {self.button7 = "fractal clock".to_owned()}
         else {self.button7 = "Fraktaluhr".to_owned()}
 
         if self.language_flag == true {self.button8 = "dress code".to_owned()}
         else {self.button8 = "Dresscode".to_owned()}
-        if self.language_flag == true {self.button9 = "xzy".to_owned()}
-        else {self.button9 = "XZY".to_owned()}
+        if self.language_flag == true {self.button9 = "contact".to_owned()}
+        else {self.button9 = "Kontakt".to_owned()}
         
 
         if self.password_flag == true {
@@ -266,7 +266,7 @@ impl eframe::App for TemplateApp {
                     ui.add_space(16.0);
                 }
                 egui::widgets::global_theme_preference_buttons(ui);
-                if ui.button("Deutsch ⇄ English").clicked() {
+                if ui.button("Deutsch ⬌️ English").clicked() {
                 if self.language_flag == true {self.language_flag = false;}
                 else {self.language_flag = true;}
             }
@@ -346,8 +346,15 @@ impl eframe::App for TemplateApp {
             ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
             
             
-            egui::Window::new("about the location").open(&mut self.flag1).show(ctx, |ui| {
-                ui.label("tents and bungalos, amenities, getting there, ..");                
+            egui::Window::new(self.button1.clone()).open(&mut self.flag1).show(ctx, |ui| {
+
+                if self.language_flag == true {ui.label(self.entxt1.clone()}
+                else {ui.label(self.detxt1.clone()}
+                //ui.label("tents and bungalos, amenities, getting there, ..");
+
+
+
+                
             });
 
 
