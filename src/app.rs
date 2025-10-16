@@ -99,22 +99,7 @@ impl Default for TemplateApp {
             saved_image_data: None,
 
 
-            entxt1: "You can reach the venue in all kinds of ways: by public transport, your own or a rented car, or by taxi/Uber. In terms of both cost and travel time, the options are closer than you might think. Here's an overview:
-
-                A bit complicated with public transport:
-                Around 2.5 hours from Berlin Ostkreuz via regional train and two buses to Chossewitz, then a 20-minute walk (1.5 km).
-                Cost: approx. 15 euros per person.
-                
-                TAXI or UBER:
-                If you book a large taxi or Uber that fits 6–8 people, the cost is about 25–30 euros per person.
-                Duration: approx. 1.5 hours.
-                
-                CAR:
-                Duration: approx. 1.5 hours, with parking available directly at the venue.
-                Renting a car for 3 days for 4–5 people leads to a cost of about 50 euros per person for the round trip, including fuel. Important: mind the exact route: https://maps.app.goo.gl/WtrCENyrHQ23ziUL9 
-                
-                HELICOPTER: 
-                kind of unaffordable. However, here the link to the classic helicopter game:".to_owned(),
+            entxt1: "You can reach the venue in all kinds of ways: by public transport, your own or a rented car, or by taxi/Uber. In terms of both cost and travel time, the options are closer than you might think. Here's an overview: \n A bit complicated with public transport: \n Around 2.5 hours from Berlin Ostkreuz via regional train and two buses to Chossewitz, then a 20-minute walk (1.5 km). \n Cost: approx. 15 euros per person. \n\n TAXI or UBER: \n If you book a large taxi or Uber that fits 6–8 people, the cost is about 25–30 euros per person. \n Duration: approx. 1.5 hours. \n\n CAR: \n Duration: approx. 1.5 hours, with parking available directly at the venue. Renting a car for 3 days for 4–5 people leads to a cost of about 50 euros per person for the round trip, including fuel. \n Important: mind the exact route: https://maps.app.goo.gl/WtrCENyrHQ23ziUL9 \n\n HELICOPTER: \n kind of unaffordable. However, here the link to the classic helicopter game:".to_owned(),
 
             
             entxt2: "tbf".to_owned(),
@@ -137,19 +122,7 @@ impl Default for TemplateApp {
 
 
             
-            detxt1: "Zum Gelände kommt man auf allen erdenklichen Wegen, mit Bus&Bahn, dem eigenen oder gemieteten Auto oder mit Taxi bzw. Uber. Preislich und zeitlich liegen die Möglichkeiten näher zusammen als man denken würde. Hier ein Überblick: 
-
-                etwas umständlich mit Öffis: 
-                Ungefähr 2.5 Stunden von Berlin Ostkreuz mit Regio und zwei Bussen bis Chossewitz, von dort 20 Minuten (1.5km) laufen. Kosten circa 15 Euro pro Person. 
-                
-                TAXI oder UBER: 
-                Wenn man ein Großraumtaxi bzw GroßraumUber bestellt was 6-8 Leute transportiert kommt man auf Kosten von circa 25-30 Euro pro Person. Dauer circa 1.5 Stunden.
-                
-                AUTO: 
-                Dauer circa 1.5 Stunden, Parkplätze direkt vor dem Gelände. Ein Auto mieten für 3 Tage und 4-5 Leute führt zu Kosten von circa 50 Euro für hin&zurück, inklusive Benzin. 
-                --> exakte Route, wichtig!!  https://maps.app.goo.gl/WtrCENyrHQ23ziUL9  <-- 
-                
-                HELIKOPTER: fast unbezahlbar teuer, dafür hier der Link zum Game :)".to_owned(),
+            detxt1: "Zum Gelände\n abc".to_owned(),
 
             
             detxt2: "tbf".to_owned(),
@@ -304,7 +277,7 @@ impl eframe::App for TemplateApp {
                     ui.add_space(16.0);
                 }
                 egui::widgets::global_theme_preference_buttons(ui);
-                if ui.button("Deutsch ⬌️ English").clicked() {
+                if ui.button("Deutsch <--> English").clicked() {
                 if self.language_flag == true {self.language_flag = false;}
                 else {self.language_flag = true;}
             }
