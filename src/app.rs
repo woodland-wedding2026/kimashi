@@ -43,21 +43,7 @@ pub struct TemplateApp {
     painting_app: PaintingApp,
     saved_image_data: Option<String>,
 
-    pub entxt1: String,
-    entxt2: String,
-    entxt3: String,
-    entxt4: String,
-    entxt5: String,
-    entxt6: String,
-    entxt7: String,
-
-    detxt1: String,
-    detxt2: String,
-    detxt3: String,
-    detxt4: String,
-    detxt5: String,
-    detxt6: String,
-    detxt7: String,
+    
 
     
     
@@ -99,51 +85,6 @@ impl Default for TemplateApp {
             saved_image_data: None,
 
 
-            entxt1: "You can reach the venue in all kinds of ways: by public transport, your own or a rented car, or by taxi/Uber. In terms of both cost and travel time, the options are closer than you might think. Here's an overview: \n A bit complicated with public transport: \n Around 2.5 hours from Berlin Ostkreuz via regional train and two buses to Chossewitz, then a 20-minute walk (1.5 km). \n Cost: approx. 15 euros per person. \n\n TAXI or UBER: \n If you book a large taxi or Uber that fits 6–8 people, the cost is about 25–30 euros per person. \n Duration: approx. 1.5 hours. \n\n CAR: \n Duration: approx. 1.5 hours, with parking available directly at the venue. Renting a car for 3 days for 4–5 people leads to a cost of about 50 euros per person for the round trip, including fuel. \n Important: mind the exact route: https://maps.app.goo.gl/WtrCENyrHQ23ziUL9 \n\n HELICOPTER: \n kind of unaffordable. However, here the link to the classic helicopter game:".to_owned(),
-
-            
-            entxt2: "tbf".to_owned(),
-
-            
-            entxt3: "tbf".to_owned(),
-
-            
-            entxt4: "tbf".to_owned(),
-
-            
-            entxt5: "tbf".to_owned(),
-
-            
-            entxt6: "tbf".to_owned(),
-
-            
-            entxt7: "tbf".to_owned(),
-
-
-
-            
-            detxt1: "Zum Gelände\n abc".to_owned(),
-
-            
-            detxt2: "tbf".to_owned(),
-
-            
-            detxt3: "tbf".to_owned(),
-
-            
-            detxt4: "tbf".to_owned(),
-
-            
-            detxt5: "tbf".to_owned(),
-
-            
-            detxt6: "tbf".to_owned(),
-
-            
-            detxt7: "tbf".to_owned(),
-
-
-            
             
             
             
@@ -359,8 +300,10 @@ impl eframe::App for TemplateApp {
             
             egui::Window::new(self.button1.clone()).open(&mut self.flag1).show(ctx, |ui| {
 
-                if self.language_flag == true {ui.label(&self.entxt1); ui.hyperlink_to("helicopter game", "https://www.addictinggames.com/clicker/helicopter-game");}
-                else {ui.label("Zum Gelände\n abcdef"); ui.hyperlink_to("Helikopterspiel", "https://www.addictinggames.com/clicker/helicopter-game");}
+                if self.language_flag == true {ui.label("You can reach the venue in all kinds of ways: by public transport, your own or a rented car, or by taxi/Uber. In terms of both cost and travel time, the options are closer than you might think. Here's an overview: \n A bit complicated with public transport: \n Around 2.5 hours from Berlin Ostkreuz via regional train and two buses to Chossewitz, then a 20-minute walk (1.5 km). \n Cost: approx. 15 euros per person. \n\n TAXI or UBER: \n If you book a large taxi or Uber that fits 6–8 people, the cost is about 25–30 euros per person. \n Duration: approx. 1.5 hours. \n\n CAR: \n Duration: approx. 1.5 hours, with parking available directly at the venue. Renting a car for 3 days for 4–5 people leads to a cost of about 50 euros per person for the round trip, including fuel. \n Important: mind the exact route:"); ui.hyperlink_to("ROUTE","https://maps.app.goo.gl/WtrCENyrHQ23ziUL9"); ui.label(" \n\n HELICOPTER: \n kind of unaffordable. However, here the link to the classic helicopter game:"); 
+                                               ui.hyperlink_to("helicopter game", "https://www.addictinggames.com/clicker/helicopter-game");}
+                else {ui.label("Zum Gelände kommt man auf allen erdenklichen Wegen, mit Bus&Bahn, dem eigenen oder gemieteten Auto oder mit Taxi bzw. Uber. Preislich und zeitlich liegen die Möglichkeiten näher zusammen als man denken würde. Hier ein Überblick: \n\netwas umständlich mit Öffis:\nUngefähr 2.5 Stunden von Berlin Ostkreuz mit Regio und zwei Bussen bis Chossewitz, von dort 20 Minuten (1.5km) laufen. Kosten circa 15 Euro pro Person.\n\nTAXI oder UBER:\nWenn man ein Großraumtaxi bzw GroßraumUber bestellt was 6-8 Leute transportiert kommt man auf Kosten von circa 25-30 Euro pro Person. Dauer circa 1.5 Stunden.\n\nAUTO:\nDauer circa 1.5 Stunden, Parkplätze direkt vor dem Gelände. Ein Auto mieten für 3 Tage und 4-5 Leute führt zu Kosten von circa 50 Euro für hin&zurück, inklusive Benzin.\n--> exakte Route, wichtig!!"); ui.hyperlink_to("ROUTE",  "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9"); ui.label(" <--\n\nHELIKOPTER: fast unbezahlbar teuer, dafür hier der Link zum Game:"); 
+                      ui.hyperlink_to("Helikopterspiel", "https://www.addictinggames.com/clicker/helicopter-game");}
                 //ui.label("tents and bungalos, amenities, getting there, ..");
 
 
