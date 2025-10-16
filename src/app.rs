@@ -360,7 +360,7 @@ impl eframe::App for TemplateApp {
             egui::Window::new(self.button1.clone()).open(&mut self.flag1).show(ctx, |ui| {
 
                 if self.language_flag == true {ui.label(&self.entxt1); ui.hyperlink_to("helicopter game", "https://www.addictinggames.com/clicker/helicopter-game");}
-                else {ui.label(&self.detxt1); ui.hyperlink_to("Helikopterspiel", "https://www.addictinggames.com/clicker/helicopter-game");}
+                else {ui.label("Zum Gelände\n abc"); ui.hyperlink_to("Helikopterspiel", "https://www.addictinggames.com/clicker/helicopter-game");}
                 //ui.label("tents and bungalos, amenities, getting there, ..");
 
 
