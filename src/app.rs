@@ -178,14 +178,15 @@ impl eframe::App for TemplateApp {
         
 
         if self.password_flag == true {
-            egui::Window::new("password required").show(ctx, |ui| {
-                ui.text_edit_singleline(&mut self.password_string); 
-                if ui.button("try").clicked() {
-                    if self.password_string == "kimashi".to_string() {
-                        self.password_flag = false
-                }
-                
-            }});
+            egui::Window::new("choose language / Sprache wählen").show(ctx, |ui| {
+                //ui.text_edit_singleline(&mut self.password_string); 
+                if ui.button("English").clicked() {
+                        self.language_flag = true;
+                        self.password_flag = false}
+                if ui.button("Deutsch").clicked() {
+                        self.language_flag = false;
+                        self.password_flag = false}
+            });
                        
         
         }
