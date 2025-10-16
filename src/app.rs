@@ -208,11 +208,7 @@ impl eframe::App for TemplateApp {
                 if self.language_flag == true {self.language_flag = false;}
                 else {self.language_flag = true;}
             }
-                if ui.button("logout").clicked() {
-                self.password_string = "type password".to_string(); 
-                self.password_flag = true;
                 
-            }
                 
             });});
 
