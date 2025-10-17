@@ -345,8 +345,9 @@ impl eframe::App for TemplateApp {
                                                       ui.label("important: exact ");
                                                       ui.hyperlink_to("ROUTE",  "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9"); 
                                                 });
+                                               ui.label("\nHELICOPTER:"); 
                                                ui.horizontal(|ui| {
-                                               ui.label("\nHELICOPTER: P Sadly unaffordable. However, here is the link to the classic helicopter game: "); 
+                                               ui.label("\nSadly unaffordable. However, here is the link to the classic helicopter game: "); 
                                                ui.hyperlink_to("helicopter game", "https://www.addictinggames.com/clicker/helicopter-game");
                                                });}
                 else {ui.label("Zum Gelände kommt man auf allen erdenklichen Wegen, mit Bus&Bahn, dem eigenen oder gemieteten Auto oder mit Taxi bzw. Uber. Hier ein Überblick:\n\netwas umständlich mit ÖFFIS:\n\nUngefähr 2.5 Stunden von Berlin Ostkreuz mit Regio und zwei Bussen bis Chossewitz, von dort 20 Minuten (1.5km) laufen. Kosten circa 15 Euro pro Person.\n\nTAXI oder UBER:\n\nEin Großraumtaxi/ -Uber für circa 6-8 Leute kostet circa  40 Euro pro Person und Fahrt. Dauer circa 1.5 Stunden. Falls ihr Interesse an dieser Option habt und Hilfe beim Organisieren braucht, wendet euch bitte bis zum 01.04.26 an uns.\n\nAUTO:\n\nParkplätze direkt vor dem Gelände. Ein Auto mieten für 3 Tage und 4-5 Leute kostet circa 50 Euro pro Person für hin&zurück, inklusive Benzin. Dauer circa 1.5 Stunden."); 
@@ -354,8 +355,9 @@ impl eframe::App for TemplateApp {
                           ui.label("wichtig: exakte ");
                           ui.hyperlink_to("ROUTE",  "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9"); 
                     });
+                      ui.label("\nHELIKOPTER:");
                       ui.horizontal(|ui| {
-                      ui.label("\n\nHELIKOPTER:\n\nfast unbezahlbar teuer, dafür hier der Link zum Game :) ");
+                      ui.label("\nfast unbezahlbar teuer, dafür hier der Link zum Game :) ");
                       ui.hyperlink_to("Helikopterspiel", "https://www.addictinggames.com/clicker/helicopter-game");
                                     });}
                 
