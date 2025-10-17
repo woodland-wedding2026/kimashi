@@ -369,14 +369,11 @@ impl eframe::App for TemplateApp {
                     });  
 
                     if ui.button("submit").clicked() {
-
-                        //let json1 = format!(r#"{}"#, self.user_input);
-                        let message = format!(r#"{}{}{}"#, self.rsvp1.clone(), self.rsvp2, self.rsvp3);
+                        let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.rsvp1.clone(), self.rsvp2, self.rsvp3);
                         let body1 = message.as_bytes().to_vec();
                         let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                         ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-                        
-                        
+                        ui.label("sent :)");
                     }
                     
                 }
@@ -405,7 +402,14 @@ impl eframe::App for TemplateApp {
                     ui.horizontal(|ui| {
                         ui.label("Wunschlied(er): ");
                         ui.label(self.rsvp3.clone());
-                    });                    
+                    }); 
+                    if ui.button("abschicken").clicked() {
+                        let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.rsvp1.clone(), self.rsvp2, self.rsvp3);
+                        let body1 = message.as_bytes().to_vec();
+                        let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+                        ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                        ui.label("abgeschickt :)");
+                    }
                 }
 
                 
