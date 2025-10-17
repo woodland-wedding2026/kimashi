@@ -386,8 +386,8 @@ impl eframe::App for TemplateApp {
 
             egui::Window::new(self.button8.clone()).open(&mut self.flag8).show(ctx, |ui| {
 
-                if self.language_flag == true {ui.label("");}
-                else {ui.label("");}
+                if self.language_flag == true {ui.label("Dress code: no need for formal evening wear unless it makes you happy. We love colorful, glittery, shiny and extravagant outfits. But pajamas, pirate costumes and potato sacks are also favorites. So – feel free to express yourself!\n\nMore of what to bring will be posted here in our next update, so please check back in with us. ");}
+                else {ui.label("Dress code: Förmliche Abendgarderobe ist nicht nötig, es sei denn sie macht euch glücklich. Wir freuen uns immer über farbenfrohe, glitzernde, schillernde und extravagante Outfits. Aber auch Pyjamas, Piratenkostüme und Kartoffelsäcke gehören zu unseren Favoriten. Ihr habt also die freie Wahl!\n\nAlles Weitere findet ihr nach unserem nächsten Update hier. Bitte schaut nochmal rein! ");}
                 
             });
 
