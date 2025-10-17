@@ -348,6 +348,8 @@ impl eframe::App for TemplateApp {
             egui::Window::new(self.formbutton.clone()).open(&mut self.formflag).show(ctx, |ui| {
 
                 if self.language_flag == true {
+                    ui.label("please enter your data below:");
+                    ui.label("");
                     ui.horizontal(|ui| {
                         ui.label("name(s): ");
                         ui.text_edit_singleline(&mut self.rsvp1);
@@ -387,6 +389,8 @@ impl eframe::App for TemplateApp {
                     
                 }
                 else {
+                    ui.label("gib hier bitte deine Daten ein:");
+                    ui.label("");
                     ui.horizontal(|ui| {
                         ui.label("Name(n): ");
                         ui.text_edit_singleline(&mut self.rsvp1);
