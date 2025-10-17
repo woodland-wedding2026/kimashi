@@ -345,9 +345,9 @@ impl eframe::App for TemplateApp {
                                                       ui.label("important: exact ");
                                                       ui.hyperlink_to("ROUTE",  "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9"); 
                                                 });
-                                               ui.label("\nHELICOPTER:"); 
+                                               ui.label("\nHELICOPTER:\n\n"); 
                                                ui.horizontal(|ui| {
-                                               ui.label("\nSadly unaffordable. However, here is the link to the classic helicopter game: "); 
+                                               ui.label("Sadly unaffordable. However, here is the link to the classic helicopter game: "); 
                                                ui.hyperlink_to("helicopter game", "https://www.addictinggames.com/clicker/helicopter-game");
                                                });}
                 else {ui.label("Zum Gelände kommt man auf allen erdenklichen Wegen, mit Bus&Bahn, dem eigenen oder gemieteten Auto oder mit Taxi bzw. Uber. Hier ein Überblick:\n\netwas umständlich mit ÖFFIS:\n\nUngefähr 2.5 Stunden von Berlin Ostkreuz mit Regio und zwei Bussen bis Chossewitz, von dort 20 Minuten (1.5km) laufen. Kosten circa 15 Euro pro Person.\n\nTAXI oder UBER:\n\nEin Großraumtaxi/ -Uber für circa 6-8 Leute kostet circa  40 Euro pro Person und Fahrt. Dauer circa 1.5 Stunden. Falls ihr Interesse an dieser Option habt und Hilfe beim Organisieren braucht, wendet euch bitte bis zum 01.04.26 an uns.\n\nAUTO:\n\nParkplätze direkt vor dem Gelände. Ein Auto mieten für 3 Tage und 4-5 Leute kostet circa 50 Euro pro Person für hin&zurück, inklusive Benzin. Dauer circa 1.5 Stunden."); 
@@ -355,17 +355,31 @@ impl eframe::App for TemplateApp {
                           ui.label("wichtig: exakte ");
                           ui.hyperlink_to("ROUTE",  "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9"); 
                     });
-                      ui.label("\nHELIKOPTER:");
+                      ui.label("\nHELIKOPTER:\n\n");
                       ui.horizontal(|ui| {
-                      ui.label("\nfast unbezahlbar teuer, dafür hier der Link zum Game :) ");
+                      ui.label("fast unbezahlbar teuer, dafür hier der Link zum Game :) ");
                       ui.hyperlink_to("Helikopterspiel", "https://www.addictinggames.com/clicker/helicopter-game");
                                     });}
-                
+            });
 
+            egui::Window::new(self.button2.clone()).open(&mut self.flag2).show(ctx, |ui| {
+
+                if self.language_flag == true {ui.label("More details about the schedule will be shared here soon. For now, just a rough outline:\n\nThursday: Helping with setup (optional, please coordinate with us)\n\nFriday: Arrive and be welcomed from 3 PM onward\n\nSaturday: lots of fun and boundless joy!!\n\nSunday: Check out of the bungalows by 12 PM. Help with cleanup if possible until early evening\n\nAccommodation\n\nThere are small bungalows directly on the event grounds for about half of the guests. These are reserved for the older generations and families with small children. We’ll let you know in the coming months if we’ve planned a spot in a bungalow for you. If you need a bungalow for reasons unknown to us, feel free to reach out directly.\n\nFor everyone else, there’s plenty of space for your own tents – complete with nature vibes and a festival feeling. Clean indoor toilets and showers are accessible to all.\n\nIf you don’t want to stay on the event grounds, there are guesthouses and hotels in the surrounding villages. If you need help with arrangements, feel free to contact us – you're welcome to use the contact button on the website.");}
+                else {ui.label("Genaueres zum Ablauf findet ihr in der nächsten Zeit hier. Vorab nur ganz grob:\n\nDonnerstag: Mithelfen beim Aufbauen (optional, in Absprache mit uns)\n\nFreitag: ab 15 Uhr ankommen und empfangen werden\n\nSamstag: großer Spaß und unbändige Freude -\n\nSonntag: Auschecken aus den Bungalows bis 12 Uhr; Mithelfen beim Aufräumen wenn möglich bis zum frühen Abend\n\nÜbernachtung\n\nEs gibt direkt auf dem Veranstaltungsgelände kleine Bungalows für etwa die Hälfte der Gäste. Diese sind für die früheren Jahrgänge und Familien mit kleinen Kindern vorgesehen. Wir sagen euch in den nächsten Monaten Bescheid, wenn wir für euch einen Platz im Bungalow geplant haben. Solltet ihr aus uns unbekannten Gründen einen Bungalow brauchen, meldet euch gerne direkt bei uns.\n\nFür alle anderen gibt es reichlich Platz für eigene Zelte inkl. Naturromantik und Festival-Feeling. Feste Toiletten und Duschen sind für alle zugänglich.\n\nWenn ihr nicht auf dem Gelände übernachten möchtet, gibt es in den umliegenden Orten Pensionen und Hotels. Wenn ihr Hilfe beim Organisieren braucht, wendet euch an uns, gerne auch über den Kontakt-Button der Website.");}
+                
 
 
                 
             });
+
+
+
+
+
+
+
+
+                
 
             egui::Window::new(self.formbutton.clone()).open(&mut self.formflag).show(ctx, |ui| {
 
@@ -612,10 +626,27 @@ impl eframe::App for TemplateApp {
 
 
             
-            egui::Window::new("weekend overview").open(&mut self.flag2).show(ctx, |ui| {
-                ui.label("food, children, party and more :)");                
-            });
+            
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
             egui::Window::new("help wanted").open(&mut self.flag3).show(ctx, |ui| {
                 ui.label("shifts, decoration team, music, ..");                
             });
