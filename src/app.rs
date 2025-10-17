@@ -345,7 +345,7 @@ impl eframe::App for TemplateApp {
                                                       ui.label("important: exact ");
                                                       ui.hyperlink_to("ROUTE",  "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9"); 
                                                 });
-                                               ui.label("\nHELICOPTER:\n\n"); 
+                                               ui.label("\nHELICOPTER:\n"); 
                                                ui.horizontal(|ui| {
                                                ui.label("Sadly unaffordable. However, here is the link to the classic helicopter game: "); 
                                                ui.hyperlink_to("helicopter game", "https://www.addictinggames.com/clicker/helicopter-game");
@@ -355,7 +355,7 @@ impl eframe::App for TemplateApp {
                           ui.label("wichtig: exakte ");
                           ui.hyperlink_to("ROUTE",  "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9"); 
                     });
-                      ui.label("\nHELIKOPTER:\n\n");
+                      ui.label("\nHELIKOPTER:\n");
                       ui.horizontal(|ui| {
                       ui.label("fast unbezahlbar teuer, dafür hier der Link zum Game :) ");
                       ui.hyperlink_to("Helikopterspiel", "https://www.addictinggames.com/clicker/helicopter-game");
@@ -364,15 +364,53 @@ impl eframe::App for TemplateApp {
 
             egui::Window::new(self.button2.clone()).open(&mut self.flag2).show(ctx, |ui| {
 
-                if self.language_flag == true {ui.label("More details about the schedule will be shared here soon. For now, just a rough outline:\n\nThursday: Helping with setup (optional, please coordinate with us)\n\nFriday: Arrive and be welcomed from 3 PM onward\n\nSaturday: lots of fun and boundless joy!!\n\nSunday: Check out of the bungalows by 12 PM. Help with cleanup if possible until early evening\n\nAccommodation\n\nThere are small bungalows directly on the event grounds for about half of the guests. These are reserved for the older generations and families with small children. We’ll let you know in the coming months if we’ve planned a spot in a bungalow for you. If you need a bungalow for reasons unknown to us, feel free to reach out directly.\n\nFor everyone else, there’s plenty of space for your own tents – complete with nature vibes and a festival feeling. Clean indoor toilets and showers are accessible to all.\n\nIf you don’t want to stay on the event grounds, there are guesthouses and hotels in the surrounding villages. If you need help with arrangements, feel free to contact us – you're welcome to use the contact button on the website.");}
-                else {ui.label("Genaueres zum Ablauf findet ihr in der nächsten Zeit hier. Vorab nur ganz grob:\n\nDonnerstag: Mithelfen beim Aufbauen (optional, in Absprache mit uns)\n\nFreitag: ab 15 Uhr ankommen und empfangen werden\n\nSamstag: großer Spaß und unbändige Freude -\n\nSonntag: Auschecken aus den Bungalows bis 12 Uhr; Mithelfen beim Aufräumen wenn möglich bis zum frühen Abend\n\nÜbernachtung\n\nEs gibt direkt auf dem Veranstaltungsgelände kleine Bungalows für etwa die Hälfte der Gäste. Diese sind für die früheren Jahrgänge und Familien mit kleinen Kindern vorgesehen. Wir sagen euch in den nächsten Monaten Bescheid, wenn wir für euch einen Platz im Bungalow geplant haben. Solltet ihr aus uns unbekannten Gründen einen Bungalow brauchen, meldet euch gerne direkt bei uns.\n\nFür alle anderen gibt es reichlich Platz für eigene Zelte inkl. Naturromantik und Festival-Feeling. Feste Toiletten und Duschen sind für alle zugänglich.\n\nWenn ihr nicht auf dem Gelände übernachten möchtet, gibt es in den umliegenden Orten Pensionen und Hotels. Wenn ihr Hilfe beim Organisieren braucht, wendet euch an uns, gerne auch über den Kontakt-Button der Website.");}
-                
-
-
+                if self.language_flag == true {ui.label("More details about the schedule will be shared here soon. For now, just a rough outline:\n\nThursday: Helping with setup (optional, please coordinate with us)\n\nFriday: Arrive and be welcomed from 3 PM onward\n\nSaturday: lots of fun and boundless joy!!\n\nSunday: Check out of the bungalows by 12 PM. Help with cleanup if possible until early evening\n\nAccommodation:\n\nThere are small bungalows directly on the event grounds for about half of the guests. These are reserved for the older generations and families with small children. We’ll let you know in the coming months if we’ve planned a spot in a bungalow for you. If you need a bungalow for reasons unknown to us, feel free to reach out directly.\n\nFor everyone else, there’s plenty of space for your own tents – complete with nature vibes and a festival feeling. Clean indoor toilets and showers are accessible to all.\n\nIf you don’t want to stay on the event grounds, there are guesthouses and hotels in the surrounding villages. If you need help with arrangements, feel free to contact us – you're welcome to use the contact button on the website.");}
+                else {ui.label("Genaueres zum Ablauf findet ihr in der nächsten Zeit hier. Vorab nur ganz grob:\n\nDonnerstag: Mithelfen beim Aufbauen (optional, in Absprache mit uns)\n\nFreitag: ab 15 Uhr ankommen und empfangen werden\n\nSamstag: großer Spaß und unbändige Freude -\n\nSonntag: Auschecken aus den Bungalows bis 12 Uhr; Mithelfen beim Aufräumen wenn möglich bis zum frühen Abend\n\nÜbernachtung:\n\nEs gibt direkt auf dem Veranstaltungsgelände kleine Bungalows für etwa die Hälfte der Gäste. Diese sind für die früheren Jahrgänge und Familien mit kleinen Kindern vorgesehen. Wir sagen euch in den nächsten Monaten Bescheid, wenn wir für euch einen Platz im Bungalow geplant haben. Solltet ihr aus uns unbekannten Gründen einen Bungalow brauchen, meldet euch gerne direkt bei uns.\n\nFür alle anderen gibt es reichlich Platz für eigene Zelte inkl. Naturromantik und Festival-Feeling. Feste Toiletten und Duschen sind für alle zugänglich.\n\nWenn ihr nicht auf dem Gelände übernachten möchtet, gibt es in den umliegenden Orten Pensionen und Hotels. Wenn ihr Hilfe beim Organisieren braucht, wendet euch an uns, gerne auch über den Kontakt-Button der Website.");}
                 
             });
 
 
+            egui::Window::new(self.button3.clone()).open(&mut self.flag3).show(ctx, |ui| {
+
+                if self.language_flag == true {ui.label("You’re invited to enjoy food and drinks all weekend, and there will be no cost for staying overnight in a tent or bungalow. What matters most is that everyone can be there and be comfortable.\n\nOf course our pockets will feel a bit empty after the event. If it’s possible for you to help fill them up again, we would be very grateful for any financial contribution — no matter how great or small the amount.\n\nIf you would like to make a contribution, please send it anytime to:\n\nPaypal: woodland.wedding@pm.me   Subject: Woodland Wedding\n\nBank Account: Kimberley Hofer & Matthias Hofer, DE...  Subject: Woodland Wedding");}
+                else {ui.label("Ihr seid das ganze Wochenende auf Essen und Trinken eingeladen, auch für die Übernachtung im Zelt oder Bungalow fallen prinzipiell keine Kosten für euch an. Das Wichtigste ist, dass alle dabei sein können und sich wohl fühlen.\n\nNatürlich wird unser Geldbeutel nach diesem Event ganz schön Magenknurren haben. Wenn es für euch möglich ist, sind wir über finanzielles Futter in jeder Höhe sehr dankbar.\n\nGerne jederzeit an:\n\nPaypal: woodland.wedding@pm.me   Betreff: Woodland Wedding\n\nKonto: Kimberley Hofer & Matthias Hofer, DE...  Betreff: Woodland Wedding");}
+                
+            });
+
+            egui::Window::new(self.button4.clone()).open(&mut self.flag4).show(ctx, |ui| {
+
+                if self.language_flag == true {ui.label("");}
+                else {ui.label("");}
+                
+            });
+
+            egui::Window::new(self.button8.clone()).open(&mut self.flag8).show(ctx, |ui| {
+
+                if self.language_flag == true {ui.label("");}
+                else {ui.label("");}
+                
+            });
+
+            egui::Window::new(self.button9.clone()).open(&mut self.flag9).show(ctx, |ui| {
+                ui.text_edit_singleline(&mut self.user_input); 
+                if ui.button("send").clicked() {
+                let json1 = format!(r#"{}"#, self.user_input);
+                let body1 = json1.as_bytes().to_vec();
+                let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+                //use ehttp::Request;
+                //let request1 = Request {
+                //    headers: ehttp::Headers::new(&[
+                //        ("Accept", "*/*"),
+                //        ("Content-Type", "text/plain; charset=utf-8"),
+                //        ("X-Email", "matthias.hofer@pm.me"),
+                //    ]),
+                //    ..Request::post("https://ntfy.sh/woodland", body1)
+                //};
+                ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                self.value +=1;}
+                ui.label(format!("you sent {} messages", self.value));
+                ui.hyperlink_to("see messages", "https://ntfy.sh/woodland");
+            });
 
 
 
@@ -616,60 +654,7 @@ impl eframe::App for TemplateApp {
 
             
 
-
-
-
-
-
-
-
-
-
             
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-            egui::Window::new("help wanted").open(&mut self.flag3).show(ctx, |ui| {
-                ui.label("shifts, decoration team, music, ..");                
-            });
-            egui::Window::new("contact us").open(&mut self.flag4).show(ctx, |ui| {
-                ui.text_edit_singleline(&mut self.user_input); 
-                if ui.button("send").clicked() {
-                let json1 = format!(r#"{}"#, self.user_input);
-                let body1 = json1.as_bytes().to_vec();
-                let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
-                //use ehttp::Request;
-                //let request1 = Request {
-                //    headers: ehttp::Headers::new(&[
-                //        ("Accept", "*/*"),
-                //        ("Content-Type", "text/plain; charset=utf-8"),
-                //        ("X-Email", "matthias.hofer@pm.me"),
-                //    ]),
-                //    ..Request::post("https://ntfy.sh/woodland", body1)
-                //};
-                ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-                self.value +=1;}
-                ui.label(format!("you sent {} messages", self.value));
-                ui.hyperlink_to("see messages", "https://ntfy.sh/woodland");
-            });
            });
         });
         ctx.request_repaint();
