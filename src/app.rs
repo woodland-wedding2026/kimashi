@@ -52,6 +52,8 @@ pub struct TemplateApp {
 
     submitflag: bool,
     schickflag: bool,
+
+
     
 
     
@@ -320,16 +322,20 @@ impl eframe::App for TemplateApp {
             // The central panel the region left after adding TopPanel's and SidePanel's
             ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias and Yoshi");
 
-            if ui.button(self.formbutton.clone()).clicked() {
-                if self.formflag == true {self.formflag = false;}
-                else {self.formflag = true;}
-            }
+            
                 
             egui_extras::install_image_loaders(ctx);
             let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
             let desired_size = egui::vec2(340.0, 340.0); 
             
             ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
+
+            if self.language_flag == true {ui.label("");}
+            else {ui.label("");}
+            if ui.button(self.formbutton.clone()).clicked() {
+                    if self.formflag == true {self.formflag = false;}
+                    else {self.formflag = true;}
+                }
             
             
             egui::Window::new(self.button1.clone()).open(&mut self.flag1).show(ctx, |ui| {
