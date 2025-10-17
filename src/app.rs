@@ -362,7 +362,7 @@ impl eframe::App for TemplateApp {
                     });
                     ui.label("");
                     if self.submitflag == false {ui.label("your entered data:");}
-                    else {ui.label("your SUBMITTED date");}
+                    else {ui.label("your SUBMITTED data");}
                     ui.label("");
                     ui.horizontal(|ui| {
                         ui.label("name(s): ");
