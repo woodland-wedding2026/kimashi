@@ -50,9 +50,7 @@ pub struct TemplateApp {
     rsvp2: String,
     rsvp3: String,
 
-    flagnames: bool,
-    flagemails: bool,
-    flagsongs: bool,
+    
 
     
 
@@ -103,9 +101,7 @@ impl Default for TemplateApp {
             rsvp2: "".to_owned(),
             rsvp3: "".to_owned(),
 
-            flagnames: false,
-            flagemails: false,
-            flagsongs: false,
+            
 
 
             
@@ -346,46 +342,74 @@ impl eframe::App for TemplateApp {
             egui::Window::new(self.formbutton.clone()).open(&mut self.formflag).show(ctx, |ui| {
 
                 if self.language_flag == true {
-
                     ui.horizontal(|ui| {
                         ui.label("names: ");
                         ui.text_edit_singleline(&mut self.rsvp1);
-                        if ui.button("save").clicked() {
-                            self.flagnames = true;
-                        }
                     });
                     ui.horizontal(|ui| {
                         ui.label("email-addresses: ");
                         ui.text_edit_singleline(&mut self.rsvp2);
-                        if ui.button("save").clicked() {
-                            self.flagemails = true;
-                        }
                     });
                     ui.horizontal(|ui| {
                         ui.label("like-to-hear song(s): ");
                         ui.text_edit_singleline(&mut self.rsvp3);
-                        if ui.button("save").clicked() {
-                            self.flagsongs = true;
-                        }
                     });
-
                     ui.label("your saved data:");
                     ui.horizontal(|ui| {
                         ui.label("names: ");
-                        if self.flagnames == true {ui.label(self.rsvp1.clone());}
+                        ui.label(self.rsvp1.clone());
                     });
                     ui.horizontal(|ui| {
                         ui.label("email-addresses: ");
-                        if self.flagemails == true {ui.label(self.rsvp2.clone());}
+                        ui.label(self.rsvp2.clone());
                     });
                     ui.horizontal(|ui| {
                         ui.label("songs: ");
-                        if self.flagsongs == true {ui.label(self.rsvp3.clone());}
+                        ui.label(self.rsvp3.clone());
+                    });  
+                }
+                else {
+
+                    ui.horizontal(|ui| {
+                        ui.label("Namen: ");
+                        ui.text_edit_singleline(&mut self.rsvp1);
                     });
-                    
+                    ui.horizontal(|ui| {
+                        ui.label("email-Adressen: ");
+                        ui.text_edit_singleline(&mut self.rsvp2);
+                    });
+                    ui.horizontal(|ui| {
+                        ui.label("Wunschlied(er): ");
+                        ui.text_edit_singleline(&mut self.rsvp3);
+                    });
+                    ui.label("eingegebene Daten:");
+                    ui.horizontal(|ui| {
+                        ui.label("Namen: ");
+                        ui.label(self.rsvp1.clone());
+                    });
+                    ui.horizontal(|ui| {
+                        ui.label("email-Adresses: ");
+                        ui.label(self.rsvp2.clone());
+                    });
+                    ui.horizontal(|ui| {
+                        ui.label("Wunschlied(er): ");
+                        ui.label(self.rsvp3.clone());
+                    });
+
+
+
+
+
+
+
+
                     
                 }
 
+
+
+
+                
                 
                 
                 
