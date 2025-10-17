@@ -50,6 +50,8 @@ pub struct TemplateApp {
     rsvp2: String,
     rsvp3: String,
 
+    submitflag: bool,
+    schickflag: bool,
     
 
     
@@ -100,6 +102,10 @@ impl Default for TemplateApp {
             rsvp1: "".to_owned(),
             rsvp2: "".to_owned(),
             rsvp3: "".to_owned(),
+
+            submitflag: false,
+            schickflag: false,
+            
 
             
 
@@ -354,7 +360,10 @@ impl eframe::App for TemplateApp {
                         ui.label("like-to-hear song(s): ");
                         ui.text_edit_singleline(&mut self.rsvp3);
                     });
-                    ui.label("your saved data:");
+                    
+                    if self.submitflag == false {ui.label("your entered data:")}
+                    else {ui.label("your submitted date")}
+                    
                     ui.horizontal(|ui| {
                         ui.label("names: ");
                         ui.label(self.rsvp1.clone());
@@ -373,7 +382,7 @@ impl eframe::App for TemplateApp {
                         let body1 = message.as_bytes().to_vec();
                         let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                         ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-                        ui.label("sent :)");
+                        self.submitflag = true;
                     }
                     
                 }
@@ -390,7 +399,10 @@ impl eframe::App for TemplateApp {
                         ui.label("Wunschlied(er): ");
                         ui.text_edit_singleline(&mut self.rsvp3);
                     });
-                    ui.label("eingegebene Daten:");
+                    
+                    if self.schickflag == false {ui.label("deine eingegebenen Daten:")}
+                    else {ui.label("deine abgeschickten Daten")}
+                    
                     ui.horizontal(|ui| {
                         ui.label("Namen: ");
                         ui.label(self.rsvp1.clone());
@@ -408,7 +420,7 @@ impl eframe::App for TemplateApp {
                         let body1 = message.as_bytes().to_vec();
                         let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                         ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-                        ui.label("abgeschickt :)");
+                        self.schickflag = true;
                     }
                 }
 
