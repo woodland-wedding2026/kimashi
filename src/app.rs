@@ -358,7 +358,7 @@ impl eframe::App for TemplateApp {
                       ui.horizontal(|ui| {
                       ui.label("<--\n\nHELIKOPTER:\n\nfast unbezahlbar teuer, dafür hier der Link zum Game :) ");
                       ui.hyperlink_to("Helikopterspiel", "https://www.addictinggames.com/clicker/helicopter-game");
-                                    });
+                                    });}
                 
 
 
