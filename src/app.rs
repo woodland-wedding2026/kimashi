@@ -43,6 +43,13 @@ pub struct TemplateApp {
     painting_app: PaintingApp,
     saved_image_data: Option<String>,
 
+    formflag: bool,
+    formbutton: String,
+
+    rsvp1: String,
+    rsvp2: String,
+    rsvp3: String,
+
     
 
     
@@ -83,6 +90,14 @@ impl Default for TemplateApp {
 
             painting_app: PaintingApp::default(),
             saved_image_data: None,
+
+
+            formflag: false,
+            formbutton: "form".to_owned(),
+
+            rsvp1: "".to_owned(),
+            rsvp2: "".to_owned(),
+            rsvp3: "".to_owned(),
 
 
             
@@ -189,6 +204,9 @@ impl eframe::App for TemplateApp {
         else {self.button8 = "Dresscode".to_owned()}
         if self.language_flag == true {self.button9 = "contact".to_owned()}
         else {self.button9 = "Kontakt".to_owned()}
+
+        if self.language_flag == true {self.formbutton = "RSVP".to_owned()}
+        else {self.formbutton = "Rückmeldung".to_owned()}
         
 
         if self.password_flag == true {
@@ -291,6 +309,12 @@ impl eframe::App for TemplateApp {
             
             // The central panel the region left after adding TopPanel's and SidePanel's
             ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias and Yoshi");
+
+            if ui.button("RSVP").clicked() {
+                if self.formflag == true {self.formflag = false;}
+                else {self.formflag = true;}
+            }
+                
             egui_extras::install_image_loaders(ctx);
             let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
             let desired_size = egui::vec2(340.0, 340.0); 
@@ -310,6 +334,18 @@ impl eframe::App for TemplateApp {
 
                 
             });
+
+            egui::Window::new(self.formbutton.clone()).open(&mut self.formflag).show(ctx, |ui| {
+
+                ui.text_edit_singleline(&mut self.rsvp1);
+                ui.text_edit_singleline(&mut self.rsvp2);
+                ui.text_edit_singleline(&mut self.rsvp3);
+                
+            });
+
+
+
+                
 
 
             egui::Window::new("Painting")
