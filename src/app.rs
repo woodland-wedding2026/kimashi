@@ -349,31 +349,31 @@ impl eframe::App for TemplateApp {
 
                 if self.language_flag == true {
                     ui.horizontal(|ui| {
-                        ui.label("names: ");
+                        ui.label("name(s): ");
                         ui.text_edit_singleline(&mut self.rsvp1);
                     });
                     ui.horizontal(|ui| {
-                        ui.label("email-addresses: ");
+                        ui.label("email-address(es): ");
                         ui.text_edit_singleline(&mut self.rsvp2);
                     });
                     ui.horizontal(|ui| {
                         ui.label("like-to-hear song(s): ");
                         ui.text_edit_singleline(&mut self.rsvp3);
                     });
-                    
+                    ui.label("");
                     if self.submitflag == false {ui.label("your entered data:");}
-                    else {ui.label("your submitted date");}
-                    
+                    else {ui.label("your SUBMITTED date");}
+                    ui.label("");
                     ui.horizontal(|ui| {
-                        ui.label("names: ");
+                        ui.label("name(s): ");
                         ui.label(self.rsvp1.clone());
                     });
                     ui.horizontal(|ui| {
-                        ui.label("email-addresses: ");
+                        ui.label("email-address(es): ");
                         ui.label(self.rsvp2.clone());
                     });
                     ui.horizontal(|ui| {
-                        ui.label("songs: ");
+                        ui.label("song(s): ");
                         ui.label(self.rsvp3.clone());
                     });  
 
@@ -388,27 +388,27 @@ impl eframe::App for TemplateApp {
                 }
                 else {
                     ui.horizontal(|ui| {
-                        ui.label("Namen: ");
+                        ui.label("Name(n): ");
                         ui.text_edit_singleline(&mut self.rsvp1);
                     });
                     ui.horizontal(|ui| {
-                        ui.label("email-Adressen: ");
+                        ui.label("email-Adresse(n): ");
                         ui.text_edit_singleline(&mut self.rsvp2);
                     });
                     ui.horizontal(|ui| {
                         ui.label("Wunschlied(er): ");
                         ui.text_edit_singleline(&mut self.rsvp3);
                     });
-                    
+                    ui.label("");
                     if self.schickflag == false {ui.label("deine eingegebenen Daten:");}
-                    else {ui.label("deine abgeschickten Daten");}
-                    
+                    else {ui.label("deine ABGESCHICKTEN Daten");}
+                    ui.label("");
                     ui.horizontal(|ui| {
-                        ui.label("Namen: ");
+                        ui.label("Name(n): ");
                         ui.label(self.rsvp1.clone());
                     });
                     ui.horizontal(|ui| {
-                        ui.label("email-Adresses: ");
+                        ui.label("email-Adresse(s): ");
                         ui.label(self.rsvp2.clone());
                     });
                     ui.horizontal(|ui| {
