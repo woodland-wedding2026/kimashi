@@ -342,7 +342,7 @@ impl eframe::App for TemplateApp {
 
                 if self.language_flag == true {ui.label("You can reach the venue in a number of different ways: using public transport, your own car, a rental car or by taxi/Uber. Here's an overview:\n\nPUBLIC TRANSPORT might be a bit complicated:\n\nAround 2.5 hours from Berlin Ostkreuz via regional train and two buses to Chossewitz, then a 20-minute walk (1.5 km).\nCost: approx. 15 euros per person.\n\nTAXI or UBER:\n\nIf you book a large taxi or Uber that accomodates 6–8 people, the cost is about  40 euros per person one way.\nDuration: approx. 1.5 hours. If you’re interested in this option and need help organizing it, please contact us before April 1st.\n\nCAR:\n\nDuration: approx. 1.5 hours, with parking available directly at the venue.\nRenting a car for 3 days for 4–5 people costs about 50 euros per person for the round trip, including gas. Important: mind the exact route:"); 
                                                ui.horizontal(|ui| {
-                                                      ui.label("--> important: exact ");
+                                                      ui.label("important: exact ");
                                                       ui.hyperlink_to("ROUTE",  "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9"); 
                                                 });
                                                ui.horizontal(|ui| {
@@ -351,12 +351,11 @@ impl eframe::App for TemplateApp {
                                                });}
                 else {ui.label("Zum Gelände kommt man auf allen erdenklichen Wegen, mit Bus&Bahn, dem eigenen oder gemieteten Auto oder mit Taxi bzw. Uber. Hier ein Überblick:\n\netwas umständlich mit ÖFFIS:\n\nUngefähr 2.5 Stunden von Berlin Ostkreuz mit Regio und zwei Bussen bis Chossewitz, von dort 20 Minuten (1.5km) laufen. Kosten circa 15 Euro pro Person.\n\nTAXI oder UBER:\n\nEin Großraumtaxi/ -Uber für circa 6-8 Leute kostet circa  40 Euro pro Person und Fahrt. Dauer circa 1.5 Stunden. Falls ihr Interesse an dieser Option habt und Hilfe beim Organisieren braucht, wendet euch bitte bis zum 01.04.26 an uns.\n\nAUTO:\n\nParkplätze direkt vor dem Gelände. Ein Auto mieten für 3 Tage und 4-5 Leute kostet circa 50 Euro pro Person für hin&zurück, inklusive Benzin. Dauer circa 1.5 Stunden."); 
                       ui.horizontal(|ui| {
-                          ui.label("--> exakte ");
+                          ui.label("wichtig: exakte ");
                           ui.hyperlink_to("ROUTE",  "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9"); 
-                          ui.label(", wichtig!!"");
                     });
                       ui.horizontal(|ui| {
-                      ui.label("<--\n\nHELIKOPTER:\n\nfast unbezahlbar teuer, dafür hier der Link zum Game :) ");
+                      ui.label("\n\nHELIKOPTER:\n\nfast unbezahlbar teuer, dafür hier der Link zum Game :) ");
                       ui.hyperlink_to("Helikopterspiel", "https://www.addictinggames.com/clicker/helicopter-game");
                                     });}
                 
