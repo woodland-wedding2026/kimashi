@@ -361,8 +361,8 @@ impl eframe::App for TemplateApp {
                         ui.text_edit_singleline(&mut self.rsvp3);
                     });
                     
-                    if self.submitflag == false {ui.label("your entered data:")}
-                    else {ui.label("your submitted date")}
+                    if self.submitflag == false {ui.label("your entered data:");}
+                    else {ui.label("your submitted date");}
                     
                     ui.horizontal(|ui| {
                         ui.label("names: ");
@@ -400,8 +400,8 @@ impl eframe::App for TemplateApp {
                         ui.text_edit_singleline(&mut self.rsvp3);
                     });
                     
-                    if self.schickflag == false {ui.label("deine eingegebenen Daten:")}
-                    else {ui.label("deine abgeschickten Daten")}
+                    if self.schickflag == false {ui.label("deine eingegebenen Daten:");}
+                    else {ui.label("deine abgeschickten Daten");}
                     
                     ui.horizontal(|ui| {
                         ui.label("Namen: ");
