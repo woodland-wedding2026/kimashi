@@ -198,22 +198,28 @@ impl eframe::App for TemplateApp {
 
         if self.language_flag == true {self.button1 = "getting there".to_owned()}
         else {self.button1 = "Anfahrt".to_owned()}
+
+        if self.language_flag == true {self.button7 = "fractal clock".to_owned()}
+        else {self.button7 = "Fraktaluhr".to_owned()}
+        
         if self.language_flag == true {self.button2 = "schedule".to_owned()}
         else {self.button2 = "Ablauf".to_owned()}
-        if self.language_flag == true {self.button3 = "presents".to_owned()}
-        else {self.button3 = "Geschenke".to_owned()}
-        if self.language_flag == true {self.button4 = "help wanted".to_owned()}
-        else {self.button4 = "helfende Hände".to_owned()}
 
         if self.language_flag == true {self.button5 = "painting".to_owned()}
         else {self.button5 = "malen".to_owned()}
+
+        if self.language_flag == true {self.button4 = "help wanted".to_owned()}
+        else {self.button4 = "helfende Hände".to_owned()}
+        
+        if self.language_flag == true {self.button3 = "presents".to_owned()}
+        else {self.button3 = "Geschenke".to_owned()}
+        
         if self.language_flag == true {self.button6 = "play snake".to_owned()}
         else {self.button6 = "Snake spielen".to_owned()}
-        if self.language_flag == true {self.button7 = "fractal clock".to_owned()}
-        else {self.button7 = "Fraktaluhr".to_owned()}
-
+        
         if self.language_flag == true {self.button8 = "what to bring".to_owned()}
         else {self.button8 = "bitte mitbringen".to_owned()}
+        
         if self.language_flag == true {self.button9 = "contact".to_owned()}
         else {self.button9 = "Kontakt".to_owned()}
 
