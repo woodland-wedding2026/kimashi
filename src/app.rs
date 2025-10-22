@@ -268,29 +268,29 @@ impl eframe::App for TemplateApp {
                 if self.flag1 == true {self.flag1 = false;}
                 else {self.flag1 = true;}
             }
+            if ui.button(self.button7.clone()).clicked() {
+                if self.flag7 == true {self.flag7 = false;}
+                else {self.flag7 = true;}
+            }
             if ui.button(self.button2.clone()).clicked() {
                 if self.flag2 == true {self.flag2 = false;}
                 else {self.flag2 = true;}
             }
-            if ui.button(self.button3.clone()).clicked() {
-                if self.flag3 == true {self.flag3 = false;}
-                else {self.flag3 = true;}
-            }
-            if ui.button(self.button4.clone()).clicked() {
-                if self.flag4 == true {self.flag4 = false;}
-                else {self.flag4 = true;}
-            }  
             if ui.button(self.button5.clone()).clicked() {
                 if self.flag5 == true {self.flag5 = false;}
                 else {self.flag5 = true;}
             }  
+            if ui.button(self.button4.clone()).clicked() {
+                if self.flag4 == true {self.flag4 = false;}
+                else {self.flag4 = true;}
+            }  
+            if ui.button(self.button3.clone()).clicked() {
+                if self.flag3 == true {self.flag3 = false;}
+                else {self.flag3 = true;}
+            }  
             if ui.button(self.button6.clone()).clicked() {
                 if self.flag6 == true {self.flag6 = false;}
                 else {self.flag6 = true;}
-            }  
-            if ui.button(self.button7.clone()).clicked() {
-                if self.flag7 == true {self.flag7 = false;}
-                else {self.flag7 = true;}
             } 
             if ui.button(self.button8.clone()).clicked() {
                 if self.flag8 == true {self.flag8 = false;}
