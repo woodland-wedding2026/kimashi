@@ -69,10 +69,7 @@ impl SnakeGame {
     
     pub fn ui(&mut self, ui: &mut Ui, dt: f32) {
 
-        ui.collapsing("how to play", |ui| {
-            ui.label("on desktop: use keyboard arrows to play");
-            ui.label("on mobile: use touch-keys below to play");
-        });
+        
 
         
         use egui::Key;
