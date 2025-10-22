@@ -628,7 +628,7 @@ impl eframe::App for TemplateApp {
                 .default_width(400.0)
                 .default_height(450.0)
                 .show(ctx, |ui| {
-                    ui.label("Fractal Clock Example");
+                    
                     ui.separator();
             
                     self.fractal_clock.ui(ui);
