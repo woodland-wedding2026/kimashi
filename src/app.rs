@@ -22,7 +22,8 @@ pub struct TemplateApp {
     flag8: bool,
     flag9: bool,
     value: i32,
-    user_input: String,
+    user_input_en: String,
+    user_input_de: String,
     password_flag: bool,
     password_string: String,
     language_flag: bool,    
@@ -77,7 +78,8 @@ impl Default for TemplateApp {
             flag7: false,
             flag8: false,
             flag9: false,
-            user_input: "type message..".to_owned(),
+            user_input_en: "type message..".to_owned(),
+            user_input_de: "Nachricht schreiben..".to_owned(),
             password_flag: true,
             password_string: "type password".to_owned(),
             language_flag: true,  
@@ -513,12 +515,12 @@ impl eframe::App for TemplateApp {
                 
             });
 
-            egui::Window::new(self.button9.clone()).open(&mut self.flag9).show(ctx, |ui| {
-                ui.text_edit_singleline(&mut self.user_input); 
-                if ui.button("send").clicked() {
-                let json1 = format!(r#"{}"#, self.user_input);
-                let body1 = json1.as_bytes().to_vec();
-                let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+            //egui::Window::new(self.button9.clone()).open(&mut self.flag9).show(ctx, |ui| {
+             //   ui.text_edit_singleline(&mut self.user_input); 
+             //   if ui.button("send").clicked() {
+             //   let json1 = format!(r#"{}"#, self.user_input);
+             //   let body1 = json1.as_bytes().to_vec();
+             //   let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                 //use ehttp::Request;
                 //let request1 = Request {
                 //    headers: ehttp::Headers::new(&[
@@ -528,11 +530,49 @@ impl eframe::App for TemplateApp {
                 //    ]),
                 //    ..Request::post("https://ntfy.sh/woodland", body1)
                 //};
-                ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-                self.value +=1;}
-                ui.label(format!("you sent {} messages", self.value));
-                ui.hyperlink_to("see messages", "https://ntfy.sh/woodland");
+           //     ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+           //     self.value +=1;}
+           //     ui.label(format!("you sent {} messages", self.value));
+           //     ui.hyperlink_to("see messages", "https://ntfy.sh/woodland");
+            //});
+
+            egui::Window::new(self.button9.clone()).open(&mut self.flag9).show(ctx, |ui| {
+
+                if self.language_flag == true {ui.label("Here you have the opportunity to contact us directly. Questions, suggestions and messages of any kind are very welcome. Is there anything else that you think we might have forgotten or that should be taken into account?");
+                                              ui.text_edit_singleline(&mut self.user_input_en); 
+                                              if ui.button("send").clicked() {
+                                                  let json1 = format!(r#"{}"#, self.user_input_en);
+                                                  let body1 = json1.as_bytes().to_vec();
+                                                  let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+                                                  ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                                                  self.value +=1;}
+                                               ui.label(format!("you sent {} messages", self.value));
+
+
+
+                                                  
+                                              }
+                else {ui.label("Hier gibt es die Möglichkeit uns direkt zu kontaktieren. Fragen, Vorschläge und Mitteilungen aller Art sind höchst willkommen. Fällt dir noch irgendwas ein was wir vergessen haben oder noch berücksichtigt werden sollte?");
+                     ui.text_edit_singleline(&mut self.user_input_de); 
+
+                      if ui.button("abschicken").clicked() {
+                                                  let json1 = format!(r#"{}"#, self.user_input_de);
+                                                  let body1 = json1.as_bytes().to_vec();
+                                                  let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+                                                  ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                                                  self.value +=1;}
+                      ui.label(format!("du hast {} Nachrichten geschickt", self.value));
+                    
+
+
+
+
+
+                      
+                     }
+                
             });
+
 
 
 
