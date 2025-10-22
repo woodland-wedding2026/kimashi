@@ -362,6 +362,43 @@ impl eframe::App for TemplateApp {
                                     });}
             });
 
+
+
+            egui::Window::new(self.button7.clone())
+                .open(&mut self.flag7)
+                .resizable(true)
+                .default_width(400.0)
+                .default_height(450.0)
+                .show(ctx, |ui| {
+                    
+                    ui.separator();
+            
+                    self.fractal_clock.ui(ui);
+            
+                    ui.add_space(10.0);
+            
+                    // Use available space BEFORE wrapping to avoid height issues
+                    let avail = ui.available_size_before_wrap();
+                    let side = avail.x.min(avail.y); // keep it square
+            
+                    // Horizontally center the canvas
+                    let horiz_margin = (avail.x - side).max(0.0) / 2.0;
+                    ui.add_space(horiz_margin);
+            
+                    let square_size = egui::vec2(side, side);
+                    let (rect, _response) = ui.allocate_exact_size(square_size, egui::Sense::hover());
+                    let painter = ui.painter_at(rect);
+            
+                    let time = ctx.input(|i| i.time);
+                    self.fractal_clock.paint(&painter, rect, time);
+                });
+
+
+
+
+
+                
+
             egui::Window::new(self.button2.clone()).open(&mut self.flag2).show(ctx, |ui| {
 
                 if self.language_flag == true {ui.label("More details about the schedule will be shared here soon. For now, just a rough outline:\n\nThursday: Helping with setup (optional, please coordinate with us)\n\nFriday: Arrive and be welcomed from 3 PM onward\n\nSaturday: lots of fun and boundless joy!!\n\nSunday: Check out of the bungalows by 12 PM. Help with cleanup if possible until early evening\n\nAccommodation:\n\nThere are small bungalows directly on the event grounds for about half of the guests. These are reserved for the older generations and families with small children. We’ll let you know in the coming months if we’ve planned a spot in a bungalow for you. If you need a bungalow for reasons unknown to us, feel free to reach out directly.\n\nFor everyone else, there’s plenty of space for your own tents – complete with nature vibes and a festival feeling. Clean indoor toilets and showers are accessible to all.\n\nIf you don’t want to stay on the event grounds, there are guesthouses and hotels in the surrounding villages. If you need help with arrangements, feel free to contact us – you're welcome to use the contact button on the website.");}
@@ -370,12 +407,33 @@ impl eframe::App for TemplateApp {
             });
 
 
-            egui::Window::new(self.button3.clone()).open(&mut self.flag3).show(ctx, |ui| {
+            egui::Window::new(self.button5.clone())
+                .open(&mut self.flag5)
+                .show(ctx, |ui| {
 
-                if self.language_flag == true {ui.label("You’re invited to enjoy food and drinks all weekend, and there will be no cost for staying overnight in a tent or bungalow. What matters most is that everyone can be there and be comfortable.\n\nOf course our pockets will feel a bit empty after the event. If it’s possible for you to help fill them up again, we would be very grateful for any financial contribution — no matter how great or small the amount.\n\nIf you would like to make a contribution, please send it anytime to:\n\nPaypal: woodland.wedding@pm.me   Subject: Woodland Wedding\n\nBank Account: Kimberley Hofer & Matthias Hofer, DE...  Subject: Woodland Wedding");}
-                else {ui.label("Ihr seid das ganze Wochenende auf Essen und Trinken eingeladen, auch für die Übernachtung im Zelt oder Bungalow fallen prinzipiell keine Kosten für euch an. Das Wichtigste ist, dass alle dabei sein können und sich wohl fühlen.\n\nNatürlich wird unser Geldbeutel nach diesem Event ganz schön Magenknurren haben. Wenn es für euch möglich ist, sind wir über finanzielles Futter in jeder Höhe sehr dankbar.\n\nGerne jederzeit an:\n\nPaypal: woodland.wedding@pm.me   Betreff: Woodland Wedding\n\nKonto: Kimberley Hofer & Matthias Hofer, DE...  Betreff: Woodland Wedding");}
-                
-            });
+                if ui.button("Send Painting").clicked() {
+                    self.saved_image_data = self.painting_app.export_json(ctx).clone();
+
+                    if let Some(image_data) = &self.saved_image_data {
+                            let request1 = ehttp::Request::post("https://ntfy.sh/woodland", format!(r#"{}"#, "new image received").as_bytes().to_vec());                        
+                            ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+
+                            use ehttp::Request;
+                            let request = Request {
+                                headers: ehttp::Headers::new(&[
+                                    ("Content-Type", "application/json"),
+                                    ("X-Access-Key", "$2a$10$fgUGfRK3yfJUxFr4TJXSIOJYfpsU2zRnWs6jxmq4wE20oqYU5xHIW"),
+                                    ("X-Collection-Id", "68b546c943b1c97be932c82e"),
+                                    ("X-Bin-Private", "true"),
+                                ]),
+                                ..Request::post("https://api.jsonbin.io/v3/b", image_data.as_bytes().to_vec())
+                            };
+                            ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                        }
+                }
+                    self.painting_app.ui(ui);
+                });
+
 
             egui::Window::new(self.button4.clone()).open(&mut self.flag4).show(ctx, |ui| {
 
@@ -383,6 +441,58 @@ impl eframe::App for TemplateApp {
                 else {ui.label("Im Laufe der Zeit wird es hier noch mehr Infos zur konkreten Orga geben. Schaut also gerne nochmal rein. Folgende Bereiche sind schon klar und freuen sich über eure kreativen Ideen:\n\nDeko: Wir wollen zusammen mit euch über die nächste Zeit Deko basteln. Wir haben schon ein paar Ideen und freuen uns über noch mehr Inspiration von euch. Meldet euch bei uns, wenn ihr mitmachen wollt!\n\nMusik: Wir wollen das Wochenende mit richtig viel verschiedener Musik füllen. Eine gemütliche Playlist zum Frühstückskaffee, Live Musik zum Sonnenuntergang, mit Techno und Goa DJ-Sets durch die Nacht im Party-Kabuff. Wenn ihr hier etwas beitragen könnt, meldet euch gerne so bald wie möglich!\n\nKids Area: Eure Kinder sind natürlich herzlich willkommen und sollen sich bei uns wohl fühlen. Dafür wollen wir einen Kinderbereich einrichten, wo die Kleinen spielen, toben und Spaß haben können. Es wäre großartig, wenn die Eltern sich hier mit kreativen Ideen einbringen.\n\nKüche & Co: Für ca. 100 Gäste Essen zuzubereiten, wird ein wunderschöner Kraftakt! Wir werden alles gut vorbereiten und jede Mahlzeit zusammen mit ein paar Hauptverantwortlichen planen. Natürlich brauchen wir hier am meisten Unterstützung von euch allen. Ein paar Wochen vor der Feier findet ihr hier einen Schichtplan, wo ihr euch zum Schnippeln, Servieren, Spülen etc. eintragen könnt.");}
                 
             });
+
+                
+
+            egui::Window::new(self.button3.clone()).open(&mut self.flag3).show(ctx, |ui| {
+
+                if self.language_flag == true {ui.label("You’re invited to enjoy food and drinks all weekend, and there will be no cost for staying overnight in a tent or bungalow. What matters most is that everyone can be there and be comfortable.\n\nOf course our pockets will feel a bit empty after the event. If it’s possible for you to help fill them up again, we would be very grateful for any financial contribution — no matter how great or small the amount.\n\nIf you would like to make a contribution, please send it anytime to:\n\nPaypal: woodland.wedding@pm.me   Subject: Woodland Wedding\n\nBank Account: Kimberley Hofer & Matthias Hofer, DE...  Subject: Woodland Wedding");}
+                else {ui.label("Ihr seid das ganze Wochenende auf Essen und Trinken eingeladen, auch für die Übernachtung im Zelt oder Bungalow fallen prinzipiell keine Kosten für euch an. Das Wichtigste ist, dass alle dabei sein können und sich wohl fühlen.\n\nNatürlich wird unser Geldbeutel nach diesem Event ganz schön Magenknurren haben. Wenn es für euch möglich ist, sind wir über finanzielles Futter in jeder Höhe sehr dankbar.\n\nGerne jederzeit an:\n\nPaypal: woodland.wedding@pm.me   Betreff: Woodland Wedding\n\nKonto: Kimberley Hofer & Matthias Hofer, DE...  Betreff: Woodland Wedding");}
+                
+            });
+
+
+            egui::Window::new(self.button6.clone()).open(&mut self.flag6).show(ctx, |ui| {
+                if ui.input(|i| i.key_pressed(egui::Key::R)) {
+                self.snake.reset();
+            }
+
+            self.snake.ui(ui, dt);
+
+            
+            ui.horizontal(|ui| {
+            ui.add_space(175.0);
+            if ui.add(egui::Button::new("⬆️").min_size(egui::vec2(50.0, 50.0))).clicked() {
+                self.snake.try_change_dir(Direction::Up);
+            }
+            });
+            ui.add_space(8.0);
+            ui.horizontal(|ui| {
+            ui.add_space(115.0);
+            if ui.add(egui::Button::new("⬅️").min_size(egui::vec2(50.0, 50.0))).clicked() {
+                self.snake.try_change_dir(Direction::Left);
+            }
+            ui.add_space(10.0);
+            if ui.button("🔁 R").clicked() {
+                self.snake.reset(); // your existing restart logic
+            }
+            ui.add_space(10.0);
+            if ui.add(egui::Button::new("➡️").min_size(egui::vec2(50.0, 50.0))).clicked() {
+                self.snake.try_change_dir(Direction::Right);
+            }    
+            });
+            ui.add_space(8.0);
+            ui.horizontal(|ui| {
+            ui.add_space(175.0);
+            if ui.add(egui::Button::new("⬇️").min_size(egui::vec2(50.0, 50.0))).clicked() {
+                self.snake.try_change_dir(Direction::Down);
+            }
+            });
+
+            });
+
+                
+            
 
             egui::Window::new(self.button8.clone()).open(&mut self.flag8).show(ctx, |ui| {
 
@@ -517,139 +627,16 @@ impl eframe::App for TemplateApp {
                 
 
 
-            egui::Window::new("Painting")
-                .open(&mut self.flag5)
-                .show(ctx, |ui| {
-
-                if ui.button("Send Painting").clicked() {
-                    self.saved_image_data = self.painting_app.export_json(ctx).clone();
-
-                    if let Some(image_data) = &self.saved_image_data {
-                            let request1 = ehttp::Request::post("https://ntfy.sh/woodland", format!(r#"{}"#, "new image received").as_bytes().to_vec());                        
-                            ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-
-                            use ehttp::Request;
-                            let request = Request {
-                                headers: ehttp::Headers::new(&[
-                                    ("Content-Type", "application/json"),
-                                    ("X-Access-Key", "$2a$10$fgUGfRK3yfJUxFr4TJXSIOJYfpsU2zRnWs6jxmq4wE20oqYU5xHIW"),
-                                    ("X-Collection-Id", "68b546c943b1c97be932c82e"),
-                                    ("X-Bin-Private", "true"),
-                                ]),
-                                ..Request::post("https://api.jsonbin.io/v3/b", image_data.as_bytes().to_vec())
-                            };
-                            ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-
-
-
-
-                        
-                        }
-
-                    
-                }
-
-
-
-
-
-
-
-                    
-                    self.painting_app.ui(ui);
-                });
+            
 
 
 
 
 
             
-            egui::Window::new("snake game").open(&mut self.flag6).show(ctx, |ui| {
-                if ui.input(|i| i.key_pressed(egui::Key::R)) {
-                self.snake.reset();
-            }
-
-            self.snake.ui(ui, dt);
-
-            
-            ui.horizontal(|ui| {
-            ui.add_space(175.0);
-            if ui.add(egui::Button::new("⬆️").min_size(egui::vec2(50.0, 50.0))).clicked() {
-                self.snake.try_change_dir(Direction::Up);
-            }
-            });
-            ui.add_space(8.0);
-            ui.horizontal(|ui| {
-            ui.add_space(115.0);
-            if ui.add(egui::Button::new("⬅️").min_size(egui::vec2(50.0, 50.0))).clicked() {
-                self.snake.try_change_dir(Direction::Left);
-            }
-            ui.add_space(10.0);
-            if ui.button("🔁 R").clicked() {
-                self.snake.reset(); // your existing restart logic
-            }
-            ui.add_space(10.0);
-            if ui.add(egui::Button::new("➡️").min_size(egui::vec2(50.0, 50.0))).clicked() {
-                self.snake.try_change_dir(Direction::Right);
-            }    
-            });
-            ui.add_space(8.0);
-            ui.horizontal(|ui| {
-            ui.add_space(175.0);
-            if ui.add(egui::Button::new("⬇️").min_size(egui::vec2(50.0, 50.0))).clicked() {
-                self.snake.try_change_dir(Direction::Down);
-            }
-            });
-
-
-
-
-
-                
             
 
-                
             
-
-                
-           
-
-                
-            
-           
-
-                
-            
-            });
-
-            egui::Window::new("Fractal Clock")
-                .open(&mut self.flag7)
-                .resizable(true)
-                .default_width(400.0)
-                .default_height(450.0)
-                .show(ctx, |ui| {
-                    
-                    ui.separator();
-            
-                    self.fractal_clock.ui(ui);
-            
-                    ui.add_space(10.0);
-            
-                    // Use available space BEFORE wrapping to avoid height issues
-                    let avail = ui.available_size_before_wrap();
-                    let side = avail.x.min(avail.y); // keep it square
-            
-                    // Horizontally center the canvas
-                    let horiz_margin = (avail.x - side).max(0.0) / 2.0;
-                    ui.add_space(horiz_margin);
-            
-                    let square_size = egui::vec2(side, side);
-                    let (rect, _response) = ui.allocate_exact_size(square_size, egui::Sense::hover());
-                    let painter = ui.painter_at(rect);
-            
-                    let time = ctx.input(|i| i.time);
-                    self.fractal_clock.paint(&painter, rect, time);
-                });
 
 
             
