@@ -471,6 +471,17 @@ impl eframe::App for TemplateApp {
                 self.snake.reset();
             }
 
+            if self.language_flag == true {ui.collapsing("how to play", |ui| {
+            ui.label("on desktop: use keyboard arrows to play");
+            ui.label("on mobile: use touch-keys below to play");
+        });}
+            else {ui.collapsing("Spielanleitung", |ui| {
+            ui.label("am PC: Pfeiltasten der Tastatur benutzen");
+            ui.label("am Handye: Touch-Tasten unten benutzen");
+        });}
+
+
+                
             self.snake.ui(ui, dt);
 
             
