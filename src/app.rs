@@ -539,7 +539,8 @@ impl eframe::App for TemplateApp {
             egui::Window::new(self.button9.clone()).open(&mut self.flag9).show(ctx, |ui| {
 
                 if self.language_flag == true {ui.label("Here you have the opportunity to contact us directly. Questions, suggestions and messages of any kind are very welcome. Is there anything else that you think we might have forgotten or that should be taken into account?");
-                                              ui.text_edit_singleline(&mut self.user_input_en); 
+                                              ui.label("");
+                                               ui.text_edit_singleline(&mut self.user_input_en); 
                                               if ui.button("send").clicked() {
                                                   let json1 = format!(r#"{}"#, self.user_input_en);
                                                   let body1 = json1.as_bytes().to_vec();
@@ -553,7 +554,8 @@ impl eframe::App for TemplateApp {
                                                   
                                               }
                 else {ui.label("Hier gibt es die Möglichkeit uns direkt zu kontaktieren. Fragen, Vorschläge und Mitteilungen aller Art sind höchst willkommen. Fällt dir noch irgendwas ein was wir vergessen haben oder noch berücksichtigt werden sollte?");
-                     ui.text_edit_singleline(&mut self.user_input_de); 
+                      ui.label("");
+                      ui.text_edit_singleline(&mut self.user_input_de); 
 
                       if ui.button("abschicken").clicked() {
                                                   let json1 = format!(r#"{}"#, self.user_input_de);
