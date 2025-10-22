@@ -206,7 +206,7 @@ impl eframe::App for TemplateApp {
         else {self.button2 = "Ablauf".to_owned()}
 
         if self.language_flag == true {self.button5 = "painting".to_owned()}
-        else {self.button5 = "malen".to_owned()}
+        else {self.button5 = "Bild malen".to_owned()}
 
         if self.language_flag == true {self.button4 = "help wanted".to_owned()}
         else {self.button4 = "helfende Hände".to_owned()}
