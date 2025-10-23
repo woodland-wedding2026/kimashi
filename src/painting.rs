@@ -75,8 +75,9 @@ impl PaintingApp {
 
 
     
-    pub fn ui_control(&mut self, ui: &mut egui::Ui) -> egui::Response {
-        ui.horizontal(|ui| {
+    pub fn ui_control(&mut self, ui: &mut egui::Ui, language_flag: bool) -> egui::Response {
+
+        if language_flag == true {ui.horizontal(|ui| {
             ui.label("Stroke:");
             //ui.add(&mut self.stroke);
             let response = ui.add(egui::Slider::new(&mut self.stroke.width, 0.5..=10.0).text("px"));
@@ -91,7 +92,26 @@ impl PaintingApp {
             }
 
             
-        }).response
+        }).response}
+        else {ui.horizontal(|ui| {
+            ui.label("Linie:");
+            //ui.add(&mut self.stroke);
+            let response = ui.add(egui::Slider::new(&mut self.stroke.width, 0.5..=10.0).text("px"));
+            if response.changed() {
+                self.lines.push((vec![], self.stroke));
+            }
+            ui.color_edit_button_srgba(&mut self.stroke.color);
+            ui.separator();
+
+            if ui.button("Bild löschen").clicked() {
+                self.lines.clear();
+            }
+
+            
+        }).response}
+        
+        
+        
     }
 
     /// Paint canvas interaction and drawing
