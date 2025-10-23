@@ -431,10 +431,10 @@ impl eframe::App for TemplateApp {
                 .open(&mut self.flag5)
                 .show(ctx, |ui| {
 
-                if self.language_flag == true {ui.text_edit_singleline(&mut self.pic_name_en); }
-                else {ui.text_edit_singleline(&mut self.pic_name_de);}
+                if self.language_flag == true {ui.text_edit_singleline(&mut self.pic_name_en); self.painting_app.ui(ui);}
+                else {ui.text_edit_singleline(&mut self.pic_name_de); self.painting_app.ui(ui);}
                     
-                self.painting_app.ui(ui);
+                
 
                 if self.language_flag == true {
 
