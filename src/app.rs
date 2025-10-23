@@ -54,6 +54,9 @@ pub struct TemplateApp {
     submitflag: bool,
     schickflag: bool,
 
+    pic_name_en: String,
+    pic_name_de: String,
+
 
     
 
@@ -110,7 +113,8 @@ impl Default for TemplateApp {
             submitflag: false,
             schickflag: false,
             
-
+            pic_name_en: "who is painting? type your name ..".to_owned(),,
+            pic_name_de: "wer malt? lass uns deinen Namen wissen ..".to_owned(),,
             
 
 
@@ -427,13 +431,19 @@ impl eframe::App for TemplateApp {
                 .open(&mut self.flag5)
                 .show(ctx, |ui| {
 
-                if ui.button("Send Painting").clicked() {
+                if self.language_flag == true {ui.text_edit_singleline(&mut self.pic_name_en); }
+                else {ui.text_edit_singleline(&mut self.pic_name_de);}
+                    
+                self.painting_app.ui(ui);
+
+                if self.language_flag == true {
+
+                    if ui.button("Send Painting").clicked() {
                     self.saved_image_data = self.painting_app.export_json(ctx).clone();
 
                     if let Some(image_data) = &self.saved_image_data {
-                            let request1 = ehttp::Request::post("https://ntfy.sh/woodland", format!(r#"{}"#, "new image received").as_bytes().to_vec());                        
+                            let request1 = ehttp::Request::post("https://ntfy.sh/woodland", format!(r#"{} from {}"#, "new image received", self.pic_name_en).as_bytes().to_vec());                        
                             ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-
                             use ehttp::Request;
                             let request = Request {
                                 headers: ehttp::Headers::new(&[
@@ -447,7 +457,43 @@ impl eframe::App for TemplateApp {
                             ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                         }
                 }
-                    self.painting_app.ui(ui);
+                    
+                }
+                
+                else {
+
+                    if ui.button("Bild abschicken").clicked() {
+                    self.saved_image_data = self.painting_app.export_json(ctx).clone();
+
+                    if let Some(image_data) = &self.saved_image_data {
+                            let request1 = ehttp::Request::post("https://ntfy.sh/woodland", format!(r#"{} from {}"#, "new image received", self.pic_name_de).as_bytes().to_vec());                        
+                            ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                            use ehttp::Request;
+                            let request = Request {
+                                headers: ehttp::Headers::new(&[
+                                    ("Content-Type", "application/json"),
+                                    ("X-Access-Key", "$2a$10$fgUGfRK3yfJUxFr4TJXSIOJYfpsU2zRnWs6jxmq4wE20oqYU5xHIW"),
+                                    ("X-Collection-Id", "68b546c943b1c97be932c82e"),
+                                    ("X-Bin-Private", "true"),
+                                ]),
+                                ..Request::post("https://api.jsonbin.io/v3/b", image_data.as_bytes().to_vec())
+                            };
+                            ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                        }
+                }
+                    
+                }
+
+                    
+                
+
+
+
+
+
+
+                    
+                    
                 });
 
 
