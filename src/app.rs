@@ -431,14 +431,9 @@ impl eframe::App for TemplateApp {
                 .open(&mut self.flag5)
                 .show(ctx, |ui| {
 
-                if self.language_flag == true {ui.text_edit_singleline(&mut self.pic_name_en); self.painting_app.ui(ui);}
-                else {ui.text_edit_singleline(&mut self.pic_name_de); self.painting_app.ui(ui);}
-                    
-                
-
-                if self.language_flag == true {
-
-                    if ui.button("Send Painting").clicked() {
+                if self.language_flag == true {ui.text_edit_singleline(&mut self.pic_name_en); 
+                                               self.painting_app.ui(ui);
+                                               if ui.button("Send Painting").clicked() {
                     self.saved_image_data = self.painting_app.export_json(ctx).clone();
 
                     if let Some(image_data) = &self.saved_image_data {
@@ -457,12 +452,10 @@ impl eframe::App for TemplateApp {
                             ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                         }
                 }
-                    
-                }
-                
-                else {
-
-                    if ui.button("Bild abschicken").clicked() {
+                                              }
+                else {ui.text_edit_singleline(&mut self.pic_name_de); 
+                      self.painting_app.ui(ui);
+                      if ui.button("Bild abschicken").clicked() {
                     self.saved_image_data = self.painting_app.export_json(ctx).clone();
 
                     if let Some(image_data) = &self.saved_image_data {
@@ -481,9 +474,11 @@ impl eframe::App for TemplateApp {
                             ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                         }
                 }
+                     }
                     
-                }
+                
 
+               
                     
                 
 
