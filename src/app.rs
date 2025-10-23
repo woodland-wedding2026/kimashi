@@ -463,9 +463,10 @@ impl eframe::App for TemplateApp {
                 else {
                     
                     
-                    ui.text_edit_singleline(&mut self.pic_name_de); 
+                     
                     ui.label("mal ein Bild uns schick es uns :)");  
                     ui.horizontal(|ui| {
+                        ui.text_edit_singleline(&mut self.pic_name_de);
                       if ui.button("Bild abschicken").clicked() {
                     self.saved_image_data = self.painting_app.export_json(ctx).clone();
 
