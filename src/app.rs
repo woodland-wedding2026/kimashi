@@ -455,7 +455,7 @@ impl eframe::App for TemplateApp {
                             ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                         }
                 }
-                )};
+                    });
 
 
                     
@@ -485,7 +485,7 @@ impl eframe::App for TemplateApp {
                             ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                         }
                 }
-                    )};
+                    });
                      }
 
                 self.painting_app.ui(ui);
