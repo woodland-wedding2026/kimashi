@@ -165,9 +165,9 @@ impl PaintingApp {
     }
 
     /// Top-level egui UI entry
-    pub fn ui(&mut self, ui: &mut Ui) {
+    pub fn ui(&mut self, ui: &mut Ui, language_flag: bool) {
         ui.vertical(|ui| {
-            self.ui_control(ui);
+            self.ui_control(ui, language_flag);
             ui.add_space(1.0);
             egui::Frame::canvas(ui.style()).show(ui, |ui| {
                 self.ui_content(ui);
