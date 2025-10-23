@@ -7,6 +7,7 @@ pub struct FractalClock {
     pub thickness: f32,
     pub length_factor: f32,
     pub time_scale: f64,
+    pub language_flag: bool,
 }
 
 impl Default for FractalClock {
@@ -16,6 +17,8 @@ impl Default for FractalClock {
             thickness: 1.5,
             length_factor: 0.65,
             time_scale: 1.0,
+            language_flag: true,
+            
         }
     }
 }
