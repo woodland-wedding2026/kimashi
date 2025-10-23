@@ -113,7 +113,7 @@ impl Default for TemplateApp {
             submitflag: false,
             schickflag: false,
             
-            pic_name_en: "whoo is painting? type your name ..".to_owned(),
+            pic_name_en: "who is painting? type your name ..".to_owned(),
             pic_name_de: "wer malt? lass uns deinen Namen wissen ..".to_owned(),
             
 
@@ -431,7 +431,10 @@ impl eframe::App for TemplateApp {
                 .open(&mut self.flag5)
                 .show(ctx, |ui| {
 
-                if self.language_flag == true {ui.text_edit_singleline(&mut self.pic_name_en); 
+                if self.language_flag == true {
+                    ui.label("paint a picture and send it to us :)");  
+                    ui.horizontal(|ui| {
+                    ui.text_edit_singleline(&mut self.pic_name_en); 
                                                
                                                if ui.button("Send Painting").clicked() {
                     self.saved_image_data = self.painting_app.export_json(ctx).clone();
@@ -452,9 +455,17 @@ impl eframe::App for TemplateApp {
                             ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                         }
                 }
+                )};
+
+
+                    
                                               }
-                else {ui.text_edit_singleline(&mut self.pic_name_de); 
-                      
+                else {
+                    
+                    
+                    ui.text_edit_singleline(&mut self.pic_name_de); 
+                    ui.label("mal ein Bild uns schick es uns :)");  
+                    ui.horizontal(|ui| {
                       if ui.button("Bild abschicken").clicked() {
                     self.saved_image_data = self.painting_app.export_json(ctx).clone();
 
@@ -474,6 +485,7 @@ impl eframe::App for TemplateApp {
                             ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                         }
                 }
+                    )};
                      }
 
                 self.painting_app.ui(ui);
