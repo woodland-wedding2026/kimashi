@@ -488,7 +488,7 @@ impl eframe::App for TemplateApp {
                     });
                      }
 
-                self.painting_app.ui(ui);
+                self.painting_app.ui(ui, self.language_flag);
                 
 
                
