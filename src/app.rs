@@ -432,7 +432,7 @@ impl eframe::App for TemplateApp {
                 .show(ctx, |ui| {
 
                 if self.language_flag == true {ui.text_edit_singleline(&mut self.pic_name_en); 
-                                               self.painting_app.ui(ui);
+                                               
                                                if ui.button("Send Painting").clicked() {
                     self.saved_image_data = self.painting_app.export_json(ctx).clone();
 
@@ -454,7 +454,7 @@ impl eframe::App for TemplateApp {
                 }
                                               }
                 else {ui.text_edit_singleline(&mut self.pic_name_de); 
-                      self.painting_app.ui(ui);
+                      
                       if ui.button("Bild abschicken").clicked() {
                     self.saved_image_data = self.painting_app.export_json(ctx).clone();
 
@@ -475,7 +475,8 @@ impl eframe::App for TemplateApp {
                         }
                 }
                      }
-                    
+
+                self.painting_app.ui(ui);
                 
 
                
