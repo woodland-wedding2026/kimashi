@@ -36,6 +36,7 @@ impl FractalClock {
 
     /// UI controls for the fractal clock.
     pub fn ui(&mut self, ui: &mut egui::Ui) {
+        ui.label("");
         //ui.collapsing("settings", |ui| {
         //    ui.add(egui::Slider::new(&mut self.depth, 0..=10).text("Recursion Depth"));
         //    ui.add(egui::Slider::new(&mut self.thickness, 0.1..=5.0).text("Line Thickness"));
