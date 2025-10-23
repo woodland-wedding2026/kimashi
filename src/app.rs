@@ -113,8 +113,8 @@ impl Default for TemplateApp {
             submitflag: false,
             schickflag: false,
             
-            pic_name_en: "who is painting? type your name ..".to_owned(),,
-            pic_name_de: "wer malt? lass uns deinen Namen wissen ..".to_owned(),,
+            pic_name_en: "who is painting? type your name ..".to_owned(),
+            pic_name_de: "wer malt? lass uns deinen Namen wissen ..".to_owned(),
             
 
 
