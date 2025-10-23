@@ -389,7 +389,7 @@ impl eframe::App for TemplateApp {
 
                     
             
-                    self.fractal_clock.ui(ui, language_flag);
+                    self.fractal_clock.ui(ui, self.language_flag);
             
                     ui.add_space(10.0);
             
