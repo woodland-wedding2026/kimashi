@@ -515,19 +515,19 @@ impl eframe::App for TemplateApp {
                 else {
                     ui.label(egui::RichText::new("Im Laufe der Zeit wird es hier noch mehr Infos zur konkreten Orga geben. Schaut also gerne nochmal rein. Folgende Bereiche sind schon klar und freuen sich über eure kreativen Ideen:\n\n").size(17.0));
 
-                    ui.label(egui::RichText::new("Deko:\n ").size(23.0).color(egui::Color32::RED).strong().underline());
+                    ui.label(egui::RichText::new("Deko:\n").size(23.0).color(egui::Color32::RED).strong().underline());
                     
                     ui.label(egui::RichText::new("Wir wollen zusammen mit euch über die nächste Zeit Deko basteln. Wir haben schon ein paar Ideen und freuen uns über noch mehr Inspiration von euch. Meldet euch bei uns, wenn ihr mitmachen wollt!\n\n").size(17.0));
                     
-                    ui.label(egui::RichText::new("Musik:\n ").size(23.0).color(egui::Color32::RED).strong().underline());
+                    ui.label(egui::RichText::new("Musik:\n").size(23.0).color(egui::Color32::RED).strong().underline());
                     
                     ui.label(egui::RichText::new("Wir wollen das Wochenende mit richtig viel verschiedener Musik füllen. Eine gemütliche Playlist zum Frühstückskaffee, Live Musik zum Sonnenuntergang, mit Techno und Goa DJ-Sets durch die Nacht im Party-Kabuff. Wenn ihr hier etwas beitragen könnt, meldet euch gerne so bald wie möglich!\n\n").size(17.0));
                     
-                    ui.label(egui::RichText::new("Kids Area:\n ").size(23.0).color(egui::Color32::RED).strong().underline());
+                    ui.label(egui::RichText::new("Kids Area:\n").size(23.0).color(egui::Color32::RED).strong().underline());
                     
                     ui.label(egui::RichText::new("Eure Kinder sind natürlich herzlich willkommen und sollen sich bei uns wohl fühlen. Dafür wollen wir einen Kinderbereich einrichten, wo die Kleinen spielen, toben und Spaß haben können. Es wäre großartig, wenn die Eltern sich hier mit kreativen Ideen einbringen.\n\n").size(17.0));
                     
-                    ui.label(egui::RichText::new("Küche & Co:\n ").size(23.0).color(egui::Color32::RED).strong().underline());
+                    ui.label(egui::RichText::new("Küche & Co:\n").size(23.0).color(egui::Color32::RED).strong().underline());
                     
                     ui.label(egui::RichText::new("Für ca. 100 Gäste Essen zuzubereiten, wird ein wunderschöner Kraftakt! Wir werden alles gut vorbereiten und jede Mahlzeit zusammen mit ein paar Hauptverantwortlichen planen. Natürlich brauchen wir hier am meisten Unterstützung von euch allen. Ein paar Wochen vor der Feier findet ihr hier einen Schichtplan, wo ihr euch zum Schnippeln, Servieren, Spülen etc. eintragen könnt.").size(17.0));
 
