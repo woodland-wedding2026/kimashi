@@ -661,13 +661,13 @@ if ui.button(egui::RichText::new("send").size(17.0)).clicked() {
       ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
       self.value +=1;}
 
-myentext = format!("you have sent {} messages", self.value);
+
 
 if self.value == 0 {ui.label(egui::RichText::new("you have sent no messages yet").size(17.0));}
 
 else if self.value == 1 {ui.label(egui::RichText::new("you have sent one message").size(17.0));}
 
-else {ui.label(egui::RichText::new(myentext).size(17.0));}
+else {myentext = format!("you have sent {} messages", self.value); ui.label(egui::RichText::new(myentext).size(17.0));}
                                                                                                  
                                               }
 
@@ -687,13 +687,13 @@ if ui.button(egui::RichText::new("abschicken").size(17.0)).clicked() {
                           ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                           self.value +=1;}
 
-let mydetext = format!("du hast {} Nachrichten geschickt", self.value);
+
 
 if self.value == 0 {ui.label(egui::RichText::new("du hast bisher keine Nachrichten geschickt").size(17.0));}
 
 else if self.value == 1 {ui.label(egui::RichText::new("du hast eine Nachricht geschickt").size(17.0));}
 
-else {ui.label(egui::RichText::new(mydetext).size(17.0));}
+else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui.label(egui::RichText::new(mydetext).size(17.0));}
 
 }
                 
