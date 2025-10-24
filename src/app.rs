@@ -615,7 +615,10 @@ impl eframe::App for TemplateApp {
                                                   let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                                                   ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                                                   self.value +=1;}
-                                               ui.label(format!("you sent {} messages", self.value));
+                                               if self.value == 0 {ui.label(format!("you have sent no messages yet", self.value));}
+                                               else if self.value == 1 {ui.label(format!("you have sent one message", self.value));}
+                                               else {ui.label(format!("you sent {} messages", self.value));}
+                                               
 
 
 
@@ -631,7 +634,10 @@ impl eframe::App for TemplateApp {
                                                   let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                                                   ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                                                   self.value +=1;}
-                      ui.label(format!("du hast {} Nachrichten geschickt", self.value));
+                      if self.value == 0 {ui.label(format!("du hast bisher keine Nachrichten geschickt", self.value));}
+                      else if self.value == 1 {ui.label(format!("du hast eine Nachricht geschickt", self.value));}
+                      else {ui.label(format!("du hast {} Nachrichten geschickt", self.value));}
+                      
                     
 
 
