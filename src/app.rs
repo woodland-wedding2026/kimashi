@@ -307,8 +307,8 @@ impl eframe::App for TemplateApp {
                 else {self.flag9 = true;}
             }  
             if ui.button(egui::RichText::new(self.formbutton.clone()).size(17.0).color(egui::Color32::RED).strong()).clicked() {
-                if self.flag9 == true {self.flag9 = false;}
-                else {self.flag9 = true;}
+                if self.formflag == true {self.formflag = false;}
+                else {self.formflag = true;}
             }  
 
 
