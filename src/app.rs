@@ -508,10 +508,9 @@ impl eframe::App for TemplateApp {
 
             egui::Window::new(self.button4.clone()).open(&mut self.flag4).show(ctx, |ui| {
 
-                //if self.language_flag == true {ui.label("More detailed info about how the event will be organized will be shared here — so feel free to check back in again. We would love to hear your creative ideas for the following areas:\n\n\nDecorations:\n\nWe’d love to craft decorations together with you over the coming months s. We already have a few ideas and are excited for more inspiration from you. Get in touch with us if you’d like to join in!\n\n\nMusic:\n\nWe want to fill the weekend with lots of different kinds of music— a cozy playlist for morning coffee, live music at sunset, and DJ sets with techno and goa taking us through the night in the Party Cabin. If you’d like to contribute in any way, please reach out as soon as possible!\n\n\nKids Area:\n\nWe want your kids to feel welcome and be able to join in the fun. We will be organizing a special area for them where they can play and frolic about. We would love for the parents to participate in creating a fun space. Maybe you know some fun games or have some cool toys you can bring?\n\n\nKitchen & Co.:\n\nCooking for around 100 guests will be a beautiful team effort! We’ll have everything well prepared and will plan each meal together with a few lead coordinators. Of course, this is where we’ll need the most support from all of you. A few weeks before the event, you’ll find a schedule here where you can sign up for tasks like chopping, serving, dishwashing, etc.");}
-                //else {ui.label("Im Laufe der Zeit wird es hier noch mehr Infos zur konkreten Orga geben. Schaut also gerne nochmal rein. Folgende Bereiche sind schon klar und freuen sich über eure kreativen Ideen:\n\n\nDeko:\n\n Wir wollen zusammen mit euch über die nächste Zeit Deko basteln. Wir haben schon ein paar Ideen und freuen uns über noch mehr Inspiration von euch. Meldet euch bei uns, wenn ihr mitmachen wollt!\n\n\nMusik:\n\n Wir wollen das Wochenende mit richtig viel verschiedener Musik füllen. Eine gemütliche Playlist zum Frühstückskaffee, Live Musik zum Sonnenuntergang, mit Techno und Goa DJ-Sets durch die Nacht im Party-Kabuff. Wenn ihr hier etwas beitragen könnt, meldet euch gerne so bald wie möglich!\n\n\nKids Area:\n\n Eure Kinder sind natürlich herzlich willkommen und sollen sich bei uns wohl fühlen. Dafür wollen wir einen Kinderbereich einrichten, wo die Kleinen spielen, toben und Spaß haben können. Es wäre großartig, wenn die Eltern sich hier mit kreativen Ideen einbringen.\n\n\nKüche & Co:\n\n Für ca. 100 Gäste Essen zuzubereiten, wird ein wunderschöner Kraftakt! Wir werden alles gut vorbereiten und jede Mahlzeit zusammen mit ein paar Hauptverantwortlichen planen. Natürlich brauchen wir hier am meisten Unterstützung von euch allen. Ein paar Wochen vor der Feier findet ihr hier einen Schichtplan, wo ihr euch zum Schnippeln, Servieren, Spülen etc. eintragen könnt.");}
+                egui::ScrollArea::vertical().show(ui, |ui| {
 
-                if self.language_flag == true {
+                    if self.language_flag == true {
                     ui.label(egui::RichText::new("More detailed info about how the event will be organized will be shared here — so feel free to check back in again. We would love to hear your creative ideas for the following areas:\n\n").size(17.0));
 
                     ui.label(egui::RichText::new("Decorations:\n").size(23.0).color(egui::Color32::RED).strong().underline());
@@ -550,6 +549,10 @@ impl eframe::App for TemplateApp {
                     ui.label(egui::RichText::new("Für ca. 100 Gäste Essen zuzubereiten, wird ein wunderschöner Kraftakt! Wir werden alles gut vorbereiten und jede Mahlzeit zusammen mit ein paar Hauptverantwortlichen planen. Natürlich brauchen wir hier am meisten Unterstützung von euch allen. Ein paar Wochen vor der Feier findet ihr hier einen Schichtplan, wo ihr euch zum Schnippeln, Servieren, Spülen etc. eintragen könnt.").size(17.0));
 
                      }
+                
+            });
+                
+                
                 
             });
 
