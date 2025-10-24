@@ -362,15 +362,15 @@ impl eframe::App for TemplateApp {
 
 ui.label(egui::RichText::new("You can reach the venue in a number of different ways: using public transport, your own car, a rental car or by taxi/Uber. Here's an overview:\n").size(17.0)); 
 
-ui.label(egui::RichText::new("PUBLIC TRANSPORT might be a bit complicated:\n").size(23.0).color(egui::Color32::RED).strong()); 
+ui.label(egui::RichText::new("PUBLIC TRANSPORT might be a bit complicated:").size(23.0).color(egui::Color32::RED).strong()); 
 
 ui.label(egui::RichText::new("Around 2.5 hours from Berlin Ostkreuz via regional train and two buses to Chossewitz, then a 20-minute walk (1.5 km).\nCost: approx. 15 euros per person.\n").size(17.0)); 
 
-ui.label(egui::RichText::new("TAXI or UBER:\n").size(23.0).color(egui::Color32::RED).strong()); 
+ui.label(egui::RichText::new("TAXI or UBER:").size(23.0).color(egui::Color32::RED).strong()); 
 
 ui.label(egui::RichText::new("If you book a large taxi or Uber that accomodates 6–8 people, the cost is about  40 euros per person one way.Duration: approx. 1.5 hours. If you’re interested in this option and need help organizing it, please contact us before April 1st.\n").size(17.0)); 
 
-ui.label(egui::RichText::new("CAR:\n").size(23.0).color(egui::Color32::RED).strong()); 
+ui.label(egui::RichText::new("CAR:").size(23.0).color(egui::Color32::RED).strong()); 
 
 ui.label(egui::RichText::new("Duration: approx. 1.5 hours, with parking available directly at the venue.\nRenting a car for 3 days for 4–5 people costs about 50 euros per person for the round trip, including gas. Important: mind the exact route:").size(17.0)); 
 
@@ -387,7 +387,7 @@ ui.horizontal(|ui| {
 );
 });
 
-ui.label(egui::RichText::new("\nHELICOPTER:\n").size(23.0).color(egui::Color32::RED).strong());
+ui.label(egui::RichText::new("\nHELICOPTER:").size(23.0).color(egui::Color32::RED).strong());
 
 ui.horizontal(|ui| {
 ui.label(egui::RichText::new("Sadly unaffordable. However, here is the link to the classic").size(17.0)); 
@@ -410,15 +410,15 @@ else {
 
 ui.label(egui::RichText::new("Zum Gelände kommt man auf allen erdenklichen Wegen, mit Bus&Bahn, dem eigenen oder gemieteten Auto oder mit Taxi bzw. Uber. Hier ein Überblick:\n").size(17.0)); 
 
-ui.label(egui::RichText::new("etwas umständlich mit ÖFFIS:\n").size(23.0).color(egui::Color32::RED).strong()); 
+ui.label(egui::RichText::new("etwas umständlich mit ÖFFIS:").size(23.0).color(egui::Color32::RED).strong()); 
 
 ui.label(egui::RichText::new("Ungefähr 2.5 Stunden von Berlin Ostkreuz mit Regio und zwei Bussen bis Chossewitz, von dort 20 Minuten (1.5km) laufen. Kosten circa 15 Euro pro Person.\n").size(17.0)); 
 
-ui.label(egui::RichText::new("TAXI oder UBER:\n").size(23.0).color(egui::Color32::RED).strong()); 
+ui.label(egui::RichText::new("TAXI oder UBER:").size(23.0).color(egui::Color32::RED).strong()); 
 
 ui.label(egui::RichText::new("Ein Großraumtaxi/ -Uber für circa 6-8 Leute kostet circa  40 Euro pro Person und Fahrt. Dauer circa 1.5 Stunden. Falls ihr Interesse an dieser Option habt und Hilfe beim Organisieren braucht, wendet euch bitte bis zum 01.04.26 an uns.\n").size(17.0)); 
 
-ui.label(egui::RichText::new("AUTO:\n").size(23.0).color(egui::Color32::RED).strong()); 
+ui.label(egui::RichText::new("AUTO:").size(23.0).color(egui::Color32::RED).strong()); 
 
 ui.label(egui::RichText::new("Parkplätze direkt vor dem Gelände. Ein Auto mieten für 3 Tage und 4-5 Leute kostet circa 50 Euro pro Person für hin&zurück, inklusive Benzin. Dauer circa 1.5 Stunden.").size(17.0)); 
 
@@ -435,7 +435,7 @@ ui.horizontal(|ui| {
 );
 });
 
-ui.label(egui::RichText::new("\nHELIKOPTER:\n").size(23.0).color(egui::Color32::RED).strong());
+ui.label(egui::RichText::new("\nHELIKOPTER:").size(23.0).color(egui::Color32::RED).strong());
 
 ui.horizontal(|ui| {
 ui.label(egui::RichText::new("fast unbezahlbar teuer, dafür hier der Link zum").size(17.0));
