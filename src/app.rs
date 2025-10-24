@@ -666,7 +666,12 @@ impl eframe::App for TemplateApp {
                                               }
                 else {ui.label("Hier gibt es die Möglichkeit uns direkt zu kontaktieren. Fragen, Vorschläge und Mitteilungen aller Art sind höchst willkommen. Fällt dir noch irgendwas ein was wir vergessen haben oder noch berücksichtigt werden sollte?");
                       ui.label("");
-                      ui.text_edit_singleline(&mut self.user_input_de); 
+                      //ui.text_edit_singleline(&mut self.user_input_de); 
+
+                      ui.add(
+                            egui::TextEdit::singleline(&mut self.user_input_de)
+                                .font(egui::FontId::proportional(23.0))
+                        );
 
                       if ui.button("abschicken").clicked() {
                                                   let json1 = format!(r#"{}"#, self.user_input_de);
