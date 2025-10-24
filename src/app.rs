@@ -332,8 +332,8 @@ impl eframe::App for TemplateApp {
 
             
             // The central panel the region left after adding TopPanel's and SidePanel's
-            ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias and Yoshi");
-
+            //ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias and Yoshi");
+            ui.heading(egui::RichText::new("Woodland Wedding 2026 - kimashi == Kim, Matthias and Yoshi").size(32.0).color(egui::Color32::RED).strong());
             
                 
             egui_extras::install_image_loaders(ctx);
