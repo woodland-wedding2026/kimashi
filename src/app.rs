@@ -646,51 +646,56 @@ impl eframe::App for TemplateApp {
 
             egui::Window::new(self.button9.clone()).open(&mut self.flag9).show(ctx, |ui| {
 
-                if self.language_flag == true {ui.label("Here you have the opportunity to contact us directly. Questions, suggestions and messages of any kind are very welcome. Is there anything else that you think we might have forgotten or that should be taken into account?");
-                                              ui.label("");
-                                               ui.text_edit_singleline(&mut self.user_input_en); 
-                                              if ui.button("send").clicked() {
-                                                  let json1 = format!(r#"{}"#, self.user_input_en);
-                                                  let body1 = json1.as_bytes().to_vec();
-                                                  let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
-                                                  ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-                                                  self.value +=1;}
-                                               if self.value == 0 {ui.label("you have sent no messages yet");}
-                                               else if self.value == 1 {ui.label("you have sent one message");}
-                                               else {ui.label(format!("you have sent {} messages", self.value));}
-                                               
+                if self.language_flag == true {
 
+ui.label(egui::RichText::new("Here you have the opportunity to contact us directly. Questions, suggestions and messages of any kind are very welcome. Is there anything else that you think we might have forgotten or that should be taken into account?").size(17.0));
 
+ui.label("");
 
-                                                  
+ui.add(egui::TextEdit::singleline(&mut self.user_input_en).font(egui::FontId::proportional(17.0)));
+
+if ui.button(egui::RichText::new("send").size(17.0)).clicked() {
+      let json1 = format!(r#"{}"#, self.user_input_en);
+      let body1 = json1.as_bytes().to_vec();
+      let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+      ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+      self.value +=1;}
+
+myentext = format!("you have sent {} messages", self.value);
+
+if self.value == 0 {ui.label(egui::RichText::new("you have sent no messages yet").size(17.0));}
+
+else if self.value == 1 {ui.label(egui::RichText::new("you have sent one message").size(17.0));}
+
+else {ui.label(egui::RichText::new(myentext).size(17.0));}
+                                                                                                 
                                               }
-                else {ui.label("Hier gibt es die Möglichkeit uns direkt zu kontaktieren. Fragen, Vorschläge und Mitteilungen aller Art sind höchst willkommen. Fällt dir noch irgendwas ein was wir vergessen haben oder noch berücksichtigt werden sollte?");
-                      ui.label("");
-                      //ui.text_edit_singleline(&mut self.user_input_de); 
-
-                      ui.add(
-                            egui::TextEdit::singleline(&mut self.user_input_de)
-                                .font(egui::FontId::proportional(23.0))
-                        );
-
-                      if ui.button("abschicken").clicked() {
-                                                  let json1 = format!(r#"{}"#, self.user_input_de);
-                                                  let body1 = json1.as_bytes().to_vec();
-                                                  let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
-                                                  ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-                                                  self.value +=1;}
-                      if self.value == 0 {ui.label("du hast bisher keine Nachrichten geschickt");}
-                      else if self.value == 1 {ui.label("du hast eine Nachricht geschickt");}
-                      else {ui.label(format!("du hast {} Nachrichten geschickt", self.value));}
-                      
-                    
 
 
+else {
 
+ui.label(egui::RichText::new("Hier gibt es die Möglichkeit uns direkt zu kontaktieren. Fragen, Vorschläge und Mitteilungen aller Art sind höchst willkommen. Fällt dir noch irgendwas ein was wir vergessen haben oder noch berücksichtigt werden sollte?").size(17.0));
 
+ui.label("");
 
-                      
-                     }
+ui.add(egui::TextEdit::singleline(&mut self.user_input_de).font(egui::FontId::proportional(17.0)));
+
+if ui.button(egui::RichText::new("abschicken").size(17.0)).clicked() {
+                          let json1 = format!(r#"{}"#, self.user_input_de);
+                          let body1 = json1.as_bytes().to_vec();
+                          let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+                          ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                          self.value +=1;}
+
+let mydetext = format!("du hast {} Nachrichten geschickt", self.value);
+
+if self.value == 0 {ui.label(egui::RichText::new("du hast bisher keine Nachrichten geschickt").size(17.0));}
+
+else if self.value == 1 {ui.label(egui::RichText::new("du hast eine Nachricht geschickt").size(17.0));}
+
+else {ui.label(egui::RichText::new(mydetext).size(17.0));}
+
+}
                 
             });
 
