@@ -358,26 +358,96 @@ impl eframe::App for TemplateApp {
             
             egui::Window::new(self.button1.clone()).open(&mut self.flag1).show(ctx, |ui| {
 
-                if self.language_flag == true {ui.label("You can reach the venue in a number of different ways: using public transport, your own car, a rental car or by taxi/Uber. Here's an overview:\n\nPUBLIC TRANSPORT might be a bit complicated:\n\nAround 2.5 hours from Berlin Ostkreuz via regional train and two buses to Chossewitz, then a 20-minute walk (1.5 km).\nCost: approx. 15 euros per person.\n\nTAXI or UBER:\n\nIf you book a large taxi or Uber that accomodates 6–8 people, the cost is about  40 euros per person one way.\nDuration: approx. 1.5 hours. If you’re interested in this option and need help organizing it, please contact us before April 1st.\n\nCAR:\n\nDuration: approx. 1.5 hours, with parking available directly at the venue.\nRenting a car for 3 days for 4–5 people costs about 50 euros per person for the round trip, including gas. Important: mind the exact route:"); 
-                                               ui.horizontal(|ui| {
-                                                      ui.label("important: exact");
-                                                      ui.hyperlink_to("ROUTE",  "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9"); 
-                                                });
-                                               ui.label("\nHELICOPTER:\n"); 
-                                               ui.horizontal(|ui| {
-                                               ui.label("Sadly unaffordable. However, here is the link to the classic"); 
-                                               ui.hyperlink_to("helicopter game", "https://www.addictinggames.com/clicker/helicopter-game");
-                                               });}
-                else {ui.label("Zum Gelände kommt man auf allen erdenklichen Wegen, mit Bus&Bahn, dem eigenen oder gemieteten Auto oder mit Taxi bzw. Uber. Hier ein Überblick:\n\netwas umständlich mit ÖFFIS:\n\nUngefähr 2.5 Stunden von Berlin Ostkreuz mit Regio und zwei Bussen bis Chossewitz, von dort 20 Minuten (1.5km) laufen. Kosten circa 15 Euro pro Person.\n\nTAXI oder UBER:\n\nEin Großraumtaxi/ -Uber für circa 6-8 Leute kostet circa  40 Euro pro Person und Fahrt. Dauer circa 1.5 Stunden. Falls ihr Interesse an dieser Option habt und Hilfe beim Organisieren braucht, wendet euch bitte bis zum 01.04.26 an uns.\n\nAUTO:\n\nParkplätze direkt vor dem Gelände. Ein Auto mieten für 3 Tage und 4-5 Leute kostet circa 50 Euro pro Person für hin&zurück, inklusive Benzin. Dauer circa 1.5 Stunden."); 
-                      ui.horizontal(|ui| {
-                          ui.label("wichtig: exakte");
-                          ui.hyperlink_to("ROUTE",  "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9"); 
-                    });
-                      ui.label("\nHELIKOPTER:\n");
-                      ui.horizontal(|ui| {
-                      ui.label("fast unbezahlbar teuer, dafür hier der Link zum");
-                      ui.hyperlink_to("Helikopterspiel", "https://www.addictinggames.com/clicker/helicopter-game");
-                                    });}
+                if self.language_flag == true {
+
+ui.label(egui::RichText::new("You can reach the venue in a number of different ways: using public transport, your own car, a rental car or by taxi/Uber. Here's an overview:\n").size(17.0)); 
+
+ui.label(egui::RichText::new("PUBLIC TRANSPORT might be a bit complicated:\n").size(23.0).color(egui::Color32::RED).strong()); 
+
+ui.label(egui::RichText::new("Around 2.5 hours from Berlin Ostkreuz via regional train and two buses to Chossewitz, then a 20-minute walk (1.5 km).\nCost: approx. 15 euros per person.\n").size(17.0)); 
+
+ui.label(egui::RichText::new("TAXI or UBER:\n").size(23.0).color(egui::Color32::RED).strong()); 
+
+ui.label(egui::RichText::new("If you book a large taxi or Uber that accomodates 6–8 people, the cost is about  40 euros per person one way.Duration: approx. 1.5 hours. If you’re interested in this option and need help organizing it, please contact us before April 1st.\n").size(17.0)); 
+
+ui.label(egui::RichText::new("CAR:\n").size(23.0).color(egui::Color32::RED).strong()); 
+
+ui.label(egui::RichText::new("Duration: approx. 1.5 hours, with parking available directly at the venue.\nRenting a car for 3 days for 4–5 people costs about 50 euros per person for the round trip, including gas. Important: mind the exact route:").size(17.0)); 
+
+
+
+
+ui.horizontal(|ui| {
+      ui.label(egui::RichText::new("important: exact").size(17.0));
+      ui.add(
+    egui::Hyperlink::from_label_and_url(
+        egui::RichText::new("ROUTE").size(17.0).color(egui::Color32::RED),
+        "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9",
+    )
+);
+});
+
+ui.label(egui::RichText::new("\nHELICOPTER:\n").size(23.0).color(egui::Color32::RED).strong());
+
+ui.horizontal(|ui| {
+ui.label(egui::RichText::new("Sadly unaffordable. However, here is the link to the classic").size(17.0)); 
+ui.add(
+    egui::Hyperlink::from_label_and_url(
+        egui::RichText::new("helicopter game").size(17.0).color(egui::Color32::RED),
+        "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9",
+    )
+);
+});
+
+
+}
+                
+
+
+
+
+else {
+
+ui.label(egui::RichText::new("Zum Gelände kommt man auf allen erdenklichen Wegen, mit Bus&Bahn, dem eigenen oder gemieteten Auto oder mit Taxi bzw. Uber. Hier ein Überblick:\n").size(17.0)); 
+
+ui.label(egui::RichText::new("etwas umständlich mit ÖFFIS:\n").size(23.0).color(egui::Color32::RED).strong()); 
+
+ui.label(egui::RichText::new("Ungefähr 2.5 Stunden von Berlin Ostkreuz mit Regio und zwei Bussen bis Chossewitz, von dort 20 Minuten (1.5km) laufen. Kosten circa 15 Euro pro Person.\n").size(17.0)); 
+
+ui.label(egui::RichText::new("TAXI oder UBER:\n").size(23.0).color(egui::Color32::RED).strong()); 
+
+ui.label(egui::RichText::new("Ein Großraumtaxi/ -Uber für circa 6-8 Leute kostet circa  40 Euro pro Person und Fahrt. Dauer circa 1.5 Stunden. Falls ihr Interesse an dieser Option habt und Hilfe beim Organisieren braucht, wendet euch bitte bis zum 01.04.26 an uns.\n").size(17.0)); 
+
+ui.label(egui::RichText::new("AUTO:\n").size(23.0).color(egui::Color32::RED).strong()); 
+
+ui.label(egui::RichText::new("Parkplätze direkt vor dem Gelände. Ein Auto mieten für 3 Tage und 4-5 Leute kostet circa 50 Euro pro Person für hin&zurück, inklusive Benzin. Dauer circa 1.5 Stunden.").size(17.0)); 
+
+
+
+
+ui.horizontal(|ui| {
+  ui.label(egui::RichText::new("wichtig: exakte").size(17.0));
+  ui.add(
+    egui::Hyperlink::from_label_and_url(
+        egui::RichText::new("ROUTE").size(17.0).color(egui::Color32::RED),
+        "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9",
+    )
+);
+});
+
+ui.label(egui::RichText::new("\nHELIKOPTER:\n").size(23.0).color(egui::Color32::RED).strong());
+
+ui.horizontal(|ui| {
+ui.label(egui::RichText::new("fast unbezahlbar teuer, dafür hier der Link zum").size(17.0));
+ui.add(
+    egui::Hyperlink::from_label_and_url(
+        egui::RichText::new("Helikopterspiel").size(17.0).color(egui::Color32::RED),
+        "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9",
+    )
+);
+            });
+
+}
             });
 
 
