@@ -616,8 +616,37 @@ impl eframe::App for TemplateApp {
 
             egui::Window::new(self.button3.clone()).open(&mut self.flag3).show(ctx, |ui| {
 
-                if self.language_flag == true {ui.label("You’re invited to enjoy food and drinks all weekend, and there will be no cost for staying overnight in a tent or bungalow. What matters most is that everyone can be there and be comfortable.\n\nOf course our pockets will feel a bit empty after the event. If it’s possible for you to help fill them up again, we would be very grateful for any financial contribution — no matter how great or small the amount.\n\nIf you would like to make a contribution, please send it anytime to:\n\nPaypal: woodland.wedding@pm.me   Subject: Woodland Wedding\n\nBank Account: Kimberley Hofer & Matthias Hofer, DE...  Subject: Woodland Wedding");}
-                else {ui.label("Ihr seid das ganze Wochenende auf Essen und Trinken eingeladen, auch für die Übernachtung im Zelt oder Bungalow fallen prinzipiell keine Kosten für euch an. Das Wichtigste ist, dass alle dabei sein können und sich wohl fühlen.\n\nNatürlich wird unser Geldbeutel nach diesem Event ganz schön Magenknurren haben. Wenn es für euch möglich ist, sind wir über finanzielles Futter in jeder Höhe sehr dankbar.\n\nGerne jederzeit an:\n\nPaypal: woodland.wedding@pm.me   Betreff: Woodland Wedding\n\nKonto: Kimberley Hofer & Matthias Hofer, DE...  Betreff: Woodland Wedding");}
+                //if self.language_flag == true {ui.label("You’re invited to enjoy food and drinks all weekend, and there will be no cost for staying overnight in a tent or bungalow. What matters most is that everyone can be there and be comfortable.\n\nOf course our pockets will feel a bit empty after the event. If it’s possible for you to help fill them up again, we would be very grateful for any financial contribution — no matter how great or small the amount.\n\nIf you would like to make a contribution, please send it anytime to:\n\nPaypal: woodland.wedding@pm.me   Subject: Woodland Wedding\n\nBank Account: Kimberley Hofer & Matthias Hofer, DE...  Subject: Woodland Wedding");}
+                //else {ui.label("Ihr seid das ganze Wochenende auf Essen und Trinken eingeladen, auch für die Übernachtung im Zelt oder Bungalow fallen prinzipiell keine Kosten für euch an. Das Wichtigste ist, dass alle dabei sein können und sich wohl fühlen.\n\nNatürlich wird unser Geldbeutel nach diesem Event ganz schön Magenknurren haben. Wenn es für euch möglich ist, sind wir über finanzielles Futter in jeder Höhe sehr dankbar.\n\nGerne jederzeit an:\n\nPaypal: woodland.wedding@pm.me   Betreff: Woodland Wedding\n\nKonto: Kimberley Hofer & Matthias Hofer, DE...  Betreff: Woodland Wedding");}
+
+                if self.language_flag == true {
+
+                ui.label(egui::RichText::new("You’re invited to enjoy food and drinks all weekend, and there will be no cost for staying overnight in a tent or bungalow. What matters most is that everyone can be there and be comfortable.\n\nOf course our pockets will feel a bit empty after the event. If it’s possible for you to help fill them up again, we would be very grateful for any financial contribution — no matter how great or small the amount.\n\nIf you would like to make a contribution, please send it anytime to:\n").size(17.0));
+                
+                ui.horizontal(|ui| {
+                ui.label(egui::RichText::new("Paypal: ").size(17.0).color(egui::Color32::RED).strong()); ui.label(egui::RichText::new("woodland.wedding@pm.me   Subject: Woodland Wedding\n").size(17.0));
+                });
+                
+                ui.horizontal(|ui| {
+                ui.label(egui::RichText::new("Bank Account: ").size(17.0).color(egui::Color32::RED).strong()); ui.label(egui::RichText::new("Kimberley Hofer & Matthias Hofer, DE...  Subject: Woodland Wedding").size(17.0));
+                });
+                
+                }
+                                
+                
+                else {
+                
+                ui.label(egui::RichText::new("Ihr seid das ganze Wochenende auf Essen und Trinken eingeladen, auch für die Übernachtung im Zelt oder Bungalow fallen prinzipiell keine Kosten für euch an. Das Wichtigste ist, dass alle dabei sein können und sich wohl fühlen.\n\nNatürlich wird unser Geldbeutel nach diesem Event ganz schön Magenknurren haben. Wenn es für euch möglich ist, sind wir über finanzielles Futter in jeder Höhe sehr dankbar.\n\nGerne jederzeit an:\n").size(17.0));
+                
+                ui.horizontal(|ui| {
+                ui.label(egui::RichText::new("Paypal: ").size(17.0).color(egui::Color32::RED).strong()); ui.label(egui::RichText::new("woodland.wedding@pm.me   Betreff: Woodland Wedding\n").size(17.0));
+                });
+                
+                ui.horizontal(|ui| {
+                ui.label(egui::RichText::new("Konto: ").size(17.0).color(egui::Color32::RED).strong()); ui.label(egui::RichText::new("Kimberley Hofer & Matthias Hofer, DE...  Betreff: Woodland Wedding").size(17.0));
+                });
+                
+                }
                 
             });
 
