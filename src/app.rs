@@ -421,8 +421,64 @@ impl eframe::App for TemplateApp {
 
             egui::Window::new(self.button2.clone()).open(&mut self.flag2).show(ctx, |ui| {
 
-                if self.language_flag == true {ui.label("More details about the schedule will be shared here soon. For now, just a rough outline:\n\nThursday: Helping with setup (optional, please coordinate with us)\n\nFriday: Arrive and be welcomed from 3 PM onward\n\nSaturday: lots of fun and boundless joy!!\n\nSunday: Check out of the bungalows by 12 PM. Help with cleanup if possible until early evening\n\nAccommodation:\n\nThere are small bungalows directly on the event grounds for about half of the guests. These are reserved for the older generations and families with small children. We’ll let you know in the coming months if we’ve planned a spot in a bungalow for you. If you need a bungalow for reasons unknown to us, feel free to reach out directly.\n\nFor everyone else, there’s plenty of space for your own tents – complete with nature vibes and a festival feeling. Clean indoor toilets and showers are accessible to all.\n\nIf you don’t want to stay on the event grounds, there are guesthouses and hotels in the surrounding villages. If you need help with arrangements, feel free to contact us – you're welcome to use the contact button on the website.");}
-                else {ui.label("Genaueres zum Ablauf findet ihr in der nächsten Zeit hier. Vorab nur ganz grob:\n\nDonnerstag: Mithelfen beim Aufbauen (optional, in Absprache mit uns)\n\nFreitag: ab 15 Uhr ankommen und empfangen werden\n\nSamstag: großer Spaß und unbändige Freude -\n\nSonntag: Auschecken aus den Bungalows bis 12 Uhr; Mithelfen beim Aufräumen wenn möglich bis zum frühen Abend\n\nÜbernachtung:\n\nEs gibt direkt auf dem Veranstaltungsgelände kleine Bungalows für etwa die Hälfte der Gäste. Diese sind für die früheren Jahrgänge und Familien mit kleinen Kindern vorgesehen. Wir sagen euch in den nächsten Monaten Bescheid, wenn wir für euch einen Platz im Bungalow geplant haben. Solltet ihr aus uns unbekannten Gründen einen Bungalow brauchen, meldet euch gerne direkt bei uns.\n\nFür alle anderen gibt es reichlich Platz für eigene Zelte inkl. Naturromantik und Festival-Feeling. Feste Toiletten und Duschen sind für alle zugänglich.\n\nWenn ihr nicht auf dem Gelände übernachten möchtet, gibt es in den umliegenden Orten Pensionen und Hotels. Wenn ihr Hilfe beim Organisieren braucht, wendet euch an uns, gerne auch über den Kontakt-Button der Website.");}
+                //if self.language_flag == true {ui.label("More details about the schedule will be shared here soon. For now, just a rough outline:\n\nThursday: Helping with setup (optional, please coordinate with us)\n\nFriday: Arrive and be welcomed from 3 PM onward\n\nSaturday: lots of fun and boundless joy!!\n\nSunday: Check out of the bungalows by 12 PM. Help with cleanup if possible until early evening\n\nAccommodation:\n\nThere are small bungalows directly on the event grounds for about half of the guests. These are reserved for the older generations and families with small children. We’ll let you know in the coming months if we’ve planned a spot in a bungalow for you. If you need a bungalow for reasons unknown to us, feel free to reach out directly.\n\nFor everyone else, there’s plenty of space for your own tents – complete with nature vibes and a festival feeling. Clean indoor toilets and showers are accessible to all.\n\nIf you don’t want to stay on the event grounds, there are guesthouses and hotels in the surrounding villages. If you need help with arrangements, feel free to contact us – you're welcome to use the contact button on the website.");}
+                //else {ui.label("Genaueres zum Ablauf findet ihr in der nächsten Zeit hier. Vorab nur ganz grob:\n\nDonnerstag: Mithelfen beim Aufbauen (optional, in Absprache mit uns)\n\nFreitag: ab 15 Uhr ankommen und empfangen werden\n\nSamstag: großer Spaß und unbändige Freude -\n\nSonntag: Auschecken aus den Bungalows bis 12 Uhr; Mithelfen beim Aufräumen wenn möglich bis zum frühen Abend\n\nÜbernachtung:\n\nEs gibt direkt auf dem Veranstaltungsgelände kleine Bungalows für etwa die Hälfte der Gäste. Diese sind für die früheren Jahrgänge und Familien mit kleinen Kindern vorgesehen. Wir sagen euch in den nächsten Monaten Bescheid, wenn wir für euch einen Platz im Bungalow geplant haben. Solltet ihr aus uns unbekannten Gründen einen Bungalow brauchen, meldet euch gerne direkt bei uns.\n\nFür alle anderen gibt es reichlich Platz für eigene Zelte inkl. Naturromantik und Festival-Feeling. Feste Toiletten und Duschen sind für alle zugänglich.\n\nWenn ihr nicht auf dem Gelände übernachten möchtet, gibt es in den umliegenden Orten Pensionen und Hotels. Wenn ihr Hilfe beim Organisieren braucht, wendet euch an uns, gerne auch über den Kontakt-Button der Website.");}
+
+                if self.language_flag == true {
+
+
+                    ui.label(egui::RichText::new("More details about the schedule will be shared here soon. For now, just a rough outline:\n").size(17.0));
+                    
+                    ui.horizontal(|ui| {
+                    ui.label(egui::RichText::new("Thursday: ").size(17.0).color(egui::Color32::RED).strong()); ui.label(egui::RichText::new("helping with setup (optional, please coordinate with us)\n").size(17.0));
+                    });
+                    
+                    ui.horizontal(|ui| {
+                    ui.label(egui::RichText::new("Friday: ").size(17.0).color(egui::Color32::RED).strong()); ui.label(egui::RichText::new("arrive and be welcomed from 3 PM onward\n").size(17.0));
+                    });
+                    
+                    ui.horizontal(|ui| {
+                    ui.label(egui::RichText::new("Saturday: ").size(17.0).color(egui::Color32::RED).strong()); ui.label(egui::RichText::new("lots of fun and boundless joy!!\n").size(17.0));
+                    });
+                    
+                    ui.horizontal(|ui| {
+                    ui.label(egui::RichText::new("Sunday: ").size(17.0).color(egui::Color32::RED).strong()); ui.label(egui::RichText::new("check out of the bungalows by 12 PM. Help with cleanup if possible until early evening\n").size(17.0));
+                    });
+                    
+                    
+                    ui.label(egui::RichText::new("Accommodation:\n").size(23.0).color(egui::Color32::RED).strong());
+                    
+                    ui.label(egui::RichText::new("There are small bungalows directly on the event grounds for about half of the guests. These are reserved for the older generations and families with small children. We’ll let you know in the coming months if we’ve planned a spot in a bungalow for you. If you need a bungalow for reasons unknown to us, feel free to reach out directly.\n\nFor everyone else, there’s plenty of space for your own tents – complete with nature vibes and a festival feeling. Clean indoor toilets and showers are accessible to all.\n\nIf you don’t want to stay on the event grounds, there are guesthouses and hotels in the surrounding villages. If you need help with arrangements, feel free to contact us – you're welcome to use the contact button on the website.").size(17.0));
+                    
+                    }
+                                    
+                    else {
+                    
+                    ui.label(egui::RichText::new("Genaueres zum Ablauf findet ihr in der nächsten Zeit hier. Vorab nur ganz grob:\n").size(17.0));
+                    
+                    ui.horizontal(|ui| {
+                    ui.label(egui::RichText::new("Donnerstag: ").size(17.0).color(egui::Color32::RED).strong()); ui.label(egui::RichText::new("Mithelfen beim Aufbauen (optional, in Absprache mit uns)\n").size(17.0));
+                    });
+                    
+                    ui.horizontal(|ui| {
+                    ui.label(egui::RichText::new("Freitag: ").size(17.0).color(egui::Color32::RED).strong()); ui.label(egui::RichText::new("ab 15 Uhr ankommen und empfangen werden\n").size(17.0));
+                    });
+                    
+                    ui.horizontal(|ui| {
+                    ui.label(egui::RichText::new("Samstag: ").size(17.0).color(egui::Color32::RED).strong()); ui.label(egui::RichText::new("großer Spaß und unbändige Freude -\n").size(17.0));
+                    });
+                    
+                    ui.horizontal(|ui| {
+                    ui.label(egui::RichText::new("Sonntag: ").size(17.0).color(egui::Color32::RED).strong()); ui.label(egui::RichText::new("Auschecken aus den Bungalows bis 12 Uhr; Mithelfen beim Aufräumen wenn möglich bis zum frühen Abend\n").size(17.0));
+                    });
+                    
+                    ui.label(egui::RichText::new("Übernachtung:\n").size(23.0).color(egui::Color32::RED).strong());
+                    
+                    ui.label(egui::RichText::new("Es gibt direkt auf dem Veranstaltungsgelände kleine Bungalows für etwa die Hälfte der Gäste. Diese sind für die früheren Jahrgänge und Familien mit kleinen Kindern vorgesehen. Wir sagen euch in den nächsten Monaten Bescheid, wenn wir für euch einen Platz im Bungalow geplant haben. Solltet ihr aus uns unbekannten Gründen einen Bungalow brauchen, meldet euch gerne direkt bei uns.\n\nFür alle anderen gibt es reichlich Platz für eigene Zelte inkl. Naturromantik und Festival-Feeling. Feste Toiletten und Duschen sind für alle zugänglich.\n\nWenn ihr nicht auf dem Gelände übernachten möchtet, gibt es in den umliegenden Orten Pensionen und Hotels. Wenn ihr Hilfe beim Organisieren braucht, wendet euch an uns, gerne auch über den Kontakt-Button der Website.").size(17.0));
+
+                }
+
+
                 
             });
 
