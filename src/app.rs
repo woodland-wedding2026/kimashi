@@ -667,7 +667,7 @@ if self.value == 0 {ui.label(egui::RichText::new("you have sent no messages yet"
 
 else if self.value == 1 {ui.label(egui::RichText::new("you have sent one message").size(17.0));}
 
-else {myentext = format!("you have sent {} messages", self.value); ui.label(egui::RichText::new(myentext).size(17.0));}
+else {let myentext = format!("you have sent {} messages", self.value); ui.label(egui::RichText::new(myentext).size(17.0));}
                                                                                                  
                                               }
 
