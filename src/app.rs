@@ -332,7 +332,8 @@ impl eframe::App for TemplateApp {
             if ui.button(egui::RichText::new(self.formbutton.clone()).size(17.0).color(egui::Color32::RED).strong()).clicked() {
                 if self.formflag == true {self.formflag = false;}
                 else {self.formflag = true;}
-            }  
+            }
+            
 
 
 
@@ -383,7 +384,7 @@ impl eframe::App for TemplateApp {
                     if self.formflag == true {self.formflag = false;}
                     else {self.formflag = true;}
                 }
-            
+            ui.label("");
             
             egui::Window::new(self.button1.clone()).open(&mut self.flag1).show(ctx, |ui| {
                 egui::ScrollArea::both().show(ui, |ui| {
