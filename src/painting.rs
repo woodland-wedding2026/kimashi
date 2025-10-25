@@ -78,32 +78,32 @@ impl PaintingApp {
     pub fn ui_control(&mut self, ui: &mut egui::Ui, language_flag: bool) -> egui::Response {
 
         if language_flag == true {ui.horizontal(|ui| {
-            ui.label("Stroke:");
+            ui.label(egui::RichText::new("Stroke:").size(17.0));
             //ui.add(&mut self.stroke);
-            let response = ui.add(egui::Slider::new(&mut self.stroke.width, 0.5..=10.0).text("px"));
+            let response = ui.add(egui::Slider::new(&mut self.stroke.width, 0.5..=10.0).text(egui::RichText::new("px").size(17.0)));
             if response.changed() {
                 self.lines.push((vec![], self.stroke));
             }
             ui.color_edit_button_srgba(&mut self.stroke.color);
             ui.separator();
 
-            if ui.button("Clear Painting").clicked() {
+            if ui.button(egui::RichText::new("Clear Painting").size(17.0)).clicked() {
                 self.lines.clear();
             }
 
             
         }).response}
         else {ui.horizontal(|ui| {
-            ui.label("Linie:");
+            ui.label(egui::RichText::new("Liniendicke:").size(17.0));
             //ui.add(&mut self.stroke);
-            let response = ui.add(egui::Slider::new(&mut self.stroke.width, 0.5..=10.0).text("px"));
+            let response = ui.add(egui::Slider::new(&mut self.stroke.width, 0.5..=10.0).text(egui::RichText::new("px).size(17.0)"));
             if response.changed() {
                 self.lines.push((vec![], self.stroke));
             }
             ui.color_edit_button_srgba(&mut self.stroke.color);
             ui.separator();
 
-            if ui.button("Bild löschen").clicked() {
+            if ui.button(egui::RichText::new("Bild löschen").size(17.0)).clicked() {
                 self.lines.clear();
             }
 
