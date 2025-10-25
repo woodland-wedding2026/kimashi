@@ -959,7 +959,7 @@ ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color3
 ui.add(egui::TextEdit::singleline(&mut self.self.rsvp2).font(egui::FontId::proportional(17.0)));
 
 });
-ui.label(egui::RichText::new("wenn du dich freuen würdest spezielle Lieder auf der Party zu hören, gib sie bitte hier ein").size(17.0);
+ui.label(egui::RichText::new("wenn du dich freuen würdest spezielle Lieder auf der Party zu hören, gib sie bitte hier ein").size(17.0));
 ui.horizontal(|ui| {
 ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::RED));
 ui.add(egui::TextEdit::singleline(&mut self.self.rsvp3).font(egui::FontId::proportional(17.0)));
