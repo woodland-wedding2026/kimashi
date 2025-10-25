@@ -356,7 +356,7 @@ impl eframe::App for TemplateApp {
                 
             egui_extras::install_image_loaders(ctx);
             let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
-            let desired_size = egui::vec2(340.0, 340.0); 
+            let desired_size = egui::vec2(510.0, 510.0); 
             
             ui.add(egui::Image::new(collage).fit_to_exact_size(desired_size));
 
