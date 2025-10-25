@@ -990,7 +990,7 @@ ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
 }
 
 
-if ui.button("submit").clicked() {
+if ui.button("abschicken").clicked() {
 self.submit_names = self.rsvp1.clone();
 self.submit_emails = self.rsvp2.clone();
 self.submit_songs = self.rsvp3.clone();
