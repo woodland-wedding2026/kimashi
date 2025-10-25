@@ -389,20 +389,16 @@ ui.label(egui::RichText::new("If you book a large taxi or Uber that accomodates 
 
 ui.label(egui::RichText::new("CAR:").size(23.0).color(egui::Color32::RED).strong().underline()); 
 ui.label("");
-ui.label(egui::RichText::new("Duration: approx. 1.5 hours, with parking available directly at the venue.\nRenting a car for 3 days for 4–5 people costs about 50 euros per person for the round trip, including gas. Important: mind the exact route:").size(17.0)); 
-
-
-
-
 ui.horizontal(|ui| {
-      ui.label(egui::RichText::new("important: exact").size(17.0));
-      ui.add(
+ui.label(egui::RichText::new("Duration: approx. 1.5 hours, with parking available directly at the venue.\nRenting a car for 3 days for 4–5 people costs about 50 euros per person for the round trip, including gas. Important: mind the exact ").size(17.0)); 
+ui.add(
     egui::Hyperlink::from_label_and_url(
         egui::RichText::new("ROUTE").size(17.0).color(egui::Color32::RED),
         "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9",
     )
 );
 });
+
 
 ui.label(egui::RichText::new("\nHELICOPTER:").size(23.0).color(egui::Color32::RED).strong().underline());
 ui.label("");
@@ -437,20 +433,16 @@ ui.label(egui::RichText::new("Ein Großraumtaxi/ -Uber für circa 6-8 Leute kost
 
 ui.label(egui::RichText::new("AUTO:").size(23.0).color(egui::Color32::RED).strong().underline()); 
 ui.label("");
-ui.label(egui::RichText::new("Parkplätze direkt vor dem Gelände. Ein Auto mieten für 3 Tage und 4-5 Leute kostet circa 50 Euro pro Person für hin&zurück, inklusive Benzin. Dauer circa 1.5 Stunden.").size(17.0)); 
-
-
-
-
 ui.horizontal(|ui| {
-  ui.label(egui::RichText::new("wichtig: exakte").size(17.0));
-  ui.add(
+ui.label(egui::RichText::new("Parkplätze direkt vor dem Gelände. Ein Auto mieten für 3 Tage und 4-5 Leute kostet circa 50 Euro pro Person für hin&zurück, inklusive Benzin. Dauer circa 1.5 Stunden. WICHTIG: exakte ").size(17.0)); 
+ui.add(
     egui::Hyperlink::from_label_and_url(
         egui::RichText::new("ROUTE").size(17.0).color(egui::Color32::RED),
         "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9",
     )
 );
 });
+
 
 ui.label(egui::RichText::new("\nHELIKOPTER:").size(23.0).color(egui::Color32::RED).strong().underline());
 ui.label("");
