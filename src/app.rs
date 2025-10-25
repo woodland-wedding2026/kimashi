@@ -57,6 +57,10 @@ pub struct TemplateApp {
     pic_name_en: String,
     pic_name_de: String,
 
+    submit_names: String,
+    submit_emails: String,
+    submit_songs: String,
+
 
     
 
@@ -115,6 +119,10 @@ impl Default for TemplateApp {
             
             pic_name_en: "who is painting? type your name ..".to_owned(),
             pic_name_de: "wer malt? lass uns deinen Namen wissen ..".to_owned(),
+
+            submit_names: "".to_owned(),
+            submit_emails: "".to_owned(),
+            submit_songs: "".to_owned(),
             
 
 
@@ -872,8 +880,11 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
 
             egui::Window::new(self.formbutton.clone()).open(&mut self.formflag).show(ctx, |ui| {
 
-                if self.language_flag == true {
-                    ui.label("please enter your data below:");
+               
+
+                 if self.language_flag == true {
+
+                     ui.label("please enter your data below:");
                     ui.label("");
                     ui.horizontal(|ui| {
                         ui.label("name(s): ");
@@ -888,24 +899,34 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                         ui.text_edit_singleline(&mut self.rsvp3);
                     });
                     ui.label("");
-                    if self.submitflag == false {ui.label("your entered data:");}
-                    else {ui.label("your SUBMITTED data");}
+                    
+                    if self.submitflag == false {ui.label("");}
+                    else {
+                    
+                    ui.label("your SUBMITTED data:");
                     ui.label("");
                     ui.horizontal(|ui| {
                         ui.label("name(s): ");
-                        ui.label(self.rsvp1.clone());
+                        ui.label(self.submit_names);
                     });
                     ui.horizontal(|ui| {
                         ui.label("email-address(es): ");
-                        ui.label(self.rsvp2.clone());
+                        ui.label(self.submit_emails);
                     });
                     ui.horizontal(|ui| {
                         ui.label("song(s): ");
-                        ui.label(self.rsvp3.clone());
-                    });  
-
+                        ui.label(self.submit_songs);
+                    });
+                    
+                    
+                    }
+                    
+                    
                     if ui.button("submit").clicked() {
-                        let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.rsvp1.clone(), self.rsvp2, self.rsvp3);
+                        let self.submit_names = self.rsvp1.clone();
+                        let self.submit_emails = self.rsvp2.clone();
+                        let self.submit_songs = self.rsvp3.clone();
+                        let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.submit_names, self.submit_emails, self.submit_songs);
                         let body1 = message.as_bytes().to_vec();
                         let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                         ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
@@ -952,8 +973,6 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                         self.schickflag = true;
                     }
                 }
-
-                
 
 
 
