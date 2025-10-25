@@ -926,7 +926,7 @@ ui.label(egui::RichText::new("song(s): ").size(17.0).color(egui::Color32::RED));
 ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
 });
 
-
+ui.label("");
 }
 
 
@@ -986,7 +986,7 @@ ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32:
 ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
 });
 
-
+ui.label("");
 }
 
 
