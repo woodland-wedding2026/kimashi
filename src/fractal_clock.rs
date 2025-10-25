@@ -40,19 +40,19 @@ impl FractalClock {
     /// UI controls for the fractal clock.
     pub fn ui(&mut self, ui: &mut egui::Ui, language_flag: bool) {
         if language_flag == true {
-                        ui.collapsing("settings", |ui| {
+                        ui.collapsing(egui::RichText::new("settings").size(17.0), |ui| {
             ui.add(egui::Slider::new(&mut self.depth, 0..=10).text(egui::RichText::new("Recursion Depth").size(17.0)));
-            ui.add(egui::Slider::new(&mut self.thickness, 0.1..=5.0).text("Line Thickness"));
-            ui.add(egui::Slider::new(&mut self.length_factor, 0.1..=0.9).text("Length Factor"));
-            ui.add(egui::Slider::new(&mut self.time_scale, 0.1..=10.0).text("Time Scale"));
+            ui.add(egui::Slider::new(&mut self.thickness, 0.1..=5.0).text(egui::RichText::new("Line Thickness").size(17.0)));
+            ui.add(egui::Slider::new(&mut self.length_factor, 0.1..=0.9).text(egui::RichText::new("Length Factor").size(17.0)));
+            ui.add(egui::Slider::new(&mut self.time_scale, 0.1..=10.0).text(egui::RichText::new("Time Scale").size(17.0)));
         });
                     }
                     else {
-                        ui.collapsing("Einstellungen", |ui| {
-            ui.add(egui::Slider::new(&mut self.depth, 0..=10).text("Rekursionstiefe"));
-            ui.add(egui::Slider::new(&mut self.thickness, 0.1..=5.0).text("Liniendicke"));
-            ui.add(egui::Slider::new(&mut self.length_factor, 0.1..=0.9).text("Längenfaktor"));
-            ui.add(egui::Slider::new(&mut self.time_scale, 0.1..=10.0).text("Zeitskala"));
+                        ui.collapsing(egui::RichText::new("Einstellungen").size(17.0), |ui| {
+            ui.add(egui::Slider::new(&mut self.depth, 0..=10).text(egui::RichText::new("Rekursionstiefe").size(17.0)));
+            ui.add(egui::Slider::new(&mut self.thickness, 0.1..=5.0).text(egui::RichText::new("Liniendicke").size(17.0)));
+            ui.add(egui::Slider::new(&mut self.length_factor, 0.1..=0.9).text(egui::RichText::new("Längenfaktor").size(17.0)));
+            ui.add(egui::Slider::new(&mut self.time_scale, 0.1..=10.0).text(egui::RichText::new("Zeitskala").size(17.0)));
         });
                     }
         //ui.collapsing("settings", |ui| {
