@@ -930,7 +930,7 @@ ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
 }
 
 
-if ui.button("submit").clicked() {
+if ui.button(egui::RichText::new("submit").size(17.0)).clicked() {
 self.submit_names = self.rsvp1.clone();
 self.submit_emails = self.rsvp2.clone();
 self.submit_songs = self.rsvp3.clone();
@@ -990,7 +990,7 @@ ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
 }
 
 
-if ui.button("abschicken").clicked() {
+if ui.button(egui::RichText::new("abschicken").size(17.0)).clicked() {
 self.submit_names = self.rsvp1.clone();
 self.submit_emails = self.rsvp2.clone();
 self.submit_songs = self.rsvp3.clone();
