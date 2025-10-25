@@ -763,7 +763,7 @@ ui.add(
             ui.horizontal(|ui| {
             ui.add_space(175.0);
             //if ui.add(egui::Button::new("⬆️").min_size(egui::vec2(50.0, 50.0))).clicked() {
-            if ui.add(egui::Button::new("▲").min_size(egui::vec2(50.0, 50.0))).clicked() {
+            if ui.add(egui::Button::new("↑").min_size(egui::vec2(50.0, 50.0))).clicked() {
                 self.snake.try_change_dir(Direction::Up);
             }
             });
@@ -771,7 +771,7 @@ ui.add(
             ui.horizontal(|ui| {
             ui.add_space(115.0);
             //if ui.add(egui::Button::new("⬅️").min_size(egui::vec2(50.0, 50.0))).clicked() {
-            if ui.add(egui::Button::new("◀").min_size(egui::vec2(50.0, 50.0))).clicked() {
+            if ui.add(egui::Button::new("←").min_size(egui::vec2(50.0, 50.0))).clicked() {
                 self.snake.try_change_dir(Direction::Left);
             }
             ui.add_space(10.0);
@@ -780,7 +780,7 @@ ui.add(
             }
             ui.add_space(10.0);
             //if ui.add(egui::Button::new("➡️").min_size(egui::vec2(50.0, 50.0))).clicked() {
-            if ui.add(egui::Button::new("▶").min_size(egui::vec2(50.0, 50.0))).clicked() {
+            if ui.add(egui::Button::new("→").min_size(egui::vec2(50.0, 50.0))).clicked() {
                 self.snake.try_change_dir(Direction::Right);
             }    
             });
@@ -788,7 +788,7 @@ ui.add(
             ui.horizontal(|ui| {
             ui.add_space(175.0);
             //if ui.add(egui::Button::new("⬇️").min_size(egui::vec2(50.0, 50.0))).clicked() {
-            if ui.add(egui::Button::new("▼").min_size(egui::vec2(50.0, 50.0))).clicked() {
+            if ui.add(egui::Button::new("↓").min_size(egui::vec2(50.0, 50.0))).clicked() {
                 self.snake.try_change_dir(Direction::Down);
             }
             });
