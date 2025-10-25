@@ -340,7 +340,7 @@ impl eframe::App for TemplateApp {
 
             
         egui::CentralPanel::default().show(ctx, |ui| {
-            egui::ScrollArea::vertical().show(ui, |ui| {
+            egui::ScrollArea::both().show(ui, |ui| {
 
 
              
@@ -373,7 +373,7 @@ impl eframe::App for TemplateApp {
             
             
             egui::Window::new(self.button1.clone()).open(&mut self.flag1).show(ctx, |ui| {
-                egui::ScrollArea::vertical().show(ui, |ui| {
+                egui::ScrollArea::both().show(ui, |ui| {
 
                 if self.language_flag == true {
 
@@ -468,6 +468,8 @@ ui.add(
                 .default_width(400.0)
                 .default_height(450.0)
                 .show(ctx, |ui| {
+                    egui::ScrollArea::both().show(ui, |ui| {
+                    
                     
                     //ui.separator();
 
@@ -492,6 +494,7 @@ ui.add(
                     let time = ctx.input(|i| i.time);
                     self.fractal_clock.paint(&painter, rect, time);
                 });
+                    });
 
 
 
@@ -500,6 +503,8 @@ ui.add(
                 
 
             egui::Window::new(self.button2.clone()).open(&mut self.flag2).show(ctx, |ui| {
+                egui::ScrollArea::both().show(ui, |ui| {
+                
 
                 //if self.language_flag == true {ui.label("More details about the schedule will be shared here soon. For now, just a rough outline:\n\nThursday: Helping with setup (optional, please coordinate with us)\n\nFriday: Arrive and be welcomed from 3 PM onward\n\nSaturday: lots of fun and boundless joy!!\n\nSunday: Check out of the bungalows by 12 PM. Help with cleanup if possible until early evening\n\nAccommodation:\n\nThere are small bungalows directly on the event grounds for about half of the guests. These are reserved for the older generations and families with small children. We’ll let you know in the coming months if we’ve planned a spot in a bungalow for you. If you need a bungalow for reasons unknown to us, feel free to reach out directly.\n\nFor everyone else, there’s plenty of space for your own tents – complete with nature vibes and a festival feeling. Clean indoor toilets and showers are accessible to all.\n\nIf you don’t want to stay on the event grounds, there are guesthouses and hotels in the surrounding villages. If you need help with arrangements, feel free to contact us – you're welcome to use the contact button on the website.");}
                 //else {ui.label("Genaueres zum Ablauf findet ihr in der nächsten Zeit hier. Vorab nur ganz grob:\n\nDonnerstag: Mithelfen beim Aufbauen (optional, in Absprache mit uns)\n\nFreitag: ab 15 Uhr ankommen und empfangen werden\n\nSamstag: großer Spaß und unbändige Freude -\n\nSonntag: Auschecken aus den Bungalows bis 12 Uhr; Mithelfen beim Aufräumen wenn möglich bis zum frühen Abend\n\nÜbernachtung:\n\nEs gibt direkt auf dem Veranstaltungsgelände kleine Bungalows für etwa die Hälfte der Gäste. Diese sind für die früheren Jahrgänge und Familien mit kleinen Kindern vorgesehen. Wir sagen euch in den nächsten Monaten Bescheid, wenn wir für euch einen Platz im Bungalow geplant haben. Solltet ihr aus uns unbekannten Gründen einen Bungalow brauchen, meldet euch gerne direkt bei uns.\n\nFür alle anderen gibt es reichlich Platz für eigene Zelte inkl. Naturromantik und Festival-Feeling. Feste Toiletten und Duschen sind für alle zugänglich.\n\nWenn ihr nicht auf dem Gelände übernachten möchtet, gibt es in den umliegenden Orten Pensionen und Hotels. Wenn ihr Hilfe beim Organisieren braucht, wendet euch an uns, gerne auch über den Kontakt-Button der Website.");}
@@ -561,11 +566,13 @@ ui.add(
 
                 
             });
+            });
 
 
             egui::Window::new(self.button5.clone())
                 .open(&mut self.flag5)
                 .show(ctx, |ui| {
+                    egui::ScrollArea::both().show(ui, |ui| {
 
                 if self.language_flag == true {
                     ui.label(egui::RichText::new("paint a picture and send it to us :)").size(17.0));  
@@ -642,11 +649,12 @@ ui.add(
                     
                     
                 });
+                });
 
 
             egui::Window::new(self.button4.clone()).open(&mut self.flag4).show(ctx, |ui| {
 
-                egui::ScrollArea::vertical().show(ui, |ui| {
+                egui::ScrollArea::both().show(ui, |ui| {
 
                     if self.language_flag == true {
                     ui.label(egui::RichText::new("More detailed info about how the event will be organized will be shared here — so feel free to check back in again. We would love to hear your creative ideas for the following areas:\n\n").size(17.0));
@@ -697,6 +705,7 @@ ui.add(
                 
 
             egui::Window::new(self.button3.clone()).open(&mut self.flag3).show(ctx, |ui| {
+                egui::ScrollArea::both().show(ui, |ui| {
 
                 //if self.language_flag == true {ui.label("You’re invited to enjoy food and drinks all weekend, and there will be no cost for staying overnight in a tent or bungalow. What matters most is that everyone can be there and be comfortable.\n\nOf course our pockets will feel a bit empty after the event. If it’s possible for you to help fill them up again, we would be very grateful for any financial contribution — no matter how great or small the amount.\n\nIf you would like to make a contribution, please send it anytime to:\n\nPaypal: woodland.wedding@pm.me   Subject: Woodland Wedding\n\nBank Account: Kimberley Hofer & Matthias Hofer, DE...  Subject: Woodland Wedding");}
                 //else {ui.label("Ihr seid das ganze Wochenende auf Essen und Trinken eingeladen, auch für die Übernachtung im Zelt oder Bungalow fallen prinzipiell keine Kosten für euch an. Das Wichtigste ist, dass alle dabei sein können und sich wohl fühlen.\n\nNatürlich wird unser Geldbeutel nach diesem Event ganz schön Magenknurren haben. Wenn es für euch möglich ist, sind wir über finanzielles Futter in jeder Höhe sehr dankbar.\n\nGerne jederzeit an:\n\nPaypal: woodland.wedding@pm.me   Betreff: Woodland Wedding\n\nKonto: Kimberley Hofer & Matthias Hofer, DE...  Betreff: Woodland Wedding");}
@@ -731,9 +740,11 @@ ui.add(
                 }
                 
             });
+            });
 
 
             egui::Window::new(self.button6.clone()).open(&mut self.flag6).show(ctx, |ui| {
+                egui::ScrollArea::both().show(ui, |ui| {
                 if ui.input(|i| i.key_pressed(egui::Key::R)) {
                 self.snake.reset();
             }
@@ -789,11 +800,13 @@ ui.add(
             });
 
             });
+            });
 
                 
             
 
             egui::Window::new(self.button8.clone()).open(&mut self.flag8).show(ctx, |ui| {
+                egui::ScrollArea::both().show(ui, |ui| {
 
                 if self.language_flag == true 
 
@@ -820,6 +833,7 @@ ui.add(
                 }
                 
             });
+            });
 
             //egui::Window::new(self.button9.clone()).open(&mut self.flag9).show(ctx, |ui| {
              //   ui.text_edit_singleline(&mut self.user_input); 
@@ -843,6 +857,7 @@ ui.add(
             //});
 
             egui::Window::new(self.button9.clone()).open(&mut self.flag9).show(ctx, |ui| {
+                egui::ScrollArea::both().show(ui, |ui| {
 
                 if self.language_flag == true {
 
@@ -896,6 +911,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
 }
                 
             });
+            });
 
 
 
@@ -906,6 +922,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                 
 
             egui::Window::new(self.formbutton.clone()).open(&mut self.formflag).show(ctx, |ui| {
+                egui::ScrollArea::both().show(ui, |ui| {
 
                
 
@@ -1033,6 +1050,7 @@ self.submitflag = true;
                 
                 
                 
+            });
             });
 
 
