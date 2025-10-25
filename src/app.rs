@@ -573,11 +573,12 @@ ui.add(
                 .show(ctx, |ui| {
 
                 if self.language_flag == true {
-                    ui.label("paint a picture and send it to us :)");  
+                    ui.label(egui::RichText::new("paint a picture and send it to us :)").size(17.0));  
                     ui.horizontal(|ui| {
-                    ui.text_edit_singleline(&mut self.pic_name_en); 
+                    //ui.text_edit_singleline(&mut self.pic_name_en); 
+                    ui.add(egui::TextEdit::singleline(&mut self.pic_name_en).font(egui::FontId::proportional(17.0)));
                                                
-                                               if ui.button("Send Painting").clicked() {
+                                               if ui.button(egui::RichText::new("Send Painting").size(17.0)).clicked() {
                     self.saved_image_data = self.painting_app.export_json(ctx).clone();
 
                     if let Some(image_data) = &self.saved_image_data {
@@ -605,10 +606,11 @@ ui.add(
                     
                     
                      
-                    ui.label("mal ein Bild uns schick es uns :)");  
+                    ui.label(egui::RichText::new("mal ein Bild uns schick es uns :)").size(17.0));  
                     ui.horizontal(|ui| {
-                        ui.text_edit_singleline(&mut self.pic_name_de);
-                      if ui.button("Bild abschicken").clicked() {
+                        //ui.text_edit_singleline(&mut self.pic_name_de);
+                        ui.add(egui::TextEdit::singleline(&mut self.pic_name_en).font(egui::FontId::proportional(17.0)));
+                      if ui.button(egui::RichText::new("Bild abschicken").size(17.0)).clicked() {
                     self.saved_image_data = self.painting_app.export_json(ctx).clone();
 
                     if let Some(image_data) = &self.saved_image_data {
