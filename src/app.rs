@@ -269,7 +269,18 @@ impl eframe::App for TemplateApp {
                     });
                     ui.add_space(16.0);
                 }
-                egui::widgets::global_theme_preference_buttons(ui);
+                //egui::widgets::global_theme_preference_buttons(ui);
+
+                ui.horizontal(|ui| {
+                    if ui.button("☀ Light").clicked() {
+                        ui.ctx().set_visuals(egui::Visuals::light());
+                    }
+                    if ui.button("🌙 Dark").clicked() {
+                        ui.ctx().set_visuals(egui::Visuals::dark());
+                    }
+                });
+
+                
                 if ui.button("Deutsch <--> English").clicked() {
                 if self.language_flag == true {self.language_flag = false;}
                 else {self.language_flag = true;}
