@@ -96,7 +96,7 @@ impl PaintingApp {
         else {ui.horizontal(|ui| {
             ui.label(egui::RichText::new("Liniendicke:").size(17.0));
             //ui.add(&mut self.stroke);
-            let response = ui.add(egui::Slider::new(&mut self.stroke.width, 0.5..=10.0).text(egui::RichText::new("px).size(17.0)"));
+            let response = ui.add(egui::Slider::new(&mut self.stroke.width, 0.5..=10.0).text(egui::RichText::new("px").size(17.0)));
             if response.changed() {
                 self.lines.push((vec![], self.stroke));
             }
