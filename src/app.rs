@@ -278,46 +278,47 @@ impl eframe::App for TemplateApp {
                 
             });});
 
+        
         egui::SidePanel::left("bullet points").show(ctx, |ui| {
             //ui.label(format!("You typed: {}", self.user_input));
-            if ui.button(egui::RichText::new(self.button1.clone()).size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button1.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
                 if self.flag1 == true {self.flag1 = false;}
                 else {self.flag1 = true;}
             }
-            if ui.button(egui::RichText::new(self.button7.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button7.clone()).size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
                 if self.flag7 == true {self.flag7 = false;}
                 else {self.flag7 = true;}
             }
-            if ui.button(egui::RichText::new(self.button2.clone()).size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button2.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
                 if self.flag2 == true {self.flag2 = false;}
                 else {self.flag2 = true;}
             }
-            if ui.button(egui::RichText::new(self.button5.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button5.clone()).size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
                 if self.flag5 == true {self.flag5 = false;}
                 else {self.flag5 = true;}
             }  
-            if ui.button(egui::RichText::new(self.button4.clone()).size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button4.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
                 if self.flag4 == true {self.flag4 = false;}
                 else {self.flag4 = true;}
             }  
-            if ui.button(egui::RichText::new(self.button3.clone()).size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button3.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
                 if self.flag3 == true {self.flag3 = false;}
                 else {self.flag3 = true;}
             }  
-            if ui.button(egui::RichText::new(self.button6.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button6.clone()).size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
                 if self.flag6 == true {self.flag6 = false;}
                 else {self.flag6 = true;}
             } 
-            if ui.button(egui::RichText::new(self.button8.clone()).size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button8.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
                 if self.flag8 == true {self.flag8 = false;}
                 else {self.flag8 = true;}
             }  
-            if ui.button(egui::RichText::new(self.button9.clone()).size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button9.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
                 if self.flag9 == true {self.flag9 = false;}
                 else {self.flag9 = true;}
             }  
             ui.label("");
-            if ui.button(egui::RichText::new(self.formbutton.clone()).size(17.0).color(egui::Color32::from_rgb(222, 82, 196)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.formbutton.clone()).size(17.0).color(egui::Color32::RED).strong()).clicked() {
                 if self.formflag == true {self.formflag = false;}
                 else {self.formflag = true;}
             }  
@@ -366,7 +367,7 @@ impl eframe::App for TemplateApp {
                 
                 ui.label(egui::RichText::new("\n... Download abgeschlossen! :)\n\nVor inzwischen 2 Jahren haben wir, Kim und Matthi, geheiratet. Zusammen mit unserem frisch gebackenen Familienmitglied Yoshi sind wir jetzt komplett: KIMASHI :)\n\nDarum ist jetzt die Zeit gekommen, mit euch allen, klein und groß, von nah und fern, Freunde und Familie, ein großes Fest zu feiern. Dafür haben wir einen zauberhaften Ort mitten im Wald direkt an einem Badesee gefunden. Von Freitag bis Sonnatg, den 12. bis 14. Juni 2026, gibt es lekkres Essen und Getränke, einen Whirlpool, eine kleine Sauna und ganz viel Musik. Ein zentraler Moment wird am Samstag eine Zeremonie sein, die unsere Familiengründung feierlich besiegelt.\n\nVom Essen über Deko bis zur Musik organisieren wir fast alles selbst. Und dafür brauchen wir eure Unterstützung! Sagt uns gerne Bescheid, wenn ihr etwas Bestimmtes beitragen möchtet. Aufgaben wie Aufräumen, Kochen, Abspülen u.ä. werden wir vorab so organisieren, dass sie fair verteilt werden und niemand etwas machen muss, was nicht wenigstens ein bisschen Spaß macht. In every job that must be done there is an element of fun! 😉\n\nBitte guckt euch auch den Rest der Website an. Ihr findet dort weitere wichtige Infos und ein paar lustige Überraschungen. Wenn das Wochenende näher rückt, schaut für aktuelle Infos gern wieder vorbei!\n\nSchickt uns bitte bis zum 07.01.2026 eure feste Zu- oder Absage. Wir hoffen sehr, dass alle dabei sein können und freuen uns auf euch.").size(17.0));                
                 }
-            if ui.button(egui::RichText::new(self.formbutton.clone()).size(17.0).color(egui::Color32::from_rgb(222, 82, 196)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.formbutton.clone()).size(17.0).color(egui::Color32::RED).strong()).clicked() {
                     if self.formflag == true {self.formflag = false;}
                     else {self.formflag = true;}
                 }
