@@ -170,7 +170,7 @@ impl SnakeGame {
             painter.text(
                 center,
                 egui::Align2::CENTER_CENTER,
-                "Game Over! Press R to restart.",
+                "Game Over!",
                 egui::TextStyle::Heading.resolve(&painter.ctx().style()),
                 Color32::WHITE,
             );
