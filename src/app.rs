@@ -373,6 +373,7 @@ impl eframe::App for TemplateApp {
             
             
             egui::Window::new(self.button1.clone()).open(&mut self.flag1).show(ctx, |ui| {
+                egui::ScrollArea::vertical().show(ui, |ui| {
 
                 if self.language_flag == true {
 
@@ -465,6 +466,7 @@ ui.add(
 
 }
             });
+                });
 
 
 
