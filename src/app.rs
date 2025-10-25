@@ -57,9 +57,12 @@ pub struct TemplateApp {
     pic_name_en: String,
     pic_name_de: String,
 
-    submit_names: String,
-    submit_emails: String,
-    submit_songs: String,
+    submit_names_en: String,
+    submit_emails_en: String,
+    submit_songs_en: String,
+    submit_names_de: String,
+    submit_emails_de: String,
+    submit_songs_de: String,
 
 
     
@@ -120,9 +123,12 @@ impl Default for TemplateApp {
             pic_name_en: "who is painting? type your name ..".to_owned(),
             pic_name_de: "wer malt? lass uns deinen Namen wissen ..".to_owned(),
 
-            submit_names: "".to_owned(),
-            submit_emails: "".to_owned(),
-            submit_songs: "".to_owned(),
+            submit_names_en: "".to_owned(),
+            submit_emails_en: "".to_owned(),
+            submit_songs_en: "".to_owned(),
+            submit_names_de: "".to_owned(),
+            submit_emails_de: "".to_owned(),
+            submit_songs_de: "".to_owned(),
             
 
 
@@ -907,15 +913,15 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                     ui.label("");
                     ui.horizontal(|ui| {
                         ui.label("name(s): ");
-                        ui.label(self.submit_names.clone());
+                        ui.label(self.submit_names_en.clone());
                     });
                     ui.horizontal(|ui| {
                         ui.label("email-address(es): ");
-                        ui.label(self.submit_emails.clone());
+                        ui.label(self.submit_emails_en.clone());
                     });
                     ui.horizontal(|ui| {
                         ui.label("song(s): ");
-                        ui.label(self.submit_songs.clone());
+                        ui.label(self.submit_songs_en.clone());
                     });
                     
                     
@@ -923,10 +929,10 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                     
                     
                     if ui.button("submit").clicked() {
-                        self.submit_names = self.rsvp1.clone();
-                        self.submit_emails = self.rsvp2.clone();
-                        self.submit_songs = self.rsvp3.clone();
-                        let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.submit_names, self.submit_emails, self.submit_songs);
+                        self.submit_names_en = self.rsvp1.clone();
+                        self.submit_emails_en = self.rsvp2.clone();
+                        self.submit_songs_en = self.rsvp3.clone();
+                        let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.submit_names_en, self.submit_emails_en, self.submit_songs_en);
                         let body1 = message.as_bytes().to_vec();
                         let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                         ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
@@ -961,15 +967,15 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                     ui.label("");
                     ui.horizontal(|ui| {
                         ui.label("Name(n): ");
-                        ui.label(self.submit_names);
+                        ui.label(self.submit_names_de);
                     });
                     ui.horizontal(|ui| {
                         ui.label("email-Adresse(n): ");
-                        ui.label(self.submit_emails);
+                        ui.label(self.submit_emails_de);
                     });
                     ui.horizontal(|ui| {
                         ui.label("Wunschlied(er): ");
-                        ui.label(self.submit_songs);
+                        ui.label(self.submit_songs_de);
                     });
                 
                 
@@ -977,10 +983,10 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                 
                 
                     if ui.button("submit").clicked() {
-                        self.submit_names = self.rsvp1.clone();
-                        self.submit_emails = self.rsvp2.clone();
-                        self.submit_songs = self.rsvp3.clone();
-                        let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.submit_names, self.submit_emails, self.submit_songs);
+                        self.submit_names_de = self.rsvp1.clone();
+                        self.submit_emails_de = self.rsvp2.clone();
+                        self.submit_songs_de = self.rsvp3.clone();
+                        let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.submit_names_de, self.submit_emails_de, self.submit_songs_de);
                         let body1 = message.as_bytes().to_vec();
                         let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                         ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
