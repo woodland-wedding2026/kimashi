@@ -41,7 +41,7 @@ impl FractalClock {
     pub fn ui(&mut self, ui: &mut egui::Ui, language_flag: bool) {
         if language_flag == true {
                         ui.collapsing("settings", |ui| {
-            ui.add(egui::Slider::new(&mut self.depth, 0..=10).text("Recursion Depth"));
+            ui.add(egui::Slider::new(&mut self.depth, 0..=10).text(egui::RichText::new("Recursion Depth").size(17.0)));
             ui.add(egui::Slider::new(&mut self.thickness, 0.1..=5.0).text("Line Thickness"));
             ui.add(egui::Slider::new(&mut self.length_factor, 0.1..=0.9).text("Length Factor"));
             ui.add(egui::Slider::new(&mut self.time_scale, 0.1..=10.0).text("Time Scale"));
