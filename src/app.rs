@@ -317,7 +317,7 @@ impl eframe::App for TemplateApp {
                 else {self.flag9 = true;}
             }  
             ui.label("");
-            if ui.button(egui::RichText::new(self.formbutton.clone()).size(17.0).color(egui::Color32::RED).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.formbutton.clone()).size(17.0).color(egui::Color32::from_rgb(222, 82, 196)).strong()).clicked() {
                 if self.formflag == true {self.formflag = false;}
                 else {self.formflag = true;}
             }  
