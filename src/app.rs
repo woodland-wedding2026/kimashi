@@ -722,7 +722,7 @@ ui.add(
                 });
                 
                 ui.horizontal(|ui| {
-                ui.label(egui::RichText::new("Bank Account: ").size(17.0).color(egui::Color32::from_rgb(0, 0, 0).strong()); ui.label(egui::RichText::new("Kimberley Hofer & Matthias Hofer, DE...  Subject: Woodland Wedding").size(17.0));
+                ui.label(egui::RichText::new("Bank Account: ").size(17.0).color(egui::Color32::from_rgb(0, 0, 0)).strong()); ui.label(egui::RichText::new("Kimberley Hofer & Matthias Hofer, DE...  Subject: Woodland Wedding").size(17.0));
                 });
                 
                 }
