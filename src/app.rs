@@ -950,27 +950,41 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                         ui.text_edit_singleline(&mut self.rsvp3);
                     });
                     ui.label("");
-                    if self.schickflag == false {ui.label("deine eingegebenen Daten:");}
-                    else {ui.label("deine ABGESCHICKTEN Daten");}
+                
+                
+                
+                
+                    if self.submitflag == false {ui.label("");}
+                    else {
+                
+                    ui.label("deine ABGESCHICKTEN Daten:");
                     ui.label("");
                     ui.horizontal(|ui| {
                         ui.label("Name(n): ");
-                        ui.label(self.rsvp1.clone());
+                        ui.label(self.submit_names);
                     });
                     ui.horizontal(|ui| {
-                        ui.label("email-Adresse(s): ");
-                        ui.label(self.rsvp2.clone());
+                        ui.label("email-Adresse(n): ");
+                        ui.label(self.submit_emails);
                     });
                     ui.horizontal(|ui| {
                         ui.label("Wunschlied(er): ");
-                        ui.label(self.rsvp3.clone());
-                    }); 
-                    if ui.button("abschicken").clicked() {
-                        let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.rsvp1.clone(), self.rsvp2, self.rsvp3);
+                        ui.label(self.submit_songs);
+                    });
+                
+                
+                    }
+                
+                
+                    if ui.button("submit").clicked() {
+                        self.submit_names = self.rsvp1.clone();
+                        self.submit_emails = self.rsvp2.clone();
+                        self.submit_songs = self.rsvp3.clone();
+                        let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.submit_names, self.submit_emails, self.submit_songs);
                         let body1 = message.as_bytes().to_vec();
                         let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                         ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-                        self.schickflag = true;
+                        self.submitflag = true;
                     }
                 }
 
