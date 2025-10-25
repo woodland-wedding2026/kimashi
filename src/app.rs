@@ -744,13 +744,13 @@ ui.add(
             }
 
             if self.language_flag == true {ui.collapsing(egui::RichText::new("how to play").size(17.0), |ui| {
-            ui.label(egui::RichText::new("press R for restart and use arrow keys for playing:").size(17.0));
+            ui.label(egui::RichText::new("press R for restart and use arrow keys for playing:\n").size(17.0));
             ui.label(egui::RichText::new("on desktop, use your keyboard").size(17.0));
             ui.label(egui::RichText::new("on mobile, use touch-keys below").size(17.0));
         });}
             else {ui.collapsing(egui::RichText::new("Spielanleitung").size(17.0), |ui| {
                 
-            ui.label(egui::RichText::new("R-Taste für Neustarten und Pfeiltasten für Steuerung:").size(17.0));       
+            ui.label(egui::RichText::new("R-Taste für Neustarten und Pfeiltasten für Steuerung:\n").size(17.0));       
             ui.label(egui::RichText::new("am PC, Tastatur benutzen").size(17.0));
             ui.label(egui::RichText::new("am Handy, Touch-Tasten unten benutzen").size(17.0));
         });}
