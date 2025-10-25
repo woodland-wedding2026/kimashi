@@ -741,13 +741,13 @@ ui.add(
                 self.snake.reset();
             }
 
-            if self.language_flag == true {ui.collapsing("how to play", |ui| {
-            ui.label("on desktop: use keyboard arrows to play");
-            ui.label("on mobile: use touch-keys below to play");
+            if self.language_flag == true {ui.collapsing(egui::RichText::new("how to play").size(17.0), |ui| {
+            ui.label(egui::RichText::new("on desktop: use keyboard arrows to play").size(17.0));
+            ui.label(egui::RichText::new("on mobile: use touch-keys below to play").size(17.0));
         });}
-            else {ui.collapsing("Spielanleitung", |ui| {
-            ui.label("am PC: Pfeiltasten der Tastatur benutzen");
-            ui.label("am Handye: Touch-Tasten unten benutzen");
+            else {ui.collapsing(egui::RichText::new("Spielanleitung").size(17.0), |ui| {
+            ui.label(egui::RichText::new("am PC: Pfeiltasten der Tastatur benutzen").size(17.0));
+            ui.label(egui::RichText::new("am Handye: Touch-Tasten unten benutzen").size(17.0));
         });}
 
 
