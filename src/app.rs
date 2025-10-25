@@ -280,7 +280,7 @@ impl eframe::App for TemplateApp {
 
         egui::SidePanel::left("bullet points").show(ctx, |ui| {
             //ui.label(format!("You typed: {}", self.user_input));
-            if ui.button(egui::RichText::new(self.button1.clone()).size(17.0).color(egui::Color32::from_rgb(95, 15, 135)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button1.clone()).size(17.0).color(egui::Color32::from_rgb(255, 237, 0)).strong()).clicked() {
                 if self.flag1 == true {self.flag1 = false;}
                 else {self.flag1 = true;}
             }
@@ -288,7 +288,7 @@ impl eframe::App for TemplateApp {
                 if self.flag7 == true {self.flag7 = false;}
                 else {self.flag7 = true;}
             }
-            if ui.button(egui::RichText::new(self.button2.clone()).size(17.0).color(egui::Color32::from_rgb(95, 15, 135)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button2.clone()).size(17.0).color(egui::Color32::from_rgb(255, 237, 0)).strong()).clicked() {
                 if self.flag2 == true {self.flag2 = false;}
                 else {self.flag2 = true;}
             }
@@ -296,11 +296,11 @@ impl eframe::App for TemplateApp {
                 if self.flag5 == true {self.flag5 = false;}
                 else {self.flag5 = true;}
             }  
-            if ui.button(egui::RichText::new(self.button4.clone()).size(17.0).color(egui::Color32::from_rgb(95, 15, 135)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button4.clone()).size(17.0).color(egui::Color32::from_rgb(255, 237, 0)).strong()).clicked() {
                 if self.flag4 == true {self.flag4 = false;}
                 else {self.flag4 = true;}
             }  
-            if ui.button(egui::RichText::new(self.button3.clone()).size(17.0).color(egui::Color32::from_rgb(95, 15, 135)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button3.clone()).size(17.0).color(egui::Color32::from_rgb(255, 237, 0)).strong()).clicked() {
                 if self.flag3 == true {self.flag3 = false;}
                 else {self.flag3 = true;}
             }  
@@ -308,11 +308,11 @@ impl eframe::App for TemplateApp {
                 if self.flag6 == true {self.flag6 = false;}
                 else {self.flag6 = true;}
             } 
-            if ui.button(egui::RichText::new(self.button8.clone()).size(17.0).color(egui::Color32::from_rgb(95, 15, 135)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button8.clone()).size(17.0).color(egui::Color32::from_rgb(255, 237, 0)).strong()).clicked() {
                 if self.flag8 == true {self.flag8 = false;}
                 else {self.flag8 = true;}
             }  
-            if ui.button(egui::RichText::new(self.button9.clone()).size(17.0).color(egui::Color32::from_rgb(95, 15, 135)).strong()).clicked() {
+            if ui.button(egui::RichText::new(self.button9.clone()).size(17.0).color(egui::Color32::from_rgb(255, 237, 0)).strong()).clicked() {
                 if self.flag9 == true {self.flag9 = false;}
                 else {self.flag9 = true;}
             }  
