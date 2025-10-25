@@ -907,15 +907,15 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                     ui.label("");
                     ui.horizontal(|ui| {
                         ui.label("name(s): ");
-                        ui.label(self.submit_names);
+                        ui.label(self.submit_names.clone());
                     });
                     ui.horizontal(|ui| {
                         ui.label("email-address(es): ");
-                        ui.label(self.submit_emails);
+                        ui.label(self.submit_emails.clone());
                     });
                     ui.horizontal(|ui| {
                         ui.label("song(s): ");
-                        ui.label(self.submit_songs);
+                        ui.label(self.submit_songs.clone());
                     });
                     
                     
