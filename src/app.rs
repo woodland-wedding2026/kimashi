@@ -888,19 +888,19 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
 
 ui.label(egui::RichText::new("please enter your data below:\n").size(23.0));
 
-ui.label(egui::RichText::new("please enter the names of all people you want to confirm").size(17.0));
+ui.label(egui::RichText::new("please enter the names of all people you want to confirm:").size(17.0));
 ui.horizontal(|ui| {
 ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::RED));
 ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
 
 });
-ui.label(egui::RichText::new("please tell us all email-addresses we can send you updates to").size(17.0));
+ui.label(egui::RichText::new("\nplease tell us all email-addresses we can send you updates to:").size(17.0));
 ui.horizontal(|ui| {
 ui.label(egui::RichText::new("email-address(es): ").size(17.0).color(egui::Color32::RED));
 ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
 
 });
-ui.label(egui::RichText::new("tell us some songs you would appreciate to hear during the event").size(17.0));
+ui.label(egui::RichText::new("\ntell us some songs you would appreciate to hear during the event:").size(17.0));
 ui.horizontal(|ui| {
 ui.label(egui::RichText::new("like-to-hear song(s): ").size(17.0).color(egui::Color32::RED));
 ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
@@ -947,19 +947,19 @@ self.submitflag = true;
 
 else {
 ui.label(egui::RichText::new("gib hier bitte deine Daten ein:\n").size(23.0));
-ui.label(egui::RichText::new("bitte gib die Namen aller Gäste ein die du bestätigen willst").size(17.0));
+ui.label(egui::RichText::new("bitte gib die Namen aller Gäste ein die du bestätigen willst:").size(17.0));
 ui.horizontal(|ui| {
 ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
 ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
 
 });
-ui.label(egui::RichText::new("bitte gib uns alle eMail-Adressen an die wir Updates schicken können").size(17.0));
+ui.label(egui::RichText::new("\nbitte gib uns alle eMail-Adressen an die wir Updates schicken können:").size(17.0));
 ui.horizontal(|ui| {
 ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color32::RED));
 ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
 
 });
-ui.label(egui::RichText::new("wenn du dich freuen würdest spezielle Lieder auf der Party zu hören, gib sie bitte hier ein").size(17.0));
+ui.label(egui::RichText::new("\nwenn du dich freuen würdest spezielle Lieder auf der Party zu hören, gib sie bitte hier ein:").size(17.0));
 ui.horizontal(|ui| {
 ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::RED));
 ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
