@@ -614,7 +614,7 @@ ui.add(
                     ui.label(egui::RichText::new("mal ein Bild uns schick es uns :)").size(17.0));  
                     ui.horizontal(|ui| {
                         //ui.text_edit_singleline(&mut self.pic_name_de);
-                        ui.add(egui::TextEdit::singleline(&mut self.pic_name_en).font(egui::FontId::proportional(17.0)));
+                        ui.add(egui::TextEdit::singleline(&mut self.pic_name_de).font(egui::FontId::proportional(17.0)));
                       if ui.button(egui::RichText::new("Bild abschicken").size(17.0)).clicked() {
                     self.saved_image_data = self.painting_app.export_json(ctx).clone();
 
