@@ -41,10 +41,10 @@ impl FractalClock {
     pub fn ui(&mut self, ui: &mut egui::Ui, language_flag: bool) {
         if language_flag == true {
                         ui.collapsing(egui::RichText::new("settings").size(17.0), |ui| {
-            ui.add(egui::Slider::new(&mut self.depth, 0..=10).text(egui::RichText::new("Recursion Depth").size(17.0)));
-            ui.add(egui::Slider::new(&mut self.thickness, 0.1..=5.0).text(egui::RichText::new("Line Thickness").size(17.0)));
-            ui.add(egui::Slider::new(&mut self.length_factor, 0.1..=0.9).text(egui::RichText::new("Length Factor").size(17.0)));
-            ui.add(egui::Slider::new(&mut self.time_scale, 0.1..=10.0).text(egui::RichText::new("Time Scale").size(17.0)));
+            ui.add(egui::Slider::new(&mut self.depth, 0..=10).text(egui::RichText::new("recursion depth").size(17.0)));
+            ui.add(egui::Slider::new(&mut self.thickness, 0.1..=5.0).text(egui::RichText::new("line thickness").size(17.0)));
+            ui.add(egui::Slider::new(&mut self.length_factor, 0.1..=0.9).text(egui::RichText::new("length factor").size(17.0)));
+            ui.add(egui::Slider::new(&mut self.time_scale, 0.1..=10.0).text(egui::RichText::new("time scale").size(17.0)));
         });
                     }
                     else {
