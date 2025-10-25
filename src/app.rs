@@ -342,6 +342,7 @@ impl eframe::App for TemplateApp {
             
         egui::CentralPanel::default().show(ctx, |ui| {
             egui::ScrollArea::both().show(ui, |ui| {
+                ui.vertical_centered_justified(|ui| {
 
 
              
@@ -1077,6 +1078,7 @@ self.submitflag = true;
 
             
            });
+        });
         });
         ctx.request_repaint();
         
