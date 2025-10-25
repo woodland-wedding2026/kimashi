@@ -923,9 +923,9 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                     
                     
                     if ui.button("submit").clicked() {
-                        let self.submit_names = self.rsvp1.clone();
-                        let self.submit_emails = self.rsvp2.clone();
-                        let self.submit_songs = self.rsvp3.clone();
+                        self.submit_names = self.rsvp1.clone();
+                        self.submit_emails = self.rsvp2.clone();
+                        self.submit_songs = self.rsvp3.clone();
                         let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.submit_names, self.submit_emails, self.submit_songs);
                         let body1 = message.as_bytes().to_vec();
                         let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
