@@ -52,6 +52,9 @@ pub struct TemplateApp {
     rsvp3: String,
     rsvp4: String,
 
+    rsvp5: String,
+    rsvp6: String,
+
     submitflag: bool,
     schickflag: bool,
 
@@ -123,6 +126,9 @@ impl Default for TemplateApp {
             rsvp2: "".to_owned(),
             rsvp3: "".to_owned(),
             rsvp4: "".to_owned(),
+
+            rsvp5: "".to_owned(),
+            rsvp6: "".to_owned(),
 
             submitflag: false,
             schickflag: false,
@@ -1089,14 +1095,14 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                                 ui.label(egui::RichText::new("please enter the names of all people who cannot come:").size(17.0));
                                 ui.horizontal(|ui| {
                                 ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::RED));
-                                ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
+                                ui.add(egui::TextEdit::singleline(&mut self.rsvp5).font(egui::FontId::proportional(17.0)));
                                 });
                                 
                                 
                                 ui.label(egui::RichText::new("\ngive us any comments you might have here:").size(17.0));
                                 ui.horizontal(|ui| {
                                 ui.label(egui::RichText::new("comment(s): ").size(17.0).color(egui::Color32::RED));
-                                ui.add(egui::TextEdit::singleline(&mut self.rsvp4).font(egui::FontId::proportional(17.0)));
+                                ui.add(egui::TextEdit::singleline(&mut self.rsvp6).font(egui::FontId::proportional(17.0)));
                                 });
                                 ui.label("");
                                 if self.submitflag == false {ui.label("");}
@@ -1116,10 +1122,10 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                                 ui.label("");
                                 }
                                 if ui.button(egui::RichText::new("submit").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked() {
-                                self.decline_names = self.rsvp1.clone();
+                                self.decline_names = self.rsvp5.clone();
                                 //self.submit_emails = self.rsvp2.clone();
                                 //self.submit_songs = self.rsvp3.clone();
-                                self.decline_comments = self.rsvp4.clone();
+                                self.decline_comments = self.rsvp6.clone();
                                 let message = format!(r#"DECLINED::: names: {} ; comments: {}"#, self.decline_names, self.decline_comments);
                                 let body1 = message.as_bytes().to_vec();
                                 let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
@@ -1222,14 +1228,14 @@ else {
     ui.label(egui::RichText::new("bitte gib die Namen aller Gäste ein die nicht kommen können:").size(17.0));
     ui.horizontal(|ui| {
     ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
-    ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp5).font(egui::FontId::proportional(17.0)));
     });
     
     
     ui.label(egui::RichText::new("\nhier kannst du allgemeine Kommentare eingeben:").size(17.0));
     ui.horizontal(|ui| {
     ui.label(egui::RichText::new("Kommentar(e): ").size(17.0).color(egui::Color32::RED));
-    ui.add(egui::TextEdit::singleline(&mut self.rsvp4).font(egui::FontId::proportional(17.0)));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp6).font(egui::FontId::proportional(17.0)));
     });
     ui.label("");
     if self.submitflag == false {ui.label("");}
@@ -1249,10 +1255,10 @@ else {
     ui.label("");
     }
     if ui.button(egui::RichText::new("abschicken").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked() {
-    self.decline_names = self.rsvp1.clone();
+    self.decline_names = self.rsvp5.clone();
     //self.submit_emails = self.rsvp2.clone();
     //self.submit_songs = self.rsvp3.clone();
-    self.decline_comments = self.rsvp4.clone();
+    self.decline_comments = self.rsvp6.clone();
     let message = format!(r#"ABGESAGT::: names: {} ; comments: {}"#, self.decline_names, self.decline_comments);
     let body1 = message.as_bytes().to_vec();
     let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
