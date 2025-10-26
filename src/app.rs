@@ -168,7 +168,9 @@ impl TemplateApp {
         // If no previous state, return a new default instance
         Self {
             fractal_clock: FractalClock::default(),
-            ..Default::default()
+            ..Default::default();
+            cc.egui_ctx.set_visuals(egui::Visuals::dark());
+                cc.egui_ctx.request_repaint();
         }
 
 
