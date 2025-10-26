@@ -1071,7 +1071,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                                 ui.label("");
                                 ui.horizontal(|ui| {
                                     ui.label(egui::RichText::new("go to the ").size(17.0));
-                                    if ui.button(egui::RichText::new("confirm form").size(17.0)).clicked() {self.rsvp_flag2 = false;};
+                                    if ui.button(egui::RichText::new("confirm form").size(17.0)).clicked() {self.rsvp_flag2 = true;};
                                     
                                 });
                                 
@@ -1204,7 +1204,7 @@ else {
     ui.label("");
     ui.horizontal(|ui| {
         ui.label(egui::RichText::new("gehe zum ").size(17.0));
-        if ui.button(egui::RichText::new("Zusageformular").size(17.0)).clicked() {self.rsvp_flag2 = false;};
+        if ui.button(egui::RichText::new("Zusageformular").size(17.0)).clicked() {self.rsvp_flag2 = true;};
         
     });
 
