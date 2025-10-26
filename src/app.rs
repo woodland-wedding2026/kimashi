@@ -1004,7 +1004,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                                 });
                                 ui.label("");
                                 }
-                                if ui.button(egui::RichText::new("submit").size(17.0)).clicked() {
+                                if ui.button(egui::RichText::new("submit").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).clicked() {
                                 self.submit_names = self.rsvp1.clone();
                                 self.submit_emails = self.rsvp2.clone();
                                 self.submit_songs = self.rsvp3.clone();
@@ -1056,7 +1056,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                                 });
                                 ui.label("");
                                 }
-                                if ui.button(egui::RichText::new("submit").size(17.0)).clicked() {
+                                if ui.button(egui::RichText::new("submit").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).clicked() {
                                 self.submit_names = self.rsvp1.clone();
                                 //self.submit_emails = self.rsvp2.clone();
                                 //self.submit_songs = self.rsvp3.clone();
@@ -1136,7 +1136,7 @@ else {
             });
             ui.label("");
             }
-            if ui.button(egui::RichText::new("abschicken").size(17.0)).clicked() {
+            if ui.button(egui::RichText::new("abschicken").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).clicked() {
             self.submit_names = self.rsvp1.clone();
             self.submit_emails = self.rsvp2.clone();
             self.submit_songs = self.rsvp3.clone();
@@ -1189,7 +1189,7 @@ else {
     });
     ui.label("");
     }
-    if ui.button(egui::RichText::new("abschicken").size(17.0)).clicked() {
+    if ui.button(egui::RichText::new("abschicken").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).clicked() {
     self.submit_names = self.rsvp1.clone();
     self.submit_emails = self.rsvp2.clone();
     self.submit_songs = self.rsvp3.clone();
