@@ -953,8 +953,8 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                  if self.language_flag == true {
 
                         if self.rsvp_flag1 == false {
-                            if ui.button(egui::RichText::new("confirm").size(17.0)).clicked() {self.rsvp_flag2 = true; self.rsvp_flag1 = true;}
-                            if ui.button(egui::RichText::new("decline").size(17.0)).clicked() {self.rsvp_flag2 = false; self.rsvp_flag1 = true;}
+                            if ui.button(egui::RichText::new("go to the confirm form").size(17.0).color(egui::Color32::DARK_GREEN)).clicked() {self.rsvp_flag2 = true; self.rsvp_flag1 = true;}
+                            if ui.button(egui::RichText::new("go to the decline form").size(17.0).color(egui::Color32::RED)).clicked() {self.rsvp_flag2 = false; self.rsvp_flag1 = true;}
                         }
                         else {
 
@@ -963,22 +963,22 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                                 ui.label(egui::RichText::new("please enter your data below:\n").size(23.0));
                                 ui.label(egui::RichText::new("please enter the names of all people you want to confirm:").size(17.0));
                                 ui.horizontal(|ui| {
-                                ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
                                 ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
                                 });
                                 ui.label(egui::RichText::new("\nplease tell us all email-addresses we can send you updates to:").size(17.0));
                                 ui.horizontal(|ui| {
-                                ui.label(egui::RichText::new("email-address(es): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new("email-address(es): ").size(17.0).color(egui::Color32::DARK_GREEN));
                                 ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
                                 });
                                 ui.label(egui::RichText::new("\ntell us some songs you would appreciate to hear during the event:").size(17.0));
                                 ui.horizontal(|ui| {
-                                ui.label(egui::RichText::new("like-to-hear song(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new("like-to-hear song(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
                                 ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
                                 });
                                 ui.label(egui::RichText::new("\ngive us any comments you might have here:").size(17.0));
                                 ui.horizontal(|ui| {
-                                ui.label(egui::RichText::new("comment(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new("comment(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
                                 ui.add(egui::TextEdit::singleline(&mut self.rsvp4).font(egui::FontId::proportional(17.0)));
                                 });
                                 ui.label("");
@@ -987,19 +987,19 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                                 ui.label(egui::RichText::new("your SUBMITTED data:").size(23.0));
                                 ui.label("");
                                 ui.horizontal(|ui| {
-                                ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
                                 ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
                                 });
                                 ui.horizontal(|ui| {
-                                ui.label(egui::RichText::new("email-address(es): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new("email-address(es): ").size(17.0).color(egui::Color32::DARK_GREEN));
                                 ui.label(egui::RichText::new(self.submit_emails.clone()).size(17.0));
                                 });
                                 ui.horizontal(|ui| {
-                                ui.label(egui::RichText::new("song(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new("song(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
                                 ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
                                 });
                                 ui.horizontal(|ui| {
-                                ui.label(egui::RichText::new("comments(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new("comments(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
                                 ui.label(egui::RichText::new(self.submit_comments.clone()).size(17.0));
                                 });
                                 ui.label("");
@@ -1019,7 +1019,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                                 ui.label("");
                                 ui.horizontal(|ui| {
                                     ui.label(egui::RichText::new("go to the ").size(17.0));
-                                    if ui.button(egui::RichText::new("decline form").size(17.0)).clicked() {self.rsvp_flag2 = false;};
+                                    if ui.button(egui::RichText::new("decline form").size(17.0).color(egui::Color32::RED)).clicked() {self.rsvp_flag2 = false;};
                                     
                                 });
                                 
@@ -1071,7 +1071,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                                 ui.label("");
                                 ui.horizontal(|ui| {
                                     ui.label(egui::RichText::new("go to the ").size(17.0));
-                                    if ui.button(egui::RichText::new("confirm form").size(17.0)).clicked() {self.rsvp_flag2 = true;};
+                                    if ui.button(egui::RichText::new("confirm form").size(17.0).color(egui::Color32::DARK_GREEN)).clicked() {self.rsvp_flag2 = true;};
                                     
                                 });
                                 
@@ -1084,8 +1084,8 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                         }
                 else {
                         if self.rsvp_flag1 == false {
-                            if ui.button(egui::RichText::new("zusagen").size(17.0)).clicked() {self.rsvp_flag2 = true; self.rsvp_flag1 = true;}
-                            if ui.button(egui::RichText::new("absagen").size(17.0)).clicked() {self.rsvp_flag2 = false; self.rsvp_flag1 = true;}
+                            if ui.button(egui::RichText::new("zum Zusageformular").size(17.0).color(egui::Color32::DARK_GREEN)).clicked() {self.rsvp_flag2 = true; self.rsvp_flag1 = true;}
+                            if ui.button(egui::RichText::new("zum Absageformular").size(17.0)).color(egui::Color32::RED).clicked() {self.rsvp_flag2 = false; self.rsvp_flag1 = true;}
                         }
 
 else {
@@ -1095,22 +1095,22 @@ else {
             ui.label(egui::RichText::new("gib hier bitte deine Daten ein:\n").size(23.0));
             ui.label(egui::RichText::new("bitte gib die Namen aller Gäste ein die du bestätigen willst:").size(17.0));
             ui.horizontal(|ui| {
-            ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
+            ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::DARK_GREEN));
             ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
             });
             ui.label(egui::RichText::new("\nbitte gib uns alle eMail-Adressen an die wir Updates schicken können:").size(17.0));
             ui.horizontal(|ui| {
-            ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color32::RED));
+            ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color32::DARK_GREEN));
             ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
             });
             ui.label(egui::RichText::new("\nwenn du dich freuen würdest spezielle Lieder auf der Party zu hören, gib sie bitte hier ein:").size(17.0));
             ui.horizontal(|ui| {
-            ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::RED));
+            ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::DARK_GREEN));
             ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
             });
             ui.label(egui::RichText::new("\nhier kannst du allgemeine Kommentare eingeben:").size(17.0));
             ui.horizontal(|ui| {
-            ui.label(egui::RichText::new("Kommentar(e): ").size(17.0).color(egui::Color32::RED));
+            ui.label(egui::RichText::new("Kommentar(e): ").size(17.0).color(egui::Color32::DARK_GREEN));
             ui.add(egui::TextEdit::singleline(&mut self.rsvp4).font(egui::FontId::proportional(17.0)));
             });
             ui.label("");
@@ -1119,19 +1119,19 @@ else {
             ui.label(egui::RichText::new("deine ABGESCHICKTEN Daten:").size(23.0));
             ui.label("");
             ui.horizontal(|ui| {
-            ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
+            ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::DARK_GREEN));
             ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
             });
             ui.horizontal(|ui| {
-            ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color32::RED));
+            ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color32::DARK_GREEN));
             ui.label(egui::RichText::new(self.submit_emails.clone()).size(17.0));
             });
             ui.horizontal(|ui| {
-            ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::RED));
+            ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::DARK_GREEN));
             ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
             });
             ui.horizontal(|ui| {
-            ui.label(egui::RichText::new("Kommentar(e): ").size(17.0).color(egui::Color32::RED));
+            ui.label(egui::RichText::new("Kommentar(e): ").size(17.0).color(egui::Color32::DARK_GREEN));
             ui.label(egui::RichText::new(self.submit_comments.clone()).size(17.0));
             });
             ui.label("");
@@ -1151,7 +1151,7 @@ else {
             ui.label("");
             ui.horizontal(|ui| {
                 ui.label(egui::RichText::new("gehe zum ").size(17.0));
-                if ui.button(egui::RichText::new("Absageformular").size(17.0)).clicked() {self.rsvp_flag2 = false;};
+                if ui.button(egui::RichText::new("Absageformular").size(17.0).color(egui::Color32::RED)).clicked() {self.rsvp_flag2 = false;};
                 
             });
 
@@ -1204,7 +1204,7 @@ else {
     ui.label("");
     ui.horizontal(|ui| {
         ui.label(egui::RichText::new("gehe zum ").size(17.0));
-        if ui.button(egui::RichText::new("Zusageformular").size(17.0)).clicked() {self.rsvp_flag2 = true;};
+        if ui.button(egui::RichText::new("Zusageformular").size(17.0).color(egui::Color32::DARK_GREEN)).clicked() {self.rsvp_flag2 = true;};
         
     });
 
