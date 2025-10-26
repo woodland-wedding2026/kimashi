@@ -1085,7 +1085,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                 else {
                         if self.rsvp_flag1 == false {
                             if ui.button(egui::RichText::new("zum Zusageformular").size(17.0).color(egui::Color32::DARK_GREEN)).clicked() {self.rsvp_flag2 = true; self.rsvp_flag1 = true;}
-                            if ui.button(egui::RichText::new("zum Absageformular").size(17.0)).color(egui::Color32::RED).clicked() {self.rsvp_flag2 = false; self.rsvp_flag1 = true;}
+                            if ui.button(egui::RichText::new("zum Absageformular").size(17.0).color(egui::Color32::RED)).clicked() {self.rsvp_flag2 = false; self.rsvp_flag1 = true;}
                         }
 
 else {
