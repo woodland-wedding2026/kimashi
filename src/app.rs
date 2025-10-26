@@ -149,10 +149,12 @@ impl TemplateApp {
     pub fn new(cc: &eframe::CreationContext<'_>) -> Self {
         
         
-        cc.egui_ctx.set_style(egui::Style::default());     // clear inherited style
+        
         cc.egui_ctx.set_visuals(egui::Visuals::dark());    // force dark visuals
         cc.egui_ctx.request_repaint();  
-        
+        let mut style = (*cc.egui_ctx.style()).clone();
+        style.override_text_color = None; // optional, reset any saved text color
+        cc.egui_ctx.set_style(style);
         
         // Try to restore previous state first
         if let Some(storage) = cc.storage {
