@@ -301,7 +301,9 @@ impl eframe::App for TemplateApp {
                 //});
 
                 
-                if self.language_flag == true {ui.horizontal(|ui| {
+                if self.language_flag == true {
+                    
+                    ui.horizontal(|ui| {
                 // Access the current visuals
                 let visuals = ui.ctx().style().visuals.clone();
             
@@ -318,7 +320,7 @@ impl eframe::App for TemplateApp {
                 }
             }); }
                 else {
-
+                ui.horizontal(|ui| {
                     // Access the current visuals
                 let visuals = ui.ctx().style().visuals.clone();
             
