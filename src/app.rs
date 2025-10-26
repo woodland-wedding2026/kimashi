@@ -248,7 +248,7 @@ impl eframe::App for TemplateApp {
         else {self.button9 = "Kontakt".to_owned()}
 
         if self.language_flag == true {self.formbutton = "RSVP".to_owned()}
-        else {self.formbutton = "Rückmeldung".to_owned()}
+        else {self.formbutton = "rückmelden".to_owned()}
         
 
         if self.password_flag == true {
