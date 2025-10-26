@@ -1009,7 +1009,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                                 self.submit_emails = self.rsvp2.clone();
                                 self.submit_songs = self.rsvp3.clone();
                                 self.submit_comments = self.rsvp4.clone();
-                                let message = format!(r#"names: {} ; emails: {} ; songs: {}; comments: {}"#, self.submit_names, self.submit_emails, self.submit_songs, self.submit_comments);
+                                let message = format!(r#"CONFIRMED::: names: {} ; emails: {} ; songs: {}; comments: {}"#, self.submit_names, self.submit_emails, self.submit_songs, self.submit_comments);
                                 let body1 = message.as_bytes().to_vec();
                                 let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                                 ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
