@@ -65,6 +65,9 @@ pub struct TemplateApp {
 
     rsvp_flag1: bool,
     rsvp_flag2: bool,
+
+    decline_names: String,
+    decline_comments: String,
     
 
 
@@ -134,6 +137,9 @@ impl Default for TemplateApp {
             
             rsvp_flag1: false,
             rsvp_flag2: false,
+
+            decline_names: "".to_owned(),
+            decline_comments: "".to_owned(),
 
 
             
@@ -1099,22 +1105,22 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                                 ui.label("");
                                 ui.horizontal(|ui| {
                                 ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::RED));
-                                ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
+                                ui.label(egui::RichText::new(self.decline_names.clone()).size(17.0));
                                 });
                                 
                                 
                                 ui.horizontal(|ui| {
                                 ui.label(egui::RichText::new("comments(s): ").size(17.0).color(egui::Color32::RED));
-                                ui.label(egui::RichText::new(self.submit_comments.clone()).size(17.0));
+                                ui.label(egui::RichText::new(self.decline_comments.clone()).size(17.0));
                                 });
                                 ui.label("");
                                 }
                                 if ui.button(egui::RichText::new("submit").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked() {
-                                self.submit_names = self.rsvp1.clone();
+                                self.decline_names = self.rsvp1.clone();
                                 //self.submit_emails = self.rsvp2.clone();
                                 //self.submit_songs = self.rsvp3.clone();
-                                self.submit_comments = self.rsvp4.clone();
-                                let message = format!(r#"DECLINED::: names: {} ; comments: {}"#, self.submit_names, self.submit_comments);
+                                self.decline_comments = self.rsvp4.clone();
+                                let message = format!(r#"DECLINED::: names: {} ; comments: {}"#, self.decline_names, self.decline_comments);
                                 let body1 = message.as_bytes().to_vec();
                                 let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                                 ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
@@ -1232,22 +1238,22 @@ else {
     ui.label("");
     ui.horizontal(|ui| {
     ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
-    ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
+    ui.label(egui::RichText::new(self.decline_names.clone()).size(17.0));
     });
     
     
     ui.horizontal(|ui| {
     ui.label(egui::RichText::new("Kommentar(e): ").size(17.0).color(egui::Color32::RED));
-    ui.label(egui::RichText::new(self.submit_comments.clone()).size(17.0));
+    ui.label(egui::RichText::new(self.decline_comments.clone()).size(17.0));
     });
     ui.label("");
     }
     if ui.button(egui::RichText::new("abschicken").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked() {
-    self.submit_names = self.rsvp1.clone();
-    self.submit_emails = self.rsvp2.clone();
-    self.submit_songs = self.rsvp3.clone();
-    self.submit_comments = self.rsvp4.clone();
-    let message = format!(r#"ABGESAGT::: names: {} ; comments: {}"#, self.submit_names, self.submit_comments);
+    self.decline_names = self.rsvp1.clone();
+    //self.submit_emails = self.rsvp2.clone();
+    //self.submit_songs = self.rsvp3.clone();
+    self.decline_comments = self.rsvp4.clone();
+    let message = format!(r#"ABGESAGT::: names: {} ; comments: {}"#, self.decline_names, self.decline_comments);
     let body1 = message.as_bytes().to_vec();
     let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
     ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
