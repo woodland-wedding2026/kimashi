@@ -1083,51 +1083,140 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                      
                         }
                 else {
-                        ui.label(egui::RichText::new("gib hier bitte deine Daten ein:\n").size(23.0));
-                        ui.label(egui::RichText::new("bitte gib die Namen aller Gäste ein die du bestätigen willst:").size(17.0));
-                        ui.horizontal(|ui| {
-                        ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
-                        ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
-                        });
-                        ui.label(egui::RichText::new("\nbitte gib uns alle eMail-Adressen an die wir Updates schicken können:").size(17.0));
-                        ui.horizontal(|ui| {
-                        ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color32::RED));
-                        ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
-                        });
-                        ui.label(egui::RichText::new("\nwenn du dich freuen würdest spezielle Lieder auf der Party zu hören, gib sie bitte hier ein:").size(17.0));
-                        ui.horizontal(|ui| {
-                        ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::RED));
-                        ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
-                        });
-                        ui.label("");
-                        if self.submitflag == false {ui.label("");}
-                        else {
-                        ui.label(egui::RichText::new("deine ABGESCHICKTEN Daten:").size(23.0));
-                        ui.label("");
-                        ui.horizontal(|ui| {
-                        ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
-                        ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
-                        });
-                        ui.horizontal(|ui| {
-                        ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color32::RED));
-                        ui.label(egui::RichText::new(self.submit_emails.clone()).size(17.0));
-                        });
-                        ui.horizontal(|ui| {
-                        ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::RED));
-                        ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
-                        });
-                        ui.label("");
+                        if self.rsvp_flag1 == false {
+                            if ui.button(egui::RichText::new("zusagen").size(17.0)).clicked() {self.rsvp_flag2 = true; self.rsvp_flag1 = true;}
+                            if ui.button(egui::RichText::new("absagen").size(17.0)).clicked() {self.rsvp_flag2 = false; self.rsvp_flag1 = true;}
                         }
-                        if ui.button(egui::RichText::new("abschicken").size(17.0)).clicked() {
-                        self.submit_names = self.rsvp1.clone();
-                        self.submit_emails = self.rsvp2.clone();
-                        self.submit_songs = self.rsvp3.clone();
-                        let message = format!(r#"CONFIRMED::: names: {} ; emails: {} ; songs: {}"#, self.submit_names, self.submit_emails, self.submit_songs);
-                        let body1 = message.as_bytes().to_vec();
-                        let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
-                        ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-                        self.submitflag = true;
-                        }
+
+else {
+    
+    if self.rsvp_flag2 == true {
+
+            ui.label(egui::RichText::new("gib hier bitte deine Daten ein:\n").size(23.0));
+            ui.label(egui::RichText::new("bitte gib die Namen aller Gäste ein die du bestätigen willst:").size(17.0));
+            ui.horizontal(|ui| {
+            ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
+            ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
+            });
+            ui.label(egui::RichText::new("\nbitte gib uns alle eMail-Adressen an die wir Updates schicken können:").size(17.0));
+            ui.horizontal(|ui| {
+            ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color32::RED));
+            ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
+            });
+            ui.label(egui::RichText::new("\nwenn du dich freuen würdest spezielle Lieder auf der Party zu hören, gib sie bitte hier ein:").size(17.0));
+            ui.horizontal(|ui| {
+            ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::RED));
+            ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
+            });
+            ui.label(egui::RichText::new("\nhier kannst du allgemeine Kommentare eingeben:").size(17.0));
+            ui.horizontal(|ui| {
+            ui.label(egui::RichText::new("Kommentar(e): ").size(17.0).color(egui::Color32::RED));
+            ui.add(egui::TextEdit::singleline(&mut self.rsvp4).font(egui::FontId::proportional(17.0)));
+            });
+            ui.label("");
+            if self.submitflag == false {ui.label("");}
+            else {
+            ui.label(egui::RichText::new("deine ABGESCHICKTEN Daten:").size(23.0));
+            ui.label("");
+            ui.horizontal(|ui| {
+            ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
+            ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
+            });
+            ui.horizontal(|ui| {
+            ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color32::RED));
+            ui.label(egui::RichText::new(self.submit_emails.clone()).size(17.0));
+            });
+            ui.horizontal(|ui| {
+            ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::RED));
+            ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
+            });
+            ui.horizontal(|ui| {
+            ui.label(egui::RichText::new("Kommentar(e): ").size(17.0).color(egui::Color32::RED));
+            ui.label(egui::RichText::new(self.submit_comments.clone()).size(17.0));
+            });
+            ui.label("");
+            }
+            if ui.button(egui::RichText::new("abschicken").size(17.0)).clicked() {
+            self.submit_names = self.rsvp1.clone();
+            self.submit_emails = self.rsvp2.clone();
+            self.submit_songs = self.rsvp3.clone();
+            self.submit_comments = self.rsvp4.clone();
+            let message = format!(r#"ZUGESAGT::: names: {} ; emails: {} ; songs: {}; comments: {}"#, self.submit_names, self.submit_emails, self.submit_songs, self.submit_comments);
+            let body1 = message.as_bytes().to_vec();
+            let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+            ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+            self.submitflag = true;
+            }
+            ui.label("");
+            ui.label("");
+            ui.horizontal(|ui| {
+                ui.label(egui::RichText::new("gehe zum ").size(17.0));
+                if ui.button(egui::RichText::new("Absageformular").size(17.0)).clicked() {self.rsvp_flag2 = false;};
+                
+            });
+
+
+    }
+    else {
+
+    ui.label(egui::RichText::new("gib hier bitte deine Daten ein:\n").size(23.0));
+    ui.label(egui::RichText::new("bitte gib die Namen aller Gäste ein die nicht kommen können:").size(17.0));
+    ui.horizontal(|ui| {
+    ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
+    });
+    
+    
+    ui.label(egui::RichText::new("\nhier kannst du allgemeine Kommentare eingeben:").size(17.0));
+    ui.horizontal(|ui| {
+    ui.label(egui::RichText::new("Kommentar(e): ").size(17.0).color(egui::Color32::RED));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp4).font(egui::FontId::proportional(17.0)));
+    });
+    ui.label("");
+    if self.submitflag == false {ui.label("");}
+    else {
+    ui.label(egui::RichText::new("deine ABGESCHICKTEN Daten:").size(23.0));
+    ui.label("");
+    ui.horizontal(|ui| {
+    ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
+    ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
+    });
+    
+    
+    ui.horizontal(|ui| {
+    ui.label(egui::RichText::new("Kommentar(e): ").size(17.0).color(egui::Color32::RED));
+    ui.label(egui::RichText::new(self.submit_comments.clone()).size(17.0));
+    });
+    ui.label("");
+    }
+    if ui.button(egui::RichText::new("abschicken").size(17.0)).clicked() {
+    self.submit_names = self.rsvp1.clone();
+    self.submit_emails = self.rsvp2.clone();
+    self.submit_songs = self.rsvp3.clone();
+    self.submit_comments = self.rsvp4.clone();
+    let message = format!(r#"ABGESAGT::: names: {} ; comments: {}"#, self.submit_names, self.submit_comments);
+    let body1 = message.as_bytes().to_vec();
+    let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+    ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+    self.submitflag = true;
+    }
+    ui.label("");
+    ui.label("");
+    ui.horizontal(|ui| {
+        ui.label(egui::RichText::new("gehe zum ").size(17.0));
+        if ui.button(egui::RichText::new("Zusageformular").size(17.0)).clicked() {self.rsvp_flag2 = false;};
+        
+    });
+
+
+
+    }
+
+
+
+
+}
+
                         }
 
 
