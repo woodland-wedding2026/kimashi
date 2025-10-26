@@ -291,14 +291,31 @@ impl eframe::App for TemplateApp {
                 }
                 //egui::widgets::global_theme_preference_buttons(ui);
 
+                //ui.horizontal(|ui| {
+                //    if ui.button("☀ Light").clicked() {
+                //        ui.ctx().set_visuals(egui::Visuals::light());
+                //    }
+                //    if ui.button("🌙 Dark").clicked() {
+                //        ui.ctx().set_visuals(egui::Visuals::dark());
+                //    }
+                //});
+
                 ui.horizontal(|ui| {
-                    if ui.button("☀ Light").clicked() {
-                        ui.ctx().set_visuals(egui::Visuals::light());
-                    }
-                    if ui.button("🌙 Dark").clicked() {
-                        ui.ctx().set_visuals(egui::Visuals::dark());
-                    }
-                });
+                // Access the current visuals
+                let visuals = ui.ctx().style().visuals.clone();
+            
+                // Pick label and next theme based on current mode
+                let (label, new_visuals) = if visuals.dark_mode {
+                    ("☀ Light", egui::Visuals::light())
+                } else {
+                    ("🌙 Dark", egui::Visuals::dark())
+                };
+            
+                // Draw one toggle button
+                if ui.button(label).clicked() {
+                    ui.ctx().set_visuals(new_visuals);
+                }
+            });
 
                 
                 if ui.button("Deutsch <--> English").clicked() {
