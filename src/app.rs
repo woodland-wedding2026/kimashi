@@ -214,7 +214,7 @@ impl eframe::App for TemplateApp {
     /// Called each time the UI needs repainting, which may be many times per second.
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
 
-
+        web_sys::console::log_1(&format!("{:?}", ui.ctx().style().visuals.dark_mode).into());
                
 
 
