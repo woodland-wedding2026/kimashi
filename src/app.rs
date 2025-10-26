@@ -300,6 +300,47 @@ impl eframe::App for TemplateApp {
                 //    }
                 //});
 
+                
+                if self.language_flag == true {ui.horizontal(|ui| {
+                // Access the current visuals
+                let visuals = ui.ctx().style().visuals.clone();
+            
+                // Pick label and next theme based on current mode
+                let (label, new_visuals) = if visuals.dark_mode {
+                    ("switch to bright theme ☀", egui::Visuals::light())
+                } else {
+                    ("switch to dark theme 🌙", egui::Visuals::dark())
+                };
+            
+                // Draw one toggle button
+                if ui.button(label).clicked() {
+                    ui.ctx().set_visuals(new_visuals);
+                }
+            }); }
+                else {
+
+                    // Access the current visuals
+                let visuals = ui.ctx().style().visuals.clone();
+            
+                // Pick label and next theme based on current mode
+                let (label, new_visuals) = if visuals.dark_mode {
+                    ("wechsle zum Hellmodus ☀", egui::Visuals::light())
+                } else {
+                    ("wechsle zum Dunkelmodus 🌙", egui::Visuals::dark())
+                };
+            
+                // Draw one toggle button
+                if ui.button(label).clicked() {
+                    ui.ctx().set_visuals(new_visuals);
+                }
+            });
+                }
+                
+                
+                
+                
+                
+                
                 ui.horizontal(|ui| {
                 // Access the current visuals
                 let visuals = ui.ctx().style().visuals.clone();
