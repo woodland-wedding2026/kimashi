@@ -130,6 +130,7 @@ impl Default for TemplateApp {
             submit_names: "".to_owned(),
             submit_emails: "".to_owned(),
             submit_songs: "".to_owned(),
+            submit_comments: "".to_owned(),
             
             rsvp_flag1: false,
             rsvp_flag2: false,
