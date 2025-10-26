@@ -150,11 +150,12 @@ impl TemplateApp {
         // Try to restore previous state first
         if let Some(storage) = cc.storage {
             if let Some(loaded) = eframe::get_value::<Self>(storage, eframe::APP_KEY) {
+                cc.egui_ctx.set_visuals(egui::Visuals::dark());
                 return loaded;
             }
         }
 
-        cc.egui_ctx.set_visuals(egui::Visuals::dark());
+        
         
         // If no previous state, return a new default instance
         Self {
