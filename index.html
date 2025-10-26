@@ -135,6 +135,18 @@
 </head>
 
 <body>
+    <script>
+  // Immediately set dark background for the page
+  document.documentElement.style.backgroundColor = "#111";
+  document.documentElement.style.color = "#eee";
+
+  // Override system color-scheme detection
+  const meta = document.createElement('meta');
+  meta.name = "color-scheme";
+  meta.content = "dark light"; // allow dark mode, but default to dark
+  document.head.appendChild(meta);
+</script>
+    
     <!-- The WASM code will resize the canvas dynamically -->
     <!-- the id is hardcoded in main.rs . so, make sure both match. -->
     <canvas id="the_canvas_id"></canvas>
