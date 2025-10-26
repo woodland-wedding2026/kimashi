@@ -309,9 +309,9 @@ impl eframe::App for TemplateApp {
             
                 // Pick label and next theme based on current mode
                 let (label, new_visuals) = if visuals.dark_mode {
-                    ("switch to light theme ☀", egui::Visuals::light())
+                    ("☀ switch to light theme ☀", egui::Visuals::light())
                 } else {
-                    ("switch to dark theme 🌙", egui::Visuals::dark())
+                    ("🌙 switch to dark theme 🌙", egui::Visuals::dark())
                 };
             
                 // Draw one toggle button
@@ -326,9 +326,9 @@ impl eframe::App for TemplateApp {
             
                 // Pick label and next theme based on current mode
                 let (label, new_visuals) = if visuals.dark_mode {
-                    ("zum Hellmodus wechseln ☀", egui::Visuals::light())
+                    ("☀ zum Hellmodus wechseln ☀", egui::Visuals::light())
                 } else {
-                    ("zum Dunkelmodus wechseln 🌙", egui::Visuals::dark())
+                    ("🌙 zum Dunkelmodus wechseln 🌙", egui::Visuals::dark())
                 };
             
                 // Draw one toggle button
