@@ -60,6 +60,10 @@ pub struct TemplateApp {
     submit_names: String,
     submit_emails: String,
     submit_songs: String,
+    submit_comments: String,
+
+    rsvp_flag1: bool,
+    rsvp_flag2: bool,
     
 
 
@@ -114,6 +118,7 @@ impl Default for TemplateApp {
             rsvp1: "".to_owned(),
             rsvp2: "".to_owned(),
             rsvp3: "".to_owned(),
+            rsvp4: "".to_owned(),
 
             submitflag: false,
             schickflag: false,
@@ -125,7 +130,8 @@ impl Default for TemplateApp {
             submit_emails: "".to_owned(),
             submit_songs: "".to_owned(),
             
-            
+            rsvp_flag1: false,
+            rsvp_flag2: false,
 
 
             
@@ -944,121 +950,183 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
 
                  if self.language_flag == true {
 
-ui.label(egui::RichText::new("please enter your data below:\n").size(23.0));
+                        if self.rsvp_flag1 == false {
+                            if ui.button(egui::RichText::new("confirm").size(17.0)).clicked() {self.rsvp_flag2 = true; self.rsvp_flag1 = true;}
+                            if ui.button(egui::RichText::new("decline").size(17.0)).clicked() {self.rsvp_flag2 = false; self.rsvp_flag1 = true;}
+                        }
+                        else {
 
-ui.label(egui::RichText::new("please enter the names of all people you want to confirm:").size(17.0));
-ui.horizontal(|ui| {
-ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::RED));
-ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
+                            if self.rsvp_flag2 = true {
 
-});
-ui.label(egui::RichText::new("\nplease tell us all email-addresses we can send you updates to:").size(17.0));
-ui.horizontal(|ui| {
-ui.label(egui::RichText::new("email-address(es): ").size(17.0).color(egui::Color32::RED));
-ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
+                                ui.label(egui::RichText::new("please enter your data below:\n").size(23.0));
+                                ui.label(egui::RichText::new("please enter the names of all people you want to confirm:").size(17.0));
+                                ui.horizontal(|ui| {
+                                ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
+                                });
+                                ui.label(egui::RichText::new("\nplease tell us all email-addresses we can send you updates to:").size(17.0));
+                                ui.horizontal(|ui| {
+                                ui.label(egui::RichText::new("email-address(es): ").size(17.0).color(egui::Color32::RED));
+                                ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
+                                });
+                                ui.label(egui::RichText::new("\ntell us some songs you would appreciate to hear during the event:").size(17.0));
+                                ui.horizontal(|ui| {
+                                ui.label(egui::RichText::new("like-to-hear song(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
+                                });
+                                ui.label(egui::RichText::new("\ngive us any comments you might have here:").size(17.0));
+                                ui.horizontal(|ui| {
+                                ui.label(egui::RichText::new("comment(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.add(egui::TextEdit::singleline(&mut self.rsvp4).font(egui::FontId::proportional(17.0)));
+                                });
+                                ui.label("");
+                                if self.submitflag == false {ui.label("");}
+                                else {
+                                ui.label(egui::RichText::new("your SUBMITTED data:").size(23.0));
+                                ui.label("");
+                                ui.horizontal(|ui| {
+                                ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
+                                });
+                                ui.horizontal(|ui| {
+                                ui.label(egui::RichText::new("email-address(es): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new(self.submit_emails.clone()).size(17.0));
+                                });
+                                ui.horizontal(|ui| {
+                                ui.label(egui::RichText::new("song(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
+                                });
+                                ui.horizontal(|ui| {
+                                ui.label(egui::RichText::new("comments(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new(self.submit_comments.clone()).size(17.0));
+                                });
+                                ui.label("");
+                                }
+                                if ui.button(egui::RichText::new("submit").size(17.0)).clicked() {
+                                self.submit_names = self.rsvp1.clone();
+                                self.submit_emails = self.rsvp2.clone();
+                                self.submit_songs = self.rsvp3.clone();
+                                self.submit_comments = self.rsvp4.clone();
+                                let message = format!(r#"names: {} ; emails: {} ; songs: {}; comments: {}"#, self.submit_names, self.submit_emails, self.submit_songs, self.submit_comments);
+                                let body1 = message.as_bytes().to_vec();
+                                let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+                                ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                                self.submitflag = true;
+                                }
+                                ui.label("");
+                                ui.label("");
+                                ui.horizontal(|ui| {
+                                    ui.label(egui::RichText::new("go to the ").size(17.0));
+                                    if ui.button(egui::RichText::new("decline form").size(17.0)).clicked() {self.rsvp_flag2 = false;};
+                                    
+                                });
+                                
+                                
+                            }
+                            else {
+                                ui.label(egui::RichText::new("please enter your data below:\n").size(23.0));
+                                ui.label(egui::RichText::new("please enter the names of all people you cannot come:").size(17.0));
+                                ui.horizontal(|ui| {
+                                ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
+                                });
+                                
+                                
+                                ui.label(egui::RichText::new("\ngive us any comments you might have here:").size(17.0));
+                                ui.horizontal(|ui| {
+                                ui.label(egui::RichText::new("comment(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.add(egui::TextEdit::singleline(&mut self.rsvp4).font(egui::FontId::proportional(17.0)));
+                                });
+                                ui.label("");
+                                if self.submitflag == false {ui.label("");}
+                                else {
+                                ui.label(egui::RichText::new("your SUBMITTED data:").size(23.0));
+                                ui.label("");
+                                ui.horizontal(|ui| {
+                                ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
+                                });
+                                
+                                
+                                ui.horizontal(|ui| {
+                                ui.label(egui::RichText::new("comments(s): ").size(17.0).color(egui::Color32::RED));
+                                ui.label(egui::RichText::new(self.submit_comments.clone()).size(17.0));
+                                });
+                                ui.label("");
+                                }
+                                if ui.button(egui::RichText::new("submit").size(17.0)).clicked() {
+                                self.submit_names = self.rsvp1.clone();
+                                //self.submit_emails = self.rsvp2.clone();
+                                //self.submit_songs = self.rsvp3.clone();
+                                self.submit_comments = self.rsvp4.clone();
+                                let message = format!(r#"names: {} ; comments: {}"#, self.submit_names, self.submit_comments);
+                                let body1 = message.as_bytes().to_vec();
+                                let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+                                ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                                self.submitflag = true;
+                                }
+                                ui.label("");
+                                ui.label("");
+                                ui.horizontal(|ui| {
+                                    ui.label(egui::RichText::new("go to the ").size(17.0));
+                                    if ui.button(egui::RichText::new("confirm form").size(17.0)).clicked() {self.rsvp_flag2 = false;};
+                                    
+                                });
+                                
+                            }
 
-});
-ui.label(egui::RichText::new("\ntell us some songs you would appreciate to hear during the event:").size(17.0));
-ui.horizontal(|ui| {
-ui.label(egui::RichText::new("like-to-hear song(s): ").size(17.0).color(egui::Color32::RED));
-ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
-
-});
-ui.label("");
-
-if self.submitflag == false {ui.label("");}
-else {
-
-ui.label(egui::RichText::new("your SUBMITTED data:").size(23.0));
-ui.label("");
-ui.horizontal(|ui| {
-ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::RED));
-ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
-});
-ui.horizontal(|ui| {
-ui.label(egui::RichText::new("email-address(es): ").size(17.0).color(egui::Color32::RED));
-ui.label(egui::RichText::new(self.submit_emails.clone()).size(17.0));
-});
-ui.horizontal(|ui| {
-ui.label(egui::RichText::new("song(s): ").size(17.0).color(egui::Color32::RED));
-ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
-});
-
-ui.label("");
-}
-
-
-if ui.button(egui::RichText::new("submit").size(17.0)).clicked() {
-self.submit_names = self.rsvp1.clone();
-self.submit_emails = self.rsvp2.clone();
-self.submit_songs = self.rsvp3.clone();
-let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.submit_names, self.submit_emails, self.submit_songs);
-let body1 = message.as_bytes().to_vec();
-let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
-ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-self.submitflag = true;
-}
-                    
-                }
-
-
-
-else {
-ui.label(egui::RichText::new("gib hier bitte deine Daten ein:\n").size(23.0));
-ui.label(egui::RichText::new("bitte gib die Namen aller Gäste ein die du bestätigen willst:").size(17.0));
-ui.horizontal(|ui| {
-ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
-ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
-
-});
-ui.label(egui::RichText::new("\nbitte gib uns alle eMail-Adressen an die wir Updates schicken können:").size(17.0));
-ui.horizontal(|ui| {
-ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color32::RED));
-ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
-
-});
-ui.label(egui::RichText::new("\nwenn du dich freuen würdest spezielle Lieder auf der Party zu hören, gib sie bitte hier ein:").size(17.0));
-ui.horizontal(|ui| {
-ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::RED));
-ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
-
-});
-ui.label("");
-
-
-if self.submitflag == false {ui.label("");}
-else {
-
-ui.label(egui::RichText::new("deine ABGESCHICKTEN Daten:").size(23.0));
-ui.label("");
-ui.horizontal(|ui| {
-ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
-ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
-});
-ui.horizontal(|ui| {
-ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color32::RED));
-ui.label(egui::RichText::new(self.submit_emails.clone()).size(17.0));
-});
-ui.horizontal(|ui| {
-ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::RED));
-ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
-});
-
-ui.label("");
-}
-
-
-if ui.button(egui::RichText::new("abschicken").size(17.0)).clicked() {
-self.submit_names = self.rsvp1.clone();
-self.submit_emails = self.rsvp2.clone();
-self.submit_songs = self.rsvp3.clone();
-let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.submit_names, self.submit_emails, self.submit_songs);
-let body1 = message.as_bytes().to_vec();
-let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
-ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-self.submitflag = true;
-}
-}
+                        }
+                        
+                        
+                     
+                        }
+                else {
+                        ui.label(egui::RichText::new("gib hier bitte deine Daten ein:\n").size(23.0));
+                        ui.label(egui::RichText::new("bitte gib die Namen aller Gäste ein die du bestätigen willst:").size(17.0));
+                        ui.horizontal(|ui| {
+                        ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
+                        ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
+                        });
+                        ui.label(egui::RichText::new("\nbitte gib uns alle eMail-Adressen an die wir Updates schicken können:").size(17.0));
+                        ui.horizontal(|ui| {
+                        ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color32::RED));
+                        ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
+                        });
+                        ui.label(egui::RichText::new("\nwenn du dich freuen würdest spezielle Lieder auf der Party zu hören, gib sie bitte hier ein:").size(17.0));
+                        ui.horizontal(|ui| {
+                        ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::RED));
+                        ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
+                        });
+                        ui.label("");
+                        if self.submitflag == false {ui.label("");}
+                        else {
+                        ui.label(egui::RichText::new("deine ABGESCHICKTEN Daten:").size(23.0));
+                        ui.label("");
+                        ui.horizontal(|ui| {
+                        ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::RED));
+                        ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
+                        });
+                        ui.horizontal(|ui| {
+                        ui.label(egui::RichText::new("email-Adresse(n): ").size(17.0).color(egui::Color32::RED));
+                        ui.label(egui::RichText::new(self.submit_emails.clone()).size(17.0));
+                        });
+                        ui.horizontal(|ui| {
+                        ui.label(egui::RichText::new("Wunschlied(er): ").size(17.0).color(egui::Color32::RED));
+                        ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
+                        });
+                        ui.label("");
+                        }
+                        if ui.button(egui::RichText::new("abschicken").size(17.0)).clicked() {
+                        self.submit_names = self.rsvp1.clone();
+                        self.submit_emails = self.rsvp2.clone();
+                        self.submit_songs = self.rsvp3.clone();
+                        let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.submit_names, self.submit_emails, self.submit_songs);
+                        let body1 = message.as_bytes().to_vec();
+                        let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+                        ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                        self.submitflag = true;
+                        }
+                        }
 
 
 
