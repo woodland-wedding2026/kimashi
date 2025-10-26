@@ -151,6 +151,7 @@ impl TemplateApp {
         if let Some(storage) = cc.storage {
             if let Some(loaded) = eframe::get_value::<Self>(storage, eframe::APP_KEY) {
                 cc.egui_ctx.set_visuals(egui::Visuals::dark());
+                cc.egui_ctx.request_repaint();
                 return loaded;
             }
         }
@@ -214,7 +215,7 @@ impl eframe::App for TemplateApp {
     /// Called each time the UI needs repainting, which may be many times per second.
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
 
-        web_sys::console::log_1(&format!("{:?}", ui.ctx().style().visuals.dark_mode).into());
+        
                
 
 
