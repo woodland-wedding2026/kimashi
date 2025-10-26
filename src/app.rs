@@ -153,7 +153,9 @@ impl TemplateApp {
                 return loaded;
             }
         }
-    
+
+        cc.egui_ctx.set_visuals(egui::Visuals::dark());
+        
         // If no previous state, return a new default instance
         Self {
             fractal_clock: FractalClock::default(),
