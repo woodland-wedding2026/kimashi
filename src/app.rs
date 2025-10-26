@@ -1027,7 +1027,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                             }
                             else {
                                 ui.label(egui::RichText::new("please enter your data below:\n").size(23.0));
-                                ui.label(egui::RichText::new("please enter the names of all people you cannot come:").size(17.0));
+                                ui.label(egui::RichText::new("please enter the names of all people who cannot come:").size(17.0));
                                 ui.horizontal(|ui| {
                                 ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::RED));
                                 ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
@@ -1061,7 +1061,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                                 //self.submit_emails = self.rsvp2.clone();
                                 //self.submit_songs = self.rsvp3.clone();
                                 self.submit_comments = self.rsvp4.clone();
-                                let message = format!(r#"names: {} ; comments: {}"#, self.submit_names, self.submit_comments);
+                                let message = format!(r#"DECLINED::: names: {} ; comments: {}"#, self.submit_names, self.submit_comments);
                                 let body1 = message.as_bytes().to_vec();
                                 let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                                 ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
@@ -1122,7 +1122,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                         self.submit_names = self.rsvp1.clone();
                         self.submit_emails = self.rsvp2.clone();
                         self.submit_songs = self.rsvp3.clone();
-                        let message = format!(r#"names: {} ; emails: {} ; songs: {}"#, self.submit_names, self.submit_emails, self.submit_songs);
+                        let message = format!(r#"CONFIRMED::: names: {} ; emails: {} ; songs: {}"#, self.submit_names, self.submit_emails, self.submit_songs);
                         let body1 = message.as_bytes().to_vec();
                         let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
                         ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
