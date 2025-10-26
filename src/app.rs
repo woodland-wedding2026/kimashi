@@ -147,6 +147,13 @@ impl Default for TemplateApp {
 impl TemplateApp {
     /// Called once before the first frame.
     pub fn new(cc: &eframe::CreationContext<'_>) -> Self {
+        
+        
+        cc.egui_ctx.set_style(egui::Style::default());     // clear inherited style
+        cc.egui_ctx.set_visuals(egui::Visuals::dark());    // force dark visuals
+        cc.egui_ctx.request_repaint();  
+        
+        
         // Try to restore previous state first
         if let Some(storage) = cc.storage {
             if let Some(loaded) = eframe::get_value::<Self>(storage, eframe::APP_KEY) {
