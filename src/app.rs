@@ -309,7 +309,7 @@ impl eframe::App for TemplateApp {
             
                 // Pick label and next theme based on current mode
                 let (label, new_visuals) = if visuals.dark_mode {
-                    ("switch to bright theme ☀", egui::Visuals::light())
+                    ("switch to light theme ☀", egui::Visuals::light())
                 } else {
                     ("switch to dark theme 🌙", egui::Visuals::dark())
                 };
@@ -326,9 +326,9 @@ impl eframe::App for TemplateApp {
             
                 // Pick label and next theme based on current mode
                 let (label, new_visuals) = if visuals.dark_mode {
-                    ("wechsle zum Hellmodus ☀", egui::Visuals::light())
+                    ("zum Hellmodus wechseln ☀", egui::Visuals::light())
                 } else {
-                    ("wechsle zum Dunkelmodus 🌙", egui::Visuals::dark())
+                    ("zum Dunkelmodus wechseln 🌙", egui::Visuals::dark())
                 };
             
                 // Draw one toggle button
@@ -340,25 +340,6 @@ impl eframe::App for TemplateApp {
                 
                 
                 
-                
-                
-                
-                ui.horizontal(|ui| {
-                // Access the current visuals
-                let visuals = ui.ctx().style().visuals.clone();
-            
-                // Pick label and next theme based on current mode
-                let (label, new_visuals) = if visuals.dark_mode {
-                    ("☀ Light", egui::Visuals::light())
-                } else {
-                    ("🌙 Dark", egui::Visuals::dark())
-                };
-            
-                // Draw one toggle button
-                if ui.button(label).clicked() {
-                    ui.ctx().set_visuals(new_visuals);
-                }
-            });
 
                 
                 if ui.button("Deutsch <--> English").clicked() {
