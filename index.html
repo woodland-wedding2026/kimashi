@@ -30,19 +30,7 @@
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#404040">
 
-    <meta name="color-scheme" content="dark light">
-    <style>
-      @media (prefers-color-scheme: light) {
-        body {
-          background-color: #111 !important;
-          color: #eee !important;
-        }
-      }
-      body {
-        background-color: #111;
-        color: #eee;
-      }
-    </style>
+    
 
 
     
@@ -135,17 +123,7 @@
 </head>
 
 <body>
-    <script>
-  // Immediately set dark background for the page
-  document.documentElement.style.backgroundColor = "#111";
-  document.documentElement.style.color = "#eee";
-
-  // Override system color-scheme detection
-  const meta = document.createElement('meta');
-  meta.name = "color-scheme";
-  meta.content = "dark light"; // allow dark mode, but default to dark
-  document.head.appendChild(meta);
-</script>
+    
     
     <!-- The WASM code will resize the canvas dynamically -->
     <!-- the id is hardcoded in main.rs . so, make sure both match. -->
