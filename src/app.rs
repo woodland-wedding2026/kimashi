@@ -957,7 +957,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                         }
                         else {
 
-                            if self.rsvp_flag2 = true {
+                            if self.rsvp_flag2 == true {
 
                                 ui.label(egui::RichText::new("please enter your data below:\n").size(23.0));
                                 ui.label(egui::RichText::new("please enter the names of all people you want to confirm:").size(17.0));
