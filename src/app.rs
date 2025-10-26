@@ -50,6 +50,7 @@ pub struct TemplateApp {
     rsvp1: String,
     rsvp2: String,
     rsvp3: String,
+    rsvp4: String,
 
     submitflag: bool,
     schickflag: bool,
