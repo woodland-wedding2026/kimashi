@@ -1018,7 +1018,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                  if self.language_flag == true {
 
                         if self.rsvp_flag1 == false {
-                            if ui.button(egui::RichText::new("go to the confirm form").size(17.0).color(egui::Color32::DARK_GREEN)).clicked() {self.rsvp_flag2 = true; self.rsvp_flag1 = true;}
+                            if ui.button(egui::RichText::new("go to the confirm form").size(17.0).color(egui::Color32::GREEN)).clicked() {self.rsvp_flag2 = true; self.rsvp_flag1 = true;}
                             if ui.button(egui::RichText::new("go to the decline form").size(17.0).color(egui::Color32::RED)).clicked() {self.rsvp_flag2 = false; self.rsvp_flag1 = true;}
                         }
                         else {
