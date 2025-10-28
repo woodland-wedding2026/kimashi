@@ -28,15 +28,11 @@ fn main() -> eframe::Result {
 fn main() {
     use eframe::wasm_bindgen::JsCast as _;
 
-    use wasm_bindgen::JsCast;
-    use web_sys::WebGlContextAttributes;
+    
     
     eframe::WebLogger::init(log::LevelFilter::Debug).ok();
-    let mut web_options = eframe::WebOptions::default();
-    let mut context_attributes = WebGlContextAttributes::new();
-    context_attributes.antialias(false);
-    context_attributes.alpha(true);
-    context_attributes.premultiplied_alpha(true);
+    let web_options = eframe::WebOptions::default();
+    
 
 // Pass them into web_options:
 web_options.webgl_context_option = Some(context_attributes);
