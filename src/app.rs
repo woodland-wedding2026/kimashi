@@ -3,7 +3,7 @@ use crate::snake::SnakeGame;
 use crate::snake::Direction;
 use crate::painting::PaintingApp;
 
-use egui::TextureOptions;
+
 
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
@@ -160,7 +160,7 @@ impl TemplateApp {
     /// Called once before the first frame.
     pub fn new(cc: &eframe::CreationContext<'_>) -> Self {
         
-        cc.egui_ctx.set_texture_filter(TextureOptions::NEAREST);
+        
         
         cc.egui_ctx.set_visuals(egui::Visuals::dark());    // force dark visuals
         cc.egui_ctx.request_repaint();  
