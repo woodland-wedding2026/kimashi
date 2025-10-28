@@ -1136,7 +1136,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                                 ui.label("");
                                 ui.horizontal(|ui| {
                                     ui.label(egui::RichText::new("go to the ").size(17.0));
-                                    if ui.button(egui::RichText::new("confirm form").size(17.0).color(egui::Color32::DARK_GREEN)).clicked() {self.rsvp_flag2 = true;};
+                                    if ui.button(egui::RichText::new("confirm form").size(17.0).color(egui::Color32::GREEN)).clicked() {self.rsvp_flag2 = true;};
                                     
                                 });
                                 
@@ -1149,7 +1149,7 @@ else {let mydetext = format!("du hast {} Nachrichten geschickt", self.value); ui
                         }
                 else {
                         if self.rsvp_flag1 == false {
-                            if ui.button(egui::RichText::new("zum Zusageformular").size(17.0).color(egui::Color32::DARK_GREEN)).clicked() {self.rsvp_flag2 = true; self.rsvp_flag1 = true;}
+                            if ui.button(egui::RichText::new("zum Zusageformular").size(17.0).color(egui::Color32::GREEN)).clicked() {self.rsvp_flag2 = true; self.rsvp_flag1 = true;}
                             if ui.button(egui::RichText::new("zum Absageformular").size(17.0).color(egui::Color32::RED)).clicked() {self.rsvp_flag2 = false; self.rsvp_flag1 = true;}
                         }
 
@@ -1269,7 +1269,7 @@ else {
     ui.label("");
     ui.horizontal(|ui| {
         ui.label(egui::RichText::new("gehe zum ").size(17.0));
-        if ui.button(egui::RichText::new("Zusageformular").size(17.0).color(egui::Color32::DARK_GREEN)).clicked() {self.rsvp_flag2 = true;};
+        if ui.button(egui::RichText::new("Zusageformular").size(17.0).color(egui::Color32::GREEN)).clicked() {self.rsvp_flag2 = true;};
         
     });
 
