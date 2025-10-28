@@ -29,7 +29,10 @@ fn main() {
     use eframe::wasm_bindgen::JsCast as _;
 
     eframe::WebLogger::init(log::LevelFilter::Debug).ok();
-    let web_options = eframe::WebOptions::default();
+    let mut web_options = eframe::WebOptions::default();
+
+    web_options.default_texture_filter = egui::TextureFilter::Nearest; // 👈 This is the key line
+    web_options.antialias = false;
 
     wasm_bindgen_futures::spawn_local(async {
         let window = web_sys::window().expect("No window");
