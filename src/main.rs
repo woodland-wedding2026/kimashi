@@ -28,12 +28,20 @@ fn main() -> eframe::Result {
 fn main() {
     use eframe::wasm_bindgen::JsCast as _;
 
+    use wasm_bindgen::JsCast;
+    use web_sys::WebGlContextAttributes;
+    
     eframe::WebLogger::init(log::LevelFilter::Debug).ok();
     let mut web_options = eframe::WebOptions::default();
+    let mut context_attributes = WebGlContextAttributes::new();
+    context_attributes.antialias(false);
+    context_attributes.alpha(true);
+    context_attributes.premultiplied_alpha(true);
 
-    web_options.default_texture_filter = egui::TextureFilter::Nearest; // 👈 This is the key line
-    web_options.antialias = false;
-
+// Pass them into web_options:
+web_options.webgl_context_option = Some(context_attributes);
+web_options.dithering = false; // optional
+    
     wasm_bindgen_futures::spawn_local(async {
         let window = web_sys::window().expect("No window");
         let document = window.document().expect("No document");
