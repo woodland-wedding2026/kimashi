@@ -495,7 +495,7 @@ ui.label(egui::RichText::new("Sadly unaffordable. However, here is the link to t
 ui.add(
     egui::Hyperlink::from_label_and_url(
         egui::RichText::new("helicopter game").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)),
-        "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9",
+        "https://www.addictinggames.com/clicker/helicopter-game",
     )
 );
 });
@@ -540,7 +540,7 @@ ui.label(egui::RichText::new("fast unbezahlbar teuer, dafür hier der Link zum")
 ui.add(
     egui::Hyperlink::from_label_and_url(
         egui::RichText::new("Helikopterspiel").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)),
-        "https://maps.app.goo.gl/WtrCENyrHQ23ziUL9",
+        "https://www.addictinggames.com/clicker/helicopter-game",
     )
 );
             });
@@ -639,7 +639,7 @@ ui.add(
                     });
                     
                     ui.horizontal(|ui| {
-                    ui.label(egui::RichText::new("Samstag: ").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()); ui.label(egui::RichText::new("großer Spaß und unbändige Freude -\n").size(17.0));
+                    ui.label(egui::RichText::new("Samstag: ").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()); ui.label(egui::RichText::new("großer Spaß und unbändige Freude!!\n").size(17.0));
                     });
                     
                     ui.horizontal(|ui| {
@@ -750,7 +750,7 @@ ui.add(
 
                     ui.label(egui::RichText::new("Decorations:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
                     
-                    ui.label(egui::RichText::new("We’d love to craft decorations together with you over the coming months s. We already have a few ideas and are excited for more inspiration from you. Get in touch with us if you’d like to join in!\n").size(17.0));
+                    ui.label(egui::RichText::new("We’d love to craft decorations together with you over the coming months. We already have a few ideas and are excited for more inspiration from you. Get in touch with us if you’d like to join in!\n").size(17.0));
                     
                     ui.label(egui::RichText::new("Music:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
                     
