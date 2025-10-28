@@ -34,9 +34,7 @@ fn main() {
     let web_options = eframe::WebOptions::default();
     
 
-// Pass them into web_options:
-web_options.webgl_context_option = Some(context_attributes);
-web_options.dithering = false; // optional
+
     
     wasm_bindgen_futures::spawn_local(async {
         let window = web_sys::window().expect("No window");
