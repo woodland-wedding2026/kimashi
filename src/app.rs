@@ -477,7 +477,7 @@ ui.label(egui::RichText::new("If you book a large taxi or Uber that accomodates 
 ui.label(egui::RichText::new("CAR:").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
 ui.label("");
 ui.label(egui::RichText::new("Duration: approx. 1.5 hours, with parking available directly at the venue.\nRenting a car for 3 days for 4–5 people costs about 50 euros per person for the round trip, including gas.").size(17.0));                     
-ui.horizontal(|ui| {
+ui.horizontal_wrapped(|ui| {
 ui.label(egui::RichText::new("Important: mind the exact ").size(17.0)); 
 ui.add(
     egui::Hyperlink::from_label_and_url(
@@ -490,7 +490,7 @@ ui.add(
 
 ui.label(egui::RichText::new("\nHELICOPTER:").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
 ui.label("");
-ui.horizontal(|ui| {
+ui.horizontal_wrapped(|ui| {
 ui.label(egui::RichText::new("Sadly unaffordable. However, here is the link to the classic").size(17.0)); 
 ui.add(
     egui::Hyperlink::from_label_and_url(
@@ -522,7 +522,7 @@ ui.label(egui::RichText::new("Ein Großraumtaxi/ -Uber für circa 6-8 Leute kost
 ui.label(egui::RichText::new("AUTO:").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
 ui.label("");
 ui.label(egui::RichText::new("Parkplätze direkt vor dem Gelände. Ein Auto mieten für 3 Tage und 4-5 Leute kostet circa 50 Euro pro Person für hin&zurück, inklusive Benzin. Dauer circa 1.5 Stunden.").size(17.0)); 
-ui.horizontal(|ui| {
+ui.horizontal_wrapped(|ui| {
 ui.label(egui::RichText::new("WICHTIG: exakte ").size(17.0)); 
 ui.add(
     egui::Hyperlink::from_label_and_url(
@@ -535,7 +535,7 @@ ui.add(
 
 ui.label(egui::RichText::new("\nHELIKOPTER:").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
 ui.label("");
-ui.horizontal(|ui| {
+ui.horizontal_wrapped(|ui| {
 ui.label(egui::RichText::new("fast unbezahlbar teuer, dafür hier der Link zum").size(17.0));
 ui.add(
     egui::Hyperlink::from_label_and_url(
@@ -603,19 +603,19 @@ ui.add(
 
                     ui.label(egui::RichText::new("More details about the schedule will be shared here soon. For now, just a rough outline:\n").size(17.0));
                     
-                    ui.horizontal(|ui| {
+                    ui.horizontal_wrapped(|ui| {
                     ui.label(egui::RichText::new("Thursday: ").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()); ui.label(egui::RichText::new("helping with setup (optional, please coordinate with us)\n").size(17.0));
                     });
                     
-                    ui.horizontal(|ui| {
+                    ui.horizontal_wrapped(|ui| {
                     ui.label(egui::RichText::new("Friday: ").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()); ui.label(egui::RichText::new("arrive and be welcomed from 3 PM onward\n").size(17.0));
                     });
                     
-                    ui.horizontal(|ui| {
+                    ui.horizontal_wrapped(|ui| {
                     ui.label(egui::RichText::new("Saturday: ").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()); ui.label(egui::RichText::new("lots of fun and boundless joy!!\n").size(17.0));
                     });
                     
-                    ui.horizontal(|ui| {
+                    ui.horizontal_wrapped(|ui| {
                     ui.label(egui::RichText::new("Sunday: ").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()); ui.label(egui::RichText::new("check out of the bungalows by 12 PM. Help with cleanup if possible until early evening\n").size(17.0));
                     });
                     
@@ -630,19 +630,19 @@ ui.add(
                     
                     ui.label(egui::RichText::new("Genaueres zum Ablauf findet ihr in der nächsten Zeit hier. Vorab nur ganz grob:\n").size(17.0));
                     
-                    ui.horizontal(|ui| {
+                    ui.horizontal_wrapped(|ui| {
                     ui.label(egui::RichText::new("Donnerstag: ").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()); ui.label(egui::RichText::new("Mithelfen beim Aufbauen (optional, in Absprache mit uns)\n").size(17.0));
                     });
                     
-                    ui.horizontal(|ui| {
+                    ui.horizontal_wrapped(|ui| {
                     ui.label(egui::RichText::new("Freitag: ").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()); ui.label(egui::RichText::new("ab 15 Uhr ankommen und empfangen werden\n").size(17.0));
                     });
                     
-                    ui.horizontal(|ui| {
+                    ui.horizontal_wrapped(|ui| {
                     ui.label(egui::RichText::new("Samstag: ").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()); ui.label(egui::RichText::new("großer Spaß und unbändige Freude!!\n").size(17.0));
                     });
                     
-                    ui.horizontal(|ui| {
+                    ui.horizontal_wrapped(|ui| {
                     ui.label(egui::RichText::new("Sonntag: ").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()); ui.label(egui::RichText::new("Auschecken aus den Bungalows bis 12 Uhr; Mithelfen beim Aufräumen wenn möglich bis zum frühen Abend\n").size(17.0));
                     });
                     
@@ -803,11 +803,11 @@ ui.add(
 
                 ui.label(egui::RichText::new("You’re invited to enjoy food and drinks all weekend, and there will be no cost for staying overnight in a tent or bungalow. What matters most is that everyone can be there and be comfortable.\n\nOf course our pockets will feel a bit empty after the event. If it’s possible for you to help fill them up again, we would be very grateful for any financial contribution — no matter how great or small the amount.\n\nIf you would like to make a contribution, please send it anytime to:\n").size(17.0));
                 
-                ui.horizontal(|ui| {
+                ui.horizontal_wrapped(|ui| {
                 ui.label(egui::RichText::new("Paypal: ").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()); ui.label(egui::RichText::new("woodland.wedding@pm.me   Subject: Woodland Wedding\n").size(17.0));
                 });
                 
-                ui.horizontal(|ui| {
+                ui.horizontal_wrapped(|ui| {
                 ui.label(egui::RichText::new("Bank Account: ").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()); ui.label(egui::RichText::new("Kimberley Hofer & Matthias Hofer, DE  8743  0609  6712  8485  0000; Subject: Woodland Wedding").size(17.0));
                 });
                 
@@ -818,11 +818,11 @@ ui.add(
                 
                 ui.label(egui::RichText::new("Ihr seid das ganze Wochenende auf Essen und Trinken eingeladen, auch für die Übernachtung im Zelt oder Bungalow fallen prinzipiell keine Kosten für euch an. Das Wichtigste ist, dass alle dabei sein können und sich wohl fühlen.\n\nNatürlich wird unser Geldbeutel nach diesem Event ganz schön Magenknurren haben. Wenn es für euch möglich ist, sind wir über finanzielles Futter in jeder Höhe sehr dankbar.\n\nGerne jederzeit an:\n").size(17.0));
                 
-                ui.horizontal(|ui| {
+                ui.horizontal_wrapped(|ui| {
                 ui.label(egui::RichText::new("Paypal: ").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()); ui.label(egui::RichText::new("woodland.wedding@pm.me   Betreff: Woodland Wedding\n").size(17.0));
                 });
                 
-                ui.horizontal(|ui| {
+                ui.horizontal_wrapped(|ui| {
                 ui.label(egui::RichText::new("Konto: ").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()); ui.label(egui::RichText::new("Kimberley Hofer & Matthias Hofer, DE  8743  0609  6712  8485  0000; Betreff: Woodland Wedding").size(17.0));
                 });
                 
