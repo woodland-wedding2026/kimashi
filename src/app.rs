@@ -808,7 +808,7 @@ ui.add(
                 });
                 
                 ui.horizontal(|ui| {
-                ui.label(egui::RichText::new("Bank Account: ").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()); ui.label(egui::RichText::new("Kimberley Hofer & Matthias Hofer, DE...  Subject: Woodland Wedding").size(17.0));
+                ui.label(egui::RichText::new("Bank Account: ").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()); ui.label(egui::RichText::new("Kimberley Hofer & Matthias Hofer, DE  8743  0609  6712  8485  0000; Subject: Woodland Wedding").size(17.0));
                 });
                 
                 }
@@ -823,7 +823,7 @@ ui.add(
                 });
                 
                 ui.horizontal(|ui| {
-                ui.label(egui::RichText::new("Konto: ").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()); ui.label(egui::RichText::new("Kimberley Hofer & Matthias Hofer, DE...  Betreff: Woodland Wedding").size(17.0));
+                ui.label(egui::RichText::new("Konto: ").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()); ui.label(egui::RichText::new("Kimberley Hofer & Matthias Hofer, DE  8743  0609  6712  8485  0000; Betreff: Woodland Wedding").size(17.0));
                 });
                 
                 }
