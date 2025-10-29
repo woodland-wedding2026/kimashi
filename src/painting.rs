@@ -75,59 +75,7 @@ impl PaintingApp {
     }
 
 
-use serde_json;
-const MAX_CHUNK_SIZE: usize = 90 * 1024; // 90 KB safety margin
 
-pub fn export_json_chunks(&self, ctx: &egui::Context) -> Vec<String> {
-    let theme = if ctx.style().visuals.dark_mode {
-        "dark".to_string()
-    } else {
-        "light".to_string()
-    };
-
-    let mut chunks = Vec::new();
-    let mut current_lines = Vec::new();
-    let mut current_size = 0;
-
-    for (points, stroke) in &self.lines {
-        let line = SerializableLine {
-            points: points.iter().map(|p| [p.x, p.y]).collect(),
-            stroke: (*stroke).into(),
-        };
-
-        // Estimate size if we added this line
-        let tmp_json = serde_json::to_string(&line).unwrap_or_default();
-        let line_size = tmp_json.len();
-
-        if current_size + line_size > MAX_CHUNK_SIZE && !current_lines.is_empty() {
-            // Flush current chunk
-            let export = ExportedPainting {
-                theme: theme.clone(),
-                lines: std::mem::take(&mut current_lines),
-            };
-            let json = serde_json::to_string_pretty(&export).unwrap();
-            chunks.push(json);
-
-            // Start a new chunk
-            current_size = 0;
-        }
-
-        current_size += line_size;
-        current_lines.push(line);
-    }
-
-    // Flush the last chunk
-    if !current_lines.is_empty() {
-        let export = ExportedPainting {
-            theme,
-            lines: current_lines,
-        };
-        let json = serde_json::to_string_pretty(&export).unwrap();
-        chunks.push(json);
-    }
-
-    chunks
-}
     
 
 
