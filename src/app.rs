@@ -694,9 +694,9 @@ ui.add(
                 }
                     });
 
-                        if self.value == 0 {ui.label(egui::RichText::new("you have sent no paintings yet").size(17.0));}
+                        if self.pic_value == 0 {ui.label(egui::RichText::new("you have sent no paintings yet").size(17.0));}
 
-                        else if self.value == 1 {ui.label(egui::RichText::new("you have sent one painting").size(17.0));}
+                        else if self.pic_value == 1 {ui.label(egui::RichText::new("you have sent one painting").size(17.0));}
                         
                         else {let myentext = format!("you have sent {} paintings", self.value); ui.label(egui::RichText::new(myentext).size(17.0));}
                     
@@ -732,9 +732,9 @@ ui.add(
                 }
                     });
 
-                        if self.value == 0 {ui.label(egui::RichText::new("du hast bisher keine Bilder geschickt").size(17.0));}
+                        if self.pic_value == 0 {ui.label(egui::RichText::new("du hast bisher keine Bilder geschickt").size(17.0));}
 
-                        else if self.value == 1 {ui.label(egui::RichText::new("du hast ein Bild geschickt").size(17.0));}
+                        else if self.pic_value == 1 {ui.label(egui::RichText::new("du hast ein Bild geschickt").size(17.0));}
                         
                         else {let mydetext = format!("du hast {} Bilder geschickt", self.value); ui.label(egui::RichText::new(mydetext).size(17.0));}
 
