@@ -667,7 +667,7 @@ ui.add(
                     egui::ScrollArea::both().show(ui, |ui| {
 
                 if self.language_flag == true {
-                    ui.label(egui::RichText::new("paint a picture and send it to us :)").size(17.0));  
+                    ui.label(egui::RichText::new("paint a picture and send it to us :)").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)));  
                     ui.horizontal(|ui| {
                     //ui.text_edit_singleline(&mut self.pic_name_en); 
                     ui.add(egui::TextEdit::singleline(&mut self.pic_name_en).font(egui::FontId::proportional(17.0)));
@@ -705,7 +705,7 @@ ui.add(
                     
                     
                      
-                    ui.label(egui::RichText::new("mal ein Bild uns schick es uns :)").size(17.0));  
+                    ui.label(egui::RichText::new("mal ein Bild uns schick es uns :)").size(17.0).color(egui::Color32::from_rgb(0, 183, 255)));  
                     ui.horizontal(|ui| {
                         //ui.text_edit_singleline(&mut self.pic_name_de);
                         ui.add(egui::TextEdit::singleline(&mut self.pic_name_de).font(egui::FontId::proportional(17.0)));
