@@ -71,7 +71,8 @@ pub struct TemplateApp {
 
     decline_names: String,
     decline_comments: String,
-    
+
+    pic_value: i32,
 
 
     
@@ -146,6 +147,8 @@ impl Default for TemplateApp {
 
             decline_names: "".to_owned(),
             decline_comments: "".to_owned(),
+
+            pic_value: 0,
 
 
             
@@ -687,10 +690,15 @@ ui.add(
                             };
                             ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
                         }
+                        self.pic_value +=1;
                 }
                     });
 
+                        if self.value == 0 {ui.label(egui::RichText::new("you have sent no paintings yet").size(17.0));}
 
+                        else if self.value == 1 {ui.label(egui::RichText::new("you have sent one painting").size(17.0));}
+                        
+                        else {let myentext = format!("you have sent {} paintings", self.value); ui.label(egui::RichText::new(myentext).size(17.0));}
                     
                                               }
                 else {
@@ -718,9 +726,20 @@ ui.add(
                                 ..Request::post("https://api.jsonbin.io/v3/b", image_data.as_bytes().to_vec())
                             };
                             ehttp::fetch(request, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+                            
                         }
+                          self.pic_value +=1;
                 }
                     });
+
+                        if self.value == 0 {ui.label(egui::RichText::new("du hast bisher keine Bilder geschickt").size(17.0));}
+
+                        else if self.value == 1 {ui.label(egui::RichText::new("du hast ein Bild geschickt").size(17.0));}
+                        
+                        else {let mydetext = format!("du hast {} Bilder geschickt", self.value); ui.label(egui::RichText::new(mydetext).size(17.0));}
+
+
+                    
                      }
 
                 self.painting_app.ui(ui, self.language_flag);
