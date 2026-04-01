@@ -460,7 +460,7 @@ impl eframe::App for TemplateApp {
                 
                 ui.label(egui::RichText::new("Food:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
                 
-                ui.label(egui::RichText::new("We’d kindly like to ask, if possible, that you bring a small contribution to the finger food buffet on Friday afternoon (don't bother if you feel like this would overextend your capabilities, e.g. if you come from afar). We’ll share a Google Doc in the weeks leading up to the celebration where you can sign up.\n\nIf you have any food allergies or dietary restrictions, please let us know as soon as possible. Vegetarian and vegan options will be available. 😊\n\n\n").size(17.0));
+                ui.label(egui::RichText::new("We’d kindly like to ask, if possible, that you bring a small contribution to the finger food buffet on Friday afternoon (don’t bother if it feels like too much trouble, especially if you’re coming from far away). We’ll share a Google Doc in the weeks leading up to the celebration where you can sign up.\n\nIf you have any food allergies or dietary restrictions, please let us know as soon as possible. Vegetarian and vegan options will be available. 😊\n\n\n").size(17.0));
                 
                 ui.label(egui::RichText::new("Money and gifts:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
                 
@@ -486,7 +486,7 @@ impl eframe::App for TemplateApp {
                 
                 ui.label(egui::RichText::new("Verpflegung:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
                 
-                ui.label(egui::RichText::new("Wir möchten euch bitten, wenn es euch möglich ist, am Freitag Nachmittag einen Beitrag zum Fingerfood-Buffet mitzubringen (mach dir keine Mühe, wenn du das Gefühl hast, dass das deine Möglichkeiten übersteigen würde, z. B. wenn du von weit her kommst). Dafür schicken wir euch in den Wochen vor der Feier noch ein Google-Doc zum Eintragen.\n\nSolltet ihr Lebensmittelallergien oder Unverträglichkeiten haben, meldet euch bitte bald bei uns. Für vegetarisch/vegan ist alles da. 😊\n\n\n").size(17.0)); 
+                ui.label(egui::RichText::new("Wir möchten euch bitten, wenn es euch möglich ist, am Freitag Nachmittag einen Beitrag zum Fingerfood-Buffet mitzubringen (mach dir keinen Stress, wenn es zu viel Aufwand ist – vor allem, wenn du von weiter weg kommst). Dafür schicken wir euch in den Wochen vor der Feier noch ein Google-Doc zum Eintragen.\n\nSolltet ihr Lebensmittelallergien oder Unverträglichkeiten haben, meldet euch bitte bald bei uns. Für vegetarisch/vegan ist alles da. 😊\n\n\n").size(17.0)); 
                 
                 ui.label(egui::RichText::new("Geld und Geschenke:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
                 
