@@ -458,15 +458,15 @@ impl eframe::App for TemplateApp {
 
                 ui.label(egui::RichText::new("we’re absolutely thrilled that you’ll be joining us for our big celebration this June, 12th - 14th! It’s not too long to go now, and we have some updates for you:\n\n\n").size(17.0));
                 
-                ui.label(egui::RichText::new("Food:\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
+                ui.label(egui::RichText::new("Food:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
                 
                 ui.label(egui::RichText::new("We’d kindly like to ask, if possible, that you bring a small contribution to the finger food buffet on Friday afternoon (don't bother if you feel like this would overextend your capabilities, e.g. if you come from afar). We’ll share a Google Doc in the weeks leading up to the celebration where you can sign up.\n\nIf you have any food allergies or dietary restrictions, please let us know as soon as possible. Vegetarian and vegan options will be available. 😊\n\n\n").size(17.0));
                 
-                ui.label(egui::RichText::new("Money and gifts:\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
+                ui.label(egui::RichText::new("Money and gifts:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
                 
                 ui.label(egui::RichText::new("Instead of traditional gifts, we would really appreciate your support in helping fund our party project. As a few people have already asked, we’re happy to share a suggested contribution (for those who are comfortably able to give):\n\nPer adult staying in a tent: €85.17\nPer adult staying in a bungalow: €142.41\n\nFor anyone on a tighter budget, please know that what matters most is that you’re there! We’re grateful for any contribution or help, but even more so for your joyful presence 😊\n\n\n").size(17.0));
                 
-                ui.label(egui::RichText::new("For those traveling without a car:\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
+                ui.label(egui::RichText::new("For those traveling without a car:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
                 
                 ui.label(egui::RichText::new("We’re planning a shuttle service from Beeskow to our location (Friday outbound, Sunday return) for about €10–15 per person, per trip. From Berlin Ostkreuz, you can take a regional train via Königs Wusterhausen to Beeskow (about 1.5 hours with one transfer). From there, the shuttle will take around another 30 minutes to reach the venue.\n\nWe’re aiming to offer shuttle departures from Beeskow at 4:30 pm and 5:30 pm so that everyone can arrive in time for dinner together at 6:00 pm. This means you’d need to leave Ostkreuz around 3:00 pm or 4:00 pm. Later options may also be possible if needed.\n\nOn Sunday, we’ll gladly shuttle you back around 4:00 pm or 5:00 pm 🚕🚕🚕\n\nPlease let us know by April 17 whether you’d like to book a spot on the shuttle, or share your preferred departure time. Only then can we arrange the taxis — and help you avoid relying on the Brandenburg buses. \n\n\nIn the weeks leading up to the celebration, we’ll get back to you with the Google Doc for the shared buffet, a personal packing list, and the shift schedule.\nIf there’s a specific task you’d enjoy helping with, feel free to let us know anytime.\n\nWe’re already getting excited and wish you a lovely time until the party!\n\n").size(17.0));
                 
@@ -484,15 +484,15 @@ impl eframe::App for TemplateApp {
 
                 ui.label(egui::RichText::new("wir freuen uns mega über eure Zusage zu unserer großen Feier diesen Juni, 12ter bis 14ter. Lange ist's nicht mehr hin und wir haben ein paar Updates für euch:\n\n\n").size(17.0)); 
                 
-                ui.label(egui::RichText::new("Verpflegung:\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+                ui.label(egui::RichText::new("Verpflegung:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
                 
                 ui.label(egui::RichText::new("Wir möchten euch bitten, wenn es euch möglich ist, am Freitag Nachmittag einen Beitrag zum Fingerfood-Buffet mitzubringen (mach dir keine Mühe, wenn du das Gefühl hast, dass das deine Möglichkeiten übersteigen würde, z. B. wenn du von weit her kommst). Dafür schicken wir euch in den Wochen vor der Feier noch ein Google-Doc zum Eintragen.\n\nSolltet ihr Lebensmittelallergien oder Unverträglichkeiten haben, meldet euch bitte bald bei uns. Für vegetarisch/vegan ist alles da. 😊\n\n\n").size(17.0)); 
                 
-                ui.label(egui::RichText::new("Geld und Geschenke:\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+                ui.label(egui::RichText::new("Geld und Geschenke:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
                 
                 ui.label(egui::RichText::new("Anstelle von Geschenken freuen wir uns, wenn ihr uns finanziell bei unserem Party-Projekt unterstützt. Da wir schon ein paar Mal gefragt wurden, geben wir euch eine \"Spenden-Empfehlung\" (für Menschen mit zufriedenem Geldbeutel):\n\nPro Erwachsene*r im Zelt: 85,17€\nPro Erwachsene*r im Bungalow: 142,41€\n\nFür alle Menschen mit hungrigem Geldbeutel gilt: Dabei sein ist alles! Wir freuen uns über jeden Beitrag und jede Mithilfe, aber viel mehr über eure strahlende Anwesenheit! 😊\n\n\n").size(17.0)); 
                 
-                ui.label(egui::RichText::new("Für die Anreise ohne Auto:\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+                ui.label(egui::RichText::new("Für die Anreise ohne Auto:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
                 
                 ui.label(egui::RichText::new("Wir planen einen Shuttle von Beeskow zu unserer Location (Freitag hin, Sonntag zurück) für ca. 10-15 € pro Person und Fahrt. Vom Ostkreuz Berlin fahrt ihr mit dem Regio über Königswusterhausen bis Beeskow (1,5 Stunden, ein Umstieg). Unser Shuttle fährt dann noch 30 min zur Location.\n\nWir möchten diesen Shuttle um 16:30 und 17:30 ab Beeskow anbieten, damit alle pünktlich um 18:00 Uhr zum Abendessen zusammenkommen. Ihr müsstet also um 15 bzw. 16 Uhr am Ostkreuz los. Aber auch spätere Zeiten wären denkbar, wenn es nicht anders geht.\n\nAm Sonntag shuttlen wir euch gerne gegen 16 oder 17 Uhr zurück. 🚕🚕🚕\n\nBitte meldet euch bei uns bis zum 17. April verbindlich für den angebotenen Shuttle an, oder nennt uns eure Wunsch-Uhrzeit! Erst dann können wir die Taxis buchen und euch vor den Brandenburger Bussen bewahren. \n\n\nIn den Wochen vor der Feier melden wir uns nochmal bei euch mit dem Google-Doc für Mitbring-Buffet, der persönlichen Mitbring-Liste und dem Schicht-Plan.\nFalls ihr auf eine bestimmte Aufgabe Lust habt, meldet euch gerne schon jetzt bei uns.\n\nWir sind schon ganz aufgeregt und wünschen euch noch eine schöne Zeit bis zur Party!\n\n").size(17.0)); 
                 
