@@ -74,6 +74,8 @@ pub struct TemplateApp {
 
     pic_value: i32,
 
+	new_formflag: bool,
+
 
     
 
@@ -149,6 +151,8 @@ impl Default for TemplateApp {
             decline_comments: "".to_owned(),
 
             pic_value: 0,
+
+			new_formflag: false,
 
 
             
@@ -809,7 +813,7 @@ ui.add(
 
                     if self.language_flag == true {
 
-                        if self.submitflag == false {
+                        if self.new_formflag == false {
 
     ui.label(egui::RichText::new("...:\n").size(23.0));
 
@@ -849,6 +853,21 @@ ui.add(
     ui.add(egui::TextEdit::singleline(&mut self.rsvp6).font(egui::FontId::proportional(17.0)));
     });
 
+
+	if ui.button(egui::RichText::new("submit").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked() {
+self.submit_names = self.rsvp1.clone();
+self.submit_emails = self.rsvp2.clone();
+self.submit_songs = self.rsvp3.clone();
+self.submit_comments = self.rsvp4.clone();
+self.decline_names = self.rsvp5.clone();
+self.decline_comments = self.rsvp6.clone();
+let message = format!(r#"CONFIRMED::: names: {} ; prefs: {} ; with: {}; please no: {} ; arrival: {} ; departure: {}"#, self.submit_names, self.submit_emails, self.submit_songs, self.submit_comments, self.decline_names, self.decline_comments);
+let body1 = message.as_bytes().to_vec();
+let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+self.new_formflag = true;
+}
+
 }
 else {
     ui.label(egui::RichText::new("Thank you!! you have sent a reply:").size(23.0));
@@ -886,29 +905,17 @@ else {
 
     ui.label("");
 
-    if ui.button(egui::RichText::new("go back and send more replies").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked(){self.submitflag = false; }
+    if ui.button(egui::RichText::new("go back and send more replies").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked(){self.new_formflag = false; }
 
 
 }
-if ui.button(egui::RichText::new("submit").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked() {
-self.submit_names = self.rsvp1.clone();
-self.submit_emails = self.rsvp2.clone();
-self.submit_songs = self.rsvp3.clone();
-self.submit_comments = self.rsvp4.clone();
-self.decline_names = self.rsvp5.clone();
-self.decline_comments = self.rsvp6.clone();
-let message = format!(r#"CONFIRMED::: names: {} ; prefs: {} ; with: {}; please no: {} ; arrival: {} ; departure: {}"#, self.submit_names, self.submit_emails, self.submit_songs, self.submit_comments, self.decline_names, self.decline_comments);
-let body1 = message.as_bytes().to_vec();
-let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
-ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-self.submitflag = true;
-}
+
 
                         
                    }
                 else {
 
-if self.submitflag == false {
+if self.new_formflag == false {
 
 	ui.label(egui::RichText::new("...\n").size(23.0));
 
@@ -948,9 +955,23 @@ if self.submitflag == false {
 	ui.add(egui::TextEdit::singleline(&mut self.rsvp6).font(egui::FontId::proportional(17.0)));
 	});
 
+	if ui.button(egui::RichText::new("abschicken").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked() {
+self.submit_names = self.rsvp1.clone();
+self.submit_emails = self.rsvp2.clone();
+self.submit_songs = self.rsvp3.clone();
+self.submit_comments = self.rsvp4.clone();
+self.decline_names = self.rsvp5.clone();
+self.decline_comments = self.rsvp6.clone();
+let message = format!(r#"CONFIRMED::: names: {} ; prefs: {} ; with: {}; please no: {} ; arrival: {} ; departure: {}"#, self.submit_names, self.submit_emails, self.submit_songs, self.submit_comments, self.decline_names, self.decline_comments);
+let body1 = message.as_bytes().to_vec();
+let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+self.new_formflag = true;
+}
+
 }
 else {
-	ui.label(egui::RichText::new("deine ABGESCHICKTEN Daten:").size(23.0));
+	ui.label(egui::RichText::new("Danke!! du hast eine Antwort gesendet:").size(23.0));
 	ui.label("");
 
 	ui.horizontal_wrapped(|ui| {
@@ -985,23 +1006,11 @@ else {
 
 	ui.label("");
 
-	if ui.button(egui::RichText::new("zurück und mehr Antworten senden").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked(){self.submitflag = false; }
+	if ui.button(egui::RichText::new("zurück und mehr Antworten senden").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked(){self.new_formflag = false; }
 
 
 }
-if ui.button(egui::RichText::new("abschicken").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked() {
-self.submit_names = self.rsvp1.clone();
-self.submit_emails = self.rsvp2.clone();
-self.submit_songs = self.rsvp3.clone();
-self.submit_comments = self.rsvp4.clone();
-self.decline_names = self.rsvp5.clone();
-self.decline_comments = self.rsvp6.clone();
-let message = format!(r#"CONFIRMED::: names: {} ; prefs: {} ; with: {}; please no: {} ; arrival: {} ; departure: {}"#, self.submit_names, self.submit_emails, self.submit_songs, self.submit_comments, self.decline_names, self.decline_comments);
-let body1 = message.as_bytes().to_vec();
-let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
-ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
-self.submitflag = true;
-}
+
 
                     
                     
