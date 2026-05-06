@@ -864,9 +864,9 @@ ui.add(
     ui.add(egui::TextEdit::singleline(&mut self.rsvp03).font(egui::FontId::proportional(17.0)));
     });
 
-    ui.label(egui::RichText::new("\nis there a task you would like to avoid?").size(17.0));
+    ui.label(egui::RichText::new("\nis there a task and/or time you would like to avoid?").size(17.0));
     ui.horizontal_wrapped(|ui| {
-    ui.label(egui::RichText::new("please no: ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.label(egui::RichText::new("please not: ").size(17.0).color(egui::Color32::DARK_GREEN));
     ui.add(egui::TextEdit::singleline(&mut self.rsvp04).font(egui::FontId::proportional(17.0)));
     });
 
@@ -919,7 +919,7 @@ else {
     });
 
     ui.horizontal_wrapped(|ui| {
-    ui.label(egui::RichText::new("please no: ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.label(egui::RichText::new("please not: ").size(17.0).color(egui::Color32::DARK_GREEN));
     ui.label(egui::RichText::new(self.helper_no.clone()).size(17.0));
     });
 
@@ -967,7 +967,7 @@ if self.new_formflag == false {
 	ui.add(egui::TextEdit::singleline(&mut self.rsvp03).font(egui::FontId::proportional(17.0)));
 	});
 
-	ui.label(egui::RichText::new("\ngibt es etwas was du überhaupt nicht machen willst?").size(17.0));
+	ui.label(egui::RichText::new("\ngibt es eine Aufgabe oder Zeit die überhaupt nicht passt?").size(17.0));
 	ui.horizontal_wrapped(|ui| {
 	ui.label(egui::RichText::new("bitte nicht: ").size(17.0).color(egui::Color32::DARK_GREEN));
 	ui.add(egui::TextEdit::singleline(&mut self.rsvp04).font(egui::FontId::proportional(17.0)));
