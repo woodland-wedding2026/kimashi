@@ -935,7 +935,14 @@ else {
 
     ui.label("");
 
-    if ui.button(egui::RichText::new("go back and send more replies").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked(){self.new_formflag = false; }
+    if ui.button(egui::RichText::new("go back and send more replies").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked(){
+		self.rsvp01.clear();
+		self.rsvp02.clear();
+		self.rsvp03.clear();
+		self.rsvp04.clear();
+		self.rsvp05.clear();
+		self.rsvp06.clear();
+		self.new_formflag = false; }
 
 
 }
@@ -1038,7 +1045,14 @@ else {
 
 	ui.label("");
 
-	if ui.button(egui::RichText::new("zurück und mehr Antworten senden").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked(){self.new_formflag = false; }
+	if ui.button(egui::RichText::new("zurück und mehr Antworten senden").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked(){
+		self.rsvp01.clear();
+		self.rsvp02.clear();
+		self.rsvp03.clear();
+		self.rsvp04.clear();
+		self.rsvp05.clear();
+		self.rsvp06.clear();
+		self.new_formflag = false; }
 
 
 }
