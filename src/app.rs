@@ -846,7 +846,7 @@ ui.add(
 
     ui.label(egui::RichText::new("...:\n").size(23.0));
 
-    ui.label(egui::RichText::new("please enter the names of all people you want to submit a reply for:").size(17.0));
+    ui.label(egui::RichText::new("please enter the names of all guests you want to reply for:").size(17.0));
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
     ui.add(egui::TextEdit::singleline(&mut self.rsvp01).font(egui::FontId::proportional(17.0)));
