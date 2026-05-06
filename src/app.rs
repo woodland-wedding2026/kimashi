@@ -844,7 +844,7 @@ ui.add(
 
                         if self.new_formflag == false {
 
-    ui.label(egui::RichText::new("...:\n").size(23.0));
+    ui.label(egui::RichText::new("Please make sure to get back to us by May 24th !!!\n\nSo that we can organize all volunteers properly, we already need your help now. There are various tasks throughout the entire event, which we list here. Feel free to read everything and give us feedback below about your preferences and no-gos. If we don’t receive a response, we will assume that you’re fine with anything and we’ll assign you freely :)\n\nFriday/Saturday:\n\n- Prepare breakfast\n- Refill breakfast\n- Clear down breakfast + wash up\n- Clean kitchen, do dishes\n- Set up and restock sandwich station\n- Run and tidy sandwich station\n- Keep bring-your-own buffet area clean\n- Help prepare dinner\n- Keep an eye on / tidy up midnight snack\n\n- Prepare and light campfire\n- Add firewood / put out fire\n- Help with sauna & pool (add wood, tidy up)\n- Run / tidy welcome station\n- Set up / manage / clear technical equipment\n- Prepare outdoor dance floor\n- Prepare ceremony area\n- Prepare party room ('Party Kabuff')\n- Floaters: refill drinks, tidy up, wash dishes as needed\n\nSunday:\n\n- Clean up kitchen\n- Clean buffet area\n- Sort food supplies\n- Sort drink crates / return deposits\n- Carefully dismantle decorations\n- Clean up chill area\n- Clean up party room ('Party Kabuff')\n- Clean outdoor areas\n").size(23.0));
 
     ui.label(egui::RichText::new("please enter the names of all guests you want to reply for:").size(17.0));
     ui.horizontal_wrapped(|ui| {
@@ -954,7 +954,7 @@ else {
 
 if self.new_formflag == false {
 
-	ui.label(egui::RichText::new("...\n").size(23.0));
+	ui.label(egui::RichText::new("Bitte unbedingt zurückmelden bis zum 24. Mai !!!\n\nDamit wir alle Helferlis gut einteilen können, brauchen wir schon jetzt eure Hilfe. Es gibt während des gesamten Events verschiedene Aufgaben die wir hier auflisten. Ließ dir gerne alles durch und gib uns unten Feedback zu deinen Vorlieben und no-goes. Wenn wir keine Antwort erhalten gehen wir davon aus dass dir einfach alles gut passt und wir teilen dich frei ein :)\n\nFreitag/Samstag:\n\n- Frühstück vorbereiten\n- Frühstück nachfüllen\n- Frühstück abbauen + spülen\n- Küche sauber machen, abspülen\n- Sandwich-Station aufbauen und nachfüllen\n- Sandwich-Station betreuen und aufräumen\n- Mitbring-Buffet sauberhalten\n- Abendessen vorbereiten helfen\n- Mitternachts-Snack im Blick haben/ aufräumen\n\n- Lagerfeuer vorbereiten und anzünden\n- Feuerholz nachlegen/ Feuer ausmachen\n- bei Sauna & Pool mithelfen (Holz nachlegen, aufräumen)\n- Willkommens-Station betreuen/ aufräumen\n\n- Technik aufbauen/ betreuen/ aufräumen\n- Dancefloor draußen vorbereiten\n- Zeremonie vorbereiten\n- Party-Kabuff vorbereiten\n\n- Springer: Getränke nachfüllen, aufräumen, spülen nach Bedarf\n\nSonntag:\n\n- Küche aufräumen\n- Buffet-Raum aufräumen\n- Lebensmittel sortieren\n- Getränkekisten/ Pfand sortieren\n\n- Deko vorsichtig abbauen\n- Chill-Area aufräumen\n- Party-Kabuff aufräumen\n- Außenbereiche aufräumen\n").size(23.0));
 
 	ui.label(egui::RichText::new("bitte gib die Namen aller Gäste ein für die du antworten willst:").size(17.0));
 	ui.horizontal_wrapped(|ui| {
