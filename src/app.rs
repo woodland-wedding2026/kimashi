@@ -75,6 +75,20 @@ pub struct TemplateApp {
     pic_value: i32,
 
 	new_formflag: bool,
+	
+	rsvp01: String,
+    rsvp02: String,
+    rsvp03: String,
+    rsvp04: String,
+    rsvp05: String,
+    rsvp06: String,
+
+	helper_names: String,
+    helper_task: String,
+    helper_with: String,
+    helper_no: String,
+	helper_fri: String,
+    helper_sun: String,
 
 
     
@@ -153,6 +167,21 @@ impl Default for TemplateApp {
             pic_value: 0,
 
 			new_formflag: false,
+
+			rsvp01: "".to_owned(),
+            rsvp02: "".to_owned(),
+            rsvp03: "".to_owned(),
+            rsvp04: "".to_owned(),
+
+            rsvp05: "".to_owned(),
+            rsvp06: "".to_owned(),
+			helper_names: "".to_owned(),
+		    helper_task: "".to_owned(),
+		    helper_with: "".to_owned(),
+		    helper_no: "".to_owned(),
+			helper_fri: "".to_owned(),
+		    helper_sun: "".to_owned(),
+
 
 
             
@@ -820,48 +849,49 @@ ui.add(
     ui.label(egui::RichText::new("please enter the names of all people you want to submit a reply for:").size(17.0));
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
-    ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp01).font(egui::FontId::proportional(17.0)));
     });
 
     ui.label(egui::RichText::new("\nplease tell us what helper task(s) you will be OK with:").size(17.0));
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("prefered helper task(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
-    ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp02).font(egui::FontId::proportional(17.0)));
     });
 
     ui.label(egui::RichText::new("\nis there someone you would like to partner up with for your task?").size(17.0));
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("gladly with: ").size(17.0).color(egui::Color32::DARK_GREEN));
-    ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp03).font(egui::FontId::proportional(17.0)));
     });
 
     ui.label(egui::RichText::new("\nis there a task you would like to avoid?").size(17.0));
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("please no: ").size(17.0).color(egui::Color32::DARK_GREEN));
-    ui.add(egui::TextEdit::singleline(&mut self.rsvp4).font(egui::FontId::proportional(17.0)));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp04).font(egui::FontId::proportional(17.0)));
     });
 
     ui.label(egui::RichText::new("\nwhen will you be arriving on Friday?").size(17.0));
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("arrival Friday: ").size(17.0).color(egui::Color32::DARK_GREEN));
-    ui.add(egui::TextEdit::singleline(&mut self.rsvp5).font(egui::FontId::proportional(17.0)));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp05).font(egui::FontId::proportional(17.0)));
     });
 
     ui.label(egui::RichText::new("\nwhen will you be leaving on Sunday?").size(17.0));
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("departure Sunday: ").size(17.0).color(egui::Color32::DARK_GREEN));
-    ui.add(egui::TextEdit::singleline(&mut self.rsvp6).font(egui::FontId::proportional(17.0)));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp06).font(egui::FontId::proportional(17.0)));
     });
 
+		ui.label("");					
 
 	if ui.button(egui::RichText::new("submit").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked() {
-self.submit_names = self.rsvp1.clone();
-self.submit_emails = self.rsvp2.clone();
-self.submit_songs = self.rsvp3.clone();
-self.submit_comments = self.rsvp4.clone();
-self.decline_names = self.rsvp5.clone();
-self.decline_comments = self.rsvp6.clone();
-let message = format!(r#"CONFIRMED::: names: {} ; prefs: {} ; with: {}; please no: {} ; arrival: {} ; departure: {}"#, self.submit_names, self.submit_emails, self.submit_songs, self.submit_comments, self.decline_names, self.decline_comments);
+self.helper_names = self.rsvp01.clone();
+self.helper_task = self.rsvp02.clone();
+self.helper_with = self.rsvp03.clone();
+self.helper_no = self.rsvp04.clone();
+self.helper_fri = self.rsvp05.clone();
+self.helper_sun = self.rsvp06.clone();
+let message = format!(r#"CONFIRMED::: names: {} ; prefs: {} ; with: {}; please no: {} ; arrival: {} ; departure: {}"#, self.helper_names, self.helper_task, self.helper_with, self.helper_no, self.helper_fri, self.helper_sun);
 let body1 = message.as_bytes().to_vec();
 let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
 ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
@@ -875,32 +905,32 @@ else {
 
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
-    ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
+    ui.label(egui::RichText::new(self.helper_names.clone()).size(17.0));
     });
 
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("prefered helper task(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
-    ui.label(egui::RichText::new(self.submit_emails.clone()).size(17.0));
+    ui.label(egui::RichText::new(self.helper_task.clone()).size(17.0));
     });
 
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("gladly with: ").size(17.0).color(egui::Color32::DARK_GREEN));
-    ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
+    ui.label(egui::RichText::new(self.helper_with.clone()).size(17.0));
     });
 
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("please no: ").size(17.0).color(egui::Color32::DARK_GREEN));
-    ui.label(egui::RichText::new(self.submit_comments.clone()).size(17.0));
+    ui.label(egui::RichText::new(self.helper_no.clone()).size(17.0));
     });
 
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("arrival Friday: ").size(17.0).color(egui::Color32::DARK_GREEN));
-    ui.label(egui::RichText::new(self.decline_names.clone()).size(17.0));
+    ui.label(egui::RichText::new(self.helper_fri.clone()).size(17.0));
     });
 
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("departure Sunday: ").size(17.0).color(egui::Color32::DARK_GREEN));
-    ui.label(egui::RichText::new(self.decline_comments.clone()).size(17.0));
+    ui.label(egui::RichText::new(self.helper_sun.clone()).size(17.0));
     });
 
     ui.label("");
@@ -922,47 +952,49 @@ if self.new_formflag == false {
 	ui.label(egui::RichText::new("bitte gib die Namen aller Gäste ein für die du antworten willst:").size(17.0));
 	ui.horizontal_wrapped(|ui| {
 	ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::DARK_GREEN));
-	ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
+	ui.add(egui::TextEdit::singleline(&mut self.rsvp01).font(egui::FontId::proportional(17.0)));
 	});
 
 	ui.label(egui::RichText::new("\nsag uns bitte deine Lieblingsaufgabe(n):").size(17.0));
 	ui.horizontal_wrapped(|ui| {
 	ui.label(egui::RichText::new("Lieblingsaufgabe(n): ").size(17.0).color(egui::Color32::DARK_GREEN));
-	ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
+	ui.add(egui::TextEdit::singleline(&mut self.rsvp02).font(egui::FontId::proportional(17.0)));
 	});
 
 	ui.label(egui::RichText::new("\nwürdest du deine Aufgabe gerne mit jemandem zusammen machen?").size(17.0));
 	ui.horizontal_wrapped(|ui| {
 	ui.label(egui::RichText::new("Wunschpartner*in: ").size(17.0).color(egui::Color32::DARK_GREEN));
-	ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
+	ui.add(egui::TextEdit::singleline(&mut self.rsvp03).font(egui::FontId::proportional(17.0)));
 	});
 
 	ui.label(egui::RichText::new("\ngibt es etwas was du überhaupt nicht machen willst?").size(17.0));
 	ui.horizontal_wrapped(|ui| {
 	ui.label(egui::RichText::new("bitte nicht: ").size(17.0).color(egui::Color32::DARK_GREEN));
-	ui.add(egui::TextEdit::singleline(&mut self.rsvp4).font(egui::FontId::proportional(17.0)));
+	ui.add(egui::TextEdit::singleline(&mut self.rsvp04).font(egui::FontId::proportional(17.0)));
 	});
 
 	ui.label(egui::RichText::new("\nwann kommst du am Freitag an?").size(17.0));
 	ui.horizontal_wrapped(|ui| {
 	ui.label(egui::RichText::new("Ankunft Freitag: ").size(17.0).color(egui::Color32::DARK_GREEN));
-	ui.add(egui::TextEdit::singleline(&mut self.rsvp5).font(egui::FontId::proportional(17.0)));
+	ui.add(egui::TextEdit::singleline(&mut self.rsvp05).font(egui::FontId::proportional(17.0)));
 	});
 
 	ui.label(egui::RichText::new("\nwann fährst du am Sonntag ab?").size(17.0));
 	ui.horizontal_wrapped(|ui| {
 	ui.label(egui::RichText::new("Abfahrt Sonntag: ").size(17.0).color(egui::Color32::DARK_GREEN));
-	ui.add(egui::TextEdit::singleline(&mut self.rsvp6).font(egui::FontId::proportional(17.0)));
+	ui.add(egui::TextEdit::singleline(&mut self.rsvp06).font(egui::FontId::proportional(17.0)));
 	});
 
+	ui.label("");
+
 	if ui.button(egui::RichText::new("abschicken").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked() {
-self.submit_names = self.rsvp1.clone();
-self.submit_emails = self.rsvp2.clone();
-self.submit_songs = self.rsvp3.clone();
-self.submit_comments = self.rsvp4.clone();
-self.decline_names = self.rsvp5.clone();
-self.decline_comments = self.rsvp6.clone();
-let message = format!(r#"CONFIRMED::: names: {} ; prefs: {} ; with: {}; please no: {} ; arrival: {} ; departure: {}"#, self.submit_names, self.submit_emails, self.submit_songs, self.submit_comments, self.decline_names, self.decline_comments);
+self.helper_names = self.rsvp01.clone();
+self.helper_task = self.rsvp02.clone();
+self.helper_with = self.rsvp03.clone();
+self.helper_no = self.rsvp04.clone();
+self.helper_fri = self.rsvp05.clone();
+self.helper_sun = self.rsvp06.clone();
+let message = format!(r#"CONFIRMED::: names: {} ; prefs: {} ; with: {}; please no: {} ; arrival: {} ; departure: {}"#, self.helper_names, self.helper_task, self.helper_with, self.helper_no, self.helper_fri, self.helper_sun);
 let body1 = message.as_bytes().to_vec();
 let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
 ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
@@ -976,32 +1008,32 @@ else {
 
 	ui.horizontal_wrapped(|ui| {
 	ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::DARK_GREEN));
-	ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
+	ui.label(egui::RichText::new(self.helper_names.clone()).size(17.0));
 	});
 
 	ui.horizontal_wrapped(|ui| {
 	ui.label(egui::RichText::new("Lieblingsaufgabe(n): ").size(17.0).color(egui::Color32::DARK_GREEN));
-	ui.label(egui::RichText::new(self.submit_emails.clone()).size(17.0));
+	ui.label(egui::RichText::new(self.helper_task.clone()).size(17.0));
 	});
 
 	ui.horizontal_wrapped(|ui| {
 	ui.label(egui::RichText::new("Wunschpartner*in: ").size(17.0).color(egui::Color32::DARK_GREEN));
-	ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
+	ui.label(egui::RichText::new(self.helper_with.clone()).size(17.0));
 	});
 
 	ui.horizontal_wrapped(|ui| {
 	ui.label(egui::RichText::new("bitte nicht: ").size(17.0).color(egui::Color32::DARK_GREEN));
-	ui.label(egui::RichText::new(self.submit_comments.clone()).size(17.0));
+	ui.label(egui::RichText::new(self.helper_no.clone()).size(17.0));
 	});
 
 	ui.horizontal_wrapped(|ui| {
 	ui.label(egui::RichText::new("Ankunft Freitag: ").size(17.0).color(egui::Color32::DARK_GREEN));
-	ui.label(egui::RichText::new(self.decline_names.clone()).size(17.0));
+	ui.label(egui::RichText::new(self.helper_fri.clone()).size(17.0));
 	});
 
 	ui.horizontal_wrapped(|ui| {
 	ui.label(egui::RichText::new("Abfahrt Sonntag: ").size(17.0).color(egui::Color32::DARK_GREEN));
-	ui.label(egui::RichText::new(self.decline_comments.clone()).size(17.0));
+	ui.label(egui::RichText::new(self.helper_sun.clone()).size(17.0));
 	});
 
 	ui.label("");
