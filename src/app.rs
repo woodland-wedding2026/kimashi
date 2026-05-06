@@ -808,43 +808,203 @@ ui.add(
                 egui::ScrollArea::both().show(ui, |ui| {
 
                     if self.language_flag == true {
-                    ui.label(egui::RichText::new("More detailed info about how the event will be organized will be shared here — so feel free to check back in again. We would love to hear your creative ideas for the following areas:\n").size(17.0));
 
-                    ui.label(egui::RichText::new("Decorations:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
-                    
-                    ui.label(egui::RichText::new("We’d love to craft decorations together with you over the coming months. We already have a few ideas and are excited for more inspiration from you. Get in touch with us if you’d like to join in!\n").size(17.0));
-                    
-                    ui.label(egui::RichText::new("Music:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
-                    
-                    ui.label(egui::RichText::new("We want to fill the weekend with lots of different kinds of music— a cozy playlist for morning coffee, live music at sunset, and DJ sets with techno and goa taking us through the night in the Party Cabin. If you’d like to contribute in any way, please reach out as soon as possible!\n").size(17.0));
-                    
-                    ui.label(egui::RichText::new("Kids Area:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
-                    
-                    ui.label(egui::RichText::new("We want your kids to feel welcome and be able to join in the fun. We will be organizing a special area for them where they can play and frolic about. We would love for the parents to participate in creating a fun space. Maybe you know some fun games or have some cool toys you can bring?\n").size(17.0));
-                    
-                    ui.label(egui::RichText::new("Kitchen & Co.:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
-                    
-                    ui.label(egui::RichText::new("Cooking for around 100 guests will be a beautiful team effort! We’ll have everything well prepared and will plan each meal together with a few lead coordinators. Of course, this is where we’ll need the most support from all of you. A few weeks before the event, you’ll find a schedule here where you can sign up for tasks like chopping, serving, dishwashing, etc.").size(17.0));
-                                        }
+                        if self.submitflag == false {
+
+    ui.label(egui::RichText::new("...:\n").size(23.0));
+
+    ui.label(egui::RichText::new("please enter the names of all people you want to submit a reply for:").size(17.0));
+    ui.horizontal_wrapped(|ui| {
+    ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
+    });
+
+    ui.label(egui::RichText::new("\nplease tell us what helper task(s) you will be OK with:").size(17.0));
+    ui.horizontal_wrapped(|ui| {
+    ui.label(egui::RichText::new("prefered helper task(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
+    });
+
+    ui.label(egui::RichText::new("\nis there someone you would like to partner up with for your task?").size(17.0));
+    ui.horizontal_wrapped(|ui| {
+    ui.label(egui::RichText::new("gladly with: ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
+    });
+
+    ui.label(egui::RichText::new("\nis there a task you would like to avoid?").size(17.0));
+    ui.horizontal_wrapped(|ui| {
+    ui.label(egui::RichText::new("please no: ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp4).font(egui::FontId::proportional(17.0)));
+    });
+
+    ui.label(egui::RichText::new("\nwhen will you be arriving on Friday?").size(17.0));
+    ui.horizontal_wrapped(|ui| {
+    ui.label(egui::RichText::new("arrival Friday: ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp5).font(egui::FontId::proportional(17.0)));
+    });
+
+    ui.label(egui::RichText::new("\nwhen will you be leaving on Sunday?").size(17.0));
+    ui.horizontal_wrapped(|ui| {
+    ui.label(egui::RichText::new("departure Sunday: ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.add(egui::TextEdit::singleline(&mut self.rsvp6).font(egui::FontId::proportional(17.0)));
+    });
+
+}
+else {
+    ui.label(egui::RichText::new("Thank you!! you have sent a reply:").size(23.0));
+    ui.label("");
+
+    ui.horizontal_wrapped(|ui| {
+    ui.label(egui::RichText::new("name(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
+    });
+
+    ui.horizontal_wrapped(|ui| {
+    ui.label(egui::RichText::new("prefered helper task(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.label(egui::RichText::new(self.submit_emails.clone()).size(17.0));
+    });
+
+    ui.horizontal_wrapped(|ui| {
+    ui.label(egui::RichText::new("gladly with: ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
+    });
+
+    ui.horizontal_wrapped(|ui| {
+    ui.label(egui::RichText::new("please no: ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.label(egui::RichText::new(self.submit_comments.clone()).size(17.0));
+    });
+
+    ui.horizontal_wrapped(|ui| {
+    ui.label(egui::RichText::new("arrival Friday: ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.label(egui::RichText::new(self.decline_names.clone()).size(17.0));
+    });
+
+    ui.horizontal_wrapped(|ui| {
+    ui.label(egui::RichText::new("departure Sunday: ").size(17.0).color(egui::Color32::DARK_GREEN));
+    ui.label(egui::RichText::new(self.decline_comments.clone()).size(17.0));
+    });
+
+    ui.label("");
+
+    if ui.button(egui::RichText::new("go back and send more replies").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked(){self.submitflag = false; }
+
+
+}
+if ui.button(egui::RichText::new("submit").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked() {
+self.submit_names = self.rsvp1.clone();
+self.submit_emails = self.rsvp2.clone();
+self.submit_songs = self.rsvp3.clone();
+self.submit_comments = self.rsvp4.clone();
+self.decline_names = self.rsvp5.clone();
+self.decline_comments = self.rsvp6.clone();
+let message = format!(r#"CONFIRMED::: names: {} ; prefs: {} ; with: {}; please no: {} ; arrival: {} ; departure: {}"#, self.submit_names, self.submit_emails, self.submit_songs, self.submit_comments, self.decline_names, self.decline_comments);
+let body1 = message.as_bytes().to_vec();
+let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+self.submitflag = true;
+}
+
+                        
+                   }
                 else {
-                    ui.label(egui::RichText::new("Im Laufe der Zeit wird es hier noch mehr Infos zur konkreten Orga geben. Schaut also gerne nochmal rein. Folgende Bereiche sind schon klar und freuen sich über eure kreativen Ideen:\n").size(17.0));
 
-                    ui.label(egui::RichText::new("Deko:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
-                    
-                    ui.label(egui::RichText::new("Wir wollen zusammen mit euch über die nächste Zeit Deko basteln. Wir haben schon ein paar Ideen und freuen uns über noch mehr Inspiration von euch. Meldet euch bei uns, wenn ihr mitmachen wollt!\n").size(17.0));
-                    
-                    ui.label(egui::RichText::new("Musik:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
-                    
-                    ui.label(egui::RichText::new("Wir wollen das Wochenende mit richtig viel verschiedener Musik füllen. Eine gemütliche Playlist zum Frühstückskaffee, Live Musik zum Sonnenuntergang, mit Techno und Goa DJ-Sets durch die Nacht im Party-Kabuff. Wenn ihr hier etwas beitragen könnt, meldet euch gerne so bald wie möglich!\n").size(17.0));
-                    
-                    ui.label(egui::RichText::new("Kids Area:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
-                    
-                    ui.label(egui::RichText::new("Eure Kinder sind natürlich herzlich willkommen und sollen sich bei uns wohl fühlen. Dafür wollen wir einen Kinderbereich einrichten, wo die Kleinen spielen, toben und Spaß haben können. Es wäre großartig, wenn die Eltern sich hier mit kreativen Ideen einbringen.\n").size(17.0));
-                    
-                    ui.label(egui::RichText::new("Küche & Co:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
-                    
-                    ui.label(egui::RichText::new("Für ca. 100 Gäste Essen zuzubereiten, wird ein wunderschöner Kraftakt! Wir werden alles gut vorbereiten und jede Mahlzeit zusammen mit ein paar Hauptverantwortlichen planen. Natürlich brauchen wir hier am meisten Unterstützung von euch allen. Ein paar Wochen vor der Feier findet ihr hier einen Schichtplan, wo ihr euch zum Schnippeln, Servieren, Spülen etc. eintragen könnt.").size(17.0));
+if self.submitflag == false {
 
+	ui.label(egui::RichText::new("...\n").size(23.0));
+
+	ui.label(egui::RichText::new("bitte gib die Namen aller Gäste ein für die du antworten willst:").size(17.0));
+	ui.horizontal_wrapped(|ui| {
+	ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::DARK_GREEN));
+	ui.add(egui::TextEdit::singleline(&mut self.rsvp1).font(egui::FontId::proportional(17.0)));
+	});
+
+	ui.label(egui::RichText::new("\nsag uns bitte deine Lieblingsaufgabe(n):").size(17.0));
+	ui.horizontal_wrapped(|ui| {
+	ui.label(egui::RichText::new("Lieblingsaufgabe(n): ").size(17.0).color(egui::Color32::DARK_GREEN));
+	ui.add(egui::TextEdit::singleline(&mut self.rsvp2).font(egui::FontId::proportional(17.0)));
+	});
+
+	ui.label(egui::RichText::new("\nwürdest du deine Aufgabe gerne mit jemandem zusammen machen?").size(17.0));
+	ui.horizontal_wrapped(|ui| {
+	ui.label(egui::RichText::new("Wunschpartner*in: ").size(17.0).color(egui::Color32::DARK_GREEN));
+	ui.add(egui::TextEdit::singleline(&mut self.rsvp3).font(egui::FontId::proportional(17.0)));
+	});
+
+	ui.label(egui::RichText::new("\ngibt es etwas was du überhaupt nicht machen willst?").size(17.0));
+	ui.horizontal_wrapped(|ui| {
+	ui.label(egui::RichText::new("bitte nicht: ").size(17.0).color(egui::Color32::DARK_GREEN));
+	ui.add(egui::TextEdit::singleline(&mut self.rsvp4).font(egui::FontId::proportional(17.0)));
+	});
+
+	ui.label(egui::RichText::new("\nwann kommst du am Freitag an?").size(17.0));
+	ui.horizontal_wrapped(|ui| {
+	ui.label(egui::RichText::new("Ankunft Freitag: ").size(17.0).color(egui::Color32::DARK_GREEN));
+	ui.add(egui::TextEdit::singleline(&mut self.rsvp5).font(egui::FontId::proportional(17.0)));
+	});
+
+	ui.label(egui::RichText::new("\nwann fährst du am Sonntag ab?").size(17.0));
+	ui.horizontal_wrapped(|ui| {
+	ui.label(egui::RichText::new("Abfahrt Sonntag: ").size(17.0).color(egui::Color32::DARK_GREEN));
+	ui.add(egui::TextEdit::singleline(&mut self.rsvp6).font(egui::FontId::proportional(17.0)));
+	});
+
+}
+else {
+	ui.label(egui::RichText::new("deine ABGESCHICKTEN Daten:").size(23.0));
+	ui.label("");
+
+	ui.horizontal_wrapped(|ui| {
+	ui.label(egui::RichText::new("Name(n): ").size(17.0).color(egui::Color32::DARK_GREEN));
+	ui.label(egui::RichText::new(self.submit_names.clone()).size(17.0));
+	});
+
+	ui.horizontal_wrapped(|ui| {
+	ui.label(egui::RichText::new("Lieblingsaufgabe(n): ").size(17.0).color(egui::Color32::DARK_GREEN));
+	ui.label(egui::RichText::new(self.submit_emails.clone()).size(17.0));
+	});
+
+	ui.horizontal_wrapped(|ui| {
+	ui.label(egui::RichText::new("Wunschpartner*in: ").size(17.0).color(egui::Color32::DARK_GREEN));
+	ui.label(egui::RichText::new(self.submit_songs.clone()).size(17.0));
+	});
+
+	ui.horizontal_wrapped(|ui| {
+	ui.label(egui::RichText::new("bitte nicht: ").size(17.0).color(egui::Color32::DARK_GREEN));
+	ui.label(egui::RichText::new(self.submit_comments.clone()).size(17.0));
+	});
+
+	ui.horizontal_wrapped(|ui| {
+	ui.label(egui::RichText::new("Ankunft Freitag: ").size(17.0).color(egui::Color32::DARK_GREEN));
+	ui.label(egui::RichText::new(self.decline_names.clone()).size(17.0));
+	});
+
+	ui.horizontal_wrapped(|ui| {
+	ui.label(egui::RichText::new("Abfahrt Sonntag: ").size(17.0).color(egui::Color32::DARK_GREEN));
+	ui.label(egui::RichText::new(self.decline_comments.clone()).size(17.0));
+	});
+
+	ui.label("");
+
+	if ui.button(egui::RichText::new("zurück und mehr Antworten senden").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked(){self.submitflag = false; }
+
+
+}
+if ui.button(egui::RichText::new("abschicken").size(17.0).color(egui::Color32::from_rgb(0, 183, 255))).clicked() {
+self.submit_names = self.rsvp1.clone();
+self.submit_emails = self.rsvp2.clone();
+self.submit_songs = self.rsvp3.clone();
+self.submit_comments = self.rsvp4.clone();
+self.decline_names = self.rsvp5.clone();
+self.decline_comments = self.rsvp6.clone();
+let message = format!(r#"CONFIRMED::: names: {} ; prefs: {} ; with: {}; please no: {} ; arrival: {} ; departure: {}"#, self.submit_names, self.submit_emails, self.submit_songs, self.submit_comments, self.decline_names, self.decline_comments);
+let body1 = message.as_bytes().to_vec();
+let request1 = ehttp::Request::post("https://ntfy.sh/woodland", body1);
+ehttp::fetch(request1, move |result: ehttp::Result<ehttp::Response>| {println!("Status code: {:?}", result.unwrap().status);});
+self.submitflag = true;
+}
+
+                    
+                    
                      }
                 
             });
