@@ -417,10 +417,19 @@ impl eframe::App for TemplateApp {
                 if self.flag5 == true {self.flag5 = false;}
                 else {self.flag5 = true;}
             }  
-            if ui.button(egui::RichText::new(self.button4.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
+            
+			//if ui.button(egui::RichText::new(self.button4.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
+            //   if self.flag4 == true {self.flag4 = false;}
+            //   else {self.flag4 = true;}
+            //}  
+
+			if cyber_button(ui, &self.button4, 17.0).clicked() {
                 if self.flag4 == true {self.flag4 = false;}
                 else {self.flag4 = true;}
             }  
+
+
+			
             if ui.button(egui::RichText::new(self.button3.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
                 if self.flag3 == true {self.flag3 = false;}
                 else {self.flag3 = true;}
@@ -1600,4 +1609,96 @@ else {
         
     }
 }
+
+
+use eframe::egui::{self, *};
+
+pub fn cyber_button(
+    ui: &mut Ui,
+    text: &str,
+    size: f32,
+) -> Response {
+    let desired_size = vec2(text.len() as f32 * size * 0.62, size + 10.0);
+
+    let (rect, response) =
+        ui.allocate_exact_size(desired_size, Sense::click());
+
+    let painter = ui.painter();
+
+    let time = ui.ctx().input(|i| i.time) as f32;
+
+    let mut x = rect.min.x;
+
+    for (i, ch) in text.chars().enumerate() {
+        let hue = (time * 0.18 + i as f32 * 0.07) % 1.0;
+        let color = hsv_to_rgb(hue, 1.0, 1.0);
+
+        let pos = Pos2::new(x, rect.min.y);
+
+        // glow
+        for offset in [
+            Vec2::new(-2.0, 0.0),
+            Vec2::new(2.0, 0.0),
+            Vec2::new(0.0, -2.0),
+            Vec2::new(0.0, 2.0),
+        ] {
+            painter.text(
+                pos + offset,
+                Align2::LEFT_TOP,
+                ch,
+                FontId::proportional(size + 4.0),
+                Color32::from_rgba_premultiplied(
+                    color.r(),
+                    color.g(),
+                    color.b(),
+                    40,
+                ),
+            );
+        }
+
+        // body
+        painter.text(
+            pos,
+            Align2::LEFT_TOP,
+            ch,
+            FontId::proportional(size),
+            color,
+        );
+
+        // white core
+        painter.text(
+            pos + Vec2::new(0.5, 0.5),
+            Align2::LEFT_TOP,
+            ch,
+            FontId::proportional(size - 6.0),
+            Color32::WHITE,
+        );
+
+        x += size * 0.62;
+    }
+
+    // optional hover outline
+    if response.hovered() {
+        painter.rect_stroke(
+            rect.expand(4.0),
+            4.0,
+            Stroke::new(1.0, Color32::WHITE),
+            StrokeKind::Outside,
+        );
+    }
+
+    ui.ctx().request_repaint();
+
+    response
+}
+
+
+
+
+
+
+
+
+
+
 
