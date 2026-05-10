@@ -492,6 +492,8 @@ impl eframe::App for TemplateApp {
             
             //ui.heading(egui::RichText::new("Woodland Wedding 2026 \nKIMASHI = Kim, Matthias and Yoshi\n").size(34.0).color(egui::Color32::DARK_GREEN).strong());
             cyber_rainbow_text(ui, "Woodland Wedding 2026 \nKIMASHI = Kim, Matthias and Yoshi\n", 34.0);
+			
+			ui.label("");
                 
             egui_extras::install_image_loaders(ctx);
             let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
