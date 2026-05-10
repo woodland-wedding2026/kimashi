@@ -503,27 +503,54 @@ impl eframe::App for TemplateApp {
 
             if self.language_flag == true {
                 
-                //ui.label(egui::RichText::new("\n... download completed! :)\n\nTwo years have passed since we, Kim and Matthi, got married. Together with our newly minted family member Yoshi, we have become a whole: KIMASHI :)\n\nTherefore, the time has come to have a big celebration with all of you, our friends and family from near and far. We have secured a marvelous venue amidst a forest situated directly by a lake. From Friday till Sunday, June 12th - 14th in 2026, we are looking forward to hosting you. – There will be great food, a whirlpool, a little sauna and fantastic music. A key moment of the weekend will be a ceremony which is meant to formally commemorate the start of our family.\n\nWe're organizing almost everything ourselves — from food and decorations to music. And for that, we need your support! Let us know if there's something specific you'd like to contribute. Tasks like cleaning up, cooking, dishwashing, etc., will be planned in advance so that all the work is divided up between all of us fairly  — nobody will be forced to do anything that they don't want to do. But remember, in every job that must be done there is an element of fun! 😉\n\nPlease also take a look at the rest of the website. It contains important information and a few fun surprises to be discovered. Also, we will be posting updates in the respective sections as we get closer to the event. So, please check back.").size(17.0));    
-           
-                //ui.label(egui::RichText::new("\nDear all,\n\nwe’re absolutely thrilled that you’ll be joining us for our big celebration this June, 12th - 14th! It’s not too long to go now, and we have some updates for you:\n\n\nFood:\n\nWe’d kindly like to ask, if possible, that you bring a small contribution to the finger food buffet on Friday afternoon (don't bother if you feel like this would overextend your capabilities, e.g. if you come from afar). We’ll share a Google Doc in the weeks leading up to the celebration where you can sign up.\n\nIf you have any food allergies or dietary restrictions, please let us know as soon as possible. Vegetarian and vegan options will be available. 😊\n\n\nMoney and gifts:\n\nInstead of traditional gifts, we would really appreciate your support in helping fund our party project. As a few people have already asked, we’re happy to share a suggested contribution (for those who are comfortably able to give):\n\nPer adult staying in a tent: €85.17\nPer adult staying in a bungalow: €142.41\n\nFor anyone on a tighter budget, please know that what matters most is that you’re there! We’re grateful for any contribution or help, but even more so for your joyful presence 😊\n\n\nFor those traveling without a car:\n\nWe’re planning a shuttle service from Beeskow to our location (Friday outbound, Sunday return) for about €10–15 per person, per trip. From Berlin Ostkreuz, you can take a regional train via Königs Wusterhausen to Beeskow (about 1.5 hours with one transfer). From there, the shuttle will take around another 30 minutes to reach the venue.\n\nWe’re aiming to offer shuttle departures from Beeskow at 4:30 pm and 5:30 pm so that everyone can arrive in time for dinner together at 6:00 pm. This means you’d need to leave Ostkreuz around 3:00 pm or 4:00 pm. Later options may also be possible if needed.\n\nOn Sunday, we’ll gladly shuttle you back around 4:00 pm or 5:00 pm 🚕🚕🚕\n\nPlease let us know by April 17 whether you’d like to book a spot on the shuttle, or share your preferred departure time. Only then can we arrange the taxis — and help you avoid relying on the Brandenburg buses. \n\n\nIn the weeks leading up to the celebration, we’ll get back to you with the Google Doc for the shared buffet, a personal packing list, and the shift schedule.\nIf there’s a specific task you’d enjoy helping with, feel free to let us know anytime.\n\nWe’re already getting excited and wish you a lovely time until the party!\n\nWith lots of love,\nKIMASHI\n\n").size(17.0));
+                ui.label(egui::RichText::new("\nDear almost-party guests,\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 
-                ui.label(egui::RichText::new("\nDear all,\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
-
-                ui.label(egui::RichText::new("we’re absolutely thrilled that you’ll be joining us for our big celebration this June, 12th - 14th! It’s not too long to go now, and we have some updates for you:\n\n\n").size(17.0));
-                
-                ui.label(egui::RichText::new("Food:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
-                
-                ui.label(egui::RichText::new("We’d kindly like to ask, if possible, that you bring a small contribution to the finger food buffet on Friday afternoon (don’t bother if it feels like too much trouble, especially if you’re coming from far away). We’ll share a Google Doc in the weeks leading up to the celebration where you can sign up.\n\nIf you have any food allergies or dietary restrictions, please let us know as soon as possible. Vegetarian and vegan options will be available. 😊\n\n\n").size(17.0));
-                
-                ui.label(egui::RichText::new("Money and gifts:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
-                
-                ui.label(egui::RichText::new("Instead of traditional gifts, we would really appreciate your support in helping fund our party project. As a few people have already asked, we’re happy to share a suggested contribution (for those who are comfortably able to give):\n\nPer adult staying in a tent: €85.17\nPer adult staying in a bungalow: €142.41\n\nFor anyone on a tighter budget, please know that what matters most is that you’re there! We’re grateful for any contribution or help, but even more so for your joyful presence 😊\n\n\n").size(17.0));
-                
-                ui.label(egui::RichText::new("For those traveling without a car:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
-                
-                ui.label(egui::RichText::new("We’re planning a shuttle service from Beeskow to our location (Friday outbound, Sunday return) for about €10–15 per person, per trip. From Berlin Ostkreuz, you can take a regional train via Königs Wusterhausen to Beeskow (about 1.5 hours with one transfer). From there, the shuttle will take around another 30 minutes to reach the venue.\n\nWe’re aiming to offer shuttle departures from Beeskow at 4:30 pm and 5:30 pm so that everyone can arrive in time for dinner together at 6:00 pm. This means you’d need to leave Ostkreuz around 3:00 pm or 4:00 pm. Later options may also be possible if needed.\n\nOn Sunday, we’ll gladly shuttle you back around 4:00 pm or 5:00 pm 🚕🚕🚕\n\nPlease let us know by April 17 whether you’d like to book a spot on the shuttle, or share your preferred departure time. Only then can we arrange the taxis — and help you avoid relying on the Brandenburg buses. \n\n\n\nIn the weeks leading up to the celebration, we’ll get back to you with the Google Doc for the shared buffet, a personal packing list, and the shift schedule.\nIf there’s a specific task you’d enjoy helping with, feel free to let us know anytime.\n\nWe’re already getting excited and wish you a lovely time until the party!\n\n").size(17.0));
-                
-                ui.label(egui::RichText::new("With lots of love,\nKIMASHI\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
+				ui.label(egui::RichText::new("we can hardly believe it — the big weekend is almost here! Here’s the final round of really important information:").size(17.0)); 
+				
+				ui.label(egui::RichText::new("\nHelping Hands Schedule\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+				
+				ui.label(egui::RichText::new("please get back to us by May 24th!").size(26.0).color(egui::Color32::RED).strong()); 
+				
+				ui.label(egui::RichText::new("To help us coordinate all our lovely helpers, we already need your support now. Please get back to us by May 24th and let us know which tasks you’d enjoy helping with and when you’ll be available. We’ll organize everything and do our best to create a plan that works well for everyone.").size(17.0)); 
+				
+				ui.label(egui::RichText::new("If we don’t hear from you, we’ll assume you’re happy to help wherever needed and that you’ll be around until late Sunday afternoon.").size(17.0)); 
+				
+				if ui.button(egui::RichText::new(self.button4.clone()).size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
+						if self.flag4 == true {self.flag4 = false;}
+						else {self.flag4 = true;}
+					} 
+				
+				ui.label(egui::RichText::new("\nGoogle Docs/Sheets for Buffet Contributions and Carpooling:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+				
+				ui.label(egui::RichText::new("Please add what you’d like to bring for the Friday buffet: ideally finger food that can easily be eaten by hand — sweet or savory are both very welcome.").size(17.0));
+				
+				ui.label(egui::RichText::new("(no stress at all if you can’t bring anything because of travel or time constraints)").size(17.0));
+				
+				ui.add(
+				    egui::Hyperlink::from_label_and_url(
+				        egui::RichText::new("What to Bring").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)),
+				        "https://docs.google.com/document/d/1oSsfuwkMAKTApy1AX0LG_zBfuD6Ym0_B82CBWN-xvKE/edit?usp=sharing",
+				    )
+				);
+				
+				ui.label(egui::RichText::new("Please add your name if you can offer seats in your car for the trip — and make sure to include your phone number!").size(17.0)); 
+				
+				ui.add(
+				    egui::Hyperlink::from_label_and_url(
+				        egui::RichText::new("Carpool List").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)),
+				        "https://docs.google.com/spreadsheets/d/1vfl5wpG0HaQNEFuzkOHtKUigDhtELqi9hJA-zkjgttQ/edit?usp=sharing",
+				    )
+				);
+				
+				ui.label(egui::RichText::new("\nPacking List:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+				
+				ui.label(egui::RichText::new("Here are a few things we’d recommend bringing along to make the weekend extra cozy and comfortable:\n(Bed linen and towels are provided in the bungalows.)\n\n- Camping chair\n- Picnic blanket\n- Seat cushion for the beer benches\n- A cozy blanket for sitting outside in the evening\n- Swimwear\n- Flip-flops or sandals\n- Sauna towel\n- Sun protection\n- Mosquito repellent\n- Rain gear — just in case\n- Layers for cooler evenings (\"onion style\" clothing works best!)").size(17.0)); 
+				
+				ui.label(egui::RichText::new("\nAlso let us know if you’d still like to sign up for the shuttle from Beeskow to the venue.").size(17.0)); 
+				
+				ui.label(egui::RichText::new("\nWe truly can’t wait to celebrate with you all!").size(17.0)); 
+				
+				ui.label(egui::RichText::new("See you very soon\nKIMASHI\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong());
 
             
             }
