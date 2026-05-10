@@ -528,28 +528,60 @@ impl eframe::App for TemplateApp {
             
             }
             else {
-                
-                //ui.label(egui::RichText::new("\n... Download abgeschlossen! :)\n\nVor inzwischen 2 Jahren haben wir, Kim und Matthi, geheiratet. Zusammen mit unserem frisch gebackenen Familienmitglied Yoshi sind wir jetzt komplett: KIMASHI :)\n\nDarum ist jetzt die Zeit gekommen, mit euch allen, klein und groß, von nah und fern, Freunde und Familie, ein großes Fest zu feiern. Dafür haben wir einen zauberhaften Ort mitten im Wald direkt an einem Badesee gefunden. Von Freitag bis Sonntag, den 12. bis 14. Juni 2026, gibt es lekkres Essen und Getränke, einen Whirlpool, eine kleine Sauna und ganz viel Musik. Ein zentraler Moment wird am Samstag eine Zeremonie sein, die unsere Familiengründung feierlich besiegelt.\n\nVom Essen über Deko bis zur Musik organisieren wir fast alles selbst. Und dafür brauchen wir eure Unterstützung! Sagt uns gerne Bescheid, wenn ihr etwas Bestimmtes beitragen möchtet. Aufgaben wie Aufräumen, Kochen, Abspülen u.ä. werden wir vorab so organisieren, dass sie fair verteilt werden und niemand etwas machen muss, was nicht wenigstens ein bisschen Spaß macht. In every job that must be done there is an element of fun! 😉\n\nBitte guckt euch auch den Rest der Website an. Ihr findet dort weitere wichtige Infos und ein paar lustige Überraschungen. Wenn das Wochenende näher rückt, schaut für aktuelle Infos gern wieder vorbei!").size(17.0));                
-                
-                //ui.label(egui::RichText::new("\nihr lieben Liebsten,\n\nwir freuen uns mega über eure Zusage zu unserer großen Feier diesen Juni, 12ter bis 14ter. Lange ist's nicht mehr hin und wir haben ein paar Updates für euch:\n\n\nVerpflegung:\n\nWir möchten euch bitten, wenn es euch möglich ist, am Freitag Nachmittag einen Beitrag zum Fingerfood-Buffet mitzubringen (mach dir keine Mühe, wenn du das Gefühl hast, dass das deine Möglichkeiten übersteigen würde, z. B. wenn du von weit her kommst). Dafür schicken wir euch in den Wochen vor der Feier noch ein Google-Doc zum Eintragen.\n\nSolltet ihr Lebensmittelallergien oder Unverträglichkeiten haben, meldet euch bitte bald bei uns. Für vegetarisch/vegan ist alles da. 😊\n\n\nGeld und Geschenke:\n\nAnstelle von Geschenken freuen wir uns, wenn ihr uns finanziell bei unserem Party-Projekt unterstützt. Da wir schon ein paar Mal gefragt wurden, geben wir euch eine \"Spenden-Empfehlung\" (für Menschen mit zufriedenem Geldbeutel):\n\nPro Erwachsene*r im Zelt: 85,17€\nPro Erwachsene*r im Bungalow: 142,41€\n\nFür alle Menschen mit hungrigem Geldbeutel gilt: Dabei sein ist alles! Wir freuen uns über jeden Beitrag und jede Mithilfe, aber viel mehr über eure strahlende Anwesenheit! 😊\n\n\nFür die Anreise ohne Auto:\n\nWir planen einen Shuttle von Beeskow zu unserer Location (Freitag hin, Sonntag zurück) für ca. 10-15 € pro Person und Fahrt. Vom Ostkreuz Berlin fahrt ihr mit dem Regio über Königswusterhausen bis Beeskow (1,5 Stunden, ein Umstieg). Unser Shuttle fährt dann noch 30 min zur Location.\n\nWir möchten diesen Shuttle um 16:30 und 17:30 ab Beeskow anbieten, damit alle pünktlich um 18:00 Uhr zum Abendessen zusammenkommen. Ihr müsstet also um 15 bzw. 16 Uhr am Ostkreuz los. Aber auch spätere Zeiten wären denkbar, wenn es nicht anders geht.\n\nAm Sonntag shuttlen wir euch gerne gegen 16 oder 17 Uhr zurück. 🚕🚕🚕\n\nBitte meldet euch bei uns bis zum 17. April verbindlich für den angebotenen Shuttle an, oder nennt uns eure Wunsch-Uhrzeit! Erst dann können wir die Taxis buchen und euch vor den Brandenburger Bussen bewahren. \n\n\nIn den Wochen vor der Feier melden wir uns nochmal bei euch mit dem Google-Doc für Mitbring-Buffet, der persönlichen Mitbring-Liste und dem Schicht-Plan.\nFalls ihr auf eine bestimmte Aufgabe Lust habt, meldet euch gerne schon jetzt bei uns.\n\nWir sind schon ganz aufgeregt und wünschen euch noch eine schöne Zeit bis zur Party!\n\nalles Liebe von\nKIMASHI\n\n").size(17.0)); 
 
-                ui.label(egui::RichText::new("\nihr lieben Liebsten,\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+				ui.label(egui::RichText::new("\nLiebe Fast schon-Partygäste,\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 
-                ui.label(egui::RichText::new("wir freuen uns mega über eure Zusage zu unserer großen Feier diesen Juni, 12ter bis 14ter. Lange ist's nicht mehr hin und wir haben ein paar Updates für euch:\n\n\n").size(17.0)); 
+				ui.label(egui::RichText::new("wir können es kaum glauben, es ist schon fast so weit! Hier noch die letzten wirklich wichtigen Infos:").size(17.0)); 
+				
+				ui.label(egui::RichText::new("\nMithelf-Plan\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+				
+				ui.label(egui::RichText::new("bitte bis zum 24.05. zurückmelden!").size(26.0).color(egui::Color32::RED).strong()); 
+				
+				ui.label(egui::RichText::new("Damit wir alle Helferlis gut einteilen können, brauchen wir schon jetzt eure Hilfe. Bitte meldet euch bis zum 24.05. zurück und gebt an, welche Aufgaben ihr gern übernehmen möchtet und wann ihr dafür Zeit habt. Wir teilen euch dann ein und versuchen, den Plan für alle passend zu gestalten.").size(17.0)); 
+				
+				ui.label(egui::RichText::new("Sollten wir von euch nichts hören, gehen wir davon aus, dass ihr auf alle Aufgabenbereiche Lust habt und am Sonntag bis zum späten Nachmittag am Start seid.").size(17.0)); 
+				
+				ui.add(
+				    egui::Hyperlink::from_label_and_url(
+				        egui::RichText::new("woodland wedding website").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)),
+				        "https://woodland-wedding2026.github.io/kimashi/",
+				    )
+				);
+				
+				
+				ui.label(egui::RichText::new("\nGoogle Doc/Tabelle für Mitbring-Buffet und Mitfahrzentrale:\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+				
+				ui.label(egui::RichText::new("Bitte tragt ein, was ihr für das Buffet am Freitag mitbringt: bitte Fingerfood, das entspannt aus der Hand gegessen werden kann - gerne süß oder salzig.").size(17.0));
+				
+				ui.label(egui::RichText::new("(kein Stress falls ihr wegen Zeitmangel oder langer Fahrt nichts beitragen könnt)").size(17.0));
+				
+				ui.add(
+				    egui::Hyperlink::from_label_and_url(
+				        egui::RichText::new("Mitbringliste").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)),
+				        "https://docs.google.com/document/d/1oSsfuwkMAKTApy1AX0LG_zBfuD6Ym0_B82CBWN-xvKE/edit?usp=sharing",
+				    )
+				);
+				
+				ui.label(egui::RichText::new("Bitte tragt ein, falls ihr für die Anfahrt noch Plätze im Auto anbieten könnt und gebt unbedingt eure Telefonnummer mit an!").size(17.0)); 
+				
+				ui.add(
+				    egui::Hyperlink::from_label_and_url(
+				        egui::RichText::new("Mitfahrtabelle").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)),
+				        "https://docs.google.com/spreadsheets/d/1vfl5wpG0HaQNEFuzkOHtKUigDhtELqi9hJA-zkjgttQ/edit?usp=sharing",
+				    )
+				);
+				
+				ui.label(egui::RichText::new("\nMitbringliste:\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+				
+				ui.label(egui::RichText::new("Hier unsere Empfehlung, was ihr mitbringen könnt, um das Wochenende gemütlich zu verbringen:\n(In den Bungalows sind Handtücher und Bettwäsche vorhanden)\n\n- Campingstuhl\n- Picknickdecke\n- Sitzkissen für die Bierbank\n- Kuscheldecke zum abends draußen sitzen\n- Badesachen\n- Badelatschen\n- Sauna-Handtuch\n- Sonnenschutz\n- Mückenzeug\n- Regenkleidung: man weiß ja nie\n- Zwiebelschalen: falls es abends kalt wird").size(17.0)); 
+				
+				ui.label(egui::RichText::new("Meldet euch außerdem bei uns, falls ihr euch noch für den Shuttle von Beeskow zum Gelände anmelden wollt.").size(17.0)); 
+				
+				ui.label(egui::RichText::new("Wir freuen uns schon unbändig auf euch!").size(17.0)); 
+				
+				ui.label(egui::RichText::new("Bis sehr bald\nKIMASHI\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
                 
-                ui.label(egui::RichText::new("Verpflegung:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
                 
-                ui.label(egui::RichText::new("Wir möchten euch bitten, wenn es euch möglich ist, am Freitag Nachmittag einen Beitrag zum Fingerfood-Buffet mitzubringen (mach dir keinen Stress, wenn es zu viel Aufwand ist – vor allem, wenn du von weiter weg kommst). Dafür schicken wir euch in den Wochen vor der Feier noch ein Google-Doc zum Eintragen.\n\nSolltet ihr Lebensmittelallergien oder Unverträglichkeiten haben, meldet euch bitte bald bei uns. Für vegetarisch/vegan ist alles da. 😊\n\n\n").size(17.0)); 
-                
-                ui.label(egui::RichText::new("Geld und Geschenke:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
-                
-                ui.label(egui::RichText::new("Anstelle von Geschenken freuen wir uns, wenn ihr uns finanziell bei unserem Party-Projekt unterstützt. Da wir schon ein paar Mal gefragt wurden, geben wir euch eine \"Spenden-Empfehlung\" (für Menschen mit zufriedenem Geldbeutel):\n\nPro Erwachsene*r im Zelt: 85,17€\nPro Erwachsene*r im Bungalow: 142,41€\n\nFür alle Menschen mit hungrigem Geldbeutel gilt: Dabei sein ist alles! Wir freuen uns über jeden Beitrag und jede Mithilfe, aber viel mehr über eure strahlende Anwesenheit! 😊\n\n\n").size(17.0)); 
-                
-                ui.label(egui::RichText::new("Für die Anreise ohne Auto:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
-                
-                ui.label(egui::RichText::new("Wir planen einen Shuttle von Beeskow zu unserer Location (Freitag hin, Sonntag zurück) für ca. 10-15 € pro Person und Fahrt. Vom Ostkreuz Berlin fahrt ihr mit dem Regio über Königs Wusterhausen bis Beeskow (1,5 Stunden, ein Umstieg). Unser Shuttle fährt dann noch 30 min zur Location.\n\nWir möchten diesen Shuttle um 16:30 und 17:30 Uhr ab Beeskow anbieten, damit alle pünktlich um 18:00 Uhr zum Abendessen zusammenkommen. Ihr müsstet also um 15 bzw. 16 Uhr am Ostkreuz los. Aber auch spätere Zeiten wären denkbar, wenn es nicht anders geht.\n\nAm Sonntag shuttlen wir euch gerne gegen 16 oder 17 Uhr zurück. 🚕🚕🚕\n\nBitte meldet euch bei uns bis zum 17. April verbindlich für den angebotenen Shuttle an, oder nennt uns eure Wunsch-Uhrzeit! Erst dann können wir die Taxis buchen und euch vor den Brandenburger Bussen bewahren. \n\n\n\nIn den Wochen vor der Feier melden wir uns nochmal bei euch mit dem Google-Doc für Mitbring-Buffet, der persönlichen Mitbring-Liste und dem Schicht-Plan.\nFalls ihr auf eine bestimmte Aufgabe Lust habt, meldet euch gerne schon jetzt bei uns.\n\nWir sind schon ganz aufgeregt und wünschen euch noch eine schöne Zeit bis zur Party!\n\n").size(17.0)); 
-                
-                ui.label(egui::RichText::new("alles Liebe von\nKIMASHI\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
                             
             }
             //if ui.button(egui::RichText::new(self.formbutton.clone()).size(17.0).color(egui::Color32::from_rgb(206,101,43)).strong()).clicked() {
