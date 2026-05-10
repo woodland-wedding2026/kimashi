@@ -528,7 +528,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.add(
 				    egui::Hyperlink::from_label_and_url(
-				        egui::RichText::new("click me - What to Bring - click me").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
+				        egui::RichText::new("click me - What to Bring List - click me").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
 				        "https://docs.google.com/document/d/1oSsfuwkMAKTApy1AX0LG_zBfuD6Ym0_B82CBWN-xvKE/edit?usp=sharing",
 				    )
 				);
