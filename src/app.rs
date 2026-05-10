@@ -515,7 +515,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("If we don’t hear from you, we’ll assume you’re happy to help wherever needed and that you’ll be around until late Sunday afternoon.").size(17.0)); 
 				
-				if ui.button(egui::RichText::new(self.button4.clone()).size(24.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
+				if ui.button(egui::RichText::new("click me to go to reply form").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
 						if self.flag4 == true {self.flag4 = false;}
 						else {self.flag4 = true;}
 					} 
@@ -568,7 +568,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("Sollten wir von euch nichts hören, gehen wir davon aus, dass ihr auf alle Aufgabenbereiche Lust habt und am Sonntag bis zum späten Nachmittag am Start seid.").size(17.0)); 
 				
-				if ui.button(egui::RichText::new(self.button4.clone()).size(24.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
+				if ui.button(egui::RichText::new(klick mich um zum Antwortformular zu kommen).size(24.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
                		if self.flag4 == true {self.flag4 = false;}
                		else {self.flag4 = true;}
         			} 
