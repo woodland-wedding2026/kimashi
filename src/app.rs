@@ -1209,7 +1209,7 @@ else {
 
 				ui.label(egui::RichText::new("Things to bring:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
 					
-                ui.label(egui::RichText::new("Here are a few things we’d recommend bringing along to make the weekend extra cozy and comfortable:\n(Bed linen and towels are provided in the bungalows.)\n\n- Camping chair\n- Picnic blanket\n- Seat cushion for the beer benches\n- A cozy blanket for sitting outside in the evening\n- Swimwear\n- Flip-flops or sandals\n- Sauna towel\n- Sun protection\n- Mosquito repellent\n- Rain gear — just in case\n- Layers for cooler evenings (\“onion style\” clothing works best!)").size(17.0));
+                ui.label(egui::RichText::new("Here are a few things we’d recommend bringing along to make the weekend extra cozy and comfortable:\n(Bed linen and towels are provided in the bungalows.)\n\n- Camping chair\n- Picnic blanket\n- Seat cushion for the beer benches\n- A cozy blanket for sitting outside in the evening\n- Swimwear\n- Flip-flops or sandals\n- Sauna towel\n- Sun protection\n- Mosquito repellent\n- Rain gear — just in case\n- Layers for cooler evenings (\"onion style\" clothing works best!)").size(17.0));
                 
                 
                 }
