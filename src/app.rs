@@ -529,7 +529,7 @@ impl eframe::App for TemplateApp {
             }
             else {
 
-				ui.label(egui::RichText::new("\nLiebe Fast schon-Partygäste,\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+				ui.label(egui::RichText::new("\nLiebe Fast schon-Partygäste,\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 
 				ui.label(egui::RichText::new("wir können es kaum glauben, es ist schon fast so weit! Hier noch die letzten wirklich wichtigen Infos:").size(17.0)); 
 				
@@ -541,7 +541,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("Sollten wir von euch nichts hören, gehen wir davon aus, dass ihr auf alle Aufgabenbereiche Lust habt und am Sonntag bis zum späten Nachmittag am Start seid.").size(17.0)); 
 				
-				if ui.button(egui::RichText::new(self.button4.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
+				if ui.button(egui::RichText::new(self.button4.clone()).size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
                		if self.flag4 == true {self.flag4 = false;}
                		else {self.flag4 = true;}
         			} 
