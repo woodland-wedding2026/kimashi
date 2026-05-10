@@ -1740,11 +1740,44 @@ pub fn cyber_rainbow_text(
 
     let lines: Vec<&str> = text.lines().collect();
 
-    let font_id = FontId::proportional(size);
+    // -------------------------------------------------
+    // AUTO SCALE TO FIT AVAILABLE WIDTH
+    // -------------------------------------------------
+
+    let available_width = ui.available_width();
+
+    let test_font = FontId::proportional(size);
+
+    let widest_line = lines
+        .iter()
+        .map(|line| {
+            painter
+                .layout_no_wrap(
+                    line.to_string(),
+                    test_font.clone(),
+                    Color32::WHITE,
+                )
+                .size()
+                .x
+        })
+        .fold(0.0, f32::max);
+
+    let scale = if widest_line > available_width {
+        available_width / widest_line
+    } else {
+        1.0
+    };
+
+    let scaled_size = size * scale;
+
+    let font_id = FontId::proportional(scaled_size);
+
+    // -------------------------------------------------
+    // RENDER
+    // -------------------------------------------------
 
     for (line_idx, line) in lines.iter().enumerate() {
 
-        // REAL text width from egui font system
         let line_galley = painter.layout_no_wrap(
             line.to_string(),
             font_id.clone(),
@@ -1753,14 +1786,13 @@ pub fn cyber_rainbow_text(
 
         let line_width = line_galley.size().x;
 
-        // centered line
         let mut x =
             start.x
-            + (ui.available_width() - line_width) * 0.5;
+            + (available_width - line_width) * 0.5;
 
         let y =
             start.y
-            + line_idx as f32 * (size + 8.0);
+            + line_idx as f32 * (scaled_size + 8.0);
 
         for (i, ch) in line.chars().enumerate() {
 
@@ -1782,7 +1814,7 @@ pub fn cyber_rainbow_text(
                     pos + offset,
                     egui::Align2::LEFT_TOP,
                     ch,
-                    FontId::proportional(size + 4.0),
+                    FontId::proportional(scaled_size + 4.0),
                     Color32::from_rgba_premultiplied(
                         color.r(),
                         color.g(),
@@ -1792,7 +1824,7 @@ pub fn cyber_rainbow_text(
                 );
             }
 
-            // colored body
+            // body
             painter.text(
                 pos,
                 egui::Align2::LEFT_TOP,
@@ -1806,11 +1838,13 @@ pub fn cyber_rainbow_text(
                 pos + Vec2::new(0.5, 0.5),
                 egui::Align2::LEFT_TOP,
                 ch,
-                FontId::proportional(size - 6.0),
+                FontId::proportional(
+                    (scaled_size - 6.0).max(1.0)
+                ),
                 Color32::BLACK,
             );
 
-            // REAL glyph advance
+            // real glyph advance
             let glyph_galley = painter.layout_no_wrap(
                 ch.to_string(),
                 font_id.clone(),
@@ -1821,17 +1855,9 @@ pub fn cyber_rainbow_text(
         }
     }
 
-    // reserve layout space
-    ui.add_space(lines.len() as f32 * (size + 8.0));
+    ui.add_space(
+        lines.len() as f32 * (scaled_size + 8.0)
+    );
 
     ui.ctx().request_repaint();
 }
-
-
-
-
-
-
-
-
-
