@@ -490,8 +490,8 @@ impl eframe::App for TemplateApp {
             // The central panel the region left after adding TopPanel's and SidePanel's
             //ui.heading("Woodland Wedding 2026 - kimashi == Kim, Matthias and Yoshi");
             
-            ui.heading(egui::RichText::new("Woodland Wedding 2026 \nKIMASHI = Kim, Matthias and Yoshi\n").size(34.0).color(egui::Color32::DARK_GREEN).strong());
-            
+            //ui.heading(egui::RichText::new("Woodland Wedding 2026 \nKIMASHI = Kim, Matthias and Yoshi\n").size(34.0).color(egui::Color32::DARK_GREEN).strong());
+            cyber_rainow_text(ui, "Woodland Wedding 2026 \nKIMASHI = Kim, Matthias and Yoshi\n", 34.0);
                 
             egui_extras::install_image_loaders(ctx);
             let collage = egui::include_image!("../assets/Collage_Verotterung_Zuschnitt2.jpg");
@@ -1722,6 +1722,67 @@ pub fn cyber_button(
     ui.ctx().request_repaint();
 
     response
+}
+
+use eframe::egui::{self, Color32, FontId, Pos2, Vec2};
+
+pub fn cyber_rainbow_text(ui: &mut egui::Ui, text: &str, size: f32) {
+    let time = ui.ctx().input(|i| i.time) as f32;
+    let painter = ui.painter();
+
+    let start = ui.cursor().min;
+    let mut x = start.x;
+
+    for (i, ch) in text.chars().enumerate() {
+        let hue = (time * 0.18 + i as f32 * 0.07) % 1.0;
+        let color = hsv_to_rgb(hue, 1.0, 1.0);
+
+        let pos = Pos2::new(x, start.y);
+
+        // outer glow
+        for offset in [
+            Vec2::new(-2.0, 0.0),
+            Vec2::new(2.0, 0.0),
+            Vec2::new(0.0, -2.0),
+            Vec2::new(0.0, 2.0),
+        ] {
+            painter.text(
+                pos + offset,
+                egui::Align2::LEFT_TOP,
+                ch,
+                FontId::proportional(size + 4.0),
+                Color32::from_rgba_premultiplied(
+                    color.r(),
+                    color.g(),
+                    color.b(),
+                    40,
+                ),
+            );
+        }
+
+        // colored body
+        painter.text(
+            pos,
+            egui::Align2::LEFT_TOP,
+            ch,
+            FontId::proportional(size),
+            color,
+        );
+
+        // hot white core
+        painter.text(
+            pos + Vec2::new(0.5, 0.5),
+            egui::Align2::LEFT_TOP,
+            ch,
+            FontId::proportional(size - 6.0),
+            Color32::WHITE,
+        );
+
+        x += size * 0.62;
+    }
+
+    ui.add_space(size + 8.0);
+    ui.ctx().request_repaint();
 }
 
 
