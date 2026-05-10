@@ -1807,7 +1807,7 @@ pub fn cyber_rainbow_text(
                 egui::Align2::LEFT_TOP,
                 ch,
                 FontId::proportional(size - 6.0),
-                Color32::WHITE,
+                Color32::BLACK,
             );
 
             // REAL glyph advance
