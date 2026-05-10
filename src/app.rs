@@ -1207,7 +1207,7 @@ else {
                 
                 ui.label(egui::RichText::new("no need for formal evening wear unless it makes you happy. We love colorful, glittery, shiny and extravagant outfits. But pajamas, pirate costumes and potato sacks are also favorites. So – feel free to express yourself!\n\n").size(17.0));
                 
-                ui.label(egui::RichText::new("More of what to bring will be posted here in our next update, so please check back in with us.").size(17.0));
+                ui.label(egui::RichText::new("Here are a few things we’d recommend bringing along to make the weekend extra cozy and comfortable:\n(Bed linen and towels are provided in the bungalows.)\n\n- Camping chair\n- Picnic blanket\n- Seat cushion for the beer benches\n- A cozy blanket for sitting outside in the evening\n- Swimwear\n- Flip-flops or sandals\n- Sauna towel\n- Sun protection\n- Mosquito repellent\n- Rain gear — just in case\n- Layers for cooler evenings (\“onion style\” clothing works best!)").size(17.0));
                 
                 
                 }
@@ -1219,7 +1219,7 @@ else {
                 
                 ui.label(egui::RichText::new("Förmliche Abendgarderobe ist nicht nötig, es sei denn sie macht euch glücklich. Wir freuen uns immer über farbenfrohe, glitzernde, schillernde und extravagante Outfits. Aber auch Pyjamas, Piratenkostüme und Kartoffelsäcke gehören zu unseren Favoriten. Ihr habt also die freie Wahl!\n\n").size(17.0));
                 
-                ui.label(egui::RichText::new("Alles Weitere findet ihr nach unserem nächsten Update hier. Bitte schaut nochmal rein!").size(17.0));
+                ui.label(egui::RichText::new("Hier unsere Empfehlung, was ihr mitbringen könnt, um das Wochenende gemütlich zu verbringen:\n(In den Bungalows sind Handtücher und Bettwäsche vorhanden)\n\n- Campingstuhl\n- Picknickdecke\n- Sitzkissen für die Bierbank\n- Kuscheldecke zum abends draußen sitzen\n- Badesachen\n- Badelatschen\n- Sauna-Handtuch\n- Sonnenschutz\n- Mückenzeug\n- Regenkleidung: man weiß ja nie\n- Zwiebelschalen: falls es abends kalt wird").size(17.0));
                 
                 }
                 
