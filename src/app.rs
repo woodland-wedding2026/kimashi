@@ -438,10 +438,19 @@ impl eframe::App for TemplateApp {
                 if self.flag6 == true {self.flag6 = false;}
                 else {self.flag6 = true;}
             } 
-            if ui.button(egui::RichText::new(self.button8.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
+            
+			
+			//if ui.button(egui::RichText::new(self.button8.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
+            //    if self.flag8 == true {self.flag8 = false;}
+            //    else {self.flag8 = true;}
+            //}  
+
+			if cyber_button(ui, &self.button8, 17.0).clicked() {
                 if self.flag8 == true {self.flag8 = false;}
                 else {self.flag8 = true;}
-            }  
+            } 
+
+			
             if ui.button(egui::RichText::new(self.button9.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
                 if self.flag9 == true {self.flag9 = false;}
                 else {self.flag9 = true;}
