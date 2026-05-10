@@ -515,7 +515,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("If we don’t hear from you, we’ll assume you’re happy to help wherever needed and that you’ll be around until late Sunday afternoon.").size(17.0)); 
 				
-				if ui.button(egui::RichText::new(self.button4.clone()).size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
+				if ui.button(egui::RichText::new(self.button4.clone()).size(24.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
 						if self.flag4 == true {self.flag4 = false;}
 						else {self.flag4 = true;}
 					} 
@@ -528,7 +528,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.add(
 				    egui::Hyperlink::from_label_and_url(
-				        egui::RichText::new("What to Bring").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)),
+				        egui::RichText::new("click me - What to Bring - click me").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
 				        "https://docs.google.com/document/d/1oSsfuwkMAKTApy1AX0LG_zBfuD6Ym0_B82CBWN-xvKE/edit?usp=sharing",
 				    )
 				);
@@ -537,7 +537,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.add(
 				    egui::Hyperlink::from_label_and_url(
-				        egui::RichText::new("Carpool List").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)),
+				        egui::RichText::new("click me - Carpool Table - click me").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
 				        "https://docs.google.com/spreadsheets/d/1vfl5wpG0HaQNEFuzkOHtKUigDhtELqi9hJA-zkjgttQ/edit?usp=sharing",
 				    )
 				);
@@ -568,7 +568,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("Sollten wir von euch nichts hören, gehen wir davon aus, dass ihr auf alle Aufgabenbereiche Lust habt und am Sonntag bis zum späten Nachmittag am Start seid.").size(17.0)); 
 				
-				if ui.button(egui::RichText::new(self.button4.clone()).size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
+				if ui.button(egui::RichText::new(self.button4.clone()).size(24.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()).clicked() {
                		if self.flag4 == true {self.flag4 = false;}
                		else {self.flag4 = true;}
         			} 
@@ -581,7 +581,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.add(
 				    egui::Hyperlink::from_label_and_url(
-				        egui::RichText::new("Mitbringliste").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)),
+				        egui::RichText::new("klick mich - Mitbringliste - klick mich").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
 				        "https://docs.google.com/document/d/1oSsfuwkMAKTApy1AX0LG_zBfuD6Ym0_B82CBWN-xvKE/edit?usp=sharing",
 				    )
 				);
@@ -590,7 +590,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.add(
 				    egui::Hyperlink::from_label_and_url(
-				        egui::RichText::new("Mitfahrtabelle").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)),
+				        egui::RichText::new("klick mich - Mitfahrtabelle - klick mich").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
 				        "https://docs.google.com/spreadsheets/d/1vfl5wpG0HaQNEFuzkOHtKUigDhtELqi9hJA-zkjgttQ/edit?usp=sharing",
 				    )
 				);
