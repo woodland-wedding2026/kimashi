@@ -1726,65 +1726,88 @@ pub fn cyber_button(
 
 use eframe::egui::{Color32, FontId, Pos2, Vec2};
 
-pub fn cyber_rainbow_text(ui: &mut egui::Ui, text: &str, size: f32) {
+pub fn cyber_rainbow_text(
+    ui: &mut egui::Ui,
+    text: &str,
+    size: f32,
+) {
     let time = ui.ctx().input(|i| i.time) as f32;
     let painter = ui.painter();
 
     let start = ui.cursor().min;
-    let mut x = start.x;
 
-    for (i, ch) in text.chars().enumerate() {
-        let hue = (time * 0.18 + i as f32 * 0.07) % 1.0;
-        let color = hsv_to_rgb(hue, 1.0, 1.0);
+    let lines: Vec<&str> = text.lines().collect();
 
-        let pos = Pos2::new(x, start.y);
+    for (line_idx, line) in lines.iter().enumerate() {
 
-        // outer glow
-        for offset in [
-            Vec2::new(-2.0, 0.0),
-            Vec2::new(2.0, 0.0),
-            Vec2::new(0.0, -2.0),
-            Vec2::new(0.0, 2.0),
-        ] {
+        let line_width =
+            line.chars().count() as f32 * size * 0.62;
+
+        // centered
+        let mut x =
+            ui.available_width() * 0.5
+            - line_width * 0.5
+            + start.x;
+
+        let y =
+            start.y + line_idx as f32 * (size + 8.0);
+
+        for (i, ch) in line.chars().enumerate() {
+
+            let hue =
+                (time * 0.18 + i as f32 * 0.07) % 1.0;
+
+            let color = hsv_to_rgb(hue, 1.0, 1.0);
+
+            let pos = Pos2::new(x, y);
+
+            // glow
+            for offset in [
+                Vec2::new(-2.0, 0.0),
+                Vec2::new(2.0, 0.0),
+                Vec2::new(0.0, -2.0),
+                Vec2::new(0.0, 2.0),
+            ] {
+                painter.text(
+                    pos + offset,
+                    egui::Align2::LEFT_TOP,
+                    ch,
+                    FontId::proportional(size + 4.0),
+                    Color32::from_rgba_premultiplied(
+                        color.r(),
+                        color.g(),
+                        color.b(),
+                        40,
+                    ),
+                );
+            }
+
+            // body
             painter.text(
-                pos + offset,
+                pos,
                 egui::Align2::LEFT_TOP,
                 ch,
-                FontId::proportional(size + 4.0),
-                Color32::from_rgba_premultiplied(
-                    color.r(),
-                    color.g(),
-                    color.b(),
-                    40,
-                ),
+                FontId::proportional(size),
+                color,
             );
+
+            // white core
+            painter.text(
+                pos + Vec2::new(0.5, 0.5),
+                egui::Align2::LEFT_TOP,
+                ch,
+                FontId::proportional(size - 6.0),
+                Color32::WHITE,
+            );
+
+            x += size * 0.62;
         }
-
-        // colored body
-        painter.text(
-            pos,
-            egui::Align2::LEFT_TOP,
-            ch,
-            FontId::proportional(size),
-            color,
-        );
-
-        // hot white core
-        painter.text(
-            pos + Vec2::new(0.5, 0.5),
-            egui::Align2::LEFT_TOP,
-            ch,
-            FontId::proportional(size - 6.0),
-            Color32::WHITE,
-        );
-
-        x += size * 0.62;
     }
 
-    ui.add_space(size + 8.0);
+    ui.add_space(lines.len() as f32 * (size + 8.0));
+
     ui.ctx().request_repaint();
 }
-
 
 
 
