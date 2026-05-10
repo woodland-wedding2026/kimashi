@@ -1724,7 +1724,7 @@ pub fn cyber_button(
     response
 }
 
-use eframe::egui::{self, Color32, FontId, Pos2, Vec2};
+use eframe::egui::{Color32, FontId, Pos2, Vec2};
 
 pub fn cyber_rainbow_text(ui: &mut egui::Ui, text: &str, size: f32) {
     let time = ui.ctx().input(|i| i.time) as f32;
