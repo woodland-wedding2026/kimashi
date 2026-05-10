@@ -533,7 +533,7 @@ impl eframe::App for TemplateApp {
 
 				ui.label(egui::RichText::new("wir können es kaum glauben, es ist schon fast so weit! Hier noch die letzten wirklich wichtigen Infos:").size(17.0)); 
 				
-				ui.label(egui::RichText::new("\nMithelf-Plan\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+				ui.label(egui::RichText::new("\nMithelf-Plan\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 				
 				ui.label(egui::RichText::new("bitte bis zum 24.05. zurückmelden!").size(26.0).color(egui::Color32::RED).strong()); 
 				
@@ -541,15 +541,12 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("Sollten wir von euch nichts hören, gehen wir davon aus, dass ihr auf alle Aufgabenbereiche Lust habt und am Sonntag bis zum späten Nachmittag am Start seid.").size(17.0)); 
 				
-				ui.add(
-				    egui::Hyperlink::from_label_and_url(
-				        egui::RichText::new("woodland wedding website").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)),
-				        "https://woodland-wedding2026.github.io/kimashi/",
-				    )
-				);
+				if ui.button(egui::RichText::new(self.button4.clone()).size(17.0).color(egui::Color32::from_rgb(0, 183, 255)).strong()).clicked() {
+               		if self.flag4 == true {self.flag4 = false;}
+               		else {self.flag4 = true;}
+        			} 
 				
-				
-				ui.label(egui::RichText::new("\nGoogle Doc/Tabelle für Mitbring-Buffet und Mitfahrzentrale:\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+				ui.label(egui::RichText::new("\nGoogle Doc/Tabelle für Mitbring-Buffet und Mitfahrzentrale:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 				
 				ui.label(egui::RichText::new("Bitte tragt ein, was ihr für das Buffet am Freitag mitbringt: bitte Fingerfood, das entspannt aus der Hand gegessen werden kann - gerne süß oder salzig.").size(17.0));
 				
@@ -571,13 +568,13 @@ impl eframe::App for TemplateApp {
 				    )
 				);
 				
-				ui.label(egui::RichText::new("\nMitbringliste:\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+				ui.label(egui::RichText::new("\nMitbringliste:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 				
 				ui.label(egui::RichText::new("Hier unsere Empfehlung, was ihr mitbringen könnt, um das Wochenende gemütlich zu verbringen:\n(In den Bungalows sind Handtücher und Bettwäsche vorhanden)\n\n- Campingstuhl\n- Picknickdecke\n- Sitzkissen für die Bierbank\n- Kuscheldecke zum abends draußen sitzen\n- Badesachen\n- Badelatschen\n- Sauna-Handtuch\n- Sonnenschutz\n- Mückenzeug\n- Regenkleidung: man weiß ja nie\n- Zwiebelschalen: falls es abends kalt wird").size(17.0)); 
 				
-				ui.label(egui::RichText::new("Meldet euch außerdem bei uns, falls ihr euch noch für den Shuttle von Beeskow zum Gelände anmelden wollt.").size(17.0)); 
+				ui.label(egui::RichText::new("\nMeldet euch außerdem bei uns, falls ihr euch noch für den Shuttle von Beeskow zum Gelände anmelden wollt.").size(17.0)); 
 				
-				ui.label(egui::RichText::new("Wir freuen uns schon unbändig auf euch!").size(17.0)); 
+				ui.label(egui::RichText::new("\nWir freuen uns schon unbändig auf euch!").size(17.0)); 
 				
 				ui.label(egui::RichText::new("Bis sehr bald\nKIMASHI\n\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
                 
