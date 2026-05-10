@@ -930,7 +930,7 @@ ui.add(
     ui.add(egui::TextEdit::singleline(&mut self.rsvp01).font(egui::FontId::proportional(17.0)));
     });
 
-    ui.label(egui::RichText::new("\nplease tell us what helper task(s) you will be OK with:").size(17.0));
+    ui.label(egui::RichText::new("\nplease tell us what your favorite helper task(s) would be:").size(17.0));
     ui.horizontal_wrapped(|ui| {
     ui.label(egui::RichText::new("prefered helper task(s): ").size(17.0).color(egui::Color32::DARK_GREEN));
     ui.add(egui::TextEdit::singleline(&mut self.rsvp02).font(egui::FontId::proportional(17.0)));
