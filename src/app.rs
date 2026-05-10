@@ -1705,7 +1705,7 @@ pub fn cyber_button(
             Align2::LEFT_TOP,
             ch,
             FontId::proportional(size - 6.0),
-            Color32::WHITE,
+            Color32::BLACK,
         );
 
         x += size * 0.62;
