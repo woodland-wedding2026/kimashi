@@ -1740,19 +1740,27 @@ pub fn cyber_rainbow_text(
 
     let lines: Vec<&str> = text.lines().collect();
 
+    let font_id = FontId::proportional(size);
+
     for (line_idx, line) in lines.iter().enumerate() {
 
-        let line_width =
-            line.chars().count() as f32 * size * 0.62;
+        // REAL text width from egui font system
+        let line_galley = painter.layout_no_wrap(
+            line.to_string(),
+            font_id.clone(),
+            Color32::WHITE,
+        );
 
-        // centered
+        let line_width = line_galley.size().x;
+
+        // centered line
         let mut x =
-            ui.available_width() * 0.5
-            - line_width * 0.5
-            + start.x;
+            start.x
+            + (ui.available_width() - line_width) * 0.5;
 
         let y =
-            start.y + line_idx as f32 * (size + 8.0);
+            start.y
+            + line_idx as f32 * (size + 8.0);
 
         for (i, ch) in line.chars().enumerate() {
 
@@ -1784,12 +1792,12 @@ pub fn cyber_rainbow_text(
                 );
             }
 
-            // body
+            // colored body
             painter.text(
                 pos,
                 egui::Align2::LEFT_TOP,
                 ch,
-                FontId::proportional(size),
+                font_id.clone(),
                 color,
             );
 
@@ -1802,15 +1810,22 @@ pub fn cyber_rainbow_text(
                 Color32::WHITE,
             );
 
-            x += size * 0.62;
+            // REAL glyph advance
+            let glyph_galley = painter.layout_no_wrap(
+                ch.to_string(),
+                font_id.clone(),
+                color,
+            );
+
+            x += glyph_galley.size().x;
         }
     }
 
+    // reserve layout space
     ui.add_space(lines.len() as f32 * (size + 8.0));
 
     ui.ctx().request_repaint();
 }
-
 
 
 
