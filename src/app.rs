@@ -562,7 +562,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("\nMithelf-Plan\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 				
-				ui.label(egui::RichText::new("bitte bis zum 24.05. zurückmelden!").size(26.0).color(egui::Color32::RED).strong()); 
+				ui.label(egui::RichText::new("bitte bis zum 24. Mai zurückmelden!").size(26.0).color(egui::Color32::RED).strong()); 
 				
 				ui.label(egui::RichText::new("Damit wir alle Helferlis gut einteilen können, brauchen wir schon jetzt eure Hilfe. Bitte meldet euch bis zum 24.05. zurück und gebt an, welche Aufgaben ihr gern übernehmen möchtet und wann ihr dafür Zeit habt. Wir teilen euch dann ein und versuchen, den Plan für alle passend zu gestalten.").size(17.0)); 
 				
