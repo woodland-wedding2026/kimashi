@@ -940,15 +940,15 @@ ui.add(
 
                     if self.language_flag == true {
 
-                        if self.new_formflag == false {
+                        if self.new_formflag == false {  
 
     ui.label(egui::RichText::new("Please use the form below to respond by no later than May 24th").size(24.0).color(egui::Color32::RED));
 	ui.label("");						
-	ui.label(egui::RichText::new("To help us organize everything smoothly, we’d really appreciate your support already now. Please tell us which tasks you’d be happy to help with and when you’re available. We’ll coordinate everything and do our best to create a plan that works well for everyone.\n\nMost tasks are not continuous — it’s more about keeping an eye on a certain area and helping out when needed. There will always be clear instructions on what to do.\n\nThe following tasks are available:\n\nFriday / Saturday:\n- Help set up breakfast\n- Help prepare dinner\n- Refill and keep the buffet tidy\n- Clear dishes and help with washing up\n- Keep an eye on the midnight snack\n\n- Prepare and maintain the campfire\n- Refill wood for the sauna and pool area\n- Help with technical setup/support\n- Prepare and keep outdoor areas tidy\n- Flexible helper: refill drinks, tidy up, wash dishes as needed\n\n\nSunday:\n- Clean up the kitchen\n- Clear and tidy the buffet\n- Sort leftover food\n- Organize drink crates and bottle returns\n\n- Carefully take down decorations\n- Tidy up the chill-out area\n- Clean up the party storage area\n- Clean up outdoor areas\n").size(23.0));
+	ui.label(egui::RichText::new("To help us organize everything smoothly, we’d really appreciate your support already now. Please tell us which tasks you’d be happy to help with and when you’re available. We’ll coordinate everything and do our best to create a plan that works well for everyone.\n\nMost tasks are not continuous — it’s more about keeping an eye on a certain area and helping out when needed. There will always be clear instructions on what to do.\n\n").size(23.0));
 
-	ui.label(egui::RichText::new("The following tasks are available:\n\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
+	ui.label(egui::RichText::new("The following tasks are available:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
 	ui.label(egui::RichText::new("Friday / Saturday:\n").size(23.0).color(egui::Color32::from_rgb(0, 183, 255)));
-	ui.label(egui::RichText::new("- Help set up breakfast\n- Help prepare dinner\n- Refill and keep the buffet tidy\n- Clear dishes and help with washing up\n- Keep an eye on the midnight snack\n\n- Prepare and maintain the campfire\n- Refill wood for the sauna and pool area\n- Help with technical setup/support\n- Prepare and keep outdoor areas tidy\n- Flexible helper: refill drinks, tidy up, wash dishes as needed\n\n\n").size(23.0));
+	ui.label(egui::RichText::new("- Help set up breakfast\n- Help prepare dinner\n- Refill and keep the buffet tidy\n- Clear dishes and help with washing up\n- Keep an eye on the midnight snack\n\n- Prepare and maintain the campfire\n- Refill wood for the sauna and pool area\n- Help with technical setup/support\n- Prepare and keep outdoor areas tidy\n- Flexible helper: refill drinks, tidy up, wash dishes as needed\n").size(23.0));
 	ui.label(egui::RichText::new("Sunday:\n").size(23.0).color(egui::Color32::from_rgb(0, 183, 255)));
 	ui.label(egui::RichText::new("- Clean up the kitchen\n- Clear and tidy the buffet\n- Sort leftover food\n- Organize drink crates and bottle returns\n\n- Carefully take down decorations\n- Tidy up the chill-out area\n- Clean up the party storage area\n- Clean up outdoor areas\n").size(23.0));
 
@@ -1069,10 +1069,10 @@ if self.new_formflag == false {
 	
 	ui.label(egui::RichText::new("Damit wir alle Helferlis gut einteilen können, brauchen wir schon jetzt eure Hilfe. Bitte gebt an, welche Aufgaben ihr gern übernehmen möchtet und wann ihr dafür Zeit habt. Wir teilen euch ein und versuchen, den Plan für alle passend zu gestalten.\n\nViele Aufgaben sind nicht durchgehend - es geht eher darum, im Blick zu haben, ob im jeweiligen Bereich etwas gebraucht wird. Es wird immer genaue Anweisungen geben, was zu tun ist.\n\n").size(23.0));
 
-	ui.label(egui::RichText::new("Folgende Aufgaben stehen zur Auswahl:\n\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
+	ui.label(egui::RichText::new("Folgende Aufgaben stehen zur Auswahl:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
 	
 	ui.label(egui::RichText::new("Freitag / Samstag:\n").size(23.0).color(egui::Color32::from_rgb(0, 183, 255)));
-	ui.label(egui::RichText::new("- Frühstück mit aufbauen\n- Abendessen vorbereiten helfen\n- Buffet nachfüllen und sauber halten\n- Essen abräumen und spülen\n- Mitternachtssnack im Blick haben\n\n- Lagerfeuer machen\n- Holz nachlegen bei Sauna und Pool\n- bei Technik mithelfen\n- Außenbereiche vorbereiten/ sauber halten\n- Springer: Getränke nachfüllen, aufräumen, spülen nach Bedarf\n\n\n").size(23.0));
+	ui.label(egui::RichText::new("- Frühstück mit aufbauen\n- Abendessen vorbereiten helfen\n- Buffet nachfüllen und sauber halten\n- Essen abräumen und spülen\n- Mitternachtssnack im Blick haben\n\n- Lagerfeuer machen\n- Holz nachlegen bei Sauna und Pool\n- bei Technik mithelfen\n- Außenbereiche vorbereiten/ sauber halten\n- Springer: Getränke nachfüllen, aufräumen, spülen nach Bedarf\n").size(23.0));
 	ui.label(egui::RichText::new("Sonntag:\n").size(23.0).color(egui::Color32::from_rgb(0, 183, 255)));
 	ui.label(egui::RichText::new("- Küche aufräumen\n- Buffet aufräumen\n- Lebensmittel sortieren\n- Getränkekisten/ Pfand sortieren\n\n- Deko vorsichtig abbauen\n- Chill-Area aufräumen\n- Party-Kabuff aufräumen\n- Außenbereiche aufräumen\n").size(23.0));
 
