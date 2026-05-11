@@ -520,7 +520,7 @@ impl eframe::App for TemplateApp {
 						else {self.flag4 = true;}
 					} 
 				
-				ui.label(egui::RichText::new("\nGoogle Docs/Sheets for Buffet Contributions and Carpooling:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+				ui.label(egui::RichText::new("\nGoogle Doc/Sheet for Buffet Contributions and Carpooling:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 				
 				ui.label(egui::RichText::new("Please add what you’d like to bring for the Friday buffet: ideally finger food that can easily be eaten by hand — sweet or savory are both very welcome.").size(17.0));
 				
