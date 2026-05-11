@@ -503,7 +503,7 @@ impl eframe::App for TemplateApp {
 
             if self.language_flag == true {
                 
-                ui.label(egui::RichText::new("\nDear almost-party guests,\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+                ui.label(egui::RichText::new("\nDear almost-party-guests,\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 
 				ui.label(egui::RichText::new("we can hardly believe it — the big weekend is almost here! Here’s the final round of really important information:").size(17.0)); 
 				
