@@ -1161,7 +1161,7 @@ else {
 
                 ui.label(egui::RichText::new("You’re invited to enjoy food and drinks all weekend, and there will be no cost for staying overnight in a tent or bungalow. What matters most is that everyone can be there and be comfortable.\n\nOf course our pockets will feel a bit empty after the event. If it’s possible for you to help fill them up again, we would be very grateful for any financial contribution — no matter how great or small the amount.\n").size(17.0));
 
-				ui.label(egui::RichText::new("As a few people have already asked, we’re happy to share a suggested contribution (for those who are comfortably able to give):\n\nPer adult staying in a tent:\n €85.17\nPer adult staying in a bungalow: €142.41\n\nIf you would like to make a contribution, please send it anytime to:").size(17.0));
+				ui.label(egui::RichText::new("As a few people have already asked, we’re happy to share a suggested contribution (for those who are comfortably able to give):\n\nPer adult staying in a tent: €85.17\nPer adult staying in a bungalow: €142.41\n\nIf you would like to make a contribution, please send it anytime to:").size(17.0));
 
 					
                 ui.horizontal_wrapped(|ui| {
