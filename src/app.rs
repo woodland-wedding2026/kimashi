@@ -509,7 +509,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("\nHelping Hands Schedule\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 				
-				ui.label(egui::RichText::new("please get back to us by May 24th!").size(26.0).color(egui::Color32::RED).strong()); 
+				ui.label(egui::RichText::new("please get back to us by no later than May 24th!").size(26.0).color(egui::Color32::RED).strong()); 
 				
 				ui.label(egui::RichText::new("To help us coordinate all our lovely helpers, we already need your support now. Please get back to us by May 24th and let us know which tasks you’d enjoy helping with and when you’ll be available. We’ll organize everything and do our best to create a plan that works well for everyone.").size(17.0)); 
 				
