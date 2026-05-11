@@ -528,7 +528,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.add(
 				    egui::Hyperlink::from_label_and_url(
-				        egui::RichText::new("click me - What to Bring List - click me").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
+				        egui::RichText::new("click me - Potluck List - click me").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
 				        "https://docs.google.com/document/d/1oSsfuwkMAKTApy1AX0LG_zBfuD6Ym0_B82CBWN-xvKE/edit?usp=sharing",
 				    )
 				);
@@ -556,7 +556,7 @@ impl eframe::App for TemplateApp {
             }
             else {
 
-				ui.label(egui::RichText::new("\nLiebe Fast schon-Partygäste,\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
+				ui.label(egui::RichText::new("\nLiebe fast-schon-Partygäste,\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 
 				ui.label(egui::RichText::new("wir können es kaum glauben, es ist schon fast so weit! Hier noch die letzten wirklich wichtigen Infos:").size(17.0)); 
 				
@@ -581,7 +581,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.add(
 				    egui::Hyperlink::from_label_and_url(
-				        egui::RichText::new("klick mich - Mitbringliste - klick mich").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
+				        egui::RichText::new("klick mich - Mitbring-Buffet-Liste - klick mich").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
 				        "https://docs.google.com/document/d/1oSsfuwkMAKTApy1AX0LG_zBfuD6Ym0_B82CBWN-xvKE/edit?usp=sharing",
 				    )
 				);
@@ -1159,8 +1159,11 @@ else {
 
                 if self.language_flag == true {
 
-                ui.label(egui::RichText::new("You’re invited to enjoy food and drinks all weekend, and there will be no cost for staying overnight in a tent or bungalow. What matters most is that everyone can be there and be comfortable.\n\nOf course our pockets will feel a bit empty after the event. If it’s possible for you to help fill them up again, we would be very grateful for any financial contribution — no matter how great or small the amount.\n\nIf you would like to make a contribution, please send it anytime to:\n").size(17.0));
-                
+                ui.label(egui::RichText::new("You’re invited to enjoy food and drinks all weekend, and there will be no cost for staying overnight in a tent or bungalow. What matters most is that everyone can be there and be comfortable.\n\nOf course our pockets will feel a bit empty after the event. If it’s possible for you to help fill them up again, we would be very grateful for any financial contribution — no matter how great or small the amount.\n").size(17.0));
+
+				ui.label(egui::RichText::new("As a few people have already asked, we’re happy to share a suggested contribution (for those who are comfortably able to give):\n\nPer adult staying in a tent:\n €85.17\nPer adult staying in a bungalow: €142.41\n\nIf you would like to make a contribution, please send it anytime to:").size(17.0));
+
+					
                 ui.horizontal_wrapped(|ui| {
                 ui.label(egui::RichText::new("Paypal: ").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()); ui.label(egui::RichText::new("woodland.wedding@pm.me; Subject: Woodland Wedding\n").size(17.0));
                 });
@@ -1174,8 +1177,12 @@ else {
                 
                 else {
                 
-                ui.label(egui::RichText::new("Ihr seid das ganze Wochenende auf Essen und Trinken eingeladen, auch für die Übernachtung im Zelt oder Bungalow fallen prinzipiell keine Kosten für euch an. Das Wichtigste ist, dass alle dabei sein können und sich wohl fühlen.\n\nNatürlich wird unser Geldbeutel nach diesem Event ganz schön Magenknurren haben. Wenn es für euch möglich ist, sind wir über finanzielles Futter in jeder Höhe sehr dankbar.\n\nGerne jederzeit an:\n").size(17.0));
+                ui.label(egui::RichText::new("Ihr seid das ganze Wochenende auf Essen und Trinken eingeladen, auch für die Übernachtung im Zelt oder Bungalow fallen prinzipiell keine Kosten für euch an. Das Wichtigste ist, dass alle dabei sein können und sich wohl fühlen.\n\nNatürlich wird unser Geldbeutel nach diesem Event ganz schön Magenknurren haben.\n").size(17.0));
+
+				ui.label(egui::RichText::new("Da wir schon ein paar Mal gefragt wurden, geben wir euch eine \"Spenden-Empfehlung\" (für Menschen mit zufriedenem Geldbeutel):\n\nPro Erwachsene*r im Zelt: 85,17€\nPro Erwachsene*r im Bungalow: 142,41€\n\nWenn es für euch möglich ist, sind wir über finanzielles Futter in jeder Höhe sehr dankbar.\n\nGerne jederzeit an:\n").size(17.0));
                 
+
+					
                 ui.horizontal_wrapped(|ui| {
                 ui.label(egui::RichText::new("Paypal: ").size(17.0).color(egui::Color32::from_rgb(251, 0, 255)).strong()); ui.label(egui::RichText::new("woodland.wedding@pm.me; Betreff: Woodland Wedding\n").size(17.0));
                 });
