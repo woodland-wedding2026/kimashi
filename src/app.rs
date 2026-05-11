@@ -630,7 +630,7 @@ ui.add(
         "https://docs.google.com/spreadsheets/d/1vfl5wpG0HaQNEFuzkOHtKUigDhtELqi9hJA-zkjgttQ/edit?usp=sharing",
     )
 );
-
+ui.label("");
 					
 ui.label(egui::RichText::new("PUBLIC TRANSPORT might be a bit complicated:").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
 ui.label("");
@@ -686,7 +686,7 @@ ui.add(
         "https://docs.google.com/spreadsheets/d/1vfl5wpG0HaQNEFuzkOHtKUigDhtELqi9hJA-zkjgttQ/edit?usp=sharing",
     )
 );
-
+ui.label("");
 	
 ui.label(egui::RichText::new("etwas umständlich mit ÖFFIS:").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
 ui.label("");
