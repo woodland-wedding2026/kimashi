@@ -1334,7 +1334,7 @@ else {
 				
                 ui.label(egui::RichText::new("Dress code:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
                 
-                ui.label(egui::RichText::new("no need for formal evening wear unless it makes you happy. We love colorful, glittery, shiny and extravagant outfits. But pajamas, pirate costumes and potato sacks are also favorites. So – feel free to express yourself!").size(17.0));
+                ui.label(egui::RichText::new("no need for formal evening wear unless it makes you happy. We love colorful, glittery, shiny and extravagant outfits. But pajamas, pirate costumes and potato sacks are also favorites. So – feel free to express yourself!\n").size(17.0));
 
                 }
                                 
@@ -1358,7 +1358,7 @@ else {
 				ui.label("");
 				ui.label(egui::RichText::new("Dress code:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
                 
-                ui.label(egui::RichText::new("Förmliche Abendgarderobe ist nicht nötig, es sei denn sie macht euch glücklich. Wir freuen uns immer über farbenfrohe, glitzernde, schillernde und extravagante Outfits. Aber auch Pyjamas, Piratenkostüme und Kartoffelsäcke gehören zu unseren Favoriten. Ihr habt also die freie Wahl!\n\n").size(17.0));
+                ui.label(egui::RichText::new("Förmliche Abendgarderobe ist nicht nötig, es sei denn sie macht euch glücklich. Wir freuen uns immer über farbenfrohe, glitzernde, schillernde und extravagante Outfits. Aber auch Pyjamas, Piratenkostüme und Kartoffelsäcke gehören zu unseren Favoriten. Ihr habt also die freie Wahl!\n").size(17.0));
 
                 }
                 
