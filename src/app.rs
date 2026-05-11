@@ -677,6 +677,17 @@ else {
 
 ui.label(egui::RichText::new("Zum Gelände kommt man auf allen erdenklichen Wegen, mit Bus&Bahn, dem eigenen oder gemieteten Auto oder mit Taxi bzw. Uber. Hier ein Überblick:\n").size(17.0)); 
 
+ui.label(egui::RichText::new("mögliche Mitfahrgelegenheiten:").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
+ui.label("");
+ui.label(egui::RichText::new("Bitte tragt ein, falls ihr für die Anfahrt noch Plätze im Auto anbieten könnt und gebt unbedingt eure Telefonnummer mit an!").size(17.0)); 
+ui.add(
+    egui::Hyperlink::from_label_and_url(
+        egui::RichText::new("klick mich - Mitfahrtabelle - klick mich").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
+        "https://docs.google.com/spreadsheets/d/1vfl5wpG0HaQNEFuzkOHtKUigDhtELqi9hJA-zkjgttQ/edit?usp=sharing",
+    )
+);
+
+	
 ui.label(egui::RichText::new("etwas umständlich mit ÖFFIS:").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
 ui.label("");
 ui.label(egui::RichText::new("Ungefähr 2.5 Stunden von Berlin Ostkreuz mit Regio und zwei Bussen bis Chossewitz, von dort 20 Minuten (1.5km) laufen. Kosten circa 15 Euro pro Person.\n").size(17.0)); 
@@ -1281,6 +1292,9 @@ else {
                 
                 ui.label(egui::RichText::new("no need for formal evening wear unless it makes you happy. We love colorful, glittery, shiny and extravagant outfits. But pajamas, pirate costumes and potato sacks are also favorites. So – feel free to express yourself!\n\n").size(17.0));
 
+
+
+					
 				ui.label(egui::RichText::new("Things to bring:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
 					
                 ui.label(egui::RichText::new("Here are a few things we’d recommend bringing along to make the weekend extra cozy and comfortable:\n(Bed linen and towels are provided in the bungalows.)\n\n- Camping chair\n- Picnic blanket\n- Seat cushion for the beer benches\n- A cozy blanket for sitting outside in the evening\n- Swimwear\n- Flip-flops or sandals\n- Sauna towel\n- Sun protection\n- Mosquito repellent\n- Rain gear — just in case\n- Layers for cooler evenings (\"onion style\" clothing works best!)").size(17.0));
