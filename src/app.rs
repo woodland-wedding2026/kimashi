@@ -621,6 +621,17 @@ impl eframe::App for TemplateApp {
 
 ui.label(egui::RichText::new("You can reach the venue in a number of different ways: using public transport, your own car, a rental car or by taxi/Uber. Here's an overview:\n").size(17.0)); 
 
+ui.label(egui::RichText::new("possibly CARPOOLING:").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
+ui.label("");
+ui.label(egui::RichText::new("Please add your name if you can offer seats in your car for the trip — and make sure to include your phone number!").size(17.0)); 
+ui.add(
+    egui::Hyperlink::from_label_and_url(
+        egui::RichText::new("click me - Carpool Table - click me").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
+        "https://docs.google.com/spreadsheets/d/1vfl5wpG0HaQNEFuzkOHtKUigDhtELqi9hJA-zkjgttQ/edit?usp=sharing",
+    )
+);
+
+					
 ui.label(egui::RichText::new("PUBLIC TRANSPORT might be a bit complicated:").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
 ui.label("");
 ui.label(egui::RichText::new("Around 2.5 hours from Berlin Ostkreuz via regional train and two buses to Chossewitz, then a 20-minute walk (1.5 km).\nCost: approx. 15 euros per person.\n").size(17.0)); 
