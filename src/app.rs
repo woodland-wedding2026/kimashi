@@ -533,7 +533,7 @@ impl eframe::App for TemplateApp {
 				    )
 				);
 				
-				ui.label(egui::RichText::new("Please add your name if you can offer seats in your car for the trip — and make sure to include your phone number!").size(17.0)); 
+				ui.label(egui::RichText::new("Please add your details if you can offer seats in your car for the trip or if you’re looking for a ride, and make sure to include your phone number!").size(17.0)); 
 				
 				ui.add(
 				    egui::Hyperlink::from_label_and_url(
@@ -586,7 +586,7 @@ impl eframe::App for TemplateApp {
 				    )
 				);
 				
-				ui.label(egui::RichText::new("Bitte tragt ein, falls ihr für die Anfahrt noch Plätze im Auto anbieten könnt und gebt unbedingt eure Telefonnummer mit an!").size(17.0)); 
+				ui.label(egui::RichText::new("Bitte tragt ein, falls ihr für die Anfahrt noch Plätze im Auto anbieten könnt oder welche sucht und gebt unbedingt eure Telefonnummer mit an!").size(17.0)); 
 				
 				ui.add(
 				    egui::Hyperlink::from_label_and_url(
@@ -623,7 +623,7 @@ ui.label(egui::RichText::new("You can reach the venue in a number of different w
 
 ui.label(egui::RichText::new("possibly CARPOOLING:").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
 ui.label("");
-ui.label(egui::RichText::new("Please add your name if you can offer seats in your car for the trip — and make sure to include your phone number!").size(17.0)); 
+ui.label(egui::RichText::new("Please add your details if you can offer seats in your car for the trip or if you’re looking for a ride, and make sure to include your phone number!").size(17.0)); 
 ui.add(
     egui::Hyperlink::from_label_and_url(
         egui::RichText::new("click me - Carpool Table - click me").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
@@ -679,7 +679,7 @@ ui.label(egui::RichText::new("Zum Gelände kommt man auf allen erdenklichen Wege
 
 ui.label(egui::RichText::new("mögliche Mitfahrgelegenheiten:").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
 ui.label("");
-ui.label(egui::RichText::new("Bitte tragt ein, falls ihr für die Anfahrt noch Plätze im Auto anbieten könnt und gebt unbedingt eure Telefonnummer mit an!").size(17.0)); 
+ui.label(egui::RichText::new("Bitte tragt ein, falls ihr für die Anfahrt noch Plätze im Auto anbieten könnt oder welche sucht und gebt unbedingt eure Telefonnummer mit an!").size(17.0)); 
 ui.add(
     egui::Hyperlink::from_label_and_url(
         egui::RichText::new("klick mich - Mitfahrtabelle - klick mich").size(24.0).color(egui::Color32::from_rgb(251, 0, 255)),
