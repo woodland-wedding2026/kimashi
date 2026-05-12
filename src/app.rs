@@ -544,7 +544,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("\nPacking List:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 				
-				ui.label(egui::RichText::new("Bed linen and towels are provided in the bungalows, however, please keep in mind: unless we’ve told you otherwise, you’ll be sleeping in a tent, so make sure to bring the appropriate gear. If you’re unsure about anything, feel free to check with us.\nHere are a few things we’d recommend bringing along to make the weekend extra cozy and comfortable:\n\n- Camping chair\n- Picnic blanket\n- Seat cushion for the beer benches\n- A cozy blanket for sitting outside in the evening\n- Swimwear\n- Flip-flops or sandals\n- Sauna towel\n- Sun screen\n- Mosquito repellent\n- Rain gear — just in case\n- Layers for cooler evenings (\"onion style\" clothing works best!)").size(17.0)); 
+				ui.label(egui::RichText::new("Bed linen and towels are provided in the bungalows, however, please keep in mind: unless we’ve told you otherwise, you’ll be sleeping in a tent, so make sure to bring the appropriate gear. If you’re unsure about anything, feel free to check with us.\n\nHere are a few things we’d recommend bringing along to make the weekend extra cozy and comfortable:\n\n- Camping chair\n- Picnic blanket\n- Seat cushion for the beer benches\n- A cozy blanket for sitting outside in the evening\n- Swimwear\n- Flip-flops or sandals\n- Sauna towel\n- Sun screen\n- Mosquito repellent\n- Rain gear — just in case\n- Layers for cooler evenings (\"onion style\" clothing works best!)").size(17.0)); 
 				
 				ui.label(egui::RichText::new("\nAlso let us know if you’d still like to sign up for the shuttle from Beeskow to the venue.").size(17.0)); 
 				
@@ -597,7 +597,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("\nMitbringliste:\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 				
-				ui.label(egui::RichText::new("In den Bungalows sind Handtücher und Bettwäsche vorhanden, allerdings, bitte denkt daran: wenn ihr von uns nichts gegenteiliges gehört habt, schlaft ihr im Zelt und müsst euch dementsprechend dafür ausrüsten. Wenn ihr euch unsicher seid, fragt lieber nochmal nach.\nHier unsere Empfehlung, was ihr mitbringen könnt, um das Wochenende gemütlich zu verbringen:\n\n- Campingstuhl\n- Picknickdecke\n- Sitzkissen für die Bierbank\n- Kuscheldecke zum abends draußen sitzen\n- Badesachen\n- Badelatschen\n- Sauna-Handtuch\n- Sonnenschutz\n- Mückenzeug\n- Regenkleidung: man weiß ja nie\n- Zwiebelschalen: falls es abends kalt wird").size(17.0)); 
+				ui.label(egui::RichText::new("In den Bungalows sind Handtücher und Bettwäsche vorhanden, allerdings, bitte denkt daran: wenn ihr von uns nichts gegenteiliges gehört habt, schlaft ihr im Zelt und müsst euch dementsprechend dafür ausrüsten. Wenn ihr euch unsicher seid, fragt lieber nochmal nach.\n\nHier unsere Empfehlung, was ihr mitbringen könnt, um das Wochenende gemütlich zu verbringen:\n\n- Campingstuhl\n- Picknickdecke\n- Sitzkissen für die Bierbank\n- Kuscheldecke zum abends draußen sitzen\n- Badesachen\n- Badelatschen\n- Sauna-Handtuch\n- Sonnenschutz\n- Mückenzeug\n- Regenkleidung: man weiß ja nie\n- Zwiebelschalen: falls es abends kalt wird").size(17.0)); 
 				
 				ui.label(egui::RichText::new("\nMeldet euch außerdem bei uns, falls ihr euch noch für den Shuttle von Beeskow zum Gelände anmelden wollt.").size(17.0)); 
 				
@@ -1328,7 +1328,7 @@ else {
 					
 				ui.label(egui::RichText::new("Things to bring:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
 					
-                ui.label(egui::RichText::new("Bed linen and towels are provided in the bungalows, however, please keep in mind: unless we’ve told you otherwise, you’ll be sleeping in a tent, so make sure to bring the appropriate gear. If you’re unsure about anything, feel free to check with us.\nHere are a few things we’d recommend bringing along to make the weekend extra cozy and comfortable:\n\n- Camping chair\n- Picnic blanket\n- Seat cushion for the beer benches\n- A cozy blanket for sitting outside in the evening\n- Swimwear\n- Flip-flops or sandals\n- Sauna towel\n- Sun screen\n- Mosquito repellent\n- Rain gear — just in case\n- Layers for cooler evenings (\"onion style\" clothing works best!)").size(17.0));
+                ui.label(egui::RichText::new("Bed linen and towels are provided in the bungalows, however, please keep in mind: unless we’ve told you otherwise, you’ll be sleeping in a tent, so make sure to bring the appropriate gear. If you’re unsure about anything, feel free to check with us.\n\nHere are a few things we’d recommend bringing along to make the weekend extra cozy and comfortable:\n\n- Camping chair\n- Picnic blanket\n- Seat cushion for the beer benches\n- A cozy blanket for sitting outside in the evening\n- Swimwear\n- Flip-flops or sandals\n- Sauna towel\n- Sun screen\n- Mosquito repellent\n- Rain gear — just in case\n- Layers for cooler evenings (\"onion style\" clothing works best!)").size(17.0));
 
 				ui.label("");
 				
@@ -1354,7 +1354,7 @@ else {
                 ui.label("");
 				ui.label(egui::RichText::new("Mitbringliste:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
 					
-                ui.label(egui::RichText::new("In den Bungalows sind Handtücher und Bettwäsche vorhanden, allerdings, bitte denkt daran: wenn ihr von uns nichts gegenteiliges gehört habt, schlaft ihr im Zelt und müsst euch dementsprechend dafür ausrüsten. Wenn ihr euch unsicher seid, fragt lieber nochmal nach.\nHier unsere Empfehlung, was ihr mitbringen könnt, um das Wochenende gemütlich zu verbringen:\n\n- Campingstuhl\n- Picknickdecke\n- Sitzkissen für die Bierbank\n- Kuscheldecke zum abends draußen sitzen\n- Badesachen\n- Badelatschen\n- Sauna-Handtuch\n- Sonnenschutz\n- Mückenzeug\n- Regenkleidung: man weiß ja nie\n- Zwiebelschalen: falls es abends kalt wird").size(17.0));
+                ui.label(egui::RichText::new("In den Bungalows sind Handtücher und Bettwäsche vorhanden, allerdings, bitte denkt daran: wenn ihr von uns nichts gegenteiliges gehört habt, schlaft ihr im Zelt und müsst euch dementsprechend dafür ausrüsten. Wenn ihr euch unsicher seid, fragt lieber nochmal nach.\n\nHier unsere Empfehlung, was ihr mitbringen könnt, um das Wochenende gemütlich zu verbringen:\n\n- Campingstuhl\n- Picknickdecke\n- Sitzkissen für die Bierbank\n- Kuscheldecke zum abends draußen sitzen\n- Badesachen\n- Badelatschen\n- Sauna-Handtuch\n- Sonnenschutz\n- Mückenzeug\n- Regenkleidung: man weiß ja nie\n- Zwiebelschalen: falls es abends kalt wird").size(17.0));
 				ui.label("");
 				ui.label(egui::RichText::new("Dress code:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline());
                 
