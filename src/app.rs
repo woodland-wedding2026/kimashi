@@ -509,7 +509,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("\nHelping Hands Schedule\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 				
-				ui.label(egui::RichText::new("please get back to us by no later than May 24th!").size(26.0).color(egui::Color32::RED).strong()); 
+				ui.label(egui::RichText::new("please get back to us by no later than May 22nd!").size(26.0).color(egui::Color32::RED).strong()); 
 				
 				ui.label(egui::RichText::new("To help us coordinate all our lovely helpers, we already need your support now. Please get back to us by May 24th and let us know which tasks you’d enjoy helping with and when you’ll be available. We’ll organize everything and do our best to create a plan that works well for everyone.").size(17.0)); 
 				
@@ -562,7 +562,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("\nMithelf-Plan\n").size(26.0).color(egui::Color32::DARK_GREEN).strong()); 
 				
-				ui.label(egui::RichText::new("bitte bis zum 24. Mai zurückmelden!").size(26.0).color(egui::Color32::RED).strong()); 
+				ui.label(egui::RichText::new("bitte bis zum 22. Mai zurückmelden!").size(26.0).color(egui::Color32::RED).strong()); 
 				
 				ui.label(egui::RichText::new("Damit wir alle Helferlis gut einteilen können, brauchen wir schon jetzt eure Hilfe. Bitte meldet euch bis zum 24.05. zurück und gebt an, welche Aufgaben ihr gern übernehmen möchtet und wann ihr dafür Zeit habt. Wir teilen euch dann ein und versuchen, den Plan für alle passend zu gestalten.").size(17.0)); 
 				
@@ -942,7 +942,7 @@ ui.add(
 
                         if self.new_formflag == false {  
 
-    ui.label(egui::RichText::new("Please use the form below to respond by no later than May 24th").size(24.0).color(egui::Color32::RED));
+    ui.label(egui::RichText::new("Please use the form below to respond by no later than May 22nd").size(24.0).color(egui::Color32::RED));
 	ui.label("");						
 	ui.label(egui::RichText::new("To help us organize everything smoothly, we’d really appreciate your support already now. Please tell us which tasks you’d be happy to help with and when you’re available. We’ll coordinate everything and do our best to create a plan that works well for everyone.\n\nMost tasks are not continuous — it’s more about keeping an eye on a certain area and helping out when needed. There will always be clear instructions on what to do.\n\n").size(23.0));
 
@@ -1064,7 +1064,7 @@ else {
 if self.new_formflag == false {
 
 
-	ui.label(egui::RichText::new("Bitte benutze bis spätestens 24ter Mai das Formular weiter unten um uns zu antworten.").size(24.0).color(egui::Color32::RED));
+	ui.label(egui::RichText::new("Bitte benutze bis spätestens 22ter Mai das Formular weiter unten um uns zu antworten.").size(24.0).color(egui::Color32::RED));
 	ui.label("");
 	
 	ui.label(egui::RichText::new("Damit wir alle Helferlis gut einteilen können, brauchen wir schon jetzt eure Hilfe. Bitte gebt an, welche Aufgaben ihr gern übernehmen möchtet und wann ihr dafür Zeit habt. Wir teilen euch ein und versuchen, den Plan für alle passend zu gestalten.\n\nViele Aufgaben sind nicht durchgehend - es geht eher darum, im Blick zu haben, ob im jeweiligen Bereich etwas gebraucht wird. Es wird immer genaue Anweisungen geben, was zu tun ist.\n\n").size(23.0));
