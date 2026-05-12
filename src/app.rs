@@ -511,7 +511,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("please get back to us by no later than May 22nd!").size(26.0).color(egui::Color32::RED).strong()); 
 				
-				ui.label(egui::RichText::new("To help us coordinate all our lovely helpers, we already need your support now. Please get back to us by May 24th and let us know which tasks you’d enjoy helping with and when you’ll be available. We’ll organize everything and do our best to create a plan that works well for everyone.").size(17.0)); 
+				ui.label(egui::RichText::new("To help us coordinate all our lovely helpers, we already need your support now. Please get back to us by May 22nd and let us know which tasks you’d enjoy helping with and when you’ll be available. We’ll organize everything and do our best to create a plan that works well for everyone.").size(17.0)); 
 				
 				ui.label(egui::RichText::new("If we don’t hear from you, we’ll assume you’re happy to help wherever needed and that you’ll be around until late Sunday afternoon.").size(17.0)); 
 				
@@ -564,7 +564,7 @@ impl eframe::App for TemplateApp {
 				
 				ui.label(egui::RichText::new("bitte bis zum 22. Mai zurückmelden!").size(26.0).color(egui::Color32::RED).strong()); 
 				
-				ui.label(egui::RichText::new("Damit wir alle Helferlis gut einteilen können, brauchen wir schon jetzt eure Hilfe. Bitte meldet euch bis zum 24.05. zurück und gebt an, welche Aufgaben ihr gern übernehmen möchtet und wann ihr dafür Zeit habt. Wir teilen euch dann ein und versuchen, den Plan für alle passend zu gestalten.").size(17.0)); 
+				ui.label(egui::RichText::new("Damit wir alle Helferlis gut einteilen können, brauchen wir schon jetzt eure Hilfe. Bitte meldet euch bis zum 22.05. zurück und gebt an, welche Aufgaben ihr gern übernehmen möchtet und wann ihr dafür Zeit habt. Wir teilen euch dann ein und versuchen, den Plan für alle passend zu gestalten.").size(17.0)); 
 				
 				ui.label(egui::RichText::new("Sollten wir von euch nichts hören, gehen wir davon aus, dass ihr auf alle Aufgabenbereiche Lust habt und am Sonntag bis zum späten Nachmittag am Start seid.").size(17.0)); 
 				
