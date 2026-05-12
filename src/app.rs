@@ -950,7 +950,7 @@ ui.add(
 	ui.label(egui::RichText::new("Friday / Saturday:\n").size(23.0).color(egui::Color32::from_rgb(0, 183, 255)));
 	ui.label(egui::RichText::new("- Help set up breakfast\n- Help prepare dinner\n- Refill and keep the buffet tidy\n- Clear dishes and help with washing up\n- Keep an eye on the midnight snack\n\n- Prepare and maintain the campfire\n- Refill wood for the sauna and pool area\n- Help with technical setup/support\n- Prepare and keep outdoor areas tidy\n- Flexible helper: refill drinks, tidy up, wash dishes as needed\n").size(23.0));
 	ui.label(egui::RichText::new("Sunday:\n").size(23.0).color(egui::Color32::from_rgb(0, 183, 255)));
-	ui.label(egui::RichText::new("- Clean up the kitchen\n- Clear and tidy the buffet\n- Sort leftover food\n- Organize drink crates and bottle returns\n\n- Carefully take down decorations\n- Tidy up the chill-out area\n- Clean up the party storage area\n- Clean up outdoor areas\n").size(23.0));
+	ui.label(egui::RichText::new("- Clean up the kitchen\n- Clear and tidy the buffet\n- Sort leftover food\n- Organize drink crates and bottle returns\n\n- Carefully take down decorations\n- Tidy up the chill-out area\n- Clean up the party-cabin\n- Clean up outdoor areas\n").size(23.0));
 
 
 
