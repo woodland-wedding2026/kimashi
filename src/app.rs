@@ -944,7 +944,7 @@ ui.add(
 
     ui.label(egui::RichText::new("Please use the form below to respond by no later than May 22nd").size(24.0).color(egui::Color32::RED));
 	ui.label("");						
-	ui.label(egui::RichText::new("To help us organize everything smoothly, we’d really appreciate your support already now. Please tell us which tasks you’d be happy to help with and when you’re available. We’ll coordinate everything and do our best to create a plan that works well for everyone.\n\nMost tasks are not continuous — it’s more about keeping an eye on a certain area and helping out when needed. There will always be clear instructions on what to do.\n\n").size(23.0));
+	ui.label(egui::RichText::new("Most tasks are not continuous — it’s more about keeping an eye on a certain area and helping out when needed. There will always be clear instructions on what to do.\n\n").size(23.0));
 
 	ui.label(egui::RichText::new("The following tasks are available:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
 	ui.label(egui::RichText::new("Friday / Saturday:\n").size(23.0).color(egui::Color32::from_rgb(0, 183, 255)));
@@ -1067,7 +1067,7 @@ if self.new_formflag == false {
 	ui.label(egui::RichText::new("Bitte benutze bis spätestens 22ter Mai das Formular weiter unten um uns zu antworten.").size(24.0).color(egui::Color32::RED));
 	ui.label("");
 	
-	ui.label(egui::RichText::new("Damit wir alle Helferlis gut einteilen können, brauchen wir schon jetzt eure Hilfe. Bitte gebt an, welche Aufgaben ihr gern übernehmen möchtet und wann ihr dafür Zeit habt. Wir teilen euch ein und versuchen, den Plan für alle passend zu gestalten.\n\nViele Aufgaben sind nicht durchgehend - es geht eher darum, im Blick zu haben, ob im jeweiligen Bereich etwas gebraucht wird. Es wird immer genaue Anweisungen geben, was zu tun ist.\n\n").size(23.0));
+	ui.label(egui::RichText::new("Viele Aufgaben sind nicht durchgehend - es geht eher darum, im Blick zu haben, ob im jeweiligen Bereich etwas gebraucht wird. Es wird immer genaue Anweisungen geben, was zu tun ist.\n\n").size(23.0));
 
 	ui.label(egui::RichText::new("Folgende Aufgaben stehen zur Auswahl:\n").size(23.0).color(egui::Color32::DARK_GREEN).strong().underline()); 
 	
